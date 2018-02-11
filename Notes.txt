@@ -1,7 +1,0 @@
-Loading jQuery before Angular lets it use full jQuery instead of its built-in jQLite
-
-We use the "ng-app" directive to declare our app in the HTML.
-    We can do ng-app="myApp" or just ng-app without the value to declare the default app.  I'm doing that for this project.
-
-We can have multiple scopes defined in our app using the "ng-controller" directive
-
