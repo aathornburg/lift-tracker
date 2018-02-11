@@ -1,1 +1,5 @@
-# gmail-clone
+# AngularJS-Sandbox
+
+The app is running on a simple http-server (npm install -g http-server).
+
+To start the server, run "http-server -o" (-o means open)
