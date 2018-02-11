@@ -1,0 +1,20 @@
+<html ng-app="myApp">
+    <head>
+        <title>Angular Sandbox</title>
+    </head>
+    <body>
+        <div ng-controller="TestCtrl">
+            <h1>{{title}}</h1>
+            <input type="text" ng-model="title" />
+        </div>
+
+        <script>
+            function TestCtrl($scope) {
+                $scope.title = 'Write a title here...';
+            };
+        </script>
+        <!-- Scripts at bottom of page for better rendering -->
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="lib/angular.min.js"></script>
+    </body>
+</html>
