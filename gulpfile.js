@@ -1,86 +1,37 @@
-var gulp          = require('gulp');
-var notify        = require('gulp-notify');
-var source        = require('vinyl-source-stream');
-var browserify    = require('browserify');
-var babelify      = require('babelify');
-var ngAnnotate    = require('browserify-ngannotate');
-var browserSync   = require('browser-sync').create();
-var rename        = require('gulp-rename');
-var templateCache = require('gulp-angular-templatecache');
-var uglify        = require('gulp-uglify');
-var merge         = require('merge-stream');
+var babelify = require('babelify');
+var browserify = require('browserify');
+var browserSync = require('browser-sync');
+var buffer = require('vinyl-buffer');
+var gulp = require('gulp');
+var source = require('vinyl-source-stream');
+var sourcemaps = require('gulp-sourcemaps');
 
-// Where our files are located
-var jsFiles   = "src/js/**/*.js";
-var viewFiles = "src/js/**/*.html";
-
-var interceptErrors = function(error) {
-  var args = Array.prototype.slice.call(arguments);
-
-  // Send error to notification center with gulp-notify
-  notify.onError({
-    title: 'Compile Error',
-    message: '<%= error.message %>'
-  }).apply(this, args);
-
-  // Keep gulp from hanging on this task
-  this.emit('end');
-};
-
-
-gulp.task('browserify', ['views'], function() {
-  return browserify('./src/js/app.js')
-      .transform(babelify, {presets: ["es2015"]})
-      .transform(ngAnnotate)
-      .bundle()
-      .on('error', interceptErrors)
-      //Pass desired output filename to vinyl-source-stream
-      .pipe(source('main.js'))
-      // Start piping stream to tasks!
-      .pipe(gulp.dest('./build/'));
+gulp.task('scripts', function() {
+    return browserify(
+        {
+            entries: ['./src/js/app.js'],
+            debug: true
+        })
+        .transform(babelify, { presets: ['env'], sourceMaps: true })
+        .bundle()
+        .pipe(source('bundle.js'))
+        .pipe(buffer())
+        // source maps WILL WORK, at least on node v8.3.0 and **after a page refresh**.  Tested in Chrome/Firefox
+        .pipe(sourcemaps.init({ loadMaps: true }))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('dist'))
 });
 
-gulp.task('html', function() {
-  return gulp.src("src/index.html")
-      .on('error', interceptErrors)
-      .pipe(gulp.dest('./build/'));
+gulp.task('watch', ['scripts'], function() {
+    gulp.watch('src/js/*.js', ['scripts']);
+    gulp.watch('src/index.html').on('change', browserSync.reload);
 });
 
-gulp.task('views', function() {
-  return gulp.src(viewFiles)
-      .pipe(templateCache({
-        standalone: true
-      }))
-      .on('error', interceptErrors)
-      .pipe(rename("app.templates.js"))
-      .pipe(gulp.dest('./src/js/config/'));
+gulp.task('serve', ['watch'], function() {
+    browserSync.init({
+        // serve from the src/ and dist/ directories
+        server: ["src", "dist"]
+    });
 });
 
-// This task is used for building production ready
-// minified JS/CSS files into the dist/ folder
-gulp.task('build', ['html', 'browserify'], function() {
-  var html = gulp.src("build/index.html")
-                 .pipe(gulp.dest('./dist/'));
-
-  var js = gulp.src("build/main.js")
-               .pipe(uglify())
-               .pipe(gulp.dest('./dist/'));
-
-  return merge(html,js);
-});
-
-gulp.task('default', ['html', 'browserify'], function() {
-
-  browserSync.init(['./build/**/**.**'], {
-    server: "./build",
-    port: 4000,
-    notify: false,
-    ui: {
-      port: 4001
-    }
-  });
-
-  gulp.watch("src/index.html", ['html']);
-  gulp.watch(viewFiles, ['views']);
-  gulp.watch(jsFiles, ['browserify']);
-});
+gulp.task('default', ['serve']);
