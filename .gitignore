@@ -1,0 +1,3 @@
+#ignore built directories
+node_modules/
+dist/
