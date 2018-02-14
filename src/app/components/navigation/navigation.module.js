@@ -7,7 +7,7 @@ export default angular
         .directive('navigationBar', () => {
             return {
                 restrict: 'E',
-                templateUrl: 'views/navigation-bar.html',
+                templateUrl: 'components/navigation/navigation-bar.html',
                 controller: NavigationBar
             };
         })

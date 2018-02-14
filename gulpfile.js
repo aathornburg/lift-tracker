@@ -4,12 +4,14 @@ var browserSync = require('browser-sync');
 var buffer = require('vinyl-buffer');
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var concat = require('gulp-concat');
 var source = require('vinyl-source-stream');
 var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('buildStyles', function() {
     gulp.src('src/app/**/*.scss')
-        .pipe(sass().on('error', sass.logError))
+        .pipe(concat('styles.css'))
+        .pipe(sass())
         .pipe(gulp.dest('dist'))
 });
 
