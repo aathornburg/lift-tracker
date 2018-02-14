@@ -10,6 +10,9 @@ The way this app is built:
 To Do:
 - Update gulp so that I don't need to provide the base templates URL every time for every view (ideally, move every view into the folder of each component)
 
+Next Steps:
+- Add scss styles into gulp configuration
+
 Personal notes:
 - Importing an item using the import { name } from '...' syntax requires you to match the name with the name of what was exported!
 - Compare this to using the import name from '...' syntax, where the name can be whatever you'd like.  It's just an alias for what was exported in '...'.
