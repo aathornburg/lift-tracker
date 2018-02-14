@@ -11,7 +11,8 @@ To Do:
 - Update gulp so that I don't need to provide the base templates URL every time for every view (ideally, move every view into the folder of each component)
 
 Next Steps:
-- Add scss styles into gulp configuration
+~~- Add scss styles into gulp configuration~~
+- Create navigation bar
 
 Personal notes:
 - Importing an item using the import { name } from '...' syntax requires you to match the name with the name of what was exported!

@@ -3,10 +3,17 @@ var browserify = require('browserify');
 var browserSync = require('browser-sync');
 var buffer = require('vinyl-buffer');
 var gulp = require('gulp');
+var sass = require('gulp-sass');
 var source = require('vinyl-source-stream');
 var sourcemaps = require('gulp-sourcemaps');
 
-gulp.task('scripts', function() {
+gulp.task('buildStyles', function() {
+    gulp.src('src/app/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('dist'))
+});
+
+gulp.task('buildJS', function() {
     return browserify(
         {
             entries: ['./src/app/components/app.module.js'],
@@ -22,8 +29,9 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('dist'))
 });
 
-gulp.task('watch', ['scripts'], function() {
-    gulp.watch('src/**/*.js', ['scripts']);
+gulp.task('watch', ['buildJS', 'buildStyles'], function() {
+    gulp.watch('src/app/**/*.js', ['buildJS']);
+    gulp.watch('src/app/**/*.scss', ['buildStyles']);
     gulp.watch('src/app/index.html').on('change', browserSync.reload);
 });
 
