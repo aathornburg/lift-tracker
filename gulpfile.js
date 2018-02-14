@@ -9,7 +9,7 @@ var sourcemaps = require('gulp-sourcemaps');
 gulp.task('scripts', function() {
     return browserify(
         {
-            entries: ['./app/content/js/app.js'],
+            entries: ['./src/app/components/app.module.js'],
             debug: true
         })
         .transform(babelify, { presets: ['env'], sourceMaps: true })
@@ -23,14 +23,14 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('watch', ['scripts'], function() {
-    gulp.watch('app/**/*.js', ['scripts']);
-    gulp.watch('app/index.html').on('change', browserSync.reload);
+    gulp.watch('src/**/*.js', ['scripts']);
+    gulp.watch('src/app/index.html').on('change', browserSync.reload);
 });
 
 gulp.task('serve', ['watch'], function() {
     browserSync.init({
-        // serve from the src/ and dist/ directories
-        server: ["app", "dist"]
+        // serve from the src/app/ and dist/ directories
+        server: ["src/app", "dist"]
     });
 });
 
