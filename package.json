@@ -7,7 +7,7 @@
     "angular-resource": "~1.6.4",
     "angular-route": "~1.6.4",
     "angular-storage": "0.0.15",
-    "@uirouter/angular": "~1.0.1",
+    "@uirouter/angularjs": "~1.0.4",
     "gulp": "~3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-sass": "^2.3.2",

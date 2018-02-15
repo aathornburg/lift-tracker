@@ -1,6 +1,6 @@
 require('angular');
 
-export default class NavigationItem {
+export class NavigationItem {
     /* ngInject */
     constructor() {
         console.log(this.location);

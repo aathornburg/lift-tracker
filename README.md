@@ -26,11 +26,13 @@ Personal notes:
 - Compare this to using the import name from '...' syntax, where the name can be whatever you'd like.  It's just an alias for what was exported in '...'.
 - When using ES6 classes as controllers, we don't need to register them as controllers on angular (still figuring out why?)
 - When importing someething that was exported default, we need to import based on what was exported!  We should only import with curly braces when we didn't export a default.  See https://stackoverflow.com/questions/41337709/what-is-use-of-curly-braces-in-es6-import-statement
+- Importing a package uses require syntax, vs. importing a custom anything uses the import from syntax.  Why?
 - ~~When setting an ES6 class as a controller on a directive, we DO need to put its name in quotes.  Only when importing using curly brace syntax, though.  Without curly brace syntax, we can pass in without quotes~~
 - ~~NOTE FROM ABOVE:  For some reason, this changes how we pass items into directive attributes.  Without curly brace syntax, I can pass attributes into directives as string literals.  With curly brace syntax, it passes in as {{ ... }}.~~
 
 Useful Links:
 - Transclusion: http://teropa.info/blog/2015/06/09/transclusion.html
-- ES6 curly braces on import: https://stackoverflow.com/questions/41337709/what-is-use-of-curly-braces-in-es6-import-statement
+- ES6 curly braces on import: https://stackoverflow.com/questions/41337709/what-is-use-of-curly-braces-in-es6-import-statement, https://stackoverflow.com/questions/33611812/javascript-es6-export-const-vs-export-default
 - bindToController property for directives: http://www.tothenew.com/blog/using-bindtocontroller-with-controlleras-syntax-in-angular/
 - ngAnnotate and ES6 classes as controllers: https://www.timroes.de/2015/07/29/using-ecmascript-6-es6-with-angularjs-1-x/
+- Promises, as explained by a comic:  http://andyshora.com/promises-angularjs-explained-as-cartoon.html

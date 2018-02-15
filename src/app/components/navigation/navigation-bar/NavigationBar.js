@@ -1,6 +1,6 @@
 require('angular');
 
-export default class NavigationBar {
+export class NavigationBar {
     /* ngInject */
     constructor() {
         this.navItems = [
