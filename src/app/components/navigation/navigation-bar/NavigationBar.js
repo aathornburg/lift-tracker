@@ -4,9 +4,9 @@ export default class NavigationBar {
     /* ngInject */
     constructor() {
         this.navItems = [
-            "Home",
-            "Browse",
-            "Search"
+            "Dashboard",
+            "Goals",
+            "Create Personal Workout"
         ];
     }
 

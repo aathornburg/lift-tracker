@@ -16,7 +16,18 @@ Next Steps:
 To Do:
 - Update gulp so that I don't need to provide the base templates URL every time for every view (ideally, move every view into the folder of each component)
 - Add sourcemaps for scss?
+- Convert directives to components at some point (as a learning opportunity)
 
 Personal notes:
 - Importing an item using the import { name } from '...' syntax requires you to match the name with the name of what was exported!
 - Compare this to using the import name from '...' syntax, where the name can be whatever you'd like.  It's just an alias for what was exported in '...'.
+- When using ES6 classes as controllers, we don't need to register them as controllers on angular (still figuring out why?)
+- When importing someething that was exported default, we need to import based on what was exported!  We should only import with curly braces when we didn't export a default.  See https://stackoverflow.com/questions/41337709/what-is-use-of-curly-braces-in-es6-import-statement
+- ~~When setting an ES6 class as a controller on a directive, we DO need to put its name in quotes.  Only when importing using curly brace syntax, though.  Without curly brace syntax, we can pass in without quotes~~
+- ~~NOTE FROM ABOVE:  For some reason, this changes how we pass items into directive attributes.  Without curly brace syntax, I can pass attributes into directives as string literals.  With curly brace syntax, it passes in as {{ ... }}.~~
+
+Useful Links:
+- Transclusion: http://teropa.info/blog/2015/06/09/transclusion.html
+- ES6 curly braces on import: https://stackoverflow.com/questions/41337709/what-is-use-of-curly-braces-in-es6-import-statement
+- bindToController property for directives: http://www.tothenew.com/blog/using-bindtocontroller-with-controlleras-syntax-in-angular/
+- ngAnnotate and ES6 classes as controllers: https://www.timroes.de/2015/07/29/using-ecmascript-6-es6-with-angularjs-1-x/
