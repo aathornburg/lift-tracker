@@ -1,5 +1,11 @@
 .navigation-bar {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .navigation-group {
+        display: inline-block;
+    }
 
     .navigation-main-content {
         display: flex;
