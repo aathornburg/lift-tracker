@@ -10,6 +10,9 @@ The way this app is built (all of this could change later.  Just taking steps to
 Next Steps:
 - ~~Add scss styles into gulp configuration~~
 - ~~Let scss styles be stored in their component folders (requires gulp update)~~
+- Find default app font
+- Determine color scheme
+- Determine signed-in navigation bar look
 - Create signed-in and signed-out navigation bar (signed-in has a profile/account dropdown; signed-out has a sign-in/sign-up button)
 - Determine overall look-and-feel of page (general idea; this can change of course)
 
