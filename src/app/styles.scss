@@ -1,4 +1,19 @@
 body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
+
+    input[type=text]:focus, input[type=textarea]:focus {
+        outline: none;
+    }
+
+    .content-area {
+        padding-top: 2em;
+        padding-bottom: 2em;
+        display: flex;
+        justify-content: center;
+
+        .main-content {
+            width: 70%;
+        }
+    }
 }

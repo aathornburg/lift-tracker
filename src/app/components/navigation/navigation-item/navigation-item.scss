@@ -9,9 +9,9 @@
     text-transform: uppercase;
     color: $font-color;
     &, &:visited {
-        color: $font-color;
+        color: $header-font-color;
     }
     &:active, &:hover {
-        color: $font-color-hover;
+        color: $header-font-color-hover;
     }
 }

@@ -1,0 +1,19 @@
+.add-lift {
+    input, label {
+        font-size: 28px;
+        color: $font-color;
+    }
+
+    label {
+        // color: $label-color;
+    }
+
+    .add-lift-input {
+        display: block;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid $font-color;
+        padding: .5em;
+        padding-bottom: .3em;
+    }
+}
