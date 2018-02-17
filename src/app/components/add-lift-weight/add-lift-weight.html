@@ -1,6 +1,13 @@
 <div class="add-lift">
-    <div class="lift-choice">
-        <label for="add-lift-input">Add a lift...</label>
-        <input type="text" id="add-lift-input" class="add-lift-input" placeholder="Bench press" />
-    </div>
+    <form name="addLiftForm" ng-submit="addLiftWeight.submitForm(addLiftForm.$valid)" class="add-lift-form" novalidate>
+        <div class="lift-choice">
+            <label for="lift-choice-input">Add a lift...</label>
+            <input type="text" name="lift" ng-model="lift" id="lift-choice-input" class="add-lift-input" required />
+        </div>
+        <div class="weight-choice">
+            <label for="set-weight-input">Lift weight:</label>
+            <input type="number" name"weight" ng-model="weight" id="set-weight-input" class="add-lift-input" required />
+        </div>
+        <button class="add-button">+</button>
+    </form>
 </div>

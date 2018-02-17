@@ -1,5 +1,3 @@
-require('angular');
-
 export class NavigationBar {
     /* ngInject */
     constructor() {

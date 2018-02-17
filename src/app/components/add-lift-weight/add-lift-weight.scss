@@ -1,19 +1,28 @@
 .add-lift {
-    input, label {
-        font-size: 28px;
-        color: $font-color;
-    }
+    .add-lift-form {
+        display: flex;
 
-    label {
-        // color: $label-color;
-    }
+        input, label {
+            font-size: 28px;
+            color: $font-color;
+        }
 
-    .add-lift-input {
-        display: block;
-        width: 100%;
-        border: none;
-        border-bottom: 1px solid $font-color;
-        padding: .5em;
-        padding-bottom: .3em;
+        .lift-choice {
+            flex: 3;
+        }
+
+        .weight-choice {
+            flex: 1;
+        }
+
+        .add-lift-input {
+            display: block;
+            width: 97%;
+            border: none;
+            border-bottom: 1px solid $font-color;
+            padding-top: .5em;
+            padding-bottom: .3em;
+            color: $font-color;
+        }
     }
 }
