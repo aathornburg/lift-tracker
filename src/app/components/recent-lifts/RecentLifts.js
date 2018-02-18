@@ -1,6 +1,6 @@
 export class RecentLifts {
-    /* ngInject */
-    constructor() {
-        
+    /* @ngInject */
+    constructor(recentLiftsService) {
+        this.$recentLiftsService = recentLiftsService;
     }
 }

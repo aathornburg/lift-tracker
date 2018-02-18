@@ -5,7 +5,7 @@ export class AddLiftWeight {
     }
 
     /** public methods */
-    submitForm(isValid) {
-        alert(isValid);
+    submitForm(addLiftForm) {
+        alert(addLiftForm);
     }
 }

@@ -21,7 +21,7 @@ gulp.task('buildStyles', function() {
 gulp.task('buildJS', function() {
     return browserify(
         {
-            entries: ['./src/app/components/app.module.js'],
+            entries: ['./src/app/app.module.js'],
             debug: true
         })
         .transform(babelify, { presets: ['env'], sourceMaps: true })
