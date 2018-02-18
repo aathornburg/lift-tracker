@@ -9,7 +9,10 @@ var source = require('vinyl-source-stream');
 var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('buildStyles', function() {
-    gulp.src('src/app/**/*.scss')
+    gulp.src([
+            'src/app/variables.scss',
+            'src/app/**/*.scss'
+        ])
         .pipe(concat('styles.css'))
         .pipe(sass())
         .pipe(gulp.dest('dist'))
