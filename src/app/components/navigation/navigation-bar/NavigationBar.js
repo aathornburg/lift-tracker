@@ -1,5 +1,5 @@
 export class NavigationBar {
-    /* ngInject */
+    /* @ngInject */
     constructor() {
         this.navItems = [
             "Dashboard",

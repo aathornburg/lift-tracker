@@ -1,4 +1,4 @@
-/* ngInject */
+/* @ngInject */
 export const routesConfig = ($urlRouterProvider, $stateProvider, $locationProvider) => {
     $stateProvider    
     .state('home', {

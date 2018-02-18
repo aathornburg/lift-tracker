@@ -1,5 +1,5 @@
 export class RecentLiftsService {
-    /* ngInject */
+    /* @ngInject */
     constructor() {
 
     }

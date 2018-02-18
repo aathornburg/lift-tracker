@@ -1,7 +1,7 @@
 export class AddLiftWeight {
-    /* ngInject */
+    /* @ngInject */
     constructor() {
-        
+
     }
 
     /** public methods */
