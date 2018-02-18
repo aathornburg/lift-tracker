@@ -35,6 +35,7 @@ Personal notes:
 - ~~NOTE FROM ABOVE:  For some reason, this changes how we pass items into directive attributes.  Without curly brace syntax, I can pass attributes into directives as string literals.  With curly brace syntax, it passes in as {{ ... }}.~~
 
 Useful Links:
+- Factories vs. Services vs. Providers: https://tylermcginnis.com/angularjs-factory-vs-service-vs-provider/
 - Transclusion: http://teropa.info/blog/2015/06/09/transclusion.html
 - ES6 curly braces on import: https://stackoverflow.com/questions/41337709/what-is-use-of-curly-braces-in-es6-import-statement, https://stackoverflow.com/questions/33611812/javascript-es6-export-const-vs-export-default
 - bindToController property for directives: http://www.tothenew.com/blog/using-bindtocontroller-with-controlleras-syntax-in-angular/
