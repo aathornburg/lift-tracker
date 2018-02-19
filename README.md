@@ -10,11 +10,12 @@ The way this app is built (all of this could change later.  Just taking steps to
 Next Steps:
 - ~~Add scss styles into gulp configuration~~
 - ~~Let scss styles be stored in their component folders (requires gulp update)~~
-- Find default app font
-- Determine color scheme
-- Determine signed-in navigation bar look
-- Create signed-in and signed-out navigation bar (signed-in has a profile/account dropdown; signed-out has a sign-in/sign-up button)
-- Determine overall look-and-feel of page (general idea; this can change of course)
+- Find default app font (WIP)
+- Determine color scheme (WIP)
+- Determine signed-in navigation bar look (WIP)
+- Create signed-in and signed-out navigation bar (signed-in has a profile/account dropdown; signed-out has a sign-in/sign-up button) (WIP)
+- Determine overall look-and-feel of page (general idea; this can change of course) (WIP)
+- Set up DB to store lifts into
 
 To Do:
 - Update gulp so that I don't need to provide the base templates URL every time for every view (ideally, move every view into the folder of each component)
@@ -22,6 +23,7 @@ To Do:
 - Convert directives to components at some point (as a learning opportunity)
 - Refactor the states so that I don't have the same view but different states for home/logo and dashboard
 - Move my font(s) out of google so they can work offline
+- Create images/SVG icons instead of using text with line-height on buttons
 
 Personal notes:
 - Importing an item using the import { name } from '...' syntax requires you to match the name with the name of what was exported!

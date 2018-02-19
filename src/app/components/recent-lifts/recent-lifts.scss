@@ -37,6 +37,7 @@
                 background-color: $positive-color;
             }
 
+            // TODO:  Get correct colors for hover and focus of these buttons!
             &:hover, &:focus {
                 background-color: $accent-color-hover;
             }
