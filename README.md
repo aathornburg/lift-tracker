@@ -1,5 +1,4 @@
-# AngularJS Sandbox
-Just a sandbox for messing around with AngularJS
+# Lift Tracker
 
 The way this app is built (all of this could change later.  Just taking steps to learn different ways of doing things):
 - ES6 classes as controllers
