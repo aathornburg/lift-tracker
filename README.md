@@ -24,6 +24,7 @@ To Do:
 - Refactor the states so that I don't have the same view but different states for home/logo and dashboard
 - Move my font(s) out of google so they can work offline
 - Create images/SVG icons instead of using text with line-height on buttons
+- Figure out how to pass a function into an attribute directive from a parent scope and call it in the link function without a directive controller (and specifically, how to call it without changing the parameter to it)
 
 Personal notes:
 - Importing an item using the import { name } from '...' syntax requires you to match the name with the name of what was exported!
