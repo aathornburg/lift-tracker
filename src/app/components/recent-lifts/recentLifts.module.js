@@ -3,13 +3,13 @@ require('angular');
 import { RecentLifts } from './RecentLifts';
 
 export default angular
-    .module('recentLiftsModule', [])
+    .module('recentLiftsModule', []) 
         .directive('recentLifts', () => (
             {
                 restrict: 'E',
                 templateUrl: 'components/recent-lifts/recent-lifts.html',
                 controller: RecentLifts,
-                controllerAs: 'recentLifts',
+                controllerAs: 'recentLiftsCtrl',
                 scope: {},
                 bindToController: true
             }

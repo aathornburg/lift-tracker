@@ -5,6 +5,7 @@ var buffer = require('vinyl-buffer');
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
+var ngAnnotate = require('gulp-ng-annotate');
 var source = require('vinyl-source-stream');
 var sourcemaps = require('gulp-sourcemaps');
 
@@ -28,6 +29,7 @@ gulp.task('buildJS', function() {
         .bundle()
         .pipe(source('bundle.js'))
         .pipe(buffer())
+        .pipe(ngAnnotate())
         // source maps WILL WORK, at least on node v8.3.0 and **after a page refresh**.  Tested in Chrome/Firefox
         .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(sourcemaps.write('./'))

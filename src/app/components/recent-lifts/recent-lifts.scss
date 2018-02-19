@@ -1,0 +1,45 @@
+.recent-lifts {
+    .recent-lift {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.4em;
+        color: $font-color;
+        margin-bottom: 1em;
+    }
+
+    .recent-lift-weight {
+        display: flex;
+        align-items: center;
+
+        .recent-lift-weight-value {
+            padding-left: .5em;
+            padding-right: .5em;
+            width: 40px;
+            text-align: center;
+        }
+
+        .weight-button {
+            font-size: 1.4em;
+            padding: 0;
+            line-height: 30px; /* temporary fix to center text in buttons */
+            width: 30px;
+            height: 30px;
+            color: white;
+            border: 0;
+            border-radius: 10px;
+            cursor: pointer;
+
+            &.weight-down-button {
+                background-color: $negative-color;
+            }
+
+            &.weight-up-button {
+                background-color: $positive-color;
+            }
+
+            &:hover, &:focus {
+                background-color: $accent-color-hover;
+            }
+        }
+    }
+}

@@ -1,12 +1,12 @@
 <div class="add-lift">
-    <form name="addLiftForm" ng-submit="addLiftWeight.submitForm(addLiftForm)" class="add-lift-form" novalidate>
+    <form name="addLiftWeightCtrl.addLiftForm" ng-submit="addLiftWeightCtrl.submitForm()" class="add-lift-form" autocomplete="off" novalidate>
         <div class="lift-choice">
             <label for="lift-choice-input">Add a lift:</label>
-            <input type="text" name="lift" ng-model="lift" id="lift-choice-input" class="add-lift-input" required />
+            <input type="text" name="addLiftWeightCtrl.addLiftForm.lift" ng-model="addLiftWeightCtrl.addLiftForm.lift" id="lift-choice-input" class="add-lift-input" required />
         </div>
         <div class="weight-choice">
             <label for="set-weight-input">Lift weight:</label>
-            <input type="text" name"weight" ng-model="weight" id="set-weight-input" class="add-lift-input" required />
+            <input type="text" name="addLiftWeightCtrl.addLiftForm.weight" ng-model="addLiftWeightCtrl.addLiftForm.weight" id="set-weight-input" class="add-lift-input" required />
         </div>
         <button class="add-button">+</button>
     </form>

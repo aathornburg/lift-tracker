@@ -3,8 +3,12 @@
         display: flex;
         align-items: center;
 
+        input {
+            font-family: 'Open Sans', sans-serif;
+        }
+
         input, label {
-            font-size: 28px;
+            font-size: 1.8em;
             color: $font-color;
         }
 

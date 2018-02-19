@@ -9,7 +9,7 @@ export default angular
                 restrict: 'E',
                 templateUrl: 'components/add-lift-weight/add-lift-weight.html',
                 controller: AddLiftWeight,
-                controllerAs: 'addLiftWeight',
+                controllerAs: 'addLiftWeightCtrl',
                 scope: {},
                 bindToController: true
             }

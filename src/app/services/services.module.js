@@ -1,8 +1,8 @@
 require('angular');
 
-import { RecentLiftsService } from './RecentLiftsService';
+import { LiftsService } from './LiftsService';
 
 export default angular
-    .module('services', [])
-        .service('recentLiftsService', RecentLiftsService)
+    .module('servicesModule', [])
+        .service('liftsService', LiftsService)
     .name;

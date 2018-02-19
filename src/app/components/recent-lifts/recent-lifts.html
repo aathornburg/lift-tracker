@@ -1,1 +1,11 @@
 <h2>Recent lifts</h2>
+<div ng-repeat="lift in recentLiftsCtrl.getLifts()" class="recent-lifts">
+    <div class="recent-lift">
+        <div class="recent-lift-type">{{lift.lift}}</div>
+        <div class="recent-lift-weight">
+            <button class="weight-button weight-down-button" ng-click="recentLiftsCtrl.weightDown(lift)">-</button>
+            <span class="recent-lift-weight-value">{{lift.weight}}</span>
+            <button class="weight-button weight-up-button" ng-click="recentLiftsCtrl.weightUp(lift)">+</button>
+        </div>
+    </div>
+</div>

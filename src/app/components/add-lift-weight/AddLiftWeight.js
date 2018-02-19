@@ -1,11 +1,14 @@
 export class AddLiftWeight {
     /* @ngInject */
-    constructor() {
-
+    constructor(liftsService) {
+        this.$liftsService = liftsService;
     }
 
     /** public methods */
-    submitForm(addLiftForm) {
-        alert(addLiftForm);
+    submitForm() {
+        this.$liftsService.storeLift(
+            this.addLiftForm.lift,
+            this.addLiftForm.weight
+        );
     }
 }

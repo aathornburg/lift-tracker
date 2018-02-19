@@ -2,6 +2,7 @@
   "name": "regex-library",
   "version": "0.0.1",
   "dependencies": {
+    "jquery": "~3.3.1",
     "angular": "~1.6.4",
     "angular-aria": "~1.6.4",
     "angular-resource": "~1.6.4",
@@ -15,7 +16,6 @@
     "angular-sanitize": "~1.6.5",
     "core-js": "^2.5.0",
     "express": "~4.15.3",
-    "jquery": "~3.2.1",
     "moment": "~2.18.1",
     "rxjs": "^5.4.2",
     "systemjs": "~0.19.40",
@@ -29,6 +29,7 @@
     "browserify": "^14.4.0",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",
+    "gulp-ng-annotate": "^2.1.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }
