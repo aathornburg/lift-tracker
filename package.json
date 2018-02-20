@@ -1,5 +1,5 @@
 {
-  "name": "regex-library",
+  "name": "lift-tracker",
   "version": "0.0.1",
   "dependencies": {
     "jquery": "~3.3.1",
@@ -15,7 +15,11 @@
     "gulp-sass-bulk-import": "^1.0.1",
     "angular-sanitize": "~1.6.5",
     "core-js": "^2.5.0",
-    "express": "~4.15.3",
+    "express": "~4.16.2",
+    "mongoose": "~5.0.6",
+    "morgan": "~1.9.0",
+    "body-parser": "~1.18.2",
+    "method-override": "~2.3.10",
     "moment": "~2.18.1",
     "rxjs": "^5.4.2",
     "systemjs": "~0.19.40",
