@@ -6,6 +6,10 @@ The way this app is built (all of this could change later.  Just taking steps to
 - import { name } from '...' syntax as the project is in a state of flux.  I'd like to ensure the name matches from app.module.js up to the name.module.js, to promote readability (at the expense of ease)
 - Module-first pattern; that is, creating a module for every bit of code and wiring it up into angular in app.module.js
 
+Getting Started:
+- Node.js needs to be installed
+- nodemon needs to be installed globally by "npm install -g nodemon"
+
 Next Steps:
 - ~~Add scss styles into gulp configuration~~
 - ~~Let scss styles be stored in their component folders (requires gulp update)~~
@@ -33,6 +37,7 @@ Personal notes:
 - Importing a package uses require syntax, vs. importing a custom anything uses the import from syntax.  Why?
 - An input name attribute is used for validation and the input ng-model attribute is used for binding to the controller
 - A form with 'novalidate' won't be validated by HTML5; AngularJS can still do validation logic
+- Node acts as basically a back-end API.  With express, it can create REST calls (GET, POST, etc) that the front-end can access.  This is fundamentally different from Spring/Struts, so don't think of it that way
 - ~~When setting an ES6 class as a controller on a directive, we DO need to put its name in quotes.  Only when importing using curly brace syntax, though.  Without curly brace syntax, we can pass in without quotes~~
 - ~~NOTE FROM ABOVE:  For some reason, this changes how we pass items into directive attributes.  Without curly brace syntax, I can pass attributes into directives as string literals.  With curly brace syntax, it passes in as {{ ... }}.~~
 
@@ -40,6 +45,7 @@ Useful Links:
 - AngularJS good practices (although I don't agree with all of them): http://demisx.github.io/angularjs/2014/09/14/angular-what-goes-where.html
 - Factories vs. Services vs. Providers: https://tylermcginnis.com/angularjs-factory-vs-service-vs-provider/, http://anandmanisankar.com/posts/angularjs-provider-subsystem/, http://www.simplygoodcode.com/2015/11/the-difference-between-service-provider-and-factory-in-angularjs/
 - Transclusion: http://teropa.info/blog/2015/06/09/transclusion.html
+- Mongoose:  https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 - ES6 curly braces on import: https://stackoverflow.com/questions/41337709/what-is-use-of-curly-braces-in-es6-import-statement, https://stackoverflow.com/questions/33611812/javascript-es6-export-const-vs-export-default
 - bindToController property for directives: http://www.tothenew.com/blog/using-bindtocontroller-with-controlleras-syntax-in-angular/
 - ngAnnotate and ES6 classes as controllers: https://www.timroes.de/2015/07/29/using-ecmascript-6-es6-with-angularjs-1-x/
