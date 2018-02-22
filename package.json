@@ -1,6 +1,12 @@
 {
   "name": "lift-tracker",
   "version": "0.0.1",
+  "scripts": {
+    "dev-build": "babel-node --presets=env2015",
+    "dev-serve": "nodemon server/index.js",
+    "prod-build": "",
+    "prod-serve": ""
+  },
   "dependencies": {
     "jquery": "~3.3.1",
     "angular": "~1.6.4",
@@ -14,6 +20,7 @@
     "gulp-sass": "^2.3.2",
     "gulp-sass-bulk-import": "^1.0.1",
     "angular-sanitize": "~1.6.5",
+    "nodemon": "~1.15.1",
     "core-js": "^2.5.0",
     "express": "~4.16.2",
     "mongoose": "~5.0.6",
@@ -29,6 +36,7 @@
     "angular-in-memory-web-api": "~0.3.0",
     "babel-preset-env": "^1.6.0",
     "babelify": "^7.3.0",
+    "babel-node": "~6.5.3",
     "browser-sync": "^2.18.13",
     "browserify": "^14.4.0",
     "gulp-sass": "^3.1.0",

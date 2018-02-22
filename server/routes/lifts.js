@@ -1,9 +1,8 @@
 var express = require('express'),
     router = express.Router();
+var liftsController = require('../controllers/liftsController');
 
-router.get('/', (req, res, next) => {
-    // TODO:  Convert this to controller logic
-    res.send('Hello World!');
-});
+router.get('/', liftsController.get);
+router.put('/', liftsController.put);
 
 export { router };
