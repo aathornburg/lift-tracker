@@ -1,7 +1,6 @@
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
-var config = require('./dbconfig');
+import mongoose from 'mongoose';
+import config from './dbconfig';
 
-mongoose.connect('mongodb://ds241668.mlab.com:41668/lift-tracker-db');
+mongoose.connect('mongodb://ds241668.mlab.com:41668/lift-tracker-db', config);
 
-export { mongoose };
+export default mongoose;
