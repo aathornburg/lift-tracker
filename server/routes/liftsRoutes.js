@@ -5,4 +5,4 @@ const router = express.Router();
 router.get('/', liftsController.get);
 router.put('/', liftsController.put);
 
-export { router };
+export { router as liftsRoutes };
