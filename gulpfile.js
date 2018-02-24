@@ -6,9 +6,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var ngAnnotate = require('gulp-ng-annotate');
-var nodemon = require('gulp-nodemon');
 var sourcemaps = require('gulp-sourcemaps');
-var babel = require('gulp-babel');
 var exec = require('child_process').exec;
 var source = require('vinyl-source-stream');
 
@@ -51,13 +49,5 @@ gulp.task('serve', ['watch'], function() {
         server: ["src/app", "dist"]
     });
 });
-
-// gulp.task('server', function() {
-//     return nodemon({
-//         script: 'server/index.js',
-//         watch: ['server/'],
-//         exec: 'babel-node'
-//     });
-// });
 
 gulp.task('default', ['serve']);
