@@ -4,3 +4,6 @@ dist/
 
 #ignore database configuration
 **/dbconfig.js
+
+#ignore server logging
+server.log
