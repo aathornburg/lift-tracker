@@ -8,6 +8,7 @@ export default {
         res.send("Yay!");
     },
     put: (req, res, next) => {
+        console.log("Trying to put a lift into the DB...");
         lift.create(
             {
                 lift: req.body.lift,

@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
+var router = express.Router();
 
 // ##########  Routes  ##########
 
@@ -11,6 +12,8 @@ var app = express();
 
 // ########  Configuration  ########
 
+app.use(express.static(__dirname + '/public'));
+app.use('/api', router); // Set default path for routes
 app.use(morgan('dev')); // Logs all requests to console
 app.use(bodyParser.json()); // Parse JSON
 app.use('/lifts', liftsRoutes);

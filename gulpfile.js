@@ -17,7 +17,7 @@ gulp.task('buildStyles', function() {
         ])
         .pipe(concat('styles.css'))
         .pipe(sass())
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('server/public'))
 });
 
 gulp.task('buildJS', function() {
@@ -34,20 +34,18 @@ gulp.task('buildJS', function() {
         // source maps WILL WORK, at least on node v8.3.0 and **after a page refresh**.  Tested in Chrome/Firefox
         .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('server/public'));
 });
 
-gulp.task('watch', ['buildJS', 'buildStyles'], function() {
+gulp.task('buildHTML', function() {
+    return gulp.src('src/app/**/*.html')
+        .pipe(gulp.dest('server/public'));
+});
+
+gulp.task('watch', ['buildJS', 'buildStyles', 'buildHTML'], function() {
     gulp.watch('src/app/**/*.js', ['buildJS']);
     gulp.watch('src/app/**/*.scss', ['buildStyles']);
-    gulp.watch('src/app/index.html').on('change', browserSync.reload);
+    gulp.watch('src/app/index.html', ['buildHTML']);
 });
 
-gulp.task('serve', ['watch'], function() {
-    browserSync.init({
-        // serve from the src/app/ and dist/ directories
-        server: ["src/app", "dist"]
-    });
-});
-
-gulp.task('default', ['serve']);
+gulp.task('default', ['watch']);
