@@ -1,6 +1,5 @@
 var babelify = require('babelify');
 var browserify = require('browserify');
-var browserSync = require('browser-sync');
 var buffer = require('vinyl-buffer');
 var gulp = require('gulp');
 var sass = require('gulp-sass');
@@ -45,7 +44,7 @@ gulp.task('buildHTML', function() {
 gulp.task('watch', ['buildJS', 'buildStyles', 'buildHTML'], function() {
     gulp.watch('src/app/**/*.js', ['buildJS']);
     gulp.watch('src/app/**/*.scss', ['buildStyles']);
-    gulp.watch('src/app/index.html', ['buildHTML']);
+    gulp.watch('src/app/**/*.html', ['buildHTML']);
 });
 
 gulp.task('default', ['watch']);

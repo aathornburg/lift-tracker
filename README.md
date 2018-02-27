@@ -28,7 +28,8 @@ To Do:
 - Move my font(s) out of google so they can work offline
 - Create images/SVG icons instead of using text with line-height on buttons
 - Figure out how to pass a function into an attribute directive from a parent scope and call it in the link function without a directive controller (and specifically, how to call it without changing the parameter to it)
-- Make gulp serve also start nodemon (or other way around using node scripts)
+- ~~Make gulp serve also start nodemon (or other way around using node scripts)~~
+- Maybe change all task running into node scripts?  (This will fix the issue of nodemon starting twice in development)
 - Convert gulp into an ES6 format:  https://markgoodyear.com/2015/06/using-es6-with-gulp/
 
 Personal notes:
