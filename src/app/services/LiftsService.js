@@ -14,9 +14,12 @@ export class LiftsService {
     }
 
     storeLift(lift, weight) {
-        this.$http.put('/api/lifts?lift=' + lift + '&weight=' + weight)
+        this.$http.put('/api/lifts',
+            {
+                lift: lift,
+                weight: weight
+            })
             .then((data, status, headers) => {
-                alert("success!");
                 this.lifts.push(new Lift(lift, weight));
             })
             .catch((data, status, headers) => {
