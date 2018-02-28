@@ -31,6 +31,7 @@ export class LiftsService {
     storeAllLifts() {
         this.$http.get('/api/lifts')
             .then((data, status, headers) => {
+                // TODO:  Fix this data.data thing
                 this.lifts = data.data.lifts;
             })
             .catch((data, status, headers) => {
