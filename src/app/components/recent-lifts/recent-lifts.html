@@ -1,14 +1,9 @@
 <h2>Recent lifts</h2>
 <div ng-repeat="lift in recentLiftsCtrl.getLifts()" class="recent-lifts">
     <div class="recent-lift">
-        <div class="recent-lift-type-block">
-            <div class="recent-lift-type">
-                {{lift.lift}}
-            </div>
-            <div class="recent-lift-info">
-                <span class="recent-lift-detail">Last lifted: 2/28/18</span>
-                <button class="recent-lift-detail" ng-click="recentLiftsCtrl.remove(lift)">Remove</button>
-            </div>
+        <div class="recent-lift-name-block">
+            <object class="recent-lift-settings" data="assets/icons/cog.svg" type="image/svg+xml">SVG not supported</object>
+            <span class="recent-lift-name">{{lift.lift}}</span>
         </div>
         <div class="recent-lift-weight">
             <button class="weight-button weight-down-button" ng-click="recentLiftsCtrl.weightDown(lift)">-</button>

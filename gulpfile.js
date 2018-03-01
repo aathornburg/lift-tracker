@@ -41,6 +41,11 @@ gulp.task('buildHTML', function() {
         .pipe(gulp.dest('server/public'));
 });
 
+gulp.task('buildAssets', function() {
+    return gulp.src('assets/**/*')
+        .pipe(gulp.dest('server/public/assets'));
+});
+
 gulp.task('watch', ['buildJS', 'buildStyles', 'buildHTML'], function() {
     gulp.watch('src/app/**/*.js', ['buildJS']);
     gulp.watch('src/app/**/*.scss', ['buildStyles']);

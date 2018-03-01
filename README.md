@@ -9,6 +9,8 @@ The way this app is built (all of this could change later.  Just taking steps to
 Getting Started:
 - Node.js needs to be installed
 - nodemon needs to be installed globally by "npm install -g nodemon"
+- Start the app using "npm run dev-start"
+- You have to run "gulp buildAssets" first before starting the app.  Assets need to be in the folder where the server is run but don't need to be built every time.
 
 Next Steps:
 - ~~Add scss styles into gulp configuration~~
@@ -31,6 +33,7 @@ To Do:
 - ~~Make gulp serve also start nodemon (or other way around using node scripts)~~
 - Maybe change all task running into node scripts?  (This will fix the issue of nodemon starting twice in development)
 - Convert gulp into an ES6 format:  https://markgoodyear.com/2015/06/using-es6-with-gulp/
+- Make a template html file that will grab any SVG icon and inline it, so that its color can be changed?
 
 Personal notes:
 - Importing an item using the import { name } from '...' syntax requires you to match the name with the name of what was exported!
