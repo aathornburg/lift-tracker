@@ -12,17 +12,34 @@
         align-items: center;
         position: relative;
 
-        .recent-lift-settings {
-            position: absolute;
-            left: -1em;
-
-            & path {
-                fill: $accent-color;
+        &:hover {
+            & > .recent-lift-remove {
+                opacity: 1;
             }
         }
 
+        .recent-lift-remove {
+            position: absolute;
+            border: none;
+            background: transparent;
+            left: -2em;
+            cursor: pointer;
+            opacity: 0;
+            transition: .2s opacity linear;
 
-        
+            &:focus {
+                opacity: 1;
+            }
+
+            .recent-lift-remove-icon {
+                display: flex;
+                align-items: center;
+
+                & path {
+                    fill: $accent-color;
+                }
+            }
+        }
     }
 
     .recent-lift-weight {

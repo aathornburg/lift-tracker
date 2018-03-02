@@ -9,6 +9,10 @@ export class RecentLifts {
         return this.$liftsService.getLifts();
     }
 
+    remove(lift) {
+        this.$liftsService.removeLift(lift._id);
+    }
+
     weightDown(lift) {
         lift.weight -= 5;
     }

@@ -2,7 +2,9 @@
 <div ng-repeat="lift in recentLiftsCtrl.getLifts()" class="recent-lifts">
     <div class="recent-lift">
         <div class="recent-lift-name-block">
-            <div class="recent-lift-settings" ng-include="'assets/icons/cross.svg'"></div>
+            <button class="recent-lift-remove" ng-click="recentLiftsCtrl.remove(lift)">
+                <div class="recent-lift-remove-icon" ng-include="'assets/icons/cross.svg'"></div>
+            </button>
             <span class="recent-lift-name">{{lift.lift}}</span>
         </div>
         <div class="recent-lift-weight">

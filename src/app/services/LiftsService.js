@@ -28,11 +28,22 @@ export class LiftsService {
             });
     }
 
+    removeLift(liftId) {
+        console.log("In removeLift, liftId: " + liftId);
+        this.$http.delete('/api/lifts/' + liftId)
+            .then((response, status, headers) => {
+                this.lifts = this.lifts.filter(lift => lift._id !== response.data);
+            })
+            .catch((data, status, headers) => {
+                console.log("DB delete failure");
+                // TODO:  Pop up error for user
+            });
+    }
+
     storeAllLifts() {
         this.$http.get('/api/lifts')
-            .then((data, status, headers) => {
-                // TODO:  Fix this data.data thing
-                this.lifts = data.data.lifts;
+            .then((response, status, headers) => {
+                this.lifts = response.data.lifts;
             })
             .catch((data, status, headers) => {
                 // TODO:  Failure scenario
