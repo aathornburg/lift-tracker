@@ -10,17 +10,19 @@
     .recent-lift-name-block {
         display: flex;
         align-items: center;
+        position: relative;
 
         .recent-lift-settings {
-            width: 20px;
-            height: 20px;
-            margin-right: 5px;
+            position: absolute;
+            left: -1em;
 
             & path {
-                fill: $font-color;
+                fill: $accent-color;
             }
-            
         }
+
+
+        
     }
 
     .recent-lift-weight {

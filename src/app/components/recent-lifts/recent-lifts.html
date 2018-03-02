@@ -2,7 +2,7 @@
 <div ng-repeat="lift in recentLiftsCtrl.getLifts()" class="recent-lifts">
     <div class="recent-lift">
         <div class="recent-lift-name-block">
-            <object class="recent-lift-settings" data="assets/icons/cog.svg" type="image/svg+xml">SVG not supported</object>
+            <div class="recent-lift-settings" ng-include="'assets/icons/cross.svg'"></div>
             <span class="recent-lift-name">{{lift.lift}}</span>
         </div>
         <div class="recent-lift-weight">
