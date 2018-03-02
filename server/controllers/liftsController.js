@@ -29,7 +29,7 @@ export default {
         );
     },
     delete: (req, res, next) => {
-        console.log("Trying to remove lift: " + req.params['liftId']);
+        console.log("Trying to remove lift: " + req.params.liftId);
         Lift.remove(
             {
                 _id: req.params.liftId
@@ -40,6 +40,24 @@ export default {
                 }
 
                 res.send(req.params.liftId);
+            }
+        );
+    },
+    patch: (req, res, next) => {
+        console.log("Trying to update lift: " + req.params.liftId);
+        Lift.findOneAndUpdate(
+            {
+                _id: req.params.liftId
+            },
+            {
+                weight: req.body.weight
+            },
+            (err, errInstance) => {
+                if (err) {
+                    res.send(err);
+                }
+
+                res.send("Success?");
             }
         );
     }

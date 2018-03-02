@@ -10,14 +10,14 @@ export class RecentLifts {
     }
 
     remove(lift) {
-        this.$liftsService.removeLift(lift._id);
+        this.$liftsService.removeLift(lift);
     }
 
     weightDown(lift) {
-        lift.weight -= 5;
+        this.$liftsService.updateLift(lift, lift.weight - 5);
     }
 
     weightUp(lift) {
-        lift.weight += 5;
+        this.$liftsService.updateLift(lift, lift.weight + 5);
     }
 }

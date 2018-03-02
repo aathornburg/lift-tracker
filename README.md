@@ -24,6 +24,7 @@ Next Steps:
 - Make +/- butons on lifts actually update DB
 - Add CSS to show which page you're currently on (change nav bar)
 - Create workouts page
+- Create notification after deleting a lift asking if the user if sure and giving them a chance to undo
 
 To Do:
 - Update gulp so that I don't need to provide the base templates URL every time for every view (ideally, move every view into the folder of each component)

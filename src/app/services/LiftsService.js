@@ -28,15 +28,30 @@ export class LiftsService {
             });
     }
 
-    removeLift(liftId) {
-        console.log("In removeLift, liftId: " + liftId);
-        this.$http.delete('/api/lifts/' + liftId)
+    removeLift(lift) {
+        console.log("In removeLift, liftId: " + lift._id);
+        this.$http.delete('/api/lifts/' + lift._id)
             .then((response, status, headers) => {
                 this.lifts = this.lifts.filter(lift => lift._id !== response.data);
             })
             .catch((data, status, headers) => {
                 console.log("DB delete failure");
                 // TODO:  Pop up error for user
+            });
+    }
+
+    updateLift(lift, weight) {
+        console.log("In updateLift, lift: " + lift._id);
+        this.$http.patch('/api/lifts/' + lift._id,
+            {
+                weight: weight
+            })
+            .then((resonse, status, headers) => {
+                lift.weight = weight;
+            })
+            .catch((response, status, headers) => {
+                // TODO:  Failure scenario
+                console.log("Lift wasn't properly updated");
             });
     }
 
