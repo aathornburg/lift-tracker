@@ -15,12 +15,15 @@ Getting Started:
 Next Steps:
 - ~~Add scss styles into gulp configuration~~
 - ~~Let scss styles be stored in their component folders (requires gulp update)~~
-- Find default app font (WIP)
-- Determine color scheme (WIP)
+- ~~Find default app font~~ (WIP)
+- ~~Determine color scheme~~ (WIP)
 - Determine signed-in navigation bar look (WIP)
 - Create signed-in and signed-out navigation bar (signed-in has a profile/account dropdown; signed-out has a sign-in/sign-up button) (WIP)
-- Determine overall look-and-feel of page (general idea; this can change of course) (WIP)
-- Set up DB to store lifts into
+- ~~Determine overall look-and-feel of page (general idea; this can change of course)~~ (WIP)
+- ~~Set up DB to store lifts into~~
+- Make +/- butons on lifts actually update DB
+- Add CSS to show which page you're currently on (change nav bar)
+- Create workouts page
 
 To Do:
 - Update gulp so that I don't need to provide the base templates URL every time for every view (ideally, move every view into the folder of each component)
@@ -33,7 +36,6 @@ To Do:
 - ~~Make gulp serve also start nodemon (or other way around using node scripts)~~
 - Maybe change all task running into node scripts?  (This will fix the issue of nodemon starting twice in development)
 - Convert gulp into an ES6 format:  https://markgoodyear.com/2015/06/using-es6-with-gulp/
-- Make a template html file that will grab any SVG icon and inline it, so that its color can be changed?
 
 Personal notes:
 - Importing an item using the import { name } from '...' syntax requires you to match the name with the name of what was exported!
