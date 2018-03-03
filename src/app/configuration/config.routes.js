@@ -11,7 +11,7 @@ export const routesConfig = ($urlRouterProvider, $stateProvider, $locationProvid
         })
         .state('workouts', {
             url: '/workouts',
-            templateUrl: 'components/workouts/workouts.html'
+            template: '<workouts />'
         })
         .state('goals', {
             url: '/goals',

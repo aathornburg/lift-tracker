@@ -8,11 +8,14 @@ import { routes } from './routes/routes';
 // Create our middleware app
 var app = express();
 
-// cConfigure the middleware app
+// Configure the middleware app
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev')); // Logs all requests to console
 app.use(bodyParser.json()); // Parse JSON
 app.use('/api', routes); // Set default path for routes
+app.get('*', (req, res, next) => {
+    res.sendFile(__dirname + "/public/index.html");
+})
 
 // Start the middleware app
 app.listen(8080);
