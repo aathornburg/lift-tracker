@@ -66,10 +66,18 @@
 
             &.weight-down-button {
                 background-color: $negative-color;
+
+                &:hover {
+                    background-color: $negative-color-hover;
+                }
             }
 
             &.weight-up-button {
                 background-color: $positive-color;
+
+                &:hover {
+                    background-color: $positive-color-hover;
+                }
             }
 
             // TODO:  Get correct colors for hover and focus of these buttons!

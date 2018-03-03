@@ -21,7 +21,7 @@ Next Steps:
 - Create signed-in and signed-out navigation bar (signed-in has a profile/account dropdown; signed-out has a sign-in/sign-up button) (WIP)
 - ~~Determine overall look-and-feel of page (general idea; this can change of course)~~ (WIP)
 - ~~Set up DB to store lifts into~~
-- Make +/- butons on lifts actually update DB
+- ~~Make +/- butons on lifts actually update DB~~
 - Add CSS to show which page you're currently on (change nav bar)
 - Create workouts page
 - Create notification after deleting a lift asking if the user if sure and giving them a chance to undo
