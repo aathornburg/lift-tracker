@@ -19,6 +19,7 @@ body {
         outline: none;
     }
 
+    
     .content-area {
         padding-top: 4em;
         padding-bottom: 4em;
@@ -30,19 +31,55 @@ body {
         }
     }
 
+    /* The CSS that handles input/label styling for text inputs */
+    .text-input-container {
+        $input-padding-bottom: .3em;
+        position: relative;
+
+        & > label {
+            position: absolute;
+            bottom: $input-padding-bottom;
+            transition: all .1s ease;
+            cursor: text;
+        }
+
+        & > input[type=text] {
+            position: relative;
+            padding-bottom: $input-padding-bottom;
+            border: none;
+            border-bottom: 1px solid $font-color;
+            padding-top: .5em;
+            color: $font-color;
+
+            &:hover {
+                border-color: $main-color-hover;
+            }
+
+            &:focus {
+                border-color: $main-color-hover;
+
+                & ~ label {
+                    bottom: 100%;
+                    font-size: 1.5em;
+                }
+            }
+        }
+    }
+
+    /* The CSS that handles buttons that have SVG icons as their content */
     .icon-button {
         border: 0;
         cursor: pointer;
+
+        &.add-button {
+            width: 50px;
+            height: 50px;
+        }
 
         & > .icon-button-icon {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-    }
-
-    .add-button.icon-button {
-        width: 50px;
-        height: 50px;
     }
 }

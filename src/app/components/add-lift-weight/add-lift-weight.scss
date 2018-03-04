@@ -14,20 +14,15 @@
 
         .lift-choice {
             flex: 3;
+
+            .add-lift-input {
+                display: block;
+                width: 97%;
+            }
         }
 
         .weight-choice {
             flex: 1;
-        }
-
-        .add-lift-input {
-            display: block;
-            width: 97%;
-            border: none;
-            border-bottom: 1px solid $font-color;
-            padding-top: .5em;
-            padding-bottom: .3em;
-            color: $font-color;
         }
 
         .add-weight-button {
