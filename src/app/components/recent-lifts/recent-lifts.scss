@@ -54,20 +54,18 @@
         }
 
         .weight-button {
-            font-size: 1.4em;
-            padding: 0;
-            line-height: 30px; /* temporary fix to center text in buttons */
             width: 30px;
             height: 30px;
-            color: white;
-            border: 0;
             border-radius: 10px;
-            cursor: pointer;
+
+            & path {
+                fill: white;
+            }
 
             &.weight-down-button {
                 background-color: $negative-color;
 
-                &:hover {
+                &:hover, &:focus {
                     background-color: $negative-color-hover;
                 }
             }
@@ -75,14 +73,9 @@
             &.weight-up-button {
                 background-color: $positive-color;
 
-                &:hover {
+                &:hover, &:focus {
                     background-color: $positive-color-hover;
                 }
-            }
-
-            // TODO:  Get correct colors for hover and focus of these buttons!
-            &:hover, &:focus {
-                background-color: $accent-color-hover;
             }
         }
     }

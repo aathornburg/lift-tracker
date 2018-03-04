@@ -29,5 +29,18 @@
             padding-bottom: .3em;
             color: $font-color;
         }
+
+        .add-weight-button {
+            background-color: $accent-color;
+            border-radius: 20px;
+
+            & path {
+                fill: white;
+            }
+
+            &:hover {
+                background-color: $accent-color-hover;
+            }
+        }
     }
 }
