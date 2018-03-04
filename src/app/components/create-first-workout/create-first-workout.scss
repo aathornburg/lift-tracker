@@ -7,19 +7,48 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 5px;
 
     .create-first-workout-button {
-        width: 50px;
+        display: flex;
+        justify-content: center;
         height: 50px;
         background-color: white;
         border-radius: 20px;
+        transition: all .2s linear;
+        padding: 10px 20px;
+        overflow: hidden;
 
-        .icon-button-icon path {
-            fill: $accent-color;
+        .create-first-workout-button-text {
+            font-weight: 700;
+            font-size: 1.2em;
+            color: $accent-color;
+            white-space: nowrap;
+            margin-right: 10px;
         }
 
-        &:hover {
+        .icon-button-icon {
+            transition: transform .2s linear;
             
+            & path {
+                fill: $accent-color;
+            }
+        }
+
+        &:hover, &:focus {
+            background-color: $accent-color;
+
+            .create-first-workout-button-text {
+                color: white;
+            }
+
+            .icon-button-icon {
+                transform: rotate(90deg);
+            }
+
+            & path {
+                fill: white;
+            }
         }
     }
 }

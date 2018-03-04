@@ -57,24 +57,39 @@
             width: 30px;
             height: 30px;
             border-radius: 10px;
-
-            & path {
-                fill: white;
-            }
+            transition: all .2s linear;
 
             &.weight-down-button {
-                background-color: $negative-color;
+                background-color: white;
+                border: 2px solid $negative-color;
+
+                & path {
+                    fill: $negative-color;
+                }
 
                 &:hover, &:focus {
-                    background-color: $negative-color-hover;
+                    background-color: $negative-color;
+
+                    & path {
+                        fill: white;
+                    }
                 }
             }
 
             &.weight-up-button {
-                background-color: $positive-color;
+                background-color: white;
+                border: 2px solid $positive-color;
+
+                & path {
+                    fill: $positive-color;
+                }
 
                 &:hover, &:focus {
-                    background-color: $positive-color-hover;
+                    background-color: $positive-color;;
+
+                    & path {
+                        fill: white;
+                    }
                 }
             }
         }

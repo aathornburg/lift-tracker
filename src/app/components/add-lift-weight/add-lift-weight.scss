@@ -31,15 +31,21 @@
         }
 
         .add-weight-button {
-            background-color: $accent-color;
+            background-color: white;
             border-radius: 20px;
+            border: 2px solid $accent-color;
+            transition: all .2s linear;
 
             & path {
-                fill: white;
+                fill: $accent-color;
             }
 
-            &:hover {
-                background-color: $accent-color-hover;
+            &:hover, &:focus {
+                background-color: $accent-color;
+
+                & path {
+                    fill: white;
+                }
             }
         }
     }
