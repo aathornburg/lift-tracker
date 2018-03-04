@@ -22,7 +22,7 @@ Next Steps:
 - ~~Determine overall look-and-feel of page (general idea; this can change of course)~~ (WIP)
 - ~~Set up DB to store lifts into~~
 - ~~Make +/- butons on lifts actually update DB~~
-- Move the Add Lift labels into their input boxes (to be moved on focus/hover)
+- ~~Move the Add Lift labels into their input boxes (to be moved on focus/hover)~~
 - Create an input box for Reps and show that info in the Recent Lifts section (and update DB, of course!)
 - Create a reusable add button (attribute directive?) (since the add workouts and add lift buttons are very similar)
 - Add CSS to show when a button has been focused (vs. hovered)

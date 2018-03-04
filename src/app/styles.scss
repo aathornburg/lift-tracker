@@ -35,6 +35,12 @@ body {
     .text-input-container {
         $input-padding-bottom: .3em;
         position: relative;
+        font-family: 'Open Sans', sans-serif;
+
+        & > label, & > input[type=text] {
+            font-size: 1.8em;
+            color: $font-color;
+        }
 
         & > label {
             position: absolute;
@@ -55,7 +61,7 @@ body {
                 border-color: $main-color-hover;
             }
 
-            &:focus {
+            &:focus, &.ng-not-empty {
                 border-color: $main-color-hover;
 
                 & ~ label {

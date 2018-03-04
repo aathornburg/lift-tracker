@@ -3,26 +3,25 @@
         display: flex;
         align-items: center;
 
-        input {
-            font-family: 'Open Sans', sans-serif;
-        }
+        .add-lift-input-container {
+            padding-right: 15px;
 
-        input, label {
-            font-size: 1.8em;
-            color: $font-color;
-        }
-
-        .lift-choice {
-            flex: 3;
-
-            .add-lift-input {
-                display: block;
-                width: 97%;
+            &.lift-choice {
+                flex: 8;
             }
-        }
 
-        .weight-choice {
-            flex: 1;
+            &.weight-choice {
+                flex: 2;
+            }
+
+            &.sets-choice, &.reps-choice {
+                flex: 1;
+            }
+
+            & > input[type=text] {
+                display: block;
+                width: 100%;
+            }
         }
 
         .add-weight-button {
