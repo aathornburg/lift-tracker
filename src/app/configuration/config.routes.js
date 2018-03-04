@@ -3,11 +3,11 @@ export const routesConfig = ($urlRouterProvider, $stateProvider, $locationProvid
     $stateProvider    
     .state('home', {
             url: '/',
-            templateUrl: 'components/dashboard/dashboard.html'
+            template: '<dashboard />'
         })
-        .state('dashboard', { // TODO:  Make Dashboard its own directive
+        .state('dashboard', {
             url: '/dashboard',
-            templateUrl: 'components/dashboard/dashboard.html',
+            template: '<dashboard />',
         })
         .state('workouts', {
             url: '/workouts',
