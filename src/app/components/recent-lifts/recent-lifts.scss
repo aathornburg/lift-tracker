@@ -57,11 +57,15 @@
             width: 30px;
             height: 30px;
             border-radius: 10px;
-            transition: all .2s linear;
+            transition: background-color .2s linear;
 
             &.weight-down-button {
                 background-color: white;
-                border: 2px solid $negative-color;
+                border: 1.5px solid $negative-color;
+
+                & > .icon-button-icon {
+                    transition: transform .2s linear;
+                }
 
                 & path {
                     fill: $negative-color;
@@ -69,6 +73,10 @@
 
                 &:hover, &:focus {
                     background-color: $negative-color;
+
+                    & > .icon-button-icon {
+                        transform: rotate(180deg);
+                    }
 
                     & path {
                         fill: white;
@@ -78,18 +86,32 @@
 
             &.weight-up-button {
                 background-color: white;
-                border: 2px solid $positive-color;
+                border: 1.5px solid $positive-color;
+
+                & > .icon-button-icon {
+                    transition: transform .2s linear;
+                }
 
                 & path {
                     fill: $positive-color;
                 }
 
                 &:hover, &:focus {
-                    background-color: $positive-color;;
+                    background-color: $positive-color;
+
+                    & > .icon-button-icon {
+                        transform: rotate(90deg);
+                    }
 
                     & path {
                         fill: white;
                     }
+                }
+            }
+
+            &:hover {
+                & > .icon-button-icon {
+                    transform: rotate(90deg);
                 }
             }
         }

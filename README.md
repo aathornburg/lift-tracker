@@ -37,6 +37,7 @@ To Do:
 - ~~Make gulp serve also start nodemon (or other way around using node scripts)~~
 - Maybe change all task running into node scripts?  (This will fix the issue of nodemon starting twice in development)
 - Convert gulp into an ES6 format:  https://markgoodyear.com/2015/06/using-es6-with-gulp/
+- Convert the button icon rotation/color changing into a single class
 
 Personal notes:
 - Importing an item using the import { name } from '...' syntax requires you to match the name with the name of what was exported!
