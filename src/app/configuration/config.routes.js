@@ -5,7 +5,7 @@ export const routesConfig = ($urlRouterProvider, $stateProvider, $locationProvid
             url: '/',
             templateUrl: 'components/dashboard/dashboard.html'
         })
-        .state('dashboard', {
+        .state('dashboard', { // TODO:  Make Dashboard its own directive
             url: '/dashboard',
             templateUrl: 'components/dashboard/dashboard.html',
         })
