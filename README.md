@@ -36,12 +36,13 @@ To Do:
 - Convert directives to components at some point (as a learning opportunity)
 - Refactor the states so that I don't have the same view but different states for home/logo and dashboard
 - Move my font(s) out of google so they can work offline
-- Create images/SVG icons instead of using text with line-height on buttons
+- ~~Create images/SVG icons instead of using text with line-height on buttons~~
 - Figure out how to pass a function into an attribute directive from a parent scope and call it in the link function without a directive controller (and specifically, how to call it without changing the parameter to it)
 - ~~Make gulp serve also start nodemon (or other way around using node scripts)~~
 - Maybe change all task running into node scripts?  (This will fix the issue of nodemon starting twice in development)
 - Convert gulp into an ES6 format:  https://markgoodyear.com/2015/06/using-es6-with-gulp/
 - Convert the button icon rotation/color changing into a single class
+- Create a directive for my buttons that are very similar to each other
 
 Personal notes:
 - Importing an item using the import { name } from '...' syntax requires you to match the name with the name of what was exported!

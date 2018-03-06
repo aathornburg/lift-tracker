@@ -6,13 +6,11 @@ body {
 
     h2 {
         color: $font-color;
-        margin-top: 3em;
         font-family: 'Open Sans', sans-serif;
         font-size: 2em;
         letter-spacing: 2px;
         text-transform: uppercase;
         font-weight: normal;
-        border-top: solid 1px $main-color;
     }
 
     input[type=text]:focus, input[type=textarea]:focus, input[type=number]:focus {
@@ -77,15 +75,45 @@ body {
         border: 0;
         cursor: pointer;
 
-        &.add-button {
-            width: 50px;
-            height: 50px;
-        }
-
         & > .icon-button-icon {
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+    }
+
+    /* The CSS that handles an add button */
+    .add-button {
+        display: flex;
+        justify-content: center;
+        height: 50px;
+        border-radius: 20px;
+        transition: all .2s linear;
+        padding: 10px 20px;
+        overflow: hidden;
+        border: 2px solid transparent;
+
+        & > .add-button-text {
+            font-weight: 700;
+            font-size: 1.2em;
+            white-space: nowrap;
+            margin-right: 10px;
+        }
+
+        & > .icon-button-icon {
+            transition: transform .2s linear;
+        }
+
+        &:hover, &:focus {
+            background-color: $accent-color;
+
+            .add-button-text {
+                color: white;
+            }
+
+            & > .icon-button-icon path {
+                fill: white;
+            }
         }
     }
 }

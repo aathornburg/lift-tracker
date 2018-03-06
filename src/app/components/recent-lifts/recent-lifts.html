@@ -1,20 +1,26 @@
-<h2>Recent lifts</h2>
-<div ng-repeat="lift in recentLiftsCtrl.getLifts()" class="recent-lifts">
-    <div class="recent-lift">
-        <div class="recent-lift-name-block">
-            <button class="recent-lift-remove" ng-click="recentLiftsCtrl.remove(lift)">
-                <div class="recent-lift-remove-icon" ng-include="'assets/icons/cross.svg'"></div>
-            </button>
-            <span class="recent-lift-name">{{lift.lift}}</span>
-        </div>
-        <div class="recent-lift-weight">
-            <button class="weight-button weight-down-button icon-button" ng-click="recentLiftsCtrl.weightDown(lift)">
-                <div class="icon-button-icon" ng-include="'assets/icons/minus.svg'"></div>
-            </button>
-            <span class="recent-lift-weight-value">{{lift.weight}}</span>
-            <button class="weight-button weight-up-button icon-button" ng-click="recentLiftsCtrl.weightUp(lift)">
-                <div class="icon-button-icon" ng-include="'assets/icons/plus.svg'"></div>
-            </button>
+<div class="recent-lifts">
+    <button class="icon-button add-lift-button add-button">
+        <div class="add-lift-button-text add-button-text">Add Lift</div>
+        <div class="icon-button-icon" ng-include="'assets/icons/plus.svg'"></div>
+    </button>
+    <h2>Recent lifts</h2>
+    <div ng-repeat="lift in recentLiftsCtrl.getLifts()">
+        <div class="recent-lift">
+            <div class="recent-lift-name-block">
+                <button class="recent-lift-remove" ng-click="recentLiftsCtrl.remove(lift)">
+                    <div class="recent-lift-remove-icon" ng-include="'assets/icons/cross.svg'"></div>
+                </button>
+                <span class="recent-lift-name">{{lift.lift}}</span>
+            </div>
+            <div class="recent-lift-weight">
+                <button class="weight-button weight-down-button icon-button" ng-click="recentLiftsCtrl.weightDown(lift)">
+                    <div class="icon-button-icon" ng-include="'assets/icons/minus.svg'"></div>
+                </button>
+                <span class="recent-lift-weight-value">{{lift.weight}}</span>
+                <button class="weight-button weight-up-button icon-button" ng-click="recentLiftsCtrl.weightUp(lift)">
+                    <div class="icon-button-icon" ng-include="'assets/icons/plus.svg'"></div>
+                </button>
+            </div>
         </div>
     </div>
 </div>

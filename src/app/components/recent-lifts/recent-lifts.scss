@@ -1,4 +1,21 @@
 .recent-lifts {
+    .add-button {
+        background-color: white;
+        color: $accent-color;
+        border: 1.5px solid $accent-color;
+        margin-left: auto;
+
+        & > .icon-button-icon {
+            & path {
+                fill: $accent-color;
+            }
+        }
+    }
+
+    h2 {
+        border-top: solid 1px $main-color;
+    }
+
     .recent-lift {
         display: flex;
         justify-content: space-between;
