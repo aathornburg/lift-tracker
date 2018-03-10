@@ -2,6 +2,8 @@ export class RecentLifts {
     /* @ngInject */
     constructor(liftsService) {
         this.$liftsService = liftsService;
+
+        this.showAddLift = false;
     }
 
     /** public methods */
@@ -19,5 +21,14 @@ export class RecentLifts {
 
     weightUp(lift) {
         this.$liftsService.updateLift(lift, lift.weight + 5);
+    }
+
+    /** display methods */
+    showAddLift() {
+        return this.showAddLift;
+    }
+
+    toggleAddLift() {
+        this.showAddLift = !this.showAddLift;
     }
 }
