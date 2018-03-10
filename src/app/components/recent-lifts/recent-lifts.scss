@@ -5,6 +5,22 @@
         border: 1.5px solid $accent-color;
         margin-left: auto;
 
+        &.show-add-lift {
+            background-color: $accent-color;
+
+            .add-button-text {
+                color: white;
+            }
+
+            & > .icon-button-icon path {
+                fill: white;
+            }
+
+            & > .icon-button-icon {
+                transform: rotate(135deg);
+            }
+        }
+
         & > .icon-button-icon {
             & path {
                 fill: $accent-color;

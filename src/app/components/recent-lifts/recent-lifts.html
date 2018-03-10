@@ -1,5 +1,5 @@
 <div class="recent-lifts">
-    <button class="icon-button add-lift-button add-button" ng-click="recentLiftsCtrl.toggleAddLift()">
+    <button class="icon-button add-lift-button add-button" ng-click="recentLiftsCtrl.toggleAddLift()" ng-class="{'show-add-lift': recentLiftsCtrl.showAddLift}">
         <div class="add-lift-button-text add-button-text">Add Lift</div>
         <div class="icon-button-icon" ng-include="'assets/icons/plus.svg'"></div>
     </button>
