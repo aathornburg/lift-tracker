@@ -1,4 +1,5 @@
 .navigation-item {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -8,9 +9,19 @@
     font-weight: bold;
     text-transform: uppercase;
     color: $font-color;
+
     &, &:visited {
         color: $main-color;
+
+        &.active {
+            $bottom-border-offset: 2px;
+
+            color: $main-color-hover;
+            border-bottom: $bottom-border-offset solid $main-color-hover;
+            padding-top: $bottom-border-offset;  // Offset the border added when a nav item is active
+        }
     }
+
     &:active, &:hover {
         color: $main-color-hover;
     }
