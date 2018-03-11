@@ -9,12 +9,16 @@ export const routesConfig = ($urlRouterProvider, $stateProvider, $locationProvid
             url: '/dashboard',
             template: '<dashboard />',
         })
+        .state('lifts', {
+            url: '/lifts',
+            template: '<lifts />',
+        })
         .state('workouts', {
             url: '/workouts',
             template: '<workouts />'
         })
         .state('goals', {
             url: '/goals',
-            templateUrl: 'components/goals/goals.html'
+            template: '<goals />'
         });
 };

@@ -1,0 +1,23 @@
+<div class="quick-lifts">
+    <add-lift-weight></add-lift-weight>
+    <h2>Quick lifts</h2>
+    <div ng-repeat="lift in quickLiftsCtrl.getLifts()">
+        <div class="quick-lift">
+            <div class="quick-lift-name-block">
+                <button class="quick-lift-remove" ng-click="quickLiftsCtrl.remove(lift)">
+                    <div class="quick-lift-remove-icon" ng-include="'assets/icons/cross.svg'"></div>
+                </button>
+                <span class="quick-lift-name">{{lift.lift}}</span>
+            </div>
+            <div class="quick-lift-weight">
+                <button class="weight-button weight-down-button icon-button" ng-click="quickLiftsCtrl.weightDown(lift)">
+                    <div class="icon-button-icon" ng-include="'assets/icons/minus.svg'"></div>
+                </button>
+                <span class="quick-lift-weight-value">{{lift.weight}}</span>
+                <button class="weight-button weight-up-button icon-button" ng-click="quickLiftsCtrl.weightUp(lift)">
+                    <div class="icon-button-icon" ng-include="'assets/icons/plus.svg'"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

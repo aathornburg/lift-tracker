@@ -1,8 +1,4 @@
 .add-lift {
-    margin-top: 1em;
-    padding: 1em;
-    border: 1px solid $font-color;
-
     .add-lift-form {
         display: flex;
         align-items: center;
@@ -28,11 +24,12 @@
             }
         }
 
-        .add-weight-button {
+        .add-lift-button {
             background-color: white;
             border-radius: 20px;
             border: 1.5px solid $accent-color;
             transition: background-color .2s linear;
+            color: $accent-color;
 
             & > .icon-button-icon {
                 transition: transform .2s linear;

@@ -1,4 +1,4 @@
-export class RecentLifts {
+export class QuickLifts {
     /* @ngInject */
     constructor(liftsService) {
         this.$liftsService = liftsService;

@@ -1,38 +1,9 @@
-.recent-lifts {
-    .add-button {
-        background-color: white;
-        color: $accent-color;
-        border: 1.5px solid $accent-color;
-        margin-left: auto;
-
-        &.show-add-lift {
-            background-color: $accent-color;
-
-            .add-button-text {
-                color: white;
-            }
-
-            & > .icon-button-icon path {
-                fill: white;
-            }
-
-            & > .icon-button-icon {
-                transform: rotate(135deg);
-            }
-        }
-
-        & > .icon-button-icon {
-            & path {
-                fill: $accent-color;
-            }
-        }
-    }
-
+.quick-lifts {
     h2 {
         border-top: solid 1px $main-color;
     }
 
-    .recent-lift {
+    .quick-lift {
         display: flex;
         justify-content: space-between;
         font-size: 1.4em;
@@ -40,18 +11,18 @@
         margin-bottom: 1em;
     }
 
-    .recent-lift-name-block {
+    .quick-lift-name-block {
         display: flex;
         align-items: center;
         position: relative;
 
         &:hover {
-            & > .recent-lift-remove {
+            & > .quick-lift-remove {
                 opacity: 1;
             }
         }
 
-        .recent-lift-remove {
+        .quick-lift-remove {
             position: absolute;
             border: none;
             background: transparent;
@@ -64,7 +35,7 @@
                 opacity: 1;
             }
 
-            .recent-lift-remove-icon {
+            .quick-lift-remove-icon {
                 display: flex;
                 align-items: center;
 
@@ -75,11 +46,11 @@
         }
     }
 
-    .recent-lift-weight {
+    .quick-lift-weight {
         display: flex;
         align-items: center;
 
-        .recent-lift-weight-value {
+        .quick-lift-weight-value {
             padding-left: .5em;
             padding-right: .5em;
             width: 40px;
