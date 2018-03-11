@@ -25,8 +25,8 @@ Next Steps:
 - ~~Move the Add Lift labels into their input boxes (to be moved on focus/hover)~~
 - Create an input box for Reps and show that info in the Quick Lifts section (and update DB, of course!)
 - Create a reusable add button (attribute directive?) (since the add workouts and add lift buttons are very similar)
-- Add CSS to show when a button has been focused (vs. hovered)
-- Add CSS to show which page you're currently on (change nav bar)
+- ~~Add CSS to show when a button has been focused (vs. hovered)~~
+- ~~Add CSS to show which page you're currently on (change nav bar)~~
 - Create workouts page
 - Create notification after deleting a lift asking if the user if sure and giving them a chance to undo
 - Allow the user to input lift variations (i.e. different weights for different sets x reps)
