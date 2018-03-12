@@ -1,9 +1,9 @@
-.quick-lifts {
+.all-lifts {
     h2 {
         border-top: solid 1px $main-color;
     }
 
-    .quick-lift {
+    .all-lift {
         display: flex;
         justify-content: space-between;
         font-size: 1.4em;
@@ -11,18 +11,18 @@
         margin-bottom: 1em;
     }
 
-    .quick-lift-name-block {
+    .all-lift-name-block {
         display: flex;
         align-items: center;
         position: relative;
 
         &:hover {
-            & > .quick-lift-remove {
+            & > .all-lift-remove {
                 opacity: 1;
             }
         }
 
-        .quick-lift-remove {
+        .all-lift-remove {
             position: absolute;
             border: none;
             background: transparent;
@@ -35,7 +35,7 @@
                 opacity: 1;
             }
 
-            .quick-lift-remove-icon {
+            .all-lift-remove-icon {
                 display: flex;
                 align-items: center;
 
@@ -46,11 +46,11 @@
         }
     }
 
-    .quick-lift-weight {
+    .all-lift-weight {
         display: flex;
         align-items: center;
 
-        .quick-lift-weight-value {
+        .all-lift-weight-value {
             padding-left: .5em;
             padding-right: .5em;
             width: 40px;

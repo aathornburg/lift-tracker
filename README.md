@@ -23,10 +23,12 @@ Next Steps:
 - ~~Set up DB to store lifts into~~
 - ~~Make +/- butons on lifts actually update DB~~
 - ~~Move the Add Lift labels into their input boxes (to be moved on focus/hover)~~
-- Create an input box for Reps and show that info in the Quick Lifts section (and update DB, of course!)
+- Create an input box for Reps and show that info in the All Lifts section (and update DB, of course!)
 - Create a reusable add button (attribute directive?) (since the add workouts and add lift buttons are very similar)
 - ~~Add CSS to show when a button has been focused (vs. hovered)~~
 - ~~Add CSS to show which page you're currently on (change nav bar)~~
+- MAJOR OVERHAUL of Lifts page.  Will be changing each lift into a "card" with CSS Grids!
+    - Note:  Each lift "card" can be a different color?  Connecting it to its workout (i.e. each workout can have a user-specified color)
 - Create workouts page
 - Create notification after deleting a lift asking if the user if sure and giving them a chance to undo
 - Allow the user to input lift variations (i.e. different weights for different sets x reps)

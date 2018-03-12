@@ -13,11 +13,11 @@ import { workoutsModule } from './components/workouts/workouts.module';
 import { liftsModule } from './components/lifts/lifts.module';
 import { goalsModule } from './components/goals/goals.module';
 import { addLiftWeightModule } from './components/add-lift-weight/addLiftWeight.module';
-import { quickLiftsModule } from './components/quick-lifts/quickLifts.module';
+import { allLiftsModule } from './components/all-lifts/allLifts.module';
 import { createFirstWorkoutModule } from './components/create-first-workout/createFirstWorkout.module';
 
 export default angular
     .module('angularJSSandbox',
         ['configModule', 'servicesModule', 'navigationModule', 'dashboardModule', 'liftsModule', 'workoutsModule', 'goalsModule',
-        'addLiftWeightModule', 'quickLiftsModule', 'workoutsModule', 'createFirstWorkoutModule']
+        'addLiftWeightModule', 'allLiftsModule', 'workoutsModule', 'createFirstWorkoutModule']
     );

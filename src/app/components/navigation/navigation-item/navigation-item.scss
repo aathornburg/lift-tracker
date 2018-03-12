@@ -16,7 +16,6 @@
         &.active {
             $bottom-border-offset: 2px;
 
-            color: $main-color-hover;
             border-bottom: $bottom-border-offset solid $main-color-hover;
             padding-top: $bottom-border-offset;  // Offset the border added when a nav item is active
         }
