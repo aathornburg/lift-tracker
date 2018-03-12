@@ -1,0 +1,129 @@
+.all-lifts {
+    h2 {
+        border-top: solid 1px $main-color;
+    }
+
+    .all-lifts-container {
+        display: grid;
+        grid-gap: 1em;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+        .lift {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.4em;
+            color: $font-color;
+            margin-bottom: 1em;
+        }
+
+        .lift-name-block {
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            &:hover {
+                & > .all-lift-remove {
+                    opacity: 1;
+                }
+            }
+
+            .lift-remove {
+                position: absolute;
+                border: none;
+                background: transparent;
+                left: -2em;
+                cursor: pointer;
+                opacity: 0;
+                transition: .2s opacity linear;
+
+                &:focus {
+                    opacity: 1;
+                }
+
+                .lift-remove-icon {
+                    display: flex;
+                    align-items: center;
+
+                    & path {
+                        fill: $accent-color;
+                    }
+                }
+            }
+        }
+
+        .lift-weight {
+            display: flex;
+            align-items: center;
+
+            .lift-weight-value {
+                padding-left: .5em;
+                padding-right: .5em;
+                width: 40px;
+                text-align: center;
+            }
+
+            .weight-button {
+                width: 30px;
+                height: 30px;
+                border-radius: 12px;
+                transition: background-color .2s linear;
+
+                &.weight-down-button {
+                    background-color: white;
+                    border: 1.5px solid $negative-color;
+
+                    & > .icon-button-icon {
+                        transition: transform .2s linear;
+                    }
+
+                    & path {
+                        fill: $negative-color;
+                    }
+
+                    &:hover, &:focus {
+                        background-color: $negative-color;
+
+                        & > .icon-button-icon {
+                            transform: rotate(180deg);
+                        }
+
+                        & path {
+                            fill: white;
+                        }
+                    }
+                }
+
+                &.weight-up-button {
+                    background-color: white;
+                    border: 1.5px solid $positive-color;
+
+                    & > .icon-button-icon {
+                        transition: transform .2s linear;
+                    }
+
+                    & path {
+                        fill: $positive-color;
+                    }
+
+                    &:hover, &:focus {
+                        background-color: $positive-color;
+
+                        & > .icon-button-icon {
+                            transform: rotate(90deg);
+                        }
+
+                        & path {
+                            fill: white;
+                        }
+                    }
+                }
+
+                &:hover {
+                    & > .icon-button-icon {
+                        transform: rotate(90deg);
+                    }
+                }
+            }
+        }
+    }
+}
