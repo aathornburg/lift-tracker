@@ -7,7 +7,7 @@ import { configModule } from './configuration/config.module';
 import { servicesModule } from './services/services.module';
 
 /** Components */
-import { navigationModule } from './components/navigation/navigation.module';
+import { navigationModule } from './components/navigation-components/navigation.module';
 import { dashboardModule } from './components/dashboard/dashboard.module';
 import { workoutsModule } from './components/workout-components/workouts/workouts.module';
 import { liftsModule } from './components/lift-components/lifts/lifts.module';

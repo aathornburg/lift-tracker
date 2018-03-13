@@ -7,7 +7,7 @@ export default angular
         .directive('allLifts', () => (
             {
                 restrict: 'E',
-                templateUrl: 'components/all-lifts/all-lifts.html',
+                templateUrl: 'components/lift-components/all-lifts/all-lifts.html',
                 controller: AllLifts,
                 controllerAs: 'allLiftsCtrl',
                 scope: {},

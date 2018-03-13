@@ -7,7 +7,7 @@ export default angular
         .directive('workouts', () => (
             {
                 restrict: 'E',
-                templateUrl: 'components/workouts/workouts.html',
+                templateUrl: 'components/workout-components/workouts/workouts.html',
                 controller: Workouts,
                 controllerAs: 'workoutsCtrl',
                 scope: {},

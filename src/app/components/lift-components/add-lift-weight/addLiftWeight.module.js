@@ -7,7 +7,7 @@ export default angular
         .directive('addLiftWeight', () => (
             {
                 restrict: 'E',
-                templateUrl: 'components/add-lift-weight/add-lift-weight.html',
+                templateUrl: 'components/lift-components/add-lift-weight/add-lift-weight.html',
                 controller: AddLiftWeight,
                 controllerAs: 'addLiftWeightCtrl',
                 scope: {},

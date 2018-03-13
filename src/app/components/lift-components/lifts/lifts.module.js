@@ -5,7 +5,7 @@ export default angular
         .directive('lifts', () => (
             {
                 restrict: 'E',
-                templateUrl: 'components/lifts/lifts.html'
+                templateUrl: 'components/lift-components/lifts/lifts.html'
             }
         ))
     .name;

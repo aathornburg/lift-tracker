@@ -6,121 +6,108 @@
     .all-lifts-container {
         display: grid;
         grid-gap: 1em;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
         .lift {
-            display: flex;
-            justify-content: space-between;
             font-size: 1.4em;
             color: $font-color;
             margin-bottom: 1em;
-        }
-
-        .lift-name-block {
-            display: flex;
-            align-items: center;
+            border: 1px solid $font-color;
+            padding: 1em;
             position: relative;
 
-            &:hover {
-                & > .all-lift-remove {
-                    opacity: 1;
-                }
-            }
-
-            .lift-remove {
+            .lift-option-button {
                 position: absolute;
-                border: none;
-                background: transparent;
-                left: -2em;
-                cursor: pointer;
-                opacity: 0;
-                transition: .2s opacity linear;
+                top: 5px;
+                right: 5px;
+                background-color: transparent;
 
-                &:focus {
-                    opacity: 1;
-                }
-
-                .lift-remove-icon {
-                    display: flex;
-                    align-items: center;
-
-                    & path {
-                        fill: $accent-color;
-                    }
+                & path {
+                    fill: $font-color;
                 }
             }
-        }
 
-        .lift-weight {
-            display: flex;
-            align-items: center;
-
-            .lift-weight-value {
-                padding-left: .5em;
-                padding-right: .5em;
-                width: 40px;
-                text-align: center;
+            .lift-detail-row {
+                display: flex;
+                align-items: center;
+    
+                &:not(:last-child) {
+                    margin-bottom: 1em;
+                }
             }
-
-            .weight-button {
-                width: 30px;
-                height: 30px;
-                border-radius: 12px;
-                transition: background-color .2s linear;
-
-                &.weight-down-button {
-                    background-color: white;
-                    border: 1.5px solid $negative-color;
-
-                    & > .icon-button-icon {
-                        transition: transform .2s linear;
-                    }
-
-                    & path {
-                        fill: $negative-color;
-                    }
-
-                    &:hover, &:focus {
-                        background-color: $negative-color;
-
+    
+            .lift-weight {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+    
+                .lift-weight-value {
+                    padding-left: .5em;
+                    padding-right: .5em;
+                    width: 40px;
+                    text-align: center;
+                }
+    
+                .weight-button {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 12px;
+                    transition: background-color .2s linear;
+    
+                    &.weight-down-button {
+                        background-color: white;
+                        border: 1.5px solid $negative-color;
+    
                         & > .icon-button-icon {
-                            transform: rotate(180deg);
+                            transition: transform .2s linear;
                         }
-
+    
                         & path {
-                            fill: white;
+                            fill: $negative-color;
+                        }
+    
+                        &:hover, &:focus {
+                            background-color: $negative-color;
+    
+                            & > .icon-button-icon {
+                                transform: rotate(180deg);
+                            }
+    
+                            & path {
+                                fill: white;
+                            }
                         }
                     }
-                }
-
-                &.weight-up-button {
-                    background-color: white;
-                    border: 1.5px solid $positive-color;
-
-                    & > .icon-button-icon {
-                        transition: transform .2s linear;
+    
+                    &.weight-up-button {
+                        background-color: white;
+                        border: 1.5px solid $positive-color;
+    
+                        & > .icon-button-icon {
+                            transition: transform .2s linear;
+                        }
+    
+                        & path {
+                            fill: $positive-color;
+                        }
+    
+                        &:hover, &:focus {
+                            background-color: $positive-color;
+    
+                            & > .icon-button-icon {
+                                transform: rotate(90deg);
+                            }
+    
+                            & path {
+                                fill: white;
+                            }
+                        }
                     }
-
-                    & path {
-                        fill: $positive-color;
-                    }
-
-                    &:hover, &:focus {
-                        background-color: $positive-color;
-
+    
+                    &:hover {
                         & > .icon-button-icon {
                             transform: rotate(90deg);
                         }
-
-                        & path {
-                            fill: white;
-                        }
-                    }
-                }
-
-                &:hover {
-                    & > .icon-button-icon {
-                        transform: rotate(90deg);
                     }
                 }
             }

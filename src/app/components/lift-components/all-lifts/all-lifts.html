@@ -4,20 +4,23 @@
     <div class="all-lifts-container">
         <div ng-repeat="lift in allLiftsCtrl.getLifts()">
             <div class="lift">
-                <div class="lift-name-block">
-                    <button class="lift-remove" ng-click="allLiftsCtrl.remove(lift)">
-                        <div class="lift-remove-icon" ng-include="'assets/icons/cross.svg'"></div>
-                    </button>
+                <button class="lift-option-button icon-button">
+                    <!-- TODO:  Turn this into a ... button -->
+                    <div class="lift-options icon-button-icon" ng-include="'assets/icons/wrench.svg'"></div>
+                </button>
+                <div class="lift-detail-row">
                     <span class="lift-name">{{lift.lift}}</span>
                 </div>
-                <div class="lift-weight">
-                    <button class="weight-button weight-down-button icon-button" ng-click="allLiftsCtrl.weightDown(lift)">
-                        <div class="icon-button-icon" ng-include="'assets/icons/minus.svg'"></div>
-                    </button>
-                    <span class="lift-weight-value">{{lift.weight}}</span>
-                    <button class="weight-button weight-up-button icon-button" ng-click="allLiftsCtrl.weightUp(lift)">
-                        <div class="icon-button-icon" ng-include="'assets/icons/plus.svg'"></div>
-                    </button>
+                <div class="lift-detail-row lift-weight">
+                    <div class="lift-weight">
+                        <button class="weight-button weight-down-button icon-button" ng-click="allLiftsCtrl.weightDown(lift)">
+                            <div class="icon-button-icon" ng-include="'assets/icons/minus.svg'"></div>
+                        </button>
+                        <span class="lift-weight-value">{{lift.weight}}</span>
+                        <button class="weight-button weight-up-button icon-button" ng-click="allLiftsCtrl.weightUp(lift)">
+                            <div class="icon-button-icon" ng-include="'assets/icons/plus.svg'"></div>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

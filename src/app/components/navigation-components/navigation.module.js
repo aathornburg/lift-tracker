@@ -9,7 +9,7 @@ export default angular
         .directive('navigationBar', () => (
             {
                 restrict: 'E',
-                templateUrl: 'components/navigation/navigation-bar/navigation-bar.html',
+                templateUrl: 'components/navigation-components/navigation-bar/navigation-bar.html',
                 controller: NavigationBar,
                 controllerAs: 'navBarCtrl',
                 scope: {},
@@ -19,7 +19,7 @@ export default angular
         .directive('navigationItem', () => (
             {
                 restrict: 'E',
-                templateUrl: 'components/navigation/navigation-item/navigation-item.html',
+                templateUrl: 'components/navigation-components/navigation-item/navigation-item.html',
                 controller: NavigationItem,
                 controllerAs: 'navItemCtrl',
                 scope: {},

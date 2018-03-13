@@ -29,10 +29,12 @@ Next Steps:
 - ~~Add CSS to show which page you're currently on (change nav bar)~~
 - MAJOR OVERHAUL of Lifts page.  Will be changing each lift into a "card" with CSS Grids!
     - Note:  Each lift "card" can be a different color?  Connecting it to its workout (i.e. each workout can have a user-specified color)
-- Create workouts page
+- Create workouts page (WIP)
 - Create notification after deleting a lift asking if the user if sure and giving them a chance to undo
 - Allow the user to input lift variations (i.e. different weights for different sets x reps)
-- Create a new "Dashboard" and create a link for Lifts (as that's what the dashboard currently is)
+- Create a new "Dashboard" and ~~create a link for Lifts~~ (as that's what the dashboard currently is)
+- Move all these todos into the issues category in GitHub
+- Make a Lift module
 
 To Do:
 - Update gulp so that I don't need to provide the base templates URL every time for every view (ideally, move every view into the folder of each component)
@@ -47,6 +49,7 @@ To Do:
 - Convert gulp into an ES6 format:  https://markgoodyear.com/2015/06/using-es6-with-gulp/
 - Convert the button icon rotation/color changing into a single class
 - Create a directive for my buttons that are very similar to each other
+- Clean up all the modules (reorganize so all like components can share a module... duh)
 
 Personal notes:
 - Importing an item using the import { name } from '...' syntax requires you to match the name with the name of what was exported!
