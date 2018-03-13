@@ -10,25 +10,4 @@ export class AllLifts {
     getLifts() {
         return this.$liftsService.getLifts();
     }
-
-    remove(lift) {
-        this.$liftsService.removeLift(lift);
-    }
-
-    weightDown(lift) {
-        this.$liftsService.updateLift(lift, lift.weight - 5);
-    }
-
-    weightUp(lift) {
-        this.$liftsService.updateLift(lift, lift.weight + 5);
-    }
-
-    /** display methods */
-    showAddLift() {
-        return this.showAddLift;
-    }
-
-    toggleAddLift() {
-        this.showAddLift = !this.showAddLift;
-    }
 }

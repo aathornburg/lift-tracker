@@ -1,9 +1,9 @@
 require('angular');
 
-import { CreateFirstWorkout } from './CreateFirstWorkout';
+import { CreateFirstWorkout } from './create-first-workout/CreateFirstWorkout';
 
 export default angular
-    .module('createFirstWorkoutModule', []) 
+    .module('workoutModule', []) 
         .directive('createFirstWorkout', () => (
             {
                 restrict: 'E',

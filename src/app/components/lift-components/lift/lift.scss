@@ -1,0 +1,74 @@
+.lift {
+    font-size: 1.4em;
+    color: $font-color;
+    margin-bottom: 1em;
+    border: 1px solid $font-color;
+    padding: 1em;
+    position: relative;
+
+    .lift-option-button {
+        position: absolute;
+        top: 5px;
+        right: 2px;
+        background-color: transparent;
+        color: $font-color;
+        border: none;
+        cursor: pointer;
+    }
+
+    .lift-detail-row {
+        display: flex;
+        align-items: center;
+
+        &:not(:last-child) {
+            margin-bottom: 1em;
+        }
+    }
+
+    .lift-weight {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        color: $font-color;
+
+        .lift-weight-value {
+            padding-left: .5em;
+            padding-right: .5em;
+            width: 40px;
+            text-align: center;
+        }
+
+        .weight-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 12px;
+            transition: background-color .2s linear;
+            cursor: pointer;
+
+            &.weight-down-button {
+                background-color: white;
+                color: $negative-color;
+                border: 1.5px solid $negative-color;
+
+                &:hover, &:focus {
+                    background-color: $negative-color;
+                    color: white;
+                }
+            }
+
+            &.weight-up-button {
+                background-color: white;
+                color: $positive-color;
+                border: 1.5px solid $positive-color;
+
+                &:hover, &:focus {
+                    background-color: $positive-color;
+                    color: white;
+                }
+            }
+        }
+    }
+}

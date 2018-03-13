@@ -8,16 +8,10 @@ import { servicesModule } from './services/services.module';
 
 /** Components */
 import { navigationModule } from './components/navigation-components/navigation.module';
-import { dashboardModule } from './components/dashboard/dashboard.module';
-import { workoutsModule } from './components/workout-components/workouts/workouts.module';
-import { liftsModule } from './components/lift-components/lifts/lifts.module';
-import { goalsModule } from './components/goals/goals.module';
-import { addLiftWeightModule } from './components/lift-components/add-lift-weight/addLiftWeight.module';
-import { allLiftsModule } from './components/lift-components/all-lifts/allLifts.module';
-import { createFirstWorkoutModule } from './components/workout-components/create-first-workout/createFirstWorkout.module';
+import { liftModule } from './components/lift-components/lift.module';
+import { workoutModule } from './components/workout-components/workout.module';
 
 export default angular
     .module('angularJSSandbox',
-        ['configModule', 'servicesModule', 'navigationModule', 'dashboardModule', 'liftsModule', 'workoutsModule', 'goalsModule',
-        'addLiftWeightModule', 'allLiftsModule', 'workoutsModule', 'createFirstWorkoutModule']
+        ['configModule', 'servicesModule', 'navigationModule', 'liftModule', 'workoutModule']
     );

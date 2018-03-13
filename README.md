@@ -34,7 +34,7 @@ Next Steps:
 - Allow the user to input lift variations (i.e. different weights for different sets x reps)
 - Create a new "Dashboard" and ~~create a link for Lifts~~ (as that's what the dashboard currently is)
 - Move all these todos into the issues category in GitHub
-- Make a Lift module
+- ~~Make a Lift module~~
 
 To Do:
 - Update gulp so that I don't need to provide the base templates URL every time for every view (ideally, move every view into the folder of each component)
@@ -49,7 +49,7 @@ To Do:
 - Convert gulp into an ES6 format:  https://markgoodyear.com/2015/06/using-es6-with-gulp/
 - Convert the button icon rotation/color changing into a single class
 - Create a directive for my buttons that are very similar to each other
-- Clean up all the modules (reorganize so all like components can share a module... duh)
+- ~~Clean up all the modules (reorganize so all like components can share a module... duh)~~
 - Host the Google material icons locally
 
 Personal notes:
