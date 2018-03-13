@@ -92,7 +92,12 @@ body {
 
         & > .add-button-icon {
             transition: transform .2s linear;
-            font-weight: bold;
+            height: 24px; // The icons will be 24px based on the material standard
+            margin-top: -1px; // The plus icon is slightly off in terms of vertical centering
+
+            & > .material-icons {
+                font-weight: bold;
+            }
         }
 
         &:hover, &:focus {
