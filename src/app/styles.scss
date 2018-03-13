@@ -70,28 +70,18 @@ body {
         }
     }
 
-    /* The CSS that handles buttons that have SVG icons as their content */
-    .icon-button {
-        border: 0;
-        cursor: pointer;
-
-        & > .icon-button-icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-
     /* The CSS that handles an add button */
     .add-button {
         display: flex;
         justify-content: center;
+        align-items: center;
         height: 50px;
         border-radius: 20px;
         transition: all .2s linear;
         padding: 10px 20px;
         overflow: hidden;
         border: 2px solid transparent;
+        cursor: pointer;
 
         & > .add-button-text {
             font-weight: 700;
@@ -100,19 +90,14 @@ body {
             margin-right: 10px;
         }
 
-        & > .icon-button-icon {
+        & > .add-button-icon {
             transition: transform .2s linear;
+            font-weight: bold;
         }
 
         &:hover, &:focus {
-            background-color: $accent-color;
-
-            .add-button-text {
-                color: white;
-            }
-
-            & > .icon-button-icon path {
-                fill: white;
+            & > .add-button-icon {
+                transform: rotate(90deg);
             }
         }
     }

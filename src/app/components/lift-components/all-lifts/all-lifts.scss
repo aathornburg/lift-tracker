@@ -19,12 +19,11 @@
             .lift-option-button {
                 position: absolute;
                 top: 5px;
-                right: 5px;
+                right: 2px;
                 background-color: transparent;
-
-                & path {
-                    fill: $font-color;
-                }
+                color: $font-color;
+                border: none;
+                cursor: pointer;
             }
 
             .lift-detail-row {
@@ -40,6 +39,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: flex-end;
+                color: $font-color;
     
                 .lift-weight-value {
                     padding-left: .5em;
@@ -49,64 +49,34 @@
                 }
     
                 .weight-button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     width: 30px;
                     height: 30px;
                     border-radius: 12px;
                     transition: background-color .2s linear;
+                    cursor: pointer;
     
                     &.weight-down-button {
                         background-color: white;
+                        color: $negative-color;
                         border: 1.5px solid $negative-color;
-    
-                        & > .icon-button-icon {
-                            transition: transform .2s linear;
-                        }
-    
-                        & path {
-                            fill: $negative-color;
-                        }
     
                         &:hover, &:focus {
                             background-color: $negative-color;
-    
-                            & > .icon-button-icon {
-                                transform: rotate(180deg);
-                            }
-    
-                            & path {
-                                fill: white;
-                            }
+                            color: white;
                         }
                     }
     
                     &.weight-up-button {
                         background-color: white;
+                        color: $positive-color;
                         border: 1.5px solid $positive-color;
-    
-                        & > .icon-button-icon {
-                            transition: transform .2s linear;
-                        }
-    
-                        & path {
-                            fill: $positive-color;
-                        }
     
                         &:hover, &:focus {
                             background-color: $positive-color;
-    
-                            & > .icon-button-icon {
-                                transform: rotate(90deg);
-                            }
-    
-                            & path {
-                                fill: white;
-                            }
-                        }
-                    }
-    
-                    &:hover {
-                        & > .icon-button-icon {
-                            transform: rotate(90deg);
+                            color: white;
                         }
                     }
                 }

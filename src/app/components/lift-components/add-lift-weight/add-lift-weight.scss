@@ -31,24 +31,9 @@
             transition: background-color .2s linear;
             color: $accent-color;
 
-            & > .icon-button-icon {
-                transition: transform .2s linear;
-            }
-
-            & path {
-                fill: $accent-color;
-            }
-
             &:hover, &:focus {
                 background-color: $accent-color;
-
-                & > .icon-button-icon {
-                    transform: rotate(90deg);
-                }
-
-                & path {
-                    fill: white;
-                }
+                color: white;
             }
         }
     }

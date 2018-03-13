@@ -4,9 +4,8 @@
     <div class="all-lifts-container">
         <div ng-repeat="lift in allLiftsCtrl.getLifts()">
             <div class="lift">
-                <button class="lift-option-button icon-button">
-                    <!-- TODO:  Turn this into a ... button -->
-                    <div class="lift-options icon-button-icon" ng-include="'assets/icons/wrench.svg'"></div>
+                <button class="lift-option-button">
+                    <i class="lift-options material-icons">more_vert</i>
                 </button>
                 <div class="lift-detail-row">
                     <span class="lift-name">{{lift.lift}}</span>
@@ -14,11 +13,11 @@
                 <div class="lift-detail-row lift-weight">
                     <div class="lift-weight">
                         <button class="weight-button weight-down-button icon-button" ng-click="allLiftsCtrl.weightDown(lift)">
-                            <div class="icon-button-icon" ng-include="'assets/icons/minus.svg'"></div>
+                            <i class="weight-button-icon material-icons">keyboard_arrow_down</i>
                         </button>
                         <span class="lift-weight-value">{{lift.weight}}</span>
-                        <button class="weight-button weight-up-button icon-button" ng-click="allLiftsCtrl.weightUp(lift)">
-                            <div class="icon-button-icon" ng-include="'assets/icons/plus.svg'"></div>
+                        <button class="weight-button weight-up-button" ng-click="allLiftsCtrl.weightUp(lift)">
+                            <i class="weight-button-icon material-icons">keyboard_arrow_up</i>
                         </button>
                     </div>
                 </div>

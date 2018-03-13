@@ -16,6 +16,7 @@
         background-color: white;
         border-radius: 20px;
         transition: all .2s linear;
+        color: $accent-color;
         padding: 10px 20px;
         overflow: hidden;
         border: 2px solid transparent;
@@ -23,34 +24,14 @@
         .create-first-workout-button-text {
             font-weight: 700;
             font-size: 1.2em;
-            color: $accent-color;
             white-space: nowrap;
             margin-right: 10px;
         }
 
-        .icon-button-icon {
-            transition: transform .2s linear;
-            
-            & path {
-                fill: $accent-color;
-            }
-        }
-
         &:hover, &:focus {
             background-color: $accent-color;
+            color: white;
             border: 1.5px solid white;
-
-            .create-first-workout-button-text {
-                color: white;
-            }
-
-            .icon-button-icon {
-                transform: rotate(90deg);
-            }
-
-            & path {
-                fill: white;
-            }
         }
     }
 }
