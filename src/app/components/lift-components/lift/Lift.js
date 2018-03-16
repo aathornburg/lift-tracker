@@ -2,6 +2,8 @@ export class Lift {
     /* @ngInject */
     constructor(liftsService) {
         this.$liftsService = liftsService;
+
+        this.showLiftMenu = false;
     }
 
     /** public methods */
@@ -15,5 +17,9 @@ export class Lift {
 
     weightUp() {
         this.$liftsService.updateLift(this.liftModel, this.liftModel.weight + 5);
+    }
+
+    showLiftOptions() {
+        this.showLiftMenu = true;
     }
 }

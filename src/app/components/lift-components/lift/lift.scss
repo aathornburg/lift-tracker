@@ -2,7 +2,8 @@
     font-size: 1.4em;
     color: $font-color;
     margin-bottom: 1em;
-    border: 1px solid $font-color;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 2px;
     padding: 1em;
     position: relative;
 
@@ -14,6 +15,53 @@
         color: $font-color;
         border: none;
         cursor: pointer;
+    }
+
+    .lift-options-menu {
+        width: 125px;
+        position: absolute;
+        right: -1.75em; // TODO:  Update this on mobile view
+        top: 10px;
+        z-index: 1;
+        border-radius: 2px;
+        background: white;
+        white-space: nowrap;
+        font-size: 1.25em;
+        padding: .25em 0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+        & > .lift-options-row {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            background: none;
+            padding: .25em;
+            padding-left: 1em;
+            border: none;
+            width: 100%;
+            font-size: .5em;
+            color: $font-color;
+
+            & > .lift-options-icon {
+                padding-right: .75em;
+
+                &.delete-lift {
+                    color: $accent-color;
+                }
+
+                &.data {
+                    color: $positive-color;
+                }
+            }
+
+            & > .lift-options-text {
+                font-size: 1.3em;
+            }
+
+            &:hover {
+                background-color: $white-hover;
+            }
+        }
     }
 
     .lift-detail-row {
@@ -70,5 +118,13 @@
                 }
             }
         }
+    }
+
+    &.options-open {
+
+    }
+
+    &:hover {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     }
 }
