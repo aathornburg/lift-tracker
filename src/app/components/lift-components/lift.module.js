@@ -4,6 +4,9 @@ import { AllLifts } from './all-lifts/AllLifts';
 import { AddLiftWeight } from './add-lift-weight/AddLiftWeight';
 import { Lift } from './lift/Lift';
 
+/* Utilities */
+import { dropdown } from '../../utility/dropdown';
+
 export default angular
     .module('liftModule', []) 
         .directive('allLifts', () => (
@@ -13,7 +16,7 @@ export default angular
                 controller: AllLifts,
                 controllerAs: 'allLiftsCtrl',
                 scope: {},
-                bindToController: true
+                bindToController: true,
             }
         ))
         .directive('addLiftWeight', () => (
@@ -35,6 +38,9 @@ export default angular
                 scope: {},
                 bindToController: {
                     liftModel: '='
+                },
+                link: (scope, elem, attrs, ctrl) => {
+                    dropdown.init(elem, false);
                 }
             }
         ))
