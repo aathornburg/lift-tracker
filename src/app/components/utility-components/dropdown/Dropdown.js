@@ -1,11 +1,11 @@
 export class Dropdown {
     /* @ngInject */
     constructor() {
-        this.showDropdown = false;
+        this.showMenu = false;
     }
 
     /** public methods */
-    toggleDropdown() {
-        this.showDropdown = !this.showDropdown;
+    toggle() {
+        this.showMenu = !this.showMenu;
     }
 }

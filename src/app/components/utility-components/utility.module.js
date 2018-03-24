@@ -1,14 +1,9 @@
+// TODO:  Remove this?
+
 require('angular');
 
-import { Dropdown } from './dropdown/Dropdown';
+import { dropdownModule } from './dropdown/dropdown.module';
 
 export default angular
-    .module('utilityModule', []) 
-        .directive('hasDropdown', () => (
-            {
-                restrict: 'A',
-                controller: Dropdown,
-                controllerAs: 'dropdownCtrl'
-            }
-        ))
+    .module('utilityModule', ['dropdownModule']) 
     .name;
