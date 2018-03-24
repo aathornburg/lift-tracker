@@ -15,20 +15,20 @@ export default angular
             {
                 require: '^hasDropdown',
                 link: (scope, elem, attrs, dropdownCtrl) => {
+                    var toggleHandler = () => {
+                        scope.$apply(dropdownCtrl.toggle());
+
+                        if (dropdownCtrl.showMenu) {
+                            console.log("Adding document listener");
+                            $(document).on('click', toggleHandler);
+                        } else {
+                            console.log("Removing document listener");
+                            $(document).off('click', toggleHandler);
+                        }
+                    }
+
                     elem.on('click', (e) => {
                         e.stopPropagation();
-
-                        var toggleHandler = () => {
-                            scope.$apply(dropdownCtrl.toggle());
-
-                            if (dropdownCtrl.showMenu) {
-                                console.log("Adding document listener");
-                                $(document).on('click', toggleHandler);
-                            } else {
-                                console.log("Removing document listener");
-                                $(document).off('click', toggleHandler);
-                            }
-                        }
 
                         toggleHandler();
                     });
