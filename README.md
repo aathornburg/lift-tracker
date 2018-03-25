@@ -53,7 +53,7 @@ To Do:
 - Host the Google material icons locally
 - Make dropdowns close on tab-out
 - Determine why I need to pass dropdownCtrl into a scope.$watch when init'ing a dropdownMenu directive, vs. just using the already-set this.ctrl
-- Allow dropdowns to be configured on if we want to close them on click out or not
+- Allow dropdowns to be configured on if we want to close them on click/tab out or not
 
 Personal notes:
 - Importing an item using the import { name } from '...' syntax requires you to match the name with the name of what was exported!
