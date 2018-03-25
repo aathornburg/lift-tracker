@@ -41,30 +41,47 @@ export class DropdownHelper {
                         _static.vars.openDropdowns.remove(this.ctrl);
                     }
                 },
-                button = {
-                    processClick: (e) => {
+                button = (() => {
+                    const processClick = (e) => {
                         e.stopPropagation();
                         toggleDropdown();
                     },
-                    init: (elem) => {
+                        init = (elem) => {
+                            elem.on('click', (e) => {
+                                processClick(e);
+                            });
+                        }
+
+                    return {
+                        init: init
+                    };
+                })(),
+                menu = (() => {
+                    const createClickListener = (elem) => {
                         elem.on('click', (e) => {
-                            button.processClick(e);
-                        });
-                    }
-                },
-                menu = {
-                    init: (elem, dropdownCtrl) => {
-                        this.scope.$watch('dropdownCtrl.showMenu', (newVal, oldVal) => {
-                            if (newVal !== oldVal) {
-                                if (newVal === true) {
-                                    elem.removeClass('ng-hide');
-                                } else {
-                                    elem.addClass('ng-hide');
+                            e.stopPropagation(); // Prevent closing of dropdown on menu click
+                        })
+                    },
+                        createWatcher = (elem, dropdownCtrl) => {
+                            this.scope.$watch('dropdownCtrl.showMenu', (newVal, oldVal) => {
+                                if (newVal !== oldVal) {
+                                    if (newVal === true) {
+                                        elem.removeClass('ng-hide');
+                                    } else {
+                                        elem.addClass('ng-hide');
+                                    }
                                 }
-                            }
-                        });
-                    }
-                };
+                            });
+                        },
+                        init = (elem, dropdownCtrl) => {
+                            createClickListener(elem);
+                            createWatcher(elem, dropdownCtrl);
+                        }
+
+                    return {
+                        init: init
+                    };
+                })();
         
             return {
                 toggleDropdown: toggleDropdown,
