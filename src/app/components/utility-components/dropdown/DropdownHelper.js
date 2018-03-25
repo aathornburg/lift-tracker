@@ -1,27 +1,57 @@
 export class DropdownHelper {
+
+    /** Static variables at bottom */
     constructor(scope, dropdownCtrl) {
         this.scope = scope;
         this.ctrl = dropdownCtrl;
         this.public = this.createPublicMethods();
     }
 
+    /** Module pattern (https://toddmotto.com/mastering-the-module-pattern/) for public/private methods */
     createPublicMethods() {
         return (() => {
-            const button = {
-                toggleDropdown: (e) => {
+            const _static = {
+                vars: {
+                    openDropdowns: {
+                        add: (openDropdownInst) => {
+                            DropdownHelper.openDropdowns.push(openDropdownInst);
+                        },
+                        remove: (openDropdownInst) => {
+                            DropdownHelper.openDropdowns = DropdownHelper.openDropdowns.filter(
+                                openDropdown => openDropdown != openDropdownInst
+                            );
+                        }
+                    }
+                },
+                closeOpenDropdowns: () => {
+                    DropdownHelper.openDropdowns.forEach(
+                        openDropdown => openDropdown.getHelper().public.toggleDropdown()
+                    );
+                }
+            },
+                toggleDropdown = () => {
                     this.scope.$apply(this.ctrl.toggle());
             
                     if (this.ctrl.showMenu) {
-                        $(document).on('click', button.toggleDropdown);
+                        $(document).on('click', toggleDropdown);
+                        _static.closeOpenDropdowns();
+                        _static.vars.openDropdowns.add(this.ctrl);
                     } else {
-                        $(document).off('click', button.toggleDropdown);
+                        $(document).off('click', toggleDropdown);
+                        _static.vars.openDropdowns.remove(this.ctrl);
                     }
                 },
-                processClick: (e) => {
-                    e.stopPropagation();
-                    button.toggleDropdown(e);
-                }
-            },
+                button = {
+                    processClick: (e) => {
+                        e.stopPropagation();
+                        toggleDropdown();
+                    },
+                    init: (elem) => {
+                        elem.on('click', (e) => {
+                            button.processClick(e);
+                        });
+                    }
+                },
                 menu = {
                     init: (elem, dropdownCtrl) => {
                         this.scope.$watch('dropdownCtrl.showMenu', (newVal, oldVal) => {
@@ -37,58 +67,12 @@ export class DropdownHelper {
                 };
         
             return {
-                processButtonClick: button.processClick,
+                toggleDropdown: toggleDropdown,
+                buttonInit: button.init,
                 menuInit: menu.init
             };
         })();
     }
-
-    // methods = (() => {
-    //     test = () => {
-    //         console.log("in test");
-    //     };
-
-    //     return {
-    //         test: test
-    //     };
-    // });
 }
 
-
-// const dropdownHelper = (($) => {
-//     let state = {
-//         scope: null,
-//         ctrl: null
-//     },
-//         methods = (() => {
-//             const toggleDropdown = (e) => {
-//                 state.scope.$apply(state.ctrl.toggle());
-        
-//                 if (state.ctrl.showMenu) {
-//                     $(document).on('click', toggleDropdown);
-//                 } else {
-//                     $(document).off('click', toggleDropdown);
-//                 }
-//             },
-//                 processButtonClick = (e) => {
-//                     e.stopPropagation();
-        
-//                     toggleDropdown(e);
-//                 },
-//                 init = (scope, dropdownCtrl) => {
-//                     console.log("In init");
-//                     state.scope = scope;
-//                     state.ctrl = dropdownCtrl;
-//                 };
-        
-//             return {
-//                 init: init,
-//                 processButtonClick: processButtonClick
-//             };
-//         })();
-    
-//     return {
-//         init: methods.init,
-//         processButtonClick: methods.processButtonClick
-//     };
-// })(jQuery);
+DropdownHelper.openDropdowns = [];

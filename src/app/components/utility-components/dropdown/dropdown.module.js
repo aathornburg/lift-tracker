@@ -21,9 +21,7 @@ export default angular
             {
                 require: '^hasDropdown',
                 link: (scope, elem, attrs, dropdownCtrl) => {
-                    elem.on('click', (e) => {
-                        dropdownCtrl.getHelper().public.processButtonClick(e);
-                    });
+                    dropdownCtrl.getHelper().public.buttonInit(elem);
                 }
             }
         ))
