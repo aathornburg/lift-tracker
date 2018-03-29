@@ -36,40 +36,42 @@ export class DropdownService {
                         }
                     }
                 },
-                getDropdown: (dropdownId) => {
-                    return this.dropdowns.find(
-                        dropdown => dropdown.dropdownId === dropdownId
-                    );
-                },
-                closeOpenDropdowns: () => {
-                    this.openDropdowns.forEach(
-                        openDropdown => toggleDropdown(openDropdown)
-                    );
-                },
-                createDocumentClickListener: () => {
-                    if (!service.props.clickListenerCreated) {
-                        service.props.clickListenerCreated = true;
-                        $(document).on('click', service.closeOpenDropdowns);
+                methods: {
+                    toggleDropdown: (dropdown) => {
+                        dropdown.scope.$apply(dropdown.ctrl.toggle());
+    
+                        if (dropdown.ctrl.showMenu) {
+                            service.methods.closeOpenDropdowns();
+                            service.props.openDropdowns.add(dropdown);
+                        } else {
+                            service.props.openDropdowns.remove(dropdown);
+                        }
+                    },
+                    getDropdown: (dropdownId) => {
+                        return this.dropdowns.find(
+                            dropdown => dropdown.dropdownId === dropdownId
+                        );
+                    },
+                    closeOpenDropdowns: () => {
+                        this.openDropdowns.forEach(
+                            openDropdown => service.methods.toggleDropdown(openDropdown)
+                        );
+                    },
+                    createDocumentClickListener: () => {
+                        if (!service.props.clickListenerCreated) {
+                            service.props.clickListenerCreated = true;
+                            $(document).on('click', service.methods.closeOpenDropdowns);
+                        }
+                    },
+                    init: () => {
+                        service.methods.createDocumentClickListener();
                     }
-                },
-                init: () => {
-                    service.createDocumentClickListener();
                 }
             },
-                toggleDropdown = (dropdown) => {
-                    dropdown.scope.$apply(dropdown.ctrl.toggle());
-
-                    if (dropdown.ctrl.showMenu) {
-                        service.closeOpenDropdowns();
-                        service.props.openDropdowns.add(dropdown);
-                    } else {
-                        service.props.openDropdowns.remove(dropdown);
-                    }
-                },
                 button = (() => {
                     const processClick = (e, dropdownId) => {
                         e.stopPropagation();
-                        toggleDropdown(service.getDropdown(dropdownId));
+                        service.methods.toggleDropdown(service.methods.getDropdown(dropdownId));
                     },
                         init = (elem, dropdownId) => {
                             elem.on('click', (e) => {
@@ -100,7 +102,7 @@ export class DropdownService {
                         },
                         init = (elem, dropdownCtrl, dropdownId) => {
                             createClickListener(elem);
-                            createWatcher(elem, dropdownCtrl, service.getDropdown(dropdownId));
+                            createWatcher(elem, dropdownCtrl, service.methods.getDropdown(dropdownId));
                         }
         
                     return {
@@ -109,7 +111,7 @@ export class DropdownService {
                 })();
         
             return {
-                serviceInit: service.init,
+                serviceInit: service.methods.init,
                 buttonInit: button.init,
                 menuInit: menu.init
             };
