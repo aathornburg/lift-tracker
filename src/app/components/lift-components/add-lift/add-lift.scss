@@ -1,0 +1,12 @@
+.add-button.add-lift-button {
+    background-color: transparent;
+    border-radius: 20px;
+    border: 1.5px solid $accent-color;
+    transition: background-color .2s linear;
+    color: $accent-color;
+
+    &:hover, &:focus {
+        background-color: $accent-color;
+        color: white;
+    }
+}

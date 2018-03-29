@@ -1,4 +1,9 @@
 .all-lifts {
+    .all-lifts-buttons {
+        display: flex;
+        justify-content: flex-end;
+    }
+
     h2 {
         border-top: solid 1px $main-color;
     }

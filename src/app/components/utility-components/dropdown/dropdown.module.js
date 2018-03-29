@@ -1,35 +1,38 @@
 require('angular');
 
 import { Dropdown } from './Dropdown';
-import { DropdownHelper } from './DropdownHelper';
+import { DropdownService } from './DropdownService';
 
 export default angular
     .module('dropdownModule', [])
-        .directive('hasDropdown', () => (
+        .service('dropdownService', DropdownService)
+        .directive('hasDropdown', (dropdownService) => (
             {
                 restrict: 'A',
                 controller: Dropdown,
                 controllerAs: 'dropdownCtrl',
                 link: {
                     pre: (scope, elem, attrs, dropdownCtrl) => {
-                        dropdownCtrl.setHelper(new DropdownHelper(scope, dropdownCtrl));
+                        dropdownService.register(scope, dropdownCtrl);
                     }
                 }
             }
         ))
-        .directive('dropdownButton', () => (
+        .directive('dropdownButton', (dropdownService) => (
             {
+                restrict: 'A',
                 require: '^hasDropdown',
                 link: (scope, elem, attrs, dropdownCtrl) => {
-                    dropdownCtrl.getHelper().public.buttonInit(elem);
+                    dropdownService.public.buttonInit(elem, dropdownCtrl.dropdownId);
                 }
             }
         ))
-        .directive('dropdownMenu', () => (
+        .directive('dropdownMenu', (dropdownService) => (
             {
+                restrict: 'A',
                 require: '^hasDropdown',
                 link: (scope, elem, attrs, dropdownCtrl) => {
-                    dropdownCtrl.getHelper().public.menuInit(elem, dropdownCtrl);
+                    dropdownService.public.menuInit(elem, dropdownCtrl, dropdownCtrl.dropdownId)
                 }
             }
         ))

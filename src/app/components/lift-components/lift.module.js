@@ -1,7 +1,6 @@
 require('angular');
 
 import { AllLifts } from './all-lifts/AllLifts';
-import { AddLiftWeight } from './add-lift-weight/AddLiftWeight';
 import { Lift } from './lift/Lift';
 
 export default angular
@@ -16,14 +15,10 @@ export default angular
                 bindToController: true,
             }
         ))
-        .directive('addLiftWeight', () => (
+        .directive('addLift', () => (
             {
                 restrict: 'E',
-                templateUrl: 'components/lift-components/add-lift-weight/add-lift-weight.html',
-                controller: AddLiftWeight,
-                controllerAs: 'addLiftWeightCtrl',
-                scope: {},
-                bindToController: true
+                templateUrl: 'components/lift-components/add-lift/add-lift.html'
             }
         ))
         .directive('lift', () => (
