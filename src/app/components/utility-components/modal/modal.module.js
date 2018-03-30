@@ -1,31 +1,43 @@
 require('angular');
 
-import { Modal } from './Dropdown';
+import { Modal } from './Modal';
+import { ModalService } from './ModalService';
 
 export default angular
     .module('modalModule', [])
-        .directive('modal', () => (
+        .service('modalService', ModalService)
+        .directive('modal', (modalService) => (
             {
                 restrict: 'A',
                 controller: Modal,
                 controllerAs: 'modalCtrl',
-                link: (scope, elem, attrs, modalCtrl) => {
+                bindToController: {
+                    modalId: '='
+                },
+                link: {
+                    pre: (scope, elem, attrs, modalCtrl) => {
+                        modalService.register(elem, modalCtrl.modalId);
+                    }
                 }
             }
         ))
-        .directive('modalOpen', () => (
+        .directive('modalOpen', (modalService) => (
             {
                 restrict: 'A',
-                require: '^hasDropdown',
+                scope: {
+                    modalOpen: '='
+                },
                 link: (scope, elem, attrs) => {
+                    modalService.public.initOpen(elem, attrs.modalOpen);
                 }
             }
         ))
-        .directive('modalClose', () => (
+        .directive('modalClose', (modalService) => (
             {
                 restrict: 'A',
                 require: '^modal',
                 link: (scope, elem, attrs, modalCtrl) => {
+                    modalService.public.initClose(elem, modalCtrl.modalId);
                 }
             }
         ))

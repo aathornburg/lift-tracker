@@ -1,11 +1,8 @@
-import util from 'util';
-
 export class DropdownService {
     constructor() {
         this.dropdowns = [];
         this.openDropdowns = [];
         this.public = this.createPublicMethods();
-        this.public.serviceInit();
     }
 
     generateDropdownId() {
@@ -24,7 +21,6 @@ export class DropdownService {
         return (() => {
             const service = {
                 props: {
-                    clickListenerCreated: false,
                     openDropdowns: {
                         add: (openDropdownInst) => {
                             this.openDropdowns.push(openDropdownInst);
@@ -37,16 +33,6 @@ export class DropdownService {
                     }
                 },
                 methods: {
-                    toggleDropdown: (dropdown) => {
-                        dropdown.scope.$apply(dropdown.ctrl.toggle());
-    
-                        if (dropdown.ctrl.showMenu) {
-                            service.methods.closeOpenDropdowns();
-                            service.props.openDropdowns.add(dropdown);
-                        } else {
-                            service.props.openDropdowns.remove(dropdown);
-                        }
-                    },
                     getDropdown: (dropdownId) => {
                         return this.dropdowns.find(
                             dropdown => dropdown.dropdownId === dropdownId
@@ -57,14 +43,25 @@ export class DropdownService {
                             openDropdown => service.methods.toggleDropdown(openDropdown)
                         );
                     },
-                    createDocumentClickListener: () => {
-                        if (!service.props.clickListenerCreated) {
-                            service.props.clickListenerCreated = true;
-                            $(document).on('click', service.methods.closeOpenDropdowns);
-                        }
+                    generateNamespacedClickEvent: (dropdownId) => {
+                        return 'click.' + dropdownId;
                     },
-                    init: () => {
-                        service.methods.createDocumentClickListener();
+                    toggleDropdown: (dropdown) => {
+                        dropdown.scope.$apply(dropdown.ctrl.toggle());
+    
+                        if (dropdown.ctrl.showMenu) {
+                            $(document).on(
+                                service.methods.generateNamespacedClickEvent(dropdown.dropdownId),
+                                service.methods.toggleDropdown.bind(this, dropdown)
+                            );
+                            service.methods.closeOpenDropdowns();
+                            service.props.openDropdowns.add(dropdown);
+                        } else {
+                            $(document).off(
+                                service.methods.generateNamespacedClickEvent(dropdown.dropdownId)
+                            );
+                            service.props.openDropdowns.remove(dropdown);
+                        }
                     }
                 }
             },
@@ -77,7 +74,7 @@ export class DropdownService {
                             elem.on('click', (e) => {
                                 processClick(e, dropdownId);
                             });
-                        }
+                        };
         
                     return {
                         init: init
@@ -103,7 +100,7 @@ export class DropdownService {
                         init = (elem, dropdownCtrl, dropdownId) => {
                             createClickListener(elem);
                             createWatcher(elem, dropdownCtrl, service.methods.getDropdown(dropdownId));
-                        }
+                        };
         
                     return {
                         init: init
@@ -111,7 +108,6 @@ export class DropdownService {
                 })();
         
             return {
-                serviceInit: service.methods.init,
                 buttonInit: button.init,
                 menuInit: menu.init
             };

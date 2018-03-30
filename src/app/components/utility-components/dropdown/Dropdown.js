@@ -5,8 +5,6 @@ export class Dropdown {
         this.dropdownId = dropdownService.generateDropdownId();
     }
 
-    
-
     toggle() {
         this.showMenu = !this.showMenu;
     }
