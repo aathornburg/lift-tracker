@@ -1,108 +1,116 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Montserrat');
 
-body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-
-    h2 {
-        color: $font-color;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 2em;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        font-weight: normal;
-    }
-
-    input[type=text]:focus, input[type=textarea]:focus, input[type=number]:focus {
-        outline: none;
-    }
-
+html {
+    width: 100%;
+    height: 100%;
     
-    .content-area {
-        padding-top: 3em;
-        padding-bottom: 3em;
-        display: flex;
-        justify-content: center;
-
-        .main-content {
-            width: 70%;
-        }
-    }
-
-    /* The CSS that handles input/label styling for text inputs */
-    .text-input-container {
-        $input-padding-bottom: .3em;
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
         position: relative;
-        font-family: 'Open Sans', sans-serif;
 
-        & > label, & > input[type=text] {
-            font-size: 1.8em;
+        h2 {
             color: $font-color;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 2em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: normal;
         }
 
-        & > label {
-            position: absolute;
-            bottom: $input-padding-bottom;
-            transition: all .1s ease;
-            cursor: text;
+        input[type=text]:focus, input[type=textarea]:focus, input[type=number]:focus {
+            outline: none;
         }
 
-        & > input[type=text] {
+        
+        .content-area {
+            padding-top: 3em;
+            padding-bottom: 3em;
+            display: flex;
+            justify-content: center;
+
+            .main-content {
+                width: 70%;
+            }
+        }
+
+        /* The CSS that handles input/label styling for text inputs */
+        .text-input-container {
+            $input-padding-bottom: .3em;
             position: relative;
-            padding-bottom: $input-padding-bottom;
-            border: none;
-            border-bottom: 1px solid $font-color;
-            padding-top: .5em;
-            color: $font-color;
+            font-family: 'Open Sans', sans-serif;
 
-            &:hover {
-                border-color: $main-color-hover;
+            & > label, & > input[type=text] {
+                font-size: 1.8em;
+                color: $font-color;
             }
 
-            &:focus, &.ng-not-empty {
-                border-color: $main-color-hover;
+            & > label {
+                position: absolute;
+                bottom: $input-padding-bottom;
+                transition: all .1s ease;
+                cursor: text;
+            }
 
-                & ~ label {
-                    bottom: 75%;
-                    font-size: 1.2em;
+            & > input[type=text] {
+                position: relative;
+                padding-bottom: $input-padding-bottom;
+                border: none;
+                border-bottom: 1px solid $font-color;
+                padding-top: .5em;
+                color: $font-color;
+
+                &:hover {
+                    border-color: $main-color-hover;
+                }
+
+                &:focus, &.ng-not-empty {
+                    border-color: $main-color-hover;
+
+                    & ~ label {
+                        bottom: 75%;
+                        font-size: 1.2em;
+                    }
                 }
             }
         }
-    }
 
-    /* The CSS that handles an add button */
-    .add-button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 50px;
-        border-radius: 20px;
-        transition: all .2s linear;
-        padding: 10px 20px;
-        overflow: hidden;
-        border: 2px solid transparent;
-        cursor: pointer;
+        /* The CSS that handles an add button */
+        .add-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            border-radius: 20px;
+            transition: all .2s linear;
+            padding: 10px 20px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            cursor: pointer;
 
-        & > .add-button-text {
-            font-weight: 700;
-            font-size: 1.2em;
-            white-space: nowrap;
-            margin-right: 10px;
-        }
-
-        & > .add-button-icon {
-            transition: transform .2s linear;
-            height: 24px; // The icons will be 24px based on the material standard
-            margin-top: -1px; // The plus icon is slightly off in terms of vertical centering
-
-            & > .material-icons {
-                font-weight: bold;
+            & > .add-button-text {
+                font-weight: 700;
+                font-size: 1.2em;
+                white-space: nowrap;
+                margin-right: 10px;
             }
-        }
 
-        &:hover, &:focus {
             & > .add-button-icon {
-                transform: rotate(90deg);
+                transition: transform .2s linear;
+                height: 24px; // The icons will be 24px based on the material standard
+                margin-top: -1px; // The plus icon is slightly off in terms of vertical centering
+
+                & > .material-icons {
+                    font-weight: bold;
+                }
+            }
+
+            &:hover, &:focus {
+                & > .add-button-icon {
+                    transform: rotate(90deg);
+                }
             }
         }
     }

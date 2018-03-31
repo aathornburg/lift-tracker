@@ -6,17 +6,24 @@ import { ModalService } from './ModalService';
 export default angular
     .module('modalModule', [])
         .service('modalService', ModalService)
+        .directive('allModals', () => (
+            {
+                restrict: 'E',
+                templateUrl: 'components/utility-components/modal/all-modals.html'
+            }
+        ))
         .directive('modal', (modalService) => (
             {
                 restrict: 'A',
                 controller: Modal,
                 controllerAs: 'modalCtrl',
                 bindToController: {
-                    modalId: '='
+                    modalId: '@'
                 },
                 link: {
                     pre: (scope, elem, attrs, modalCtrl) => {
-                        modalService.register(elem, modalCtrl.modalId);
+                        console.log("modal-id: " + attrs.modalId);
+                        modalService.public.initModal(scope, elem, attrs.modalId, modalCtrl);
                     }
                 }
             }
@@ -25,7 +32,7 @@ export default angular
             {
                 restrict: 'A',
                 scope: {
-                    modalOpen: '='
+                    modalOpen: '@'
                 },
                 link: (scope, elem, attrs) => {
                     modalService.public.initOpen(elem, attrs.modalOpen);
@@ -37,6 +44,7 @@ export default angular
                 restrict: 'A',
                 require: '^modal',
                 link: (scope, elem, attrs, modalCtrl) => {
+                    console.log("In modal-close, modalId: " + modalCtrl.modalId);
                     modalService.public.initClose(elem, modalCtrl.modalId);
                 }
             }

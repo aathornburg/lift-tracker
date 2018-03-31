@@ -21,6 +21,12 @@ export default angular
                 templateUrl: 'components/lift-components/add-lift/add-lift.html'
             }
         ))
+        .directive('addLiftModal', () => (
+            {
+                restrict: 'E',
+                templateUrl: 'components/lift-components/add-lift-modal/add-lift-modal.html'
+            }
+        ))
         .directive('lift', () => (
             {
                 restrict: 'E',
