@@ -6,10 +6,11 @@ import { ModalService } from './ModalService';
 export default angular
     .module('modalModule', [])
         .service('modalService', ModalService)
-        .directive('allModals', () => (
+        .directive('modalContainer', () => (
             {
                 restrict: 'E',
-                templateUrl: 'components/utility-components/modal/all-modals.html'
+                replace: true,
+                templateUrl: 'components/utility-components/modal/modal-container.html'
             }
         ))
         .directive('modal', (modalService) => (
