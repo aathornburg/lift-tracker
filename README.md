@@ -52,7 +52,7 @@ To Do:
 - ~~Clean up all the modules (reorganize so all like components can share a module... duh)~~
 - Host the Google material icons locally
 - Make dropdowns close on tab-out
-- Determine why I need to pass dropdownCtrl into a scope.$watch when init'ing a dropdownMenu directive, vs. just using the already-set this.ctrl
+- ~~Determine why I need to pass dropdownCtrl into a scope.$watch when init'ing a dropdownMenu directive, vs. just using the already-set this.ctrl~~ This is explained by the scope.$watch having to match up with the controllerAs syntax for the directive!!!
 - Allow dropdowns to be configured on if we want to close them on click/tab out or not
 
 Personal notes:

@@ -14,91 +14,93 @@ export class ModalService extends OverlayControl {
                 constants: {
                     $modalContainer: $(".modal-container")
                 },
-                vars: {
+                props: {
                     modals: {
-                        add: (scope, modalId, elem, modalCtrl) => {
+                        add: (scope, modalId, elem, ctrl) => {
                             this.modals.push({
                                 modalId,
                                 scope,
                                 elem,
-                                modalCtrl
+                                ctrl
                             });
                         }
                     }
                 },
                 methods: {
-                    createOutsideClickListener: (modal) => {
-                        $(document).on(this.overlayControl.generateNamespacedClickEvent(modal.modalId), (e) => {
-                            if (!this.overlayControl.clickIsInsideElement(e, modal.elem)) {
-                                modal.scope.$apply(modal.modalCtrl.close());
-                            }
-                        });
-                    },
-                    removeOutsideClickListener: (modal) => {
-                        $(document).off(this.overlayControl.generateNamespacedClickEvent(modal.modalId));
-                    },
                     getModal: (modalId) => {
                         return this.modals.find(
                             modal => modal.modalId === modalId
                         );
                     },
                     openModal: (modal) => {
-                        service.methods.createOutsideClickListener(modal);
                         service.constants.$modalContainer.removeClass('ng-hide');
                         modal.elem.removeClass('ng-hide');
+                        this.overlayControl.trapTabKey(modal.modalId, modal.elem);
+                        this.overlayControl.createEscapeListener(modal.modalId, directive.modal.close.bind(this, modal)); // Do I need to .bind?
+                        this.overlayControl.createOutsideClickListener(modal.modalId, modal.elem, directive.modal.close.bind(this, modal));
                     },
                     closeModal: (modal) => {
-                        service.methods.removeOutsideClickListener(modal);
+                        this.overlayControl.removeTrappedTabKey(modal.modalId, modal.elem);
+                        this.overlayControl.removeEscapeListener(modal.modalId);
+                        this.overlayControl.removeOutsideClickListener(modal.modalId);
                         service.constants.$modalContainer.addClass('ng-hide');
                         modal.elem.addClass('ng-hide');
                     }
                 }
             },
-                open = {
-                    createClickListener: (elem, modal) => {
-                        elem.on('click', (e) => {
-                            e.stopPropagation();
-                            modal.scope.$apply(modal.modalCtrl.open());
-                        });
+                directive = {
+                    open: {
+                        createClickListener: (elem, modal) => {
+                            elem.on('click', (e) => {
+                                e.stopPropagation();
+                                directive.modal.open(modal);
+                            });
+                        },
+                        init: (elem, modalIdToOpen) => {
+                            directive.open.createClickListener(elem, service.methods.getModal(modalIdToOpen));
+                        }
                     },
-                    init: (elem, modalIdToOpen) => {
-                        open.createClickListener(elem, service.methods.getModal(modalIdToOpen));
-                    }
-                },
-                close = {
-                    createButtonClickListener: (elem, modal) => {
-                        elem.on('click', (e) => {
-                            modal.scope.$apply(modal.modalCtrl.close());
-                        });
+                    close: {
+                        createButtonClickListener: (elem, modal) => {
+                            elem.on('click', (e) => {
+                                directive.modal.close(modal);
+                            });
+                        },
+                        init: (elem, modalIdToClose) => {
+                            directive.close.createButtonClickListener(elem, service.methods.getModal(modalIdToClose));
+                        }
                     },
-                    init: (elem, modalIdToClose) => {
-                        close.createButtonClickListener(elem, service.methods.getModal(modalIdToClose));
-                    }
-                },
-                modal = {
-                    createWatcher: (scope, elem, modalCtrl) => {
-                        scope.$watch('modalCtrl.showModal', (newVal, oldVal) => {
-                            console.log("modalCtrl.showModal changed, newVal: " + newVal);
-                            if (newVal !== oldVal) {
-                                if (newVal === true) {
-                                    console.log("ModalCtrl.showModal changed to true, showing " + modalCtrl.modalId);
-                                    service.methods.openModal(service.methods.getModal(modalCtrl.modalId));
-                                } else {
-                                    service.methods.closeModal(service.methods.getModal(modalCtrl.modalId));
+                    modal: {
+                        open: (modal) => {
+                            modal.scope.$apply(modal.ctrl.open());
+                        },
+                        close: (modal) => {
+                            modal.scope.$apply(modal.ctrl.close());
+                        },
+                        createWatcher: (scope, elem, ctrl) => {
+                            scope.$watch('ctrl.showModal', (newVal, oldVal) => {
+                                console.log("ctrl.showModal changed, newVal: " + newVal);
+                                if (newVal !== oldVal) {
+                                    if (newVal === true) {
+                                        console.log("ctrl.showModal changed to true, showing " + ctrl.modalId);
+                                        service.methods.openModal(service.methods.getModal(ctrl.modalId));
+                                    } else {
+                                        service.methods.closeModal(service.methods.getModal(ctrl.modalId));
+                                    }
                                 }
-                            }
-                        })
-                    },
-                    init: (scope, elem, modalId, modalCtrl) => {
-                        service.vars.modals.add(scope, modalId, elem, modalCtrl);
-                        modal.createWatcher(scope, elem, modalCtrl);
+                            })
+                        },
+                        init: (scope, elem, modalId, ctrl) => {
+                            service.props.modals.add(scope, modalId, elem, ctrl);
+                            directive.modal.createWatcher(scope, elem, ctrl);
+                        }
                     }
                 }
 
             return {
-                initOpen: open.init,
-                initClose: close.init,
-                initModal: modal.init
+                initOpen: directive.open.init,
+                initClose: directive.close.init,
+                initModal: directive.modal.init
             };
         })();
     }

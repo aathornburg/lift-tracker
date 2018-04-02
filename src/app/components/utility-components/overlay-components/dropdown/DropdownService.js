@@ -1,4 +1,5 @@
 import { OverlayControl } from '../OverlayControl';
+import util from 'util';
 
 export class DropdownService extends OverlayControl {
     constructor() {
@@ -12,108 +13,87 @@ export class DropdownService extends OverlayControl {
         return this.dropdowns.length + 1;
     }
 
-    register(scope, menuElem, openElems, ctrl) {
-        this.dropdowns.push((() => {
-            const getAllDropdownRelatedElems = () => {
-                return menuElem.add(openElems);
-            };
-
-            return {
-                dropdownId: ctrl.dropdownId,
-                scope,
-                menuElem,
-                openElems,
-                allDropdownElems: getAllDropdownRelatedElems(),
-                ctrl
-            };
-        })());
-    }
-
     createPublicMethods() {
         return (() => {
             const service = {
                 props: {
-                    openDropdowns: {
-                        add: (openDropdownInst) => {
-                            this.openDropdowns.push(openDropdownInst);
-                        },
-                        remove: (openDropdownInst) => {
-                            this.openDropdowns = this.openDropdowns.filter(
-                                openDropdown => openDropdown != openDropdownInst
-                            );
+                    dropdowns: {
+                        add: (scope, menuElem, openElems, ctrl) => {
+                            this.dropdowns.push((() => {
+                                const getAllDropdownRelatedElems = () => {
+                                    return menuElem.add(openElems);
+                                };
+
+                                return {
+                                    dropdownId: ctrl.dropdownId,
+                                    scope,
+                                    menuElem,
+                                    openElems,
+                                    allDropdownElems: getAllDropdownRelatedElems(),
+                                    ctrl
+                                };
+                            })());
+
+                            return this.dropdowns[this.dropdowns.length - 1];
                         }
                     }
                 },
                 methods: {
-                    updateDropdownWithElement: (dropdownId, elem) => {
-                        service.methods.getDropdown(dropdownId).elem = elem;
-                    },
                     getDropdown: (dropdownId) => {
                         return this.dropdowns.find(
                             dropdown => dropdown.dropdownId === dropdownId
                         );
                     },
-                    closeOpenDropdowns: () => {
-                        this.openDropdowns.forEach(
-                            openDropdown => service.methods.toggleDropdown(openDropdown)
+                    openDropdown: (dropdown) => {
+                        dropdown.menuElem.removeClass('ng-hide');
+                        this.overlayControl.createFocusLeavingElementListener(
+                            dropdown.dropdownId,
+                            dropdown.allDropdownElems,
+                            directive.dropdown.toggle.bind(this, dropdown)
                         );
                     },
-                    toggleDropdown: (dropdown) => {
-                        dropdown.scope.$apply(dropdown.ctrl.toggle());
-
-                        if (dropdown.ctrl.showMenu) {
-                            dropdown.allDropdownElems.on(
-                                this.overlayControl.generateNamespacedEvent('focusout', dropdown.dropdownId),
-                                (e) => {
-                                    if (this.overlayControl.focusIsLeavingElement(e, dropdown.allDropdownElems)) {
-                                        service.methods.toggleDropdown(dropdown);
-                                    }
-                                }
-                            );
-                        } else {
-                            dropdown.allDropdownElems.off(this.overlayControl.generateNamespacedEvent('focusout', dropdown.dropdownId));
-                        }
+                    closeDropdown: (dropdown) => {
+                        this.overlayControl.removeFocusLeavingElementListener(dropdown.dropdownId, dropdown.allDropdownElems);
+                        dropdown.menuElem.addClass('ng-hide');
                     }
                 }
             },
-                button = (() => {
-                    const processClick = (e, dropdownId) => {
-                        service.methods.toggleDropdown(service.methods.getDropdown(dropdownId));
-                    },
-                        init = (elem, dropdownId) => {
-                            elem.on('click', (e) => {
-                                processClick(e, dropdownId);
+                directive = {
+                    button: {
+                        processClick: (dropdown) => {
+                            directive.dropdown.toggle(dropdown);
+                        },
+                        init: (dropdown) => {
+                            dropdown.openElems.on('click', (e) => {
+                                directive.button.processClick(dropdown);
                             });
-                        };
-        
-                    return {
-                        init: init
-                    };
-                })(),
-                menu = (() => {
-                    const createWatcher = (elem, dropdownCtrl, dropdown) => {
-                            dropdown.scope.$watch('dropdownCtrl.showMenu', (newVal, oldVal) => {
+                        }
+                    },
+                    dropdown: {
+                        toggle: (dropdown) => {
+                            dropdown.scope.$apply(dropdown.ctrl.toggle());
+                        },
+                        createWatcher: (scope, dropdown) => {
+                            scope.$watch('dropdownCtrl.showMenu', (newVal, oldVal) => {
                                 if (newVal !== oldVal) {
                                     if (newVal === true) {
-                                        elem.removeClass('ng-hide');
+                                        service.methods.openDropdown(dropdown);
                                     } else {
-                                        elem.addClass('ng-hide');
+                                        service.methods.closeDropdown(dropdown);
                                     }
                                 }
                             });
                         },
-                        init = (elem, dropdownCtrl, dropdownId) => {
-                            createWatcher(elem, dropdownCtrl, service.methods.getDropdown(dropdownId));
-                        };
-        
-                    return {
-                        init: init
-                    };
-                })();
+                        init: (scope, menuElem, openElems, ctrl) => {
+                            let dropdown = service.props.dropdowns.add(scope, menuElem, openElems, ctrl);
+                            directive.dropdown.createWatcher(scope, dropdown);
+                            directive.button.init(dropdown);
+                        }
+                    }
+                }
         
             return {
-                buttonInit: button.init,
-                menuInit: menu.init
+                dropdownInit: directive.dropdown.init,
             };
         })();
     }

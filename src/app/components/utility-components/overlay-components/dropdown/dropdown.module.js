@@ -11,14 +11,12 @@ export default angular
                 restrict: 'A',
                 controller: Dropdown,
                 controllerAs: 'dropdownCtrl',
-                link: {
-                    pre: (scope, elem, attrs, dropdownCtrl) => {
-                        dropdownService.register(scope,
-                            elem.find('[dropdown-menu]'),
-                            elem.find('[dropdown-button]'),
-                            dropdownCtrl
-                        );
-                    }
+                link: (scope, elem, attrs, dropdownCtrl) => {
+                    dropdownService.public.dropdownInit(scope,
+                        elem.find('[dropdown-menu]'),
+                        elem.find('[dropdown-button]'),
+                        dropdownCtrl
+                    );
                 }
             }
         ))
@@ -26,18 +24,12 @@ export default angular
             {
                 restrict: 'A',
                 require: '^hasDropdown',
-                link: (scope, elem, attrs, dropdownCtrl) => {
-                    dropdownService.public.buttonInit(elem, dropdownCtrl.dropdownId);
-                }
             }
         ))
         .directive('dropdownMenu', (dropdownService) => (
             {
                 restrict: 'A',
                 require: '^hasDropdown',
-                link: (scope, elem, attrs, dropdownCtrl) => {
-                    dropdownService.public.menuInit(elem, dropdownCtrl, dropdownCtrl.dropdownId)
-                }
             }
         ))
     .name;
