@@ -13,7 +13,11 @@ export default angular
                 controllerAs: 'dropdownCtrl',
                 link: {
                     pre: (scope, elem, attrs, dropdownCtrl) => {
-                        dropdownService.register(scope, dropdownCtrl);
+                        dropdownService.register(scope,
+                            elem.find('[dropdown-menu]'),
+                            elem.find('[dropdown-button]'),
+                            dropdownCtrl
+                        );
                     }
                 }
             }

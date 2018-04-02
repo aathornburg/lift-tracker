@@ -10,7 +10,7 @@ export default angular
             {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'components/utility-components/modal/modal-container.html'
+                templateUrl: 'components/utility-components/overlay-components/modal/modal-container.html'
             }
         ))
         .directive('modal', (modalService) => (

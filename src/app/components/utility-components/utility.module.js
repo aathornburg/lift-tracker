@@ -2,8 +2,8 @@
 
 require('angular');
 
-import { dropdownModule } from './dropdown/dropdown.module';
-import { modalModule } from './modal/modal.module';
+import { dropdownModule } from './overlay-components/dropdown/dropdown.module';
+import { modalModule } from './overlay-components/modal/modal.module';
 
 export default angular
     .module('utilityModule', ['dropdownModule', 'modalModule'])

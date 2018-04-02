@@ -1,5 +1,8 @@
-export class DropdownService {
+import { OverlayControl } from '../OverlayControl';
+
+export class DropdownService extends OverlayControl {
     constructor() {
+        super();
         this.dropdowns = [];
         this.openDropdowns = [];
         this.public = this.createPublicMethods();
@@ -9,12 +12,21 @@ export class DropdownService {
         return this.dropdowns.length + 1;
     }
 
-    register(scope, ctrl) {
-        this.dropdowns.push({
-            dropdownId: ctrl.dropdownId,
-            scope,
-            ctrl
-        });
+    register(scope, menuElem, openElems, ctrl) {
+        this.dropdowns.push((() => {
+            const getAllDropdownRelatedElems = () => {
+                return menuElem.add(openElems);
+            };
+
+            return {
+                dropdownId: ctrl.dropdownId,
+                scope,
+                menuElem,
+                openElems,
+                allDropdownElems: getAllDropdownRelatedElems(),
+                ctrl
+            };
+        })());
     }
 
     createPublicMethods() {
@@ -33,6 +45,9 @@ export class DropdownService {
                     }
                 },
                 methods: {
+                    updateDropdownWithElement: (dropdownId, elem) => {
+                        service.methods.getDropdown(dropdownId).elem = elem;
+                    },
                     getDropdown: (dropdownId) => {
                         return this.dropdowns.find(
                             dropdown => dropdown.dropdownId === dropdownId
@@ -43,31 +58,26 @@ export class DropdownService {
                             openDropdown => service.methods.toggleDropdown(openDropdown)
                         );
                     },
-                    generateNamespacedClickEvent: (dropdownId) => {
-                        return 'click.' + dropdownId;
-                    },
                     toggleDropdown: (dropdown) => {
                         dropdown.scope.$apply(dropdown.ctrl.toggle());
-    
+
                         if (dropdown.ctrl.showMenu) {
-                            $(document).on(
-                                service.methods.generateNamespacedClickEvent(dropdown.dropdownId),
-                                service.methods.toggleDropdown.bind(this, dropdown)
+                            dropdown.allDropdownElems.on(
+                                this.overlayControl.generateNamespacedEvent('focusout', dropdown.dropdownId),
+                                (e) => {
+                                    if (this.overlayControl.focusIsLeavingElement(e, dropdown.allDropdownElems)) {
+                                        service.methods.toggleDropdown(dropdown);
+                                    }
+                                }
                             );
-                            service.methods.closeOpenDropdowns();
-                            service.props.openDropdowns.add(dropdown);
                         } else {
-                            $(document).off(
-                                service.methods.generateNamespacedClickEvent(dropdown.dropdownId)
-                            );
-                            service.props.openDropdowns.remove(dropdown);
+                            dropdown.allDropdownElems.off(this.overlayControl.generateNamespacedEvent('focusout', dropdown.dropdownId));
                         }
                     }
                 }
             },
                 button = (() => {
                     const processClick = (e, dropdownId) => {
-                        e.stopPropagation();
                         service.methods.toggleDropdown(service.methods.getDropdown(dropdownId));
                     },
                         init = (elem, dropdownId) => {
@@ -81,12 +91,7 @@ export class DropdownService {
                     };
                 })(),
                 menu = (() => {
-                    const createClickListener = (elem) => {
-                        elem.on('click', (e) => {
-                            e.stopPropagation(); // Prevent closing of dropdown on menu click
-                        })
-                    },
-                        createWatcher = (elem, dropdownCtrl, dropdown) => {
+                    const createWatcher = (elem, dropdownCtrl, dropdown) => {
                             dropdown.scope.$watch('dropdownCtrl.showMenu', (newVal, oldVal) => {
                                 if (newVal !== oldVal) {
                                     if (newVal === true) {
@@ -98,7 +103,6 @@ export class DropdownService {
                             });
                         },
                         init = (elem, dropdownCtrl, dropdownId) => {
-                            createClickListener(elem);
                             createWatcher(elem, dropdownCtrl, service.methods.getDropdown(dropdownId));
                         };
         

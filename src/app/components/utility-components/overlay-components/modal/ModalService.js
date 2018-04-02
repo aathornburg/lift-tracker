@@ -1,5 +1,8 @@
-export class ModalService {
+import { OverlayControl } from '.././OverlayControl';
+
+export class ModalService extends OverlayControl {
     constructor() {
+        super();
         this.modals = [];
         this.openModals = [];
         this.public = this.createPublicMethods();
@@ -15,8 +18,8 @@ export class ModalService {
                     modals: {
                         add: (scope, modalId, elem, modalCtrl) => {
                             this.modals.push({
-                                scope,
                                 modalId,
+                                scope,
                                 elem,
                                 modalCtrl
                             });
@@ -24,16 +27,15 @@ export class ModalService {
                     }
                 },
                 methods: {
-                    generateNamespacedClickEvent: (modalId) => {
-                        return 'click.' + modalId;
-                    },
                     createOutsideClickListener: (modal) => {
-                        $(document).on(service.methods.generateNamespacedClickEvent(modal.modalId), (e) => {
-                            modal.scope.$apply(modal.modalCtrl.close());
+                        $(document).on(this.overlayControl.generateNamespacedClickEvent(modal.modalId), (e) => {
+                            if (!this.overlayControl.clickIsInsideElement(e, modal.elem)) {
+                                modal.scope.$apply(modal.modalCtrl.close());
+                            }
                         });
                     },
                     removeOutsideClickListener: (modal) => {
-                        $(document).off(service.methods.generateNamespacedClickEvent(modal.modalId));
+                        $(document).off(this.overlayControl.generateNamespacedClickEvent(modal.modalId));
                     },
                     getModal: (modalId) => {
                         return this.modals.find(
