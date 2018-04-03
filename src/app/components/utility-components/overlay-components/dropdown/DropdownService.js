@@ -1,5 +1,4 @@
 import { OverlayControl } from '../OverlayControl';
-import util from 'util';
 
 export class DropdownService extends OverlayControl {
     constructor() {

@@ -9,7 +9,6 @@
     "prod-serve": "node dist/index.js"
   },
   "dependencies": {
-    "jquery": "~3.3.1",
     "angular": "~1.6.4",
     "angular-aria": "~1.6.4",
     "angular-resource": "~1.6.4",

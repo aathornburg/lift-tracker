@@ -3,6 +3,8 @@ require('angular');
 import { Modal } from './Modal';
 import { ModalService } from './ModalService';
 
+import util from 'util';
+
 export default angular
     .module('modalModule', [])
         .service('modalService', ModalService)
@@ -21,11 +23,8 @@ export default angular
                 bindToController: {
                     modalId: '@'
                 },
-                link: {
-                    pre: (scope, elem, attrs, modalCtrl) => {
-                        console.log("modal-id: " + attrs.modalId);
-                        modalService.public.initModal(scope, elem, attrs.modalId, modalCtrl);
-                    }
+                link:  (scope, elem, attrs, modalCtrl) => {
+                    modalService.public.initModal(scope, elem, attrs.modalId, modalCtrl);
                 }
             }
         ))
@@ -45,7 +44,6 @@ export default angular
                 restrict: 'A',
                 require: '^modal',
                 link: (scope, elem, attrs, modalCtrl) => {
-                    console.log("In modal-close, modalId: " + modalCtrl.modalId);
                     modalService.public.initClose(elem, modalCtrl.modalId);
                 }
             }

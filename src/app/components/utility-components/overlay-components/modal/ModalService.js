@@ -1,5 +1,7 @@
 import { OverlayControl } from '.././OverlayControl';
 
+import util from 'util';
+
 export class ModalService extends OverlayControl {
     constructor() {
         super();
@@ -36,12 +38,12 @@ export class ModalService extends OverlayControl {
                         service.constants.$modalContainer.removeClass('ng-hide');
                         modal.elem.removeClass('ng-hide');
                         this.overlayControl.trapTabKey(modal.modalId, modal.elem);
-                        this.overlayControl.createEscapeListener(modal.modalId, directive.modal.close.bind(this, modal)); // Do I need to .bind?
+                        this.overlayControl.createEscapeKeyListener(modal.modalId, directive.modal.close.bind(this, modal)); // Do I need to .bind?
                         this.overlayControl.createOutsideClickListener(modal.modalId, modal.elem, directive.modal.close.bind(this, modal));
                     },
                     closeModal: (modal) => {
                         this.overlayControl.removeTrappedTabKey(modal.modalId, modal.elem);
-                        this.overlayControl.removeEscapeListener(modal.modalId);
+                        this.overlayControl.removeEscapeKeyListener(modal.modalId);
                         this.overlayControl.removeOutsideClickListener(modal.modalId);
                         service.constants.$modalContainer.addClass('ng-hide');
                         modal.elem.addClass('ng-hide');
@@ -78,11 +80,9 @@ export class ModalService extends OverlayControl {
                             modal.scope.$apply(modal.ctrl.close());
                         },
                         createWatcher: (scope, elem, ctrl) => {
-                            scope.$watch('ctrl.showModal', (newVal, oldVal) => {
-                                console.log("ctrl.showModal changed, newVal: " + newVal);
+                            scope.$watch('modalCtrl.showModal', (newVal, oldVal) => {
                                 if (newVal !== oldVal) {
                                     if (newVal === true) {
-                                        console.log("ctrl.showModal changed to true, showing " + ctrl.modalId);
                                         service.methods.openModal(service.methods.getModal(ctrl.modalId));
                                     } else {
                                         service.methods.closeModal(service.methods.getModal(ctrl.modalId));

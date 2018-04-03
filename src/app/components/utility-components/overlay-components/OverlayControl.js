@@ -6,24 +6,32 @@ export class OverlayControl {
     createPublicOverlayControlFunctions() {
         return (() => {
             const methods = {
-                focus: {
-                    getElementGainingFocus: (e) => {
+                generateNamespacedEvent: (eventType, id) => {
+                    return eventType + '.' + id;
+                },
+                elementOutsideContainer: ($element, $container) => {
+                    return !($container.has($element).length)
+                        && !($container.is($element)); // This is an inclusive check
+                },
+                event: {
+                    getRelatedElement: (e) => {
                         if (e.relatedTarget !== null) { /* Chrome and FF support relatedTarget on focus out */
                             return $(e.relatedTarget);
                         } else { /* IE doesn't support relatedTarget but supports document.activeElement */
                             return $(document.activeElement);
                         }
                     },
-                    focusIsLeavingElement: (e, $element) => {
-                        return !($($element).has(methods.focus.getElementGainingFocus(e)).length)
-                            && !($element.is(methods.focus.getElementGainingFocus(e)));
-                    },
+                    getTargetElement: (e) => {
+                        return $(e.target);
+                    }
+                },
+                focus: {
                     leavingElement: {
                         createListener: (id, $element, callback) => {
                             $element.on(
                                 methods.generateNamespacedEvent('focusout', id),
                                 (e) => {
-                                    if (methods.focus.focusIsLeavingElement(e, $element)) {
+                                    if (methods.elementOutsideContainer(methods.event.getRelatedElement(e), $element)) {
                                         callback();
                                     }
                                 }
@@ -36,30 +44,59 @@ export class OverlayControl {
                         }
                     }
                 },
+                click: {
+                    leavingElement: {
+                        createListener: (id, $element, callback) => {
+                            $(document).on(
+                                methods.generateNamespacedEvent('click', id),
+                                (e) => {
+                                    if (methods.elementOutsideContainer(methods.event.getTargetElement(e), $element)) {
+                                        callback();
+                                    }
+                                }
+                            );
+                        },
+                        removeListener: (id, $element) => {
+                            $(document).off(
+                                methods.generateNamespacedEvent('click', id)
+                            );
+                        }
+                    }
+                },
                 tabKey: {
+                    leavingFromFirstFocusableElement: (e, $focusableItems) => {
+                        return (document.activeElement === $focusableItems[0])
+                            && e.shiftKey;
+                    },
+                    leavingFromLastFocusableElement: (e, $focusableItems) => {
+                        return (document.activeElement === $focusableItems[$focusableItems.length - 1])
+                            && !e.shiftKey;
+                    },
                     tabToCorrectElement: (e, $element, $focusableItems) => {
-                        if (methods.focus.focusIsLeavingElement(e, $element)) {
-                            if (e.shiftKey) {
-                                $focusableItems.slice(-1).focus(); // Should we do $focusableItems[$focusableItems.length - 1].focus()?
-                            } else {
-                                $focusableItems[0].focus();
-                            }
+                        if (methods.tabKey.leavingFromFirstFocusableElement(e, $focusableItems)) {
+                            e.preventDefault();
+                            $focusableItems[$focusableItems.length - 1].focus();
+                        } else if (methods.tabKey.leavingFromLastFocusableElement(e, $focusableItems)) {
+                            e.preventDefault();
+                            $focusableItems[0].focus();
                         }
                     },
                     trap: (id, $element) => {
                         let $focusableItems = $element.find(':focusable');  // Need jQuery UI for this
-                        $focusableItems[0].focus(); // Force focus onto first focusable item
+                        $focusableItems[0].focus();
 
                         $element.on(
-                            methods.generateNamespacedEvent('focusout', id),
+                            methods.generateNamespacedEvent('keydown', id),
                             (e) => {
-                                tabToCorrectElement(e, $element, $focusableItems);
+                                if (e.keyCode === 9) {
+                                    methods.tabKey.tabToCorrectElement(e, $element, $focusableItems);
+                                }
                             }
                         );
                     },
                     removeTrap: (id, $element) => {
                         $element.off(
-                            methods.generateNamespacedEvent('focusout', id)
+                            methods.generateNamespacedEvent('keydown', id)
                         );
                     }
                 },
@@ -79,34 +116,14 @@ export class OverlayControl {
                             methods.generateNamespacedEvent('keydown', id)
                         );
                     }
-                },
-                outsideClick: {
-                    createListener: (id, $element, callback) => {
-                        $(document).on(
-                            methods.generateNamespacedEvent('click', id),
-                            (e) => {
-                                if (methods.focus.focusIsLeavingElement(e, $element)) {
-                                    callback();
-                                }
-                            }
-                        )
-                    },
-                    removeListener: (id) => {
-                        $(document).off(
-                            methods.generateNamespacedEvent('click', id)
-                        );
-                    }
-                },
-                generateNamespacedEvent: (eventType, id) => {
-                    return eventType + '.' + id;
                 }
             };
 
             return {
-                createEscapeListener: methods.escapeKey.createListener,
-                removeEscapeListener: methods.escapeKey.removeListener,
-                createOutsideClickListener: methods.outsideClick.createListener,
-                removeOutsideClickListener: methods.outsideClick.removeListener,
+                createEscapeKeyListener: methods.escapeKey.createListener,
+                removeEscapeKeyListener: methods.escapeKey.removeListener,
+                createOutsideClickListener: methods.click.leavingElement.createListener,
+                removeOutsideClickListener: methods.click.leavingElement.removeListener,
                 createFocusLeavingElementListener: methods.focus.leavingElement.createListener,
                 removeFocusLeavingElementListener: methods.focus.leavingElement.removeListener,
                 trapTabKey: methods.tabKey.trap,
