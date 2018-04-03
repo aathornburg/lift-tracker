@@ -50,9 +50,14 @@ export class DropdownService extends OverlayControl {
                             dropdown.allDropdownElems,
                             directive.dropdown.toggle.bind(this, dropdown)
                         );
+                        this.overlayControl.createEscapeKeyListener(
+                            dropdown.dropdownId,
+                            directive.dropdown.toggle.bind(this, dropdown)
+                        );
                     },
                     closeDropdown: (dropdown) => {
                         this.overlayControl.removeFocusLeavingElementListener(dropdown.dropdownId, dropdown.allDropdownElems);
+                        this.overlayControl.removeEscapeKeyListener(dropdown.dropdownId);
                         dropdown.menuElem.addClass('ng-hide');
                     }
                 }

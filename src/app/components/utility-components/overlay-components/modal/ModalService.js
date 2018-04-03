@@ -1,7 +1,5 @@
 import { OverlayControl } from '.././OverlayControl';
 
-import util from 'util';
-
 export class ModalService extends OverlayControl {
     constructor() {
         super();
