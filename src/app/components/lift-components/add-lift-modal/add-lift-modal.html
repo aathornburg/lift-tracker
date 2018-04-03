@@ -1,26 +1,27 @@
 <div class="modal ng-hide" modal modal-id="add-lift">
-    <form name="addLiftWeightCtrl.addLiftForm" ng-submit="addLiftWeightCtrl.submitForm()" class="add-lift-form" autocomplete="off" novalidate>
-        <div class="lift-choice text-input-container add-lift-input-container">
-            <input type="text" name="addLiftWeightCtrl.addLiftForm.lift" ng-model="addLiftWeightCtrl.addLiftForm.lift" id="lift-input" class="lift-input" required />
-            <label for="lift-input" class="add-lift-input-label">Lift</label>
-        </div>
-        <div class="weight-choice text-input-container add-lift-input-container">
-            <input type="text" name="addLiftWeightCtrl.addLiftForm.weight" ng-model="addLiftWeightCtrl.addLiftForm.weight" id="weight-input" class="weight-input" required />
-            <label for="weight-input">Weight</label>
-        </div>
-        <!-- <div class="sets-choice text-input-container add-lift-input-container">
-            <input type="text" name="addLiftWeightCtrl.addLiftForm.sets" ng-model="addLiftWeightCtrl.addLiftForm.sets" id="sets-input" class="sets-input" required />
-            <label for="sets-input">Sets</label>
-        </div>
-        <div class="reps-choice text-input-container add-lift-input-container">
-            <input type="text" name="addLiftWeightCtrl.addLiftForm.reps" ng-model="addLiftWeightCtrl.addLiftForm.reps" id="reps-input" class="reps-input" required />
-            <label for="reps-input">Reps</label>
-        </div> -->
-        <button class="add-lift-button add-button">
-            <div class="add-lift-button-text add-button-text">Add Lift</div>
-            <div class="add-button-icon">
-                <i class="material-icons">add</i>
+    <form name="addLiftWeightCtrl.addLiftForm" ng-submit="addLiftWeightCtrl.submitForm()" class="modal-form add-lift-form" autocomplete="off" novalidate>
+        <div class="modal-content">
+            <div class="modal-title">Add Lift</div>
+            <div class="lift-choice text-input-container add-lift-input-container">
+                <input type="text" name="addLiftWeightCtrl.addLiftForm.lift" ng-model="addLiftWeightCtrl.addLiftForm.lift" id="lift-input" class="lift-input" required />
+                <label for="lift-input" class="add-lift-input-label">Lift</label>
             </div>
-        </button>
+            <div class="weight-choice text-input-container add-lift-input-container">
+                <input type="text" name="addLiftWeightCtrl.addLiftForm.weight" ng-model="addLiftWeightCtrl.addLiftForm.weight" id="weight-input" class="weight-input" required />
+                <label for="weight-input">Weight</label>
+            </div>
+            <!-- <div class="sets-choice text-input-container add-lift-input-container">
+                <input type="text" name="addLiftWeightCtrl.addLiftForm.sets" ng-model="addLiftWeightCtrl.addLiftForm.sets" id="sets-input" class="sets-input" required />
+                <label for="sets-input">Sets</label>
+            </div>
+            <div class="reps-choice text-input-container add-lift-input-container">
+                <input type="text" name="addLiftWeightCtrl.addLiftForm.reps" ng-model="addLiftWeightCtrl.addLiftForm.reps" id="reps-input" class="reps-input" required />
+                <label for="reps-input">Reps</label>
+            </div> -->
+        </div>
+        <div class="modal-buttons">
+            <button modal-close class="modal-cancel-button">Cancel</button>
+            <button type="submit" class="add-lift-button add-button">Add</button>
+        </div>
     </form>
 </div>

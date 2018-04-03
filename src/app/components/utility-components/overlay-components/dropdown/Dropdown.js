@@ -7,6 +7,5 @@ export class Dropdown {
 
     toggle() {
         this.showMenu = !this.showMenu;
-        console.log("Dropdown showMenu toggled to " + this.showMenu);
     }
 }

@@ -43,13 +43,14 @@ html {
             font-family: 'Open Sans', sans-serif;
 
             & > label, & > input[type=text] {
-                font-size: 1.8em;
+                font-size: 1.5em;
                 color: $font-color;
             }
 
             & > label {
                 position: absolute;
                 bottom: $input-padding-bottom;
+                left: 0;
                 transition: all .1s ease;
                 cursor: text;
             }
