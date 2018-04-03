@@ -23,8 +23,10 @@ export default angular
                 bindToController: {
                     modalId: '@'
                 },
-                link:  (scope, elem, attrs, modalCtrl) => {
-                    modalService.public.initModal(scope, elem, attrs.modalId, modalCtrl);
+                link: {
+                    pre: (scope, elem, attrs, modalCtrl) => {
+                        modalService.public.initModal(scope, elem, attrs.modalId, modalCtrl);
+                    }
                 }
             }
         ))
