@@ -16,9 +16,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 15em;
+        width: 25em;
         padding: 2em;
         background-color: white;
         border-radius: 2px;
+
+        .text-input-container {
+            margin-bottom: 1.5em;
+
+            & input[type=text] {
+                width: 100%;
+            }
+        }
     }
 }
