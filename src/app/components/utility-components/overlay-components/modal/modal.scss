@@ -45,8 +45,21 @@
                 box-sizing: border-box;
                 padding: 0 1.5em;
 
-                .text-input-container {
+                .modal-sub-title {
+                    color: $font-color;
+                    font-size: 1.3em;
+                }
+
+                .modal-section:not(:last-child) {
                     margin-bottom: 1.5em;
+                }
+
+                .select-input-container {
+                    margin-top: 1em;
+                }
+
+                .text-input-container {
+                    margin-top: 1em;
 
                     & input[type=text] {
                         width: 100%;
@@ -62,6 +75,7 @@
                 width: 100%;
                 box-sizing: border-box;
                 height: 50px;
+                margin-top: 1em;
 
                 & button {
                     background: transparent;

@@ -3,8 +3,6 @@ require('angular');
 import { Modal } from './Modal';
 import { ModalService } from './ModalService';
 
-import util from 'util';
-
 export default angular
     .module('modalModule', [])
         .service('modalService', ModalService)

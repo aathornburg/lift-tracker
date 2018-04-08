@@ -20,10 +20,9 @@ html {
             font-weight: normal;
         }
 
-        input[type=text]:focus, input[type=textarea]:focus, input[type=number]:focus {
+        input[type=text]:focus, input[type=textarea]:focus, input[type=number]:focus, select:focus {
             outline: none;
         }
-
         
         .content-area {
             padding-top: 3em;
@@ -36,16 +35,30 @@ html {
             }
         }
 
+        /* The CSS that handles label styling */
+        label, input[type=text] {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.2em;
+            color: $font-color;
+        }
+
+        /* The CSS that handles select styling for select boxes */
+        select {
+            border: none;
+            font-size: 1em;
+            color: $font-color;
+            border-bottom: 1px solid $light-font-color;
+
+            &:hover, &:focus {
+                border-color: $main-color-hover;
+            }
+        }
+
         /* The CSS that handles input/label styling for text inputs */
         .text-input-container {
             $input-padding-bottom: .3em;
             position: relative;
-            font-family: 'Open Sans', sans-serif;
-
-            & > label, & > input[type=text] {
-                font-size: 1.5em;
-                color: $font-color;
-            }
+            box-sizing: border-box;
 
             & > label {
                 position: absolute;
@@ -57,10 +70,12 @@ html {
 
             & > input[type=text] {
                 position: relative;
+                font-size: 1.2em;
                 padding-bottom: $input-padding-bottom;
                 border: none;
-                border-bottom: 1px solid $font-color;
-                padding-top: .5em;
+                border-bottom: 1px solid $light-font-color;
+                padding-top: .3em;
+                margin-top: .2em;
                 color: $font-color;
 
                 &:hover {
@@ -72,10 +87,18 @@ html {
 
                     & ~ label {
                         bottom: 75%;
-                        font-size: 1.2em;
+                        font-size: 1em;
+                        color: $main-color-hover;
                     }
                 }
             }
+        }
+
+        /* The CSS that handles toggles */
+        .toggle-input-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         /* The CSS that handles an add button */
