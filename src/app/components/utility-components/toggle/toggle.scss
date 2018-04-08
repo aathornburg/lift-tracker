@@ -1,4 +1,5 @@
-toggle {
+toggle { // TODO:  Make these top/left/bottom values not pixel specific
+    position: relative;
     width: 35px;
     height: 15px;
 
@@ -8,26 +9,70 @@ toggle {
         width: 35px;
         height: 15px;
         border-radius: 100px;
-        background-color: $main-color;
+        background-color: $light-font-color;
         cursor: pointer;
+        transition: all .5s ease;
 
-        &:after {
-            content: '';
-            position: absolute;
-            display: block;
+        & > .toggle-circle {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+
+        & > .toggle-circle-radiate {
+            opacity: 0.2;
+            background-color: $font-color;
+        }
+
+        & > .toggle-circle, & > .toggle-circle-radiate {
+            left: 0;
+            top: -2.5px;
             height: 20px;
             width: 20px;
-            top: -2px;
+            position: absolute;
+            display: block;
             border-radius: 100px;
-            background-color: $main-color-hover;
+            transition: all .2s ease;
+        }
+
+        &:focus {
+            outline: none;
         }
     }
 
-    input[type=checkbox]:checked ~ label:after {
-        right: 0;
+    input[type=checkbox]:hover ~ label, input[type=checkbox]:focus ~ label {
+        & > .toggle-circle-radiate {
+            left: -10px;
+            top: -12px;
+            height: 40px;
+            width: 40px;
+        }
+    }
+
+    input[type=checkbox]:checked ~ label {
+        background-color: $main-color-hover;
+
+        & > .toggle-circle {
+            left: 20px;
+        }
+
+        & > .toggle-circle-radiate {
+            left: 20px;
+        }
+
+        & > .toggle-circle, & > .toggle-circle-radiate {
+            background-color: $main-color;
+        }
+    }
+
+    input[type=checkbox]:checked:hover ~ label, input[type=checkbox]:checked:focus ~ label {
+        & > .toggle-circle-radiate {
+            left: 10px;
+        }
     }
 
     input[type=checkbox] {
-        display: none;
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
     }
 }

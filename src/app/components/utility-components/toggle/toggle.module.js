@@ -1,7 +1,5 @@
 require('angular');
 
-import { Toggle } from './Toggle';
-
 export default angular
     .module('toggleModule', [])
         .directive('toggle', () => (
@@ -11,10 +9,11 @@ export default angular
                 templateUrl: 'components/utility-components/toggle/toggle.html',
                 scope: {
                     toggleId: '@',
-                    name: '@'
+                    name: '@',
+                    state: '@'
                 },
                 link: (scope, elem, attrs, ngModel) => {
-
+                    // TODO:  ngModel logic here
                 }
             }
         ))
