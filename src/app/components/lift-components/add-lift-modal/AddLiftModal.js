@@ -2,5 +2,7 @@ export class AddLiftModal {
     /* @ngInject */
     constructor() {}
 
-    submitForm() {}
+    submitForm() {
+        console.log(this.addLiftForm.straightSets);
+    }
 }
