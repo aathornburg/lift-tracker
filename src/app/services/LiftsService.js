@@ -56,41 +56,41 @@ export class LiftsService {
     }
 
     storeAllLifts() {
-        this.$http.get('/api/lifts')
-            .then((response, status, headers) => {
-                this.lifts = response.data.lifts;
-            })
-            .catch((data, status, headers) => {
-                // TODO:  Failure scenario
-                console.log("Lifts were not received :(");
-            });
+        // this.$http.get('/api/lifts')
+        //     .then((response, status, headers) => {
+        //         this.lifts = response.data.lifts;
+        //     })
+        //     .catch((data, status, headers) => {
+        //         // TODO:  Failure scenario
+        //         console.log("Lifts were not received :(");
+        //     });
 
-        // this.lifts = [
-        //     {
-        //         _id: 1,
-        //         lift: "Bench press",
-        //         weight: "135"
-        //     },
-        //     {
-        //         _id: 1,
-        //         lift: "Squat",
-        //         weight: "135"
-        //     },
-        //     {
-        //         _id: 1,
-        //         lift: "Deadlift",
-        //         weight: "135"
-        //     },
-        //     {
-        //         _id: 1,
-        //         lift: "Barbell row",
-        //         weight: "135"
-        //     },
-        //     {
-        //         _id: 1,
-        //         lift: "Curl",
-        //         weight: "135"
-        //     }
-        // ]
+        this.lifts = [
+            {
+                _id: 1,
+                lift: "Bench press",
+                weight: "135"
+            },
+            {
+                _id: 1,
+                lift: "Squat",
+                weight: "135"
+            },
+            {
+                _id: 1,
+                lift: "Deadlift",
+                weight: "135"
+            },
+            {
+                _id: 1,
+                lift: "Barbell row",
+                weight: "135"
+            },
+            {
+                _id: 1,
+                lift: "Curl",
+                weight: "135"
+            }
+        ]
     }
 }

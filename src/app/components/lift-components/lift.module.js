@@ -13,7 +13,7 @@ export default angular
                 controller: AllLifts,
                 controllerAs: 'allLiftsCtrl',
                 scope: {},
-                bindToController: true,
+                bindToController: true
             }
         ))
         .directive('addLift', () => (
@@ -29,7 +29,7 @@ export default angular
                 controller: AddLiftModal,
                 controllerAs: 'addLiftCtrl',
                 scope: {},
-                bindToController: true,
+                bindToController: true
             }
         ))
         .directive('lift', () => (
