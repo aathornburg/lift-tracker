@@ -1,11 +1,6 @@
 require('angular');
 
 import { Toggle } from './Toggle';
-import util from 'util';
-
-const toggleDefaults = {
-    toggled: false
-};
 
 export default angular
     .module('toggleModule', [])
@@ -15,7 +10,7 @@ export default angular
                 controller: Toggle,
                 controllerAs: 'toggleCtrl',
                 require: ['toggle', '?ngModel'],
-                templateUrl: 'components/utility-components/toggle/toggle.html',
+                templateUrl: 'components/utility-components/form-components/toggle/toggle.html',
                 scope: {},
                 bindToController: {
                     toggleId: '@',

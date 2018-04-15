@@ -35,8 +35,21 @@ html {
             }
         }
 
+        /* The CSS that handles the required box for forms */
+        .required-indicator {
+            font-family: 'Open Sans', sans-serif;
+            color: $font-color;
+        }
+
+        /* The CSS that handles text inputs */
+        input[type=text] {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.2em;
+            color: $input-color;
+        }
+
         /* The CSS that handles label styling */
-        label, input[type=text] {
+        label, .input-group-label {
             font-family: 'Open Sans', sans-serif;
             font-size: 1.2em;
             color: $font-color;
@@ -66,17 +79,15 @@ html {
                 left: 0;
                 transition: all .2s ease;
                 cursor: text;
+                color: $lighter-font-color;
             }
 
             & > input[type=text] {
                 position: relative;
-                font-size: 1.2em;
                 padding-bottom: $input-padding-bottom;
                 border: none;
                 border-bottom: 1px solid $light-font-color;
-                padding-top: .3em;
                 margin-top: .2em;
-                color: $font-color;
 
                 &:hover {
                     border-color: $main-color-hover;
@@ -86,7 +97,7 @@ html {
                     border-color: $main-color-hover;
 
                     & ~ label {
-                        bottom: 75%;
+                        bottom: 90%;
                         font-size: 1em;
                         color: $main-color-hover;
                     }

@@ -33,8 +33,8 @@
                 box-sizing: border-box;
                 text-transform: uppercase;
                 font-family: 'Open Sans', sans-serif;
-                font-weight: bold;
                 font-size: 1.4em;
+                letter-spacing: 1px;
                 color: $font-color;
                 margin-bottom: .5em;
                 height: 50px;
@@ -50,45 +50,53 @@
                     font-size: 1.3em;
                 }
 
-                .modal-section:not(:last-child) {
+                .modal-row {
+                    height: 40px;
                     margin-bottom: 1.5em;
+
+                    &.toggle-input-container {
+                        margin-bottom: 1em;
+                    }
                 }
 
                 .select-input-container {
                     margin-top: 1em;
                 }
 
-                .text-input-container {
-                    margin-top: 1em;
-
-                    & input[type=text] {
-                        width: 100%;
-                    }
+                .text-input-container input[type=text] {
+                    width: 100%;
                 }
             }
-            
-            .modal-buttons {
+
+            .modal-bottom {
                 display: flex;
-                justify-content: flex-end;
-                padding-right: .5em;
-                padding-left: .5em;
-                width: 100%;
-                box-sizing: border-box;
-                height: 50px;
-                margin-top: 1em;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 1.5em;
 
-                & button {
-                    background: transparent;
-                    border: none;
-                    text-transform: uppercase;
-                    color: $main-color;
-                    cursor: pointer;
-                    font-size: 1em;
-                    font-weight: bold;
-                    padding: .5em 1em;
+                .modal-buttons {
+                    display: flex;
+                    justify-content: flex-end;
+                    box-sizing: border-box;
+                    height: 50px;
 
-                    &:not(:last-child) {
-                        margin-right: .5em;
+                    & button {
+                        background: transparent;
+                        border: none;
+                        text-transform: uppercase;
+                        color: $main-color;
+                        cursor: pointer;
+                        font-size: 1em;
+                        font-weight: bold;
+                        padding: .5em 1em;
+
+                        &:last-child {
+                            margin-right: -1em;
+                        }
+
+                        &:not(:last-child) {
+                            margin-right: .5em;
+                        }
                     }
                 }
             }

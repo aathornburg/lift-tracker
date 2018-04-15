@@ -1,35 +1,45 @@
 <div class="modal add-lift-modal ng-hide" modal modal-id="add-lift" tabindex="0">
-    <form name="addLiftCtrl.addLiftForm" ng-submit="addLiftCtrl.submitForm()" class="modal-form add-lift-form" autocomplete="off" novalidate>
+    <form name="addLiftCtrl.addLiftForm" ng-submit="addLiftCtrl.submitForm()" class="modal-form add-lift-form" autocomplete="off" novalidate form-label-filter="required">
         <div class="modal-content">
             <div class="modal-title">Add Lift</div>
             <div class="lift-information modal-section">
-                <div class="lift-choice text-input-container add-lift-input-container">
+                <div class="lift-choice text-input-container modal-row">
                     <input type="text" name="addLiftCtrl.addLiftForm.lift" ng-model="addLiftCtrl.addLiftForm.lift" id="lift-input" class="lift-input" required />
                     <label for="lift-input" class="add-lift-input-label">Lift name</label>
                 </div>
-            </div>
-            <div class="set-information modal-section">
-                <div class="set-type-choice toggle-input-container">
+                <!-- <div class="set-type-choice toggle-input-container modal-row">
                     <label for="straight-set-checkbox">Straight sets</label>
-                    <toggle toggle-id="straight-set-checkbox" name="addLiftCtrl.addLiftForm.straightSets" ng-model="addLiftCtrl.addLiftForm.straightSets" toggled="true"></toggle>
-                </div>
-                <div class="weight-choice text-input-container add-lift-input-container">
-                    <input type="text" name="addLiftCtrl.addLiftForm.weight" ng-model="addLiftWeightCtrl.addLiftForm.weight" id="weight-input" class="weight-input" required />
-                    <label for="weight-input">Weight</label>
-                </div>
-                <!-- <div class="sets-choice text-input-container add-lift-input-container">
-                    <input type="text" name="addLiftWeightCtrl.addLiftForm.sets" ng-model="addLiftWeightCtrl.addLiftForm.sets" id="sets-input" class="sets-input" required />
-                    <label for="sets-input">Sets</label>
-                </div>
-                <div class="reps-choice text-input-container add-lift-input-container">
-                    <input type="text" name="addLiftWeightCtrl.addLiftForm.reps" ng-model="addLiftWeightCtrl.addLiftForm.reps" id="reps-input" class="reps-input" required />
-                    <label for="reps-input">Reps</label>
+                    <toggle toggle-id="straight-set-checkbox" name="addLiftCtrl.addLiftForm.straightSets" ng-model="addLiftCtrl.addLiftForm.straightSets" toggled="true" ></toggle>
                 </div> -->
             </div>
+            <div class="set-information modal-section">
+                <div class="weight-choice text-input-container modal-row">
+                    <input type="text" name="addLiftCtrl.addLiftForm.weight" ng-model="addLiftWeightCtrl.addLiftForm.weight" id="weight-input" class="weight-input" required />
+                    <label for="weight-input">Lift weight</label>
+                </div>
+                <div class="sets-choice text-input-container modal-row">
+                    <input type="text" name="addLiftWeightCtrl.addLiftForm.sets" ng-model="addLiftWeightCtrl.addLiftForm.sets" id="sets-input" class="sets-input" />
+                    <label for="sets-input">Number of sets</label>
+                </div>
+                <div class="reps-choice modal-row">
+                    <div class="text-input-container">
+                        <input type="text" name="addLiftWeightCtrl.addLiftForm.minReps" ng-model="addLiftWeightCtrl.addLiftForm.minReps" id="min-reps-input" class="reps-input" />
+                        <label for="min-reps-input">Min reps</label>
+                    </div>
+                    <span> - </span>
+                    <div class="text-input-container">
+                        <input type="text" name="addLiftWeightCtrl.addLiftForm.maxReps" ng-model="addLiftWeightCtrl.addLiftForm.maxReps" id="max-reps-input" class="reps-input" />
+                        <label for="max-reps-input">Max reps</label>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="modal-buttons">
-            <button type="button" modal-close class="modal-cancel-button">Cancel</button>
-            <button type="submit">Add</button>
+        <div class="modal-bottom">
+            <div class="required-indicator">* Required</div>
+            <div class="modal-buttons">
+                <button type="button" modal-close class="modal-cancel-button">Cancel</button>
+                <button type="submit">Add</button>
+            </div>
         </div>
     </form>
 </div>
