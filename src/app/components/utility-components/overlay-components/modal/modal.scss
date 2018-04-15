@@ -51,12 +51,14 @@
                 }
 
                 .modal-row {
-                    height: 40px;
+                    min-height: 40px;
                     margin-bottom: 1.5em;
+                }
 
-                    &.toggle-input-container {
-                        margin-bottom: 1em;
-                    }
+                .modal-hint {
+                    margin-top: .5em;
+                    font-size: .9em;
+                    color: $light-font-color;
                 }
 
                 .select-input-container {

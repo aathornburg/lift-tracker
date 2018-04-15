@@ -52,7 +52,6 @@ html {
         label, .input-group-label {
             font-family: 'Open Sans', sans-serif;
             font-size: 1.2em;
-            color: $font-color;
         }
 
         /* The CSS that handles select styling for select boxes */
@@ -109,6 +108,12 @@ html {
         .toggle-input-container {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+        }
+
+        /* The CSS that handles checkboxes */
+        .checkbox-input-container {
+            display: flex;
             align-items: center;
         }
 
