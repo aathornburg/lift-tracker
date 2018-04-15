@@ -1,4 +1,6 @@
 export class Checkbox {
     /* @ngInject */
-    constructor() {}
+    constructor() {
+        this.checked = false;
+    }
 }

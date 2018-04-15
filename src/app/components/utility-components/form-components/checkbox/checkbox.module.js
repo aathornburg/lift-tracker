@@ -31,7 +31,7 @@ export default angular
 
                     ngModelCtrl.$render = () => {
                         if (ngModelCtrl.$viewValue !== undefined) {
-                            toggleCtrl.checked = ngModelCtrl.$viewValue;
+                            checkboxCtrl.checked = ngModelCtrl.$viewValue;
                         }
                     };
                 }

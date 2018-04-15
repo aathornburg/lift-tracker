@@ -35,7 +35,8 @@ Next Steps:
 - Create a new "Dashboard" and ~~create a link for Lifts~~ (as that's what the dashboard currently is)
 - Move all these todos into the issues category in GitHub
 - ~~Make a Lift module~~
-- Create a checkbox for "Straight sets" underneath the # of sets input on the add lift modal
+- ~~Create a checkbox for "Straight sets" underneath the # of sets input on the add lift modal~~
+- Create form validation for add lift form
 - Make modals open up from the right and be full-height
 
 To Do:
