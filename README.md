@@ -35,6 +35,7 @@ Next Steps:
 - Create a new "Dashboard" and ~~create a link for Lifts~~ (as that's what the dashboard currently is)
 - Move all these todos into the issues category in GitHub
 - ~~Make a Lift module~~
+- Create an actual
 - Create a checkbox for "Straight sets" underneath the # of sets input on the add lift modal
 
 To Do:
@@ -78,3 +79,4 @@ Useful Links:
 - ngAnnotate and ES6 classes as controllers: https://www.timroes.de/2015/07/29/using-ecmascript-6-es6-with-angularjs-1-x/
 - Promises, as explained by a comic: http://andyshora.com/promises-angularjs-explained-as-cartoon.html
 - The cases to use name and ng-model for form inputs: https://stackoverflow.com/questions/26217392/why-do-i-need-to-specify-both-a-name-and-ng-model-on-input-in-angularjs
+- ngModelController and creating a custom directive that contains an input: https://www.nadeau.tv/using-ngmodelcontroller-with-custom-directives/
