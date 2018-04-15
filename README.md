@@ -35,7 +35,6 @@ Next Steps:
 - Create a new "Dashboard" and ~~create a link for Lifts~~ (as that's what the dashboard currently is)
 - Move all these todos into the issues category in GitHub
 - ~~Make a Lift module~~
-- Create an actual
 - Create a checkbox for "Straight sets" underneath the # of sets input on the add lift modal
 
 To Do:
