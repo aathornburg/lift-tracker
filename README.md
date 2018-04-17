@@ -37,6 +37,7 @@ Next Steps:
 - ~~Make a Lift module~~
 - ~~Create a checkbox for "Straight sets" underneath the # of sets input on the add lift modal~~
 - Create form validation for add lift form
+- Create tool tip to describe what Straight sets are
 - Update the AddLiftForm class to actually save <i>all</i> lift data that users enter now, since there's more data
 - Make modals open up from the right and be full-height
 
