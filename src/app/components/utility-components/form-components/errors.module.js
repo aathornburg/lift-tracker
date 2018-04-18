@@ -5,7 +5,6 @@ export default angular
         .run(($templateCache, $http) => {
             $http.get('components/lift-components/add-lift-modal/add-lift-modal-errors.html')
             .then((response) => {
-                console.log("response.data: " + response.data);
-                 $templateCache.put('add-lift-modal-errors', response.data);
+                $templateCache.put('add-lift-modal-errors', response.data);
             });
         });

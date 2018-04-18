@@ -153,5 +153,13 @@ html {
                 }
             }
         }
+
+        /* Form errors */
+        .form-error {
+            font-size: 13px;
+            margin-top: 2px;
+            color: $accent-color;
+            font-family: 'Open Sans', sans-serif;
+        }
     }
 }
