@@ -156,10 +156,17 @@ html {
 
         /* Form errors */
         .form-error {
+            display: none;
             font-size: 13px;
             margin-top: 2px;
             color: $accent-color;
             font-family: 'Open Sans', sans-serif;
+        }
+
+        .has-error {
+            & .form-error {
+                display: block;
+            }
         }
     }
 }
