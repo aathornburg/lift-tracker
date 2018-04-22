@@ -164,6 +164,10 @@ html {
         }
 
         .has-error {
+            & input[type=text] {
+                border-color: #E17055;
+            }
+
             & .form-error {
                 display: block;
             }

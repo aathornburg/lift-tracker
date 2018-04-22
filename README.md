@@ -36,11 +36,13 @@ Next Steps:
 - Move all these todos into the issues category in GitHub
 - ~~Make a Lift module~~
 - ~~Create a checkbox for "Straight sets" underneath the # of sets input on the add lift modal~~
-- Create form validation for add lift form
-- As part of form validation, add all errors into template cache
+- ~~Create form validation for add lift form~~
+- Turn inputs into directives
+- ~~As part of form validation, add all errors into template cache~~
 - Create tool tip to describe what Straight sets are
 - Update the AddLiftForm class to actually save <i>all</i> lift data that users enter now, since there's more data
 - Make modals open up from the right and be full-height
+- Make input errors be handled by a directive?  I.e. make input elements be a directive themselves?  (DRY)
 
 To Do:
 - Update gulp so that I don't need to provide the base templates URL every time for every view (ideally, move every view into the folder of each component)
