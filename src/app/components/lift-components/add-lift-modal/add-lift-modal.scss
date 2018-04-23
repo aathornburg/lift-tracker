@@ -1,4 +1,27 @@
 .add-lift-modal {
+    .set-type-choice {
+        .straight-set-choice {
+            display: flex;
+            align-items:center;
+        }
+
+        .straight-set-info {
+            display: flex;
+            align-items: center;
+            margin-left: .5em;
+
+            .straight-set-info-icon {
+                font-size: 18px;
+                cursor: pointer;
+                transition: color .2s ease-in-out;
+
+                &:hover, &:focus {
+                    color: $main-color-hover;
+                }
+            }
+        }
+    }
+
     .reps-choice {
         display: flex;
         justify-content: space-between;
