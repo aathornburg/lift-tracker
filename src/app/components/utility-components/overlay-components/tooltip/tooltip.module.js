@@ -14,13 +14,9 @@ export default angular
                 link: (scope, elem, attrs, ctrl) => {
                     elem.addClass('tooltip-anchor');
 
-                    let tooltip = $templateCache.get('tooltip');
-
-                    console.log(attrs.tooltipText);
-                    console.log($(tooltip).find('.tooltip'));
-
-                    $(tooltip).find('.tooltip').text(attrs.tooltipText);
-                    elem.append(tooltip);
+                    elem.append($templateCache.get('tooltip'));
+                    
+                    elem.find('.tooltip').text(attrs.tooltipText);
                 }
             }
         ))
