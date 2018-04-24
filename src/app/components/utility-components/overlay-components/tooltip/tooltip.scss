@@ -1,8 +1,15 @@
 .tooltip-anchor {
     position: relative;
+
+    &:hover, &.open {
+        .tooltip {
+            display: block;
+        }
+    }
 }
 
 .tooltip {
+    display: none;
     position: absolute;
     top: -30px;
     left: 50%;

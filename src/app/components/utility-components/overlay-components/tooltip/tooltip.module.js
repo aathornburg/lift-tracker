@@ -13,10 +13,12 @@ export default angular
                 restrict: 'A',
                 link: (scope, elem, attrs, ctrl) => {
                     elem.addClass('tooltip-anchor');
-
                     elem.append($templateCache.get('tooltip'));
-                    
                     elem.find('.tooltip').text(attrs.tooltipText);
+
+                    $(elem).click(() => {
+                        elem.toggleClass("open");
+                    });
                 }
             }
         ))
