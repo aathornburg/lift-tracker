@@ -39,7 +39,8 @@ Next Steps:
 - ~~Create form validation for add lift form~~
 - Turn inputs into directives
 - ~~As part of form validation, add all errors into template cache~~
-- Create tool tip to describe what Straight sets are
+- ~~Create tool tip to describe what Straight sets are~~
+- Make tooltip be handled by the OverlayControl (to allow it to be closed when clicking out)
 - Update the AddLiftForm class to actually save <i>all</i> lift data that users enter now, since there's more data
 - Make modals open up from the right and be full-height
 - Make input errors be handled by a directive?  I.e. make input elements be a directive themselves?  (DRY)
@@ -62,6 +63,7 @@ To Do:
 - Make dropdowns close on tab-out
 - ~~Determine why I need to pass dropdownCtrl into a scope.$watch when init'ing a dropdownMenu directive, vs. just using the already-set this.ctrl~~ This is explained by the scope.$watch having to match up with the controllerAs syntax for the directive!!!
 - Allow dropdowns to be configured on if we want to close them on click/tab out or not
+- Allow tooltips to contain links
 
 Personal notes:
 - Importing an item using the import { name } from '...' syntax requires you to match the name with the name of what was exported!
