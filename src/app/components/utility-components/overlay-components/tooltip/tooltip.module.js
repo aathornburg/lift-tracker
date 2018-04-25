@@ -1,5 +1,8 @@
 require('angular');
 
+import { Tooltip } from './Tooltip';
+import { TooltipService } from './TooltipService';
+
 export default angular
     .module('tooltipModule', [])
         .run(($templateCache, $http) => {
@@ -8,9 +11,12 @@ export default angular
                 $templateCache.put('tooltip', response.data);
             });
         })
-        .directive('tooltipText', ($templateCache) => (
+        .service('tooltipService', TooltipService)
+        .directive('tooltipText', ($templateCache, tooltipService) => (
             {
                 restrict: 'A',
+                controller: Tooltip,
+                controllerAs: 'tooltipCtrl',
                 link: (scope, elem, attrs, ctrl) => {
                     elem.addClass('tooltip-anchor');
                     elem.append($templateCache.get('tooltip'));
