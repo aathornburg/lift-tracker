@@ -22,9 +22,7 @@ export default angular
                     elem.append($templateCache.get('tooltip'));
                     elem.find('.tooltip').text(attrs.tooltipText);
 
-                    $(elem).click(() => {
-                        elem.toggleClass("open");
-                    });
+                    tooltipService.public.tooltipInit(scope, elem.find('.tooltip'), elem, ctrl);
                 }
             }
         ))

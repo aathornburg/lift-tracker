@@ -3,101 +3,95 @@ import { OverlayControl } from '../OverlayControl';
 export class TooltipService extends OverlayControl {
     constructor() {
         super();
-        this.dropdowns = [];
-        this.openDropdowns = [];
+        this.tooltips = [];
+        this.openTooltips = [];
         this.public = this.createPublicMethods();
     }
 
-    generateDropdownId() {
-        return this.dropdowns.length + 1;
+    generateTooltipId() {
+        return this.tooltips.length + 1;
     }
 
     createPublicMethods() {
         return (() => {
             const service = {
                 props: {
-                    dropdowns: {
-                        add: (scope, menuElem, openElems, ctrl) => {
-                            this.dropdowns.push((() => {
-                                const getAllDropdownRelatedElems = () => {
-                                    return menuElem.add(openElems);
-                                };
-
-                                return {
-                                    dropdownId: ctrl.dropdownId,
+                    tooltips: {
+                        add: (scope, tooltipElem, anchorElem, ctrl) => {
+                            this.tooltips.push(
+                                {
+                                    tooltipId: ctrl.tooltipId,
                                     scope,
-                                    menuElem,
-                                    openElems,
-                                    allDropdownElems: getAllDropdownRelatedElems(),
+                                    tooltipElem,
+                                    anchorElem,
                                     ctrl
-                                };
-                            })());
+                                }
+                            );
 
-                            return this.dropdowns[this.dropdowns.length - 1];
+                            return this.tooltips[this.tooltips.length - 1];
                         }
                     }
                 },
                 methods: {
-                    getDropdown: (dropdownId) => {
-                        return this.dropdowns.find(
-                            dropdown => dropdown.dropdownId === dropdownId
+                    getTooltip: (tooltipId) => {
+                        return this.tooltips.find(
+                            tooltip => tooltip.tooltipId === tooltipId
                         );
                     },
-                    openDropdown: (dropdown) => {
-                        dropdown.menuElem.removeClass('ng-hide');
+                    openTooltip: (tooltip) => {
+                        tooltip.tooltipElem.addClass('show');
                         this.overlayControl.createFocusLeavingElementListener(
-                            dropdown.dropdownId,
-                            dropdown.allDropdownElems,
-                            directive.dropdown.toggle.bind(this, dropdown)
+                            tooltip.tooltipId,
+                            tooltip.anchorElem,
+                            directive.tooltip.click.toggle.bind(this, tooltip)
                         );
                         this.overlayControl.createEscapeKeyListener(
-                            dropdown.dropdownId,
-                            directive.dropdown.toggle.bind(this, dropdown)
+                            tooltip.tooltipId,
+                            directive.tooltip.click.toggle.bind(this, tooltip)
                         );
                     },
-                    closeDropdown: (dropdown) => {
-                        this.overlayControl.removeFocusLeavingElementListener(dropdown.dropdownId, dropdown.allDropdownElems);
-                        this.overlayControl.removeEscapeKeyListener(dropdown.dropdownId);
-                        dropdown.menuElem.addClass('ng-hide');
+                    closeTooltip: (tooltip) => {
+                        this.overlayControl.removeFocusLeavingElementListener(tooltip.tooltipId, tooltip.anchorElem);
+                        this.overlayControl.removeEscapeKeyListener(tooltip.tooltipId);
+                        tooltip.tooltipElem.removeClass('show');
                     }
                 }
             },
                 directive = {
-                    button: {
-                        processClick: (dropdown) => {
-                            directive.dropdown.toggle(dropdown);
-                        },
-                        init: (dropdown) => {
-                            dropdown.openElems.on('click', (e) => {
-                                directive.button.processClick(dropdown);
+                    anchor: {
+                        init: (tooltip) => {
+                            tooltip.anchorElem.on('click', (e) => {
+                                directive.tooltip.click.toggle(tooltip);
                             });
                         }
                     },
-                    dropdown: {
-                        toggle: (dropdown) => {
-                            dropdown.scope.$apply(dropdown.ctrl.toggle());
+                    tooltip: {
+                        click: {
+                            toggle: (tooltip) => {
+                                tooltip.scope.$apply(tooltip.ctrl.toggle());
+                            }
                         },
-                        createWatcher: (scope, dropdown) => {
-                            scope.$watch('dropdownCtrl.showMenu', (newVal, oldVal) => {
+                        createWatcher: (scope, tooltip) => {
+                            scope.$watch('tooltipCtrl.showTooltip', (newVal, oldVal) => {
                                 if (newVal !== oldVal) {
                                     if (newVal === true) {
-                                        service.methods.openDropdown(dropdown);
+                                        service.methods.openTooltip(tooltip);
                                     } else {
-                                        service.methods.closeDropdown(dropdown);
+                                        service.methods.closeTooltip(tooltip);
                                     }
                                 }
                             });
                         },
-                        init: (scope, menuElem, openElems, ctrl) => {
-                            let dropdown = service.props.dropdowns.add(scope, menuElem, openElems, ctrl);
-                            directive.dropdown.createWatcher(scope, dropdown);
-                            directive.button.init(dropdown);
+                        init: (scope, tooltipElem, anchorElem, ctrl) => {
+                            let tooltip = service.props.tooltips.add(scope, tooltipElem, anchorElem, ctrl);
+                            directive.tooltip.createWatcher(scope, tooltip);
+                            directive.anchor.init(tooltip);
                         }
                     }
                 }
         
             return {
-                dropdownInit: directive.dropdown.init,
+                tooltipInit: directive.tooltip.init,
             };
         })();
     }
