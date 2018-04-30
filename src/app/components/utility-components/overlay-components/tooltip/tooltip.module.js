@@ -19,6 +19,7 @@ export default angular
                 controllerAs: 'tooltipCtrl',
                 link: (scope, elem, attrs, ctrl) => {
                     elem.addClass('tooltip-anchor');
+                    elem.attr('tabindex', 0);
                     elem.append($templateCache.get('tooltip'));
                     elem.find('.tooltip').text(attrs.tooltipText);
 

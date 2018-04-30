@@ -16,16 +16,11 @@
             color: white;
             padding: 5px;
             border-radius: 2px;
+            font-size: 15px;
 
             &.show {
                 display: inline-block;
             }
-        }
-    }
-
-    &:hover {
-        & .tooltip {
-            display: inline-block;
         }
     }
 }

@@ -1,7 +1,7 @@
 export class Tooltip {
     /* @ngInject */
     constructor(tooltipService) {
-        this.showMenu = false;
+        this.showTooltip = false;
         this.tooltipId = tooltipService.generateTooltipId();
     }
 
