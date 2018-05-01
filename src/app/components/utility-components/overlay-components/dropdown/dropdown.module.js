@@ -6,7 +6,10 @@ import { DropdownService } from './DropdownService';
 export default angular
     .module('dropdownModule', [])
         .service('dropdownService', DropdownService)
-        .directive('hasDropdown', (dropdownService) => (
+        .run((dropdownService, overlayControl) => {
+            dropdownService.overlayControl = overlayControl.public;
+        })
+        .directive('hasDropdown', (dropdownService, overlayControl) => (
             {
                 restrict: 'A',
                 controller: Dropdown,

@@ -1,6 +1,7 @@
 export class OverlayControl {
     constructor() {
-        this.overlayControl = this.createPublicOverlayControlFunctions();
+        this.public = this.createPublicOverlayControlFunctions();
+        this.activeEscapableOverlayCallbacks = [];
     }
 
     createPublicOverlayControlFunctions() {
@@ -114,27 +115,31 @@ export class OverlayControl {
                         }
                     },
                     escapeKey: {
-                        createListener: (id, callback) => {
-                            $(document).on(
-                                methods.generateNamespacedEvent('keydown', id),
-                                (e) => {
-                                    if (e.keyCode === 27) {
-                                        callback();
+                        createListener: (callback) => {
+                            this.activeEscapableOverlayCallbacks.push(callback);
+                        }
+                    },
+                    registerEscapeKeyListener: () => {
+                        $(document).on(
+                            methods.generateNamespacedEvent('keydown', 'global'),
+                            (e) => {
+                                if (e.keyCode === 27) {
+                                    if (this.activeEscapableOverlayCallbacks.length) {
+                                        this.activeEscapableOverlayCallbacks.pop()();
                                     }
                                 }
-                            )
-                        },
-                        removeListener: (id) => {
-                            $(document).off(
-                                methods.generateNamespacedEvent('keydown', id)
-                            );
-                        }
+                            }
+                        )
+                    },
+                    init: () => {
+                        methods.registerEscapeKeyListener();
                     }
-                };
+                }
+
+            methods.init();
         
             return {
-                createEscapeKeyListener: methods.escapeKey.createListener,
-                removeEscapeKeyListener: methods.escapeKey.removeListener,
+                registerEscapableOverlay: methods.escapeKey.createListener,
                 createOutsideClickListener: methods.click.leavingElement.createListener,
                 removeOutsideClickListener: methods.click.leavingElement.removeListener,
                 createFocusLeavingElementListener: methods.focus.leavingElement.createListener,

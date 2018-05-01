@@ -12,7 +12,10 @@ export default angular
             });
         })
         .service('tooltipService', TooltipService)
-        .directive('tooltipText', ($templateCache, tooltipService) => (
+        .run((tooltipService, overlayControl) => {
+            tooltipService.overlayControl = overlayControl.public;
+        })
+        .directive('tooltipText', ($templateCache, tooltipService, overlayControl) => (
             {
                 restrict: 'A',
                 controller: Tooltip,

@@ -1,10 +1,8 @@
-import { OverlayControl } from '../OverlayControl';
-
-export class DropdownService extends OverlayControl {
-    constructor() {
-        super();
+export class DropdownService {
+    constructor(overlayControl) {
         this.dropdowns = [];
         this.openDropdowns = [];
+        this.overlayControl = overlayControl.public;
         this.public = this.createPublicMethods();
     }
 
@@ -50,14 +48,12 @@ export class DropdownService extends OverlayControl {
                             dropdown.allDropdownElems,
                             directive.dropdown.toggle.bind(this, dropdown)
                         );
-                        this.overlayControl.createEscapeKeyListener(
-                            dropdown.dropdownId,
+                        this.overlayControl.registerEscapableOverlay(
                             directive.dropdown.toggle.bind(this, dropdown)
                         );
                     },
                     closeDropdown: (dropdown) => {
                         this.overlayControl.removeFocusLeavingElementListener(dropdown.dropdownId, dropdown.allDropdownElems);
-                        this.overlayControl.removeEscapeKeyListener(dropdown.dropdownId);
                         dropdown.menuElem.addClass('ng-hide');
                     }
                 }

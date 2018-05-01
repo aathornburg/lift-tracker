@@ -1,10 +1,8 @@
-import { OverlayControl } from '.././OverlayControl';
-
-export class ModalService extends OverlayControl {
-    constructor() {
-        super();
+export class ModalService {
+    constructor(overlayControl) {
         this.modals = [];
         this.openModals = [];
+        this.overlayControl = overlayControl.public;
         this.public = this.createPublicMethods();
     }
 
@@ -35,13 +33,12 @@ export class ModalService extends OverlayControl {
                     openModal: (modal) => {
                         service.constants.$modalContainer.removeClass('ng-hide');
                         modal.elem.removeClass('ng-hide');
+                        this.overlayControl.registerEscapableOverlay(directive.modal.close.bind(this, modal));
                         this.overlayControl.trapTabKey(modal.modalId, modal.elem);
-                        this.overlayControl.createEscapeKeyListener(modal.modalId, directive.modal.close.bind(this, modal)); // Do I need to .bind?
                         this.overlayControl.createOutsideClickListener(modal.modalId, modal.elem, directive.modal.close.bind(this, modal));
                     },
                     closeModal: (modal) => {
                         this.overlayControl.removeTrappedTabKey(modal.modalId, modal.elem);
-                        this.overlayControl.removeEscapeKeyListener(modal.modalId);
                         this.overlayControl.removeOutsideClickListener(modal.modalId);
                         service.constants.$modalContainer.addClass('ng-hide');
                         modal.elem.addClass('ng-hide');

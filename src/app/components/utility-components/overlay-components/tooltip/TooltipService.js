@@ -1,10 +1,8 @@
-import { OverlayControl } from '../OverlayControl';
-
-export class TooltipService extends OverlayControl {
-    constructor() {
-        super();
+export class TooltipService {
+    constructor(overlayControl) {
         this.tooltips = [];
         this.openTooltips = [];
+        this.overlayControl = overlayControl.public;
         this.public = this.createPublicMethods();
     }
 
@@ -60,15 +58,13 @@ export class TooltipService extends OverlayControl {
                                 tooltip.anchorElem,
                                 directive.tooltip.close.bind(this, tooltip)
                             );
-                            this.overlayControl.createEscapeKeyListener(
-                                tooltip.tooltipId,
+                            this.overlayControl.registerEscapableOverlay(
                                 directive.tooltip.close.bind(this, tooltip)
                             );
                         },
                         closeTooltip: (tooltip) => {
                             this.overlayControl.removeOutsideClickListener(tooltip.tooltipId, tooltip.anchorElem);
                             this.overlayControl.removeFocusLeavingElementListener(tooltip.tooltipId, tooltip.anchorElem);
-                            this.overlayControl.removeEscapeKeyListener(tooltip.tooltipId);
                             tooltip.tooltipElem.removeClass('show');
                         }
                     }
