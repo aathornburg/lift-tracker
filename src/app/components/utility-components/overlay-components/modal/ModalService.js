@@ -33,7 +33,7 @@ export class ModalService {
                     openModal: (modal) => {
                         service.constants.$modalContainer.removeClass('ng-hide');
                         modal.elem.removeClass('ng-hide');
-                        this.overlayControl.registerEscapableOverlay(directive.modal.close.bind(this, modal));
+                        this.overlayControl.registerEscapableOverlay(modal.modalId, directive.modal.close.bind(this, modal));
                         this.overlayControl.trapTabKey(modal.modalId, modal.elem);
                         this.overlayControl.createOutsideClickListener(modal.modalId, modal.elem, directive.modal.close.bind(this, modal));
                     },

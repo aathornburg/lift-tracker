@@ -7,7 +7,7 @@ export class DropdownService {
     }
 
     generateDropdownId() {
-        return this.dropdowns.length + 1;
+        return 'dropdown-' + this.dropdowns.length + 1;
     }
 
     createPublicMethods() {
@@ -49,6 +49,7 @@ export class DropdownService {
                             directive.dropdown.toggle.bind(this, dropdown)
                         );
                         this.overlayControl.registerEscapableOverlay(
+                            dropdown.dropdownId,
                             directive.dropdown.toggle.bind(this, dropdown)
                         );
                     },

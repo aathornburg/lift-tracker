@@ -7,7 +7,7 @@ export class TooltipService {
     }
 
     generateTooltipId() {
-        return this.tooltips.length + 1;
+        return 'tooltip-' + this.tooltips.length + 1;
     }
 
     createPublicMethods() {
@@ -59,6 +59,7 @@ export class TooltipService {
                                 directive.tooltip.close.bind(this, tooltip)
                             );
                             this.overlayControl.registerEscapableOverlay(
+                                tooltip.tooltipId,
                                 directive.tooltip.close.bind(this, tooltip)
                             );
                         },

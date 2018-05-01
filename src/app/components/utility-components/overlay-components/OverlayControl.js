@@ -115,8 +115,10 @@ export class OverlayControl {
                         }
                     },
                     escapeKey: {
-                        createListener: (callback) => {
-                            this.activeEscapableOverlayCallbacks.push(callback);
+                        createListener: (id, callback) => {
+                            if (!this.activeEscapableOverlayCallbacks.some(elem => elem.id === id)) {
+                                this.activeEscapableOverlayCallbacks.push({ id, callback });
+                            }
                         }
                     },
                     registerEscapeKeyListener: () => {
@@ -125,7 +127,7 @@ export class OverlayControl {
                             (e) => {
                                 if (e.keyCode === 27) {
                                     if (this.activeEscapableOverlayCallbacks.length) {
-                                        this.activeEscapableOverlayCallbacks.pop()();
+                                        this.activeEscapableOverlayCallbacks.pop().callback();
                                     }
                                 }
                             }
