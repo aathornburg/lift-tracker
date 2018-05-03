@@ -5,6 +5,8 @@ export class AddLiftModal {
     $onInit() {}
 
     submitForm() {
-        console.log(this.addLiftForm.straightSets);
+        if (this.addLiftForm.$valid) {
+            // Send information to DB
+        }
     }
 }

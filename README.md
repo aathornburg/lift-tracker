@@ -40,12 +40,12 @@ Next Steps:
 - Turn inputs into directives
 - ~~As part of form validation, add all errors into template cache~~
 - ~~Create tool tip to describe what Straight sets are~~
-- Make tooltip be handled by the OverlayControl (to allow it to be closed when clicking out)
+- ~~Make tooltip be handled by the OverlayControl (to allow it to be closed when clicking out)~~
 - Update the AddLiftForm class to actually save <i>all</i> lift data that users enter now, since there's more data
 - Make modals open up from the right and be full-height
 - Make input errors be handled by a directive?  I.e. make input elements be a directive themselves?  (DRY)
-- Make escape on tooltip work (and not close modal???)
-- Make tooltip close when focusing away from it?
+- ~~Make escape on tooltip work (and not close modal???)~~
+- ~~Make tooltip close when focusing away from it?~~
 
 To Do:
 - Update gulp so that I don't need to provide the base templates URL every time for every view (ideally, move every view into the folder of each component)
