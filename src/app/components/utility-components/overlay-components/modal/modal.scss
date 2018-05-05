@@ -1,7 +1,4 @@
 .modal-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -12,100 +9,110 @@
     background-color: rgba(0, 0, 0, 0.25);
     z-index: 10;
 
-    .modal {
+    .modal-width-container {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        width: 25em;
-        background-color: white;
-        border-radius: 2px;
-        padding: .25em 0;
-        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        justify-content: flex-end;
+        width: 70%;
+        height: 100%;
+        margin: 0 auto;
 
-        .modal-form {
-            width: 100%;
+        .modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 25em;
+            height: 100%;
+            background-color: white;
+            border-radius: 2px;
+            padding: .25em 0;
+            box-shadow: -3px 0px 20px rgba(0, 0, 0, 0.25), 3px 0px 20px rgba(0, 0, 0, 0.25);
+            box-sizing: border-box;
 
-            .modal-title {
-                display: flex;
-                align-items: center;
+            .modal-form {
                 width: 100%;
-                box-sizing: border-box;
-                text-transform: uppercase;
-                font-family: 'Open Sans', sans-serif;
-                font-size: 1.4em;
-                letter-spacing: 1px;
-                color: $font-color;
-                margin-bottom: .5em;
-                height: 50px;
-            }
 
-            .modal-content {
-                width: 100%;
-                box-sizing: border-box;
-                padding: 0 1.5em;
-
-                .modal-sub-title {
-                    color: $font-color;
-                    font-size: 1.3em;
-                }
-
-                .modal-row {
-                    min-height: 58px;
-                    margin-bottom: 1.5em;
-                }
-
-                .modal-hint {
-                    margin-top: .5em;
-                    font-size: .9em;
-                    color: $light-font-color;
-                }
-
-                .select-input-container {
-                    margin-top: 1em;
-                }
-
-                .text-input-container input[type=text] {
-                    width: 100%;
-                }
-            }
-
-            .modal-bottom {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0 1.5em;
-
-                .modal-buttons {
+                .modal-title {
                     display: flex;
-                    justify-content: flex-end;
+                    align-items: center;
+                    width: 100%;
                     box-sizing: border-box;
+                    text-transform: uppercase;
+                    font-family: 'Open Sans', sans-serif;
+                    font-size: 1.4em;
+                    letter-spacing: 1px;
+                    color: $font-color;
+                    margin-bottom: .5em;
                     height: 50px;
+                }
 
-                    & button {
-                        background: transparent;
-                        border: none;
-                        text-transform: uppercase;
-                        color: $main-color;
-                        cursor: pointer;
-                        font-size: 1em;
-                        font-weight: bold;
-                        padding: .5em 1em;
+                .modal-content {
+                    width: 100%;
+                    box-sizing: border-box;
+                    padding: 0 1.5em;
 
-                        &:last-child {
-                            margin-right: -1em;
-                        }
+                    .modal-sub-title {
+                        color: $font-color;
+                        font-size: 1.3em;
+                    }
 
-                        &:not(:last-child) {
-                            margin-right: .5em;
+                    .modal-row {
+                        min-height: 58px;
+                        margin-bottom: 1.5em;
+                    }
+
+                    .modal-hint {
+                        margin-top: .5em;
+                        font-size: .9em;
+                        color: $light-font-color;
+                    }
+
+                    .select-input-container {
+                        margin-top: 1em;
+                    }
+
+                    .text-input-container input[type=text] {
+                        width: 100%;
+                    }
+                }
+
+                .modal-bottom {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0 1.5em;
+
+                    .modal-buttons {
+                        display: flex;
+                        justify-content: flex-end;
+                        box-sizing: border-box;
+                        height: 50px;
+
+                        & button {
+                            background: transparent;
+                            border: none;
+                            text-transform: uppercase;
+                            color: $main-color;
+                            cursor: pointer;
+                            font-size: 1em;
+                            font-weight: bold;
+                            padding: .5em 1em;
+
+                            &:last-child {
+                                margin-right: -1em;
+                            }
+
+                            &:not(:last-child) {
+                                margin-right: .5em;
+                            }
                         }
                     }
                 }
             }
-        }
 
-        &:focus {
-            outline: none;
+            &:focus {
+                outline: none;
+            }
         }
     }
 }
