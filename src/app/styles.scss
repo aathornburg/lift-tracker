@@ -170,7 +170,7 @@ html {
                 color: #E17055 !important;
             }
 
-            .form-error {
+            & > .form-error {
                 display: block;
             }
         }

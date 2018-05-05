@@ -10,12 +10,9 @@ export default angular
                     const validate = (minVal) => {
                         let maxVal = attrs.lessThan;
 
-                        console.log(ngModelCtrl);
-
                         if (!minVal || !maxVal) {
                             ngModelCtrl.$setValidity(ngModelCtrl.$name + 'LessThan', true);
                         } else {
-                            console.log("Have both min and max values\nvalid? " + (+minVal < +maxVal));
                             ngModelCtrl.$setValidity(
                                 ngModelCtrl.$name + 'LessThan',
                                 (+minVal < +maxVal)
