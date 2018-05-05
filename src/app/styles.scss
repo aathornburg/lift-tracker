@@ -162,11 +162,15 @@ html {
         }
 
         .has-error {
-            & input[type=text] {
-                border-color: #E17055;
+            input[type=text] {
+                border-color: #E17055 !important;
             }
 
-            & .form-error {
+            label {
+                color: #E17055 !important;
+            }
+
+            .form-error {
                 display: block;
             }
         }

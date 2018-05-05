@@ -33,7 +33,7 @@
                     </button>
                 </div>
             </div>
-            <div class="reps-choice modal-row">
+            <div class="reps-choice modal-row" ng-class="{'has-error': addLiftCtrl.addLiftForm.$error.minRepsLessThan}">
                 <div class="text-input-container">
                     <input type="text" name="minReps" ng-model="addLiftCtrl.addLift.minReps" id="min-reps-input" class="reps-input" less-than="{{addLiftCtrl.addLift.maxReps}}" />
                     <label for="min-reps-input">Min reps</label>

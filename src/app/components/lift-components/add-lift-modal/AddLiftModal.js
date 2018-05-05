@@ -5,6 +5,7 @@ export class AddLiftModal {
     }
 
     submitForm() {
+        console.log(this.addLiftForm);
         if (this.addLiftForm.$valid) {
             this.$liftsService.storeLift(
                 this.addLiftForm.lift,
