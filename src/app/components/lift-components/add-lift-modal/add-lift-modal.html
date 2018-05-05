@@ -33,7 +33,7 @@
                     </button>
                 </div>
             </div>
-            <div class="modal-row" ng-class="{'has-error': addLiftCtrl.addLiftForm.$error.minRepsLessThan}">
+            <div class="modal-row" ng-class="{'has-error': addLiftCtrl.addLiftForm.$error.minRepsLessThan}" ng-show="addLiftCtrl.addLift.straightSets">
                 <div class="reps-choice">
                     <div class="text-input-container">
                         <input type="text" name="minReps" ng-model="addLiftCtrl.addLift.minReps" id="min-reps-input" class="reps-input" less-than="{{addLiftCtrl.addLift.maxReps}}" />
@@ -49,6 +49,9 @@
                 <div class="form-error">
                     Min reps must be less than max reps
                 </div>
+            </div>
+            <div class="modal-row" ng-show="!addLiftCtrl.addLift.straightSets">
+                test
             </div>
         </div>
         <div class="modal-bottom">
