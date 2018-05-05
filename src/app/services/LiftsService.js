@@ -13,46 +13,49 @@ export class LiftsService {
         return this.lifts;
     }
 
-    storeLift(lift, weight) {
-        this.$http.put('/api/lifts',
-            {
-                lift: lift,
-                weight: weight
-            })
-            .then((data, status, headers) => {
-                this.lifts.push(new Lift(lift, weight));
-            })
-            .catch((data, status, headers) => {
-                console.log("DB write failure");
-                // TODO:  Pop up error for user
-            });
+    storeLift(lift, weight, sets, minReps, maxReps) {
+        // this.$http.put('/api/lifts',
+        //     {
+        //         lift,
+        //         weight,
+        //         sets,
+        //         minReps,
+        //         maxReps
+        //     })
+        //     .then((data, status, headers) => {
+        //         this.lifts.push(new Lift(lift, weight));
+        //     })
+        //     .catch((data, status, headers) => {
+        //         console.log("DB write failure");
+        //         // TODO:  Pop up error for user
+        //     });
     }
 
     removeLift(lift) {
         console.log("In removeLift, liftId: " + lift._id);
-        this.$http.delete('/api/lifts/' + lift._id)
-            .then((response, status, headers) => {
-                this.lifts = this.lifts.filter(lift => lift._id !== response.data);
-            })
-            .catch((data, status, headers) => {
-                console.log("DB delete failure");
-                // TODO:  Pop up error for user
-            });
+        // this.$http.delete('/api/lifts/' + lift._id)
+        //     .then((response, status, headers) => {
+        //         this.lifts = this.lifts.filter(lift => lift._id !== response.data);
+        //     })
+        //     .catch((data, status, headers) => {
+        //         console.log("DB delete failure");
+        //         // TODO:  Pop up error for user
+        //     });
     }
 
     updateLift(lift, weight) {
         console.log("In updateLift, lift: " + lift._id);
-        this.$http.patch('/api/lifts/' + lift._id,
-            {
-                weight: weight
-            })
-            .then((resonse, status, headers) => {
-                lift.weight = weight;
-            })
-            .catch((response, status, headers) => {
-                // TODO:  Failure scenario
-                console.log("Lift wasn't properly updated");
-            });
+        // this.$http.patch('/api/lifts/' + lift._id,
+        //     {
+        //         weight: weight
+        //     })
+        //     .then((resonse, status, headers) => {
+        //         lift.weight = weight;
+        //     })
+        //     .catch((response, status, headers) => {
+        //         // TODO:  Failure scenario
+        //         console.log("Lift wasn't properly updated");
+        //     });
     }
 
     storeAllLifts() {

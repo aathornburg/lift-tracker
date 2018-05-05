@@ -42,7 +42,7 @@ gulp.task('buildHTML', function() {
 });
 
 gulp.task('buildAssets', function() {
-    return gulp.src('assets/**/*')
+    return gulp.src('src/assets/**/*')
         .pipe(gulp.dest('server/public/assets'));
 });
 
@@ -52,4 +52,4 @@ gulp.task('watch', ['buildJS', 'buildStyles', 'buildHTML'], function() {
     gulp.watch('src/app/**/*.html', ['buildHTML']);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['buildAssets', 'watch']);
