@@ -1,7 +1,5 @@
 require('angular');
 
-import util from 'util';
-
 export default angular
     .module('formLabelFilterModule', [])
         .filter('labelConstraint', () => {

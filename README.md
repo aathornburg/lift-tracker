@@ -30,7 +30,7 @@ Next Steps:
 - MAJOR OVERHAUL of Lifts page.  Will be changing each lift into a "card" with CSS Grids!
     - Note:  Each lift "card" can be a different color?  Connecting it to its workout (i.e. each workout can have a user-specified color)
 - Create workouts page (WIP)
-- Create notification after deleting a lift asking if the user if sure and giving them a chance to undo
+- Create notification (toast) after deleting a lift asking if the user if sure and giving them a chance to undo
 - Allow the user to input lift variations (i.e. different weights for different sets x reps) (WIP)
 - Create a new "Dashboard" and ~~create a link for Lifts~~ (as that's what the dashboard currently is)
 - Move all these todos into the issues category in GitHub
