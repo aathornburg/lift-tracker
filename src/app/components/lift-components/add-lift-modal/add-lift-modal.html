@@ -2,63 +2,67 @@
     <form name="addLiftCtrl.addLiftForm" ng-submit="addLiftCtrl.submitForm()" class="modal-form add-lift-form" autocomplete="off" novalidate form-label-filter="required">
         <div class="modal-content">
             <div class="modal-title">Add Lift</div>
-            <div class="lift-information modal-row" ng-class="{'has-error': addLiftCtrl.addLiftForm.lift.$invalid && (addLiftCtrl.addLiftForm.lift.$touched || addLiftCtrl.addLiftForm.$submitted)}">
-                <div class="lift-choice text-input-container">
-                    <input type="text" name="lift" ng-model="addLiftCtrl.addLift.lift" id="lift-input" class="lift-input" required />
-                    <label for="lift-input">Lift name</label>
-                </div>
-                <div class="form-error" ng-messages="addLiftCtrl.addLiftForm.lift.$error">
-                    <div ng-messages-include="add-lift-modal-errors"></div>
-                </div>
-            </div>
-            <div class="weight-information modal-row" ng-class="{'has-error': addLiftCtrl.addLiftForm.weight.$invalid && (addLiftCtrl.addLiftForm.weight.$touched || addLiftCtrl.addLiftForm.$submitted)}">
-                <div class="weight-choice text-input-container">
-                    <input type="text" name="weight" ng-model="addLiftCtrl.addLift.weight" id="weight-input" class="weight-input" required />
-                    <label for="weight-input">Lift weight</label>
-                </div>
-                <div class="form-error" ng-messages="addLiftCtrl.addLiftForm.weight.$error">
-                    <div ng-messages-include="add-lift-modal-errors"></div>
-                </div>
-            </div>
-            <div class="sets-group modal-row">
-                <div class="sets-choice text-input-container">
-                    <input type="text" name="sets" ng-model="addLiftCtrl.addLift.sets" id="sets-input" class="sets-input" />
-                    <label for="sets-input">Number of sets</label>
-                </div>
-                <div class="set-type-choice checkbox-input-container modal-hint">
-                    <checkbox checkbox-id="straight-set-checkbox" name="straightSets" ng-model="addLiftCtrl.addLift.straightSets" checked="true"></checkbox>
-                    <label for="straight-set-checkbox">Straight sets</label>
-                    <button type="button" class="straight-set-info" tooltip-text="Lifting the same weight (excluding warm ups) for every set of a lift">
-                        <i class="material-icons straight-set-info-icon">info_outline</i>
-                    </button>
-                </div>
-            </div>
-            <div class="modal-row" ng-class="{'has-error': addLiftCtrl.addLiftForm.$error.minRepsLessThan}" ng-show="addLiftCtrl.addLift.straightSets">
-                <div class="reps-choice">
-                    <div class="text-input-container">
-                        <input type="text" name="minReps" ng-model="addLiftCtrl.addLift.minReps" id="min-reps-input" class="reps-input" less-than="{{addLiftCtrl.addLift.maxReps}}" />
-                        <label for="min-reps-input">Min reps</label>
+            <div class="modal-information">
+                <div class="lift-information modal-row" ng-class="{'has-error': addLiftCtrl.addLiftForm.lift.$invalid && (addLiftCtrl.addLiftForm.lift.$touched || addLiftCtrl.addLiftForm.$submitted)}">
+                    <div class="lift-choice text-input-container">
+                        <input type="text" name="lift" ng-model="addLiftCtrl.addLift.lift" id="lift-input" class="lift-input" required />
+                        <label for="lift-input">Lift name</label>
                     </div>
-                    <span> - </span>
-                    <div class="text-input-container">
-                        <input type="text" name="maxReps" ng-model="addLiftCtrl.addLift.maxReps" id="max-reps-input" class="reps-input" />
-                        <label for="max-reps-input">Max reps</label>
+                    <div class="form-error" ng-messages="addLiftCtrl.addLiftForm.lift.$error">
+                        <div ng-messages-include="add-lift-modal-errors"></div>
                     </div>
                 </div>
-                <!-- TODO:  Make this error be handled by ng-messages? -->
-                <div class="form-error">
-                    Min reps must be less than max reps
+                <div class="weight-information modal-row" ng-class="{'has-error': addLiftCtrl.addLiftForm.weight.$invalid && (addLiftCtrl.addLiftForm.weight.$touched || addLiftCtrl.addLiftForm.$submitted)}">
+                    <div class="weight-choice text-input-container">
+                        <input type="text" name="weight" ng-model="addLiftCtrl.addLift.weight" id="weight-input" class="weight-input" required />
+                        <label for="weight-input">Lift weight</label>
+                    </div>
+                    <div class="form-error" ng-messages="addLiftCtrl.addLiftForm.weight.$error">
+                        <div ng-messages-include="add-lift-modal-errors"></div>
+                    </div>
+                </div>
+                <div class="sets-group modal-row">
+                    <div class="sets-choice text-input-container">
+                        <input type="text" name="sets" ng-model="addLiftCtrl.addLift.sets" id="sets-input" class="sets-input" />
+                        <label for="sets-input">Number of sets</label>
+                    </div>
+                    <div class="set-type-choice checkbox-input-container modal-hint">
+                        <checkbox checkbox-id="straight-set-checkbox" name="straightSets" ng-model="addLiftCtrl.addLift.straightSets" checked="true"></checkbox>
+                        <label for="straight-set-checkbox">Straight sets</label>
+                        <button type="button" class="straight-set-info" tooltip-text="Lifting the same weight (excluding warm ups) for every set of a lift">
+                            <i class="material-icons straight-set-info-icon">info_outline</i>
+                        </button>
+                    </div>
+                </div>
+                <div class="reps-choice modal-row">
+                    <div class="reps-choice-simple" ng-class="{'has-error': addLiftCtrl.addLiftForm.$error.minRepsLessThan}" ng-show="addLiftCtrl.addLift.straightSets">
+                        <div class="min-max-reps">
+                            <div class="text-input-container">
+                                <input type="text" name="minReps" ng-model="addLiftCtrl.addLift.minReps" id="min-reps-input" class="reps-input" less-than="{{addLiftCtrl.addLift.maxReps}}" />
+                                <label for="min-reps-input">Min reps</label>
+                            </div>
+                            <span> - </span>
+                            <div class="text-input-container">
+                                <input type="text" name="maxReps" ng-model="addLiftCtrl.addLift.maxReps" id="max-reps-input" class="reps-input" />
+                                <label for="max-reps-input">Max reps</label>
+                            </div>
+                        </div>
+                        <!-- TODO:  Make this error be handled by ng-messages? -->
+                        <div class="form-error">
+                            Min reps must be less than max reps
+                        </div>
+                    </div>
+                    <div class="reps-choice-complex" ng-show="!addLiftCtrl.addLift.straightSets">
+                        <div style="height: 1000px"></div>
+                    </div>
                 </div>
             </div>
-            <div class="modal-row" ng-show="!addLiftCtrl.addLift.straightSets">
-                test
-            </div>
-        </div>
-        <div class="modal-bottom">
-            <div class="required-indicator">* Required</div>
-            <div class="modal-buttons">
-                <button type="button" modal-close class="modal-cancel-button">Cancel</button>
-                <button type="submit">Add</button>
+            <div class="modal-bottom">
+                <div class="required-indicator">* Required</div>
+                <div class="modal-buttons">
+                    <button type="button" modal-close class="modal-cancel-button">Cancel</button>
+                    <button type="submit">Add</button>
+                </div>
             </div>
         </div>
     </form>

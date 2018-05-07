@@ -27,15 +27,19 @@
     }
 
     .reps-choice {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        .reps-choice-simple {
+            .min-max-reps {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
-        span {
-            font-size: 1.5em;
-            color: $font-color;
-            margin-left: 1em;
-            margin-right: 1em;
+            span {
+                font-size: 1.5em;
+                color: $font-color;
+                margin-left: 1em;
+                margin-right: 1em;
+            }
         }
     }
 }
