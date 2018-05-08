@@ -1,5 +1,6 @@
 .modal-container {
     $modal-padding: 24px;
+    $modal-bottom-height: 50px;
 
     position: absolute;
     width: 100%;
@@ -35,6 +36,10 @@
             }
 
             .modal-content {
+                display: grid;
+                grid-template-rows: $nav-bar-height auto $modal-bottom-height;
+                height: 100%;
+
                 .modal-title {
                     display: flex;
                     align-items: center;
@@ -45,7 +50,6 @@
                     font-family: 'Open Sans', sans-serif;
                     font-size: 1.4em;
                     letter-spacing: 1px;
-                    margin-bottom: 1em;
                     padding: 0 $modal-padding;
                     background: $main-color;
                     color: white;
@@ -54,6 +58,11 @@
                 .modal-sub-title {
                     color: $font-color;
                     font-size: 1.3em;
+                }
+
+                .modal-information {
+                    padding-top: 1em;
+                    overflow: auto;
                 }
 
                 .modal-row {
@@ -85,7 +94,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                height: 50px;
+                height: $modal-bottom-height;
                 padding: 0 $modal-padding;
 
                 .modal-buttons {
