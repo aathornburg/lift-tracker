@@ -56,16 +56,24 @@
                 }
 
                 .modal-sub-title {
-                    color: $font-color;
-                    font-size: 1.3em;
+                    display: flex;
+                    align-items: center;
+                    color: $main-color;
+                    font-size: 1.35em;
+                    padding: 0 $modal-padding;
+                    height: 40px;
+                    margin-bottom: 0.5em;
                 }
 
                 .modal-information {
-                    padding-top: 1em;
                     overflow: auto;
+                    color: $light-font-color;
                 }
 
                 .modal-row {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
                     min-height: 58px;
                     margin-bottom: 1.5em;
                     padding: 0 $modal-padding;

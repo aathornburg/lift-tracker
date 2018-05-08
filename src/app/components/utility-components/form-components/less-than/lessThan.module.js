@@ -22,8 +22,6 @@ export default angular
                         return minVal;
                     };
 
-                    console.log(attrs.lessThan);
-
                     ngModelCtrl.$parsers.unshift(validate);
                     ngModelCtrl.$formatters.push(validate);
 

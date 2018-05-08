@@ -3,6 +3,7 @@
         <div class="modal-content">
             <div class="modal-title">Add Lift</div>
             <div class="modal-information">
+                <div class="modal-sub-title">Lift Information</div>
                 <div class="lift-information modal-row" ng-class="{'has-error': addLiftCtrl.addLiftForm.lift.$invalid && (addLiftCtrl.addLiftForm.lift.$touched || addLiftCtrl.addLiftForm.$submitted)}">
                     <div class="lift-choice text-input-container">
                         <input type="text" name="lift" ng-model="addLiftCtrl.addLift.lift" id="lift-input" class="lift-input" required />
@@ -21,21 +22,25 @@
                         <div ng-messages-include="add-lift-modal-errors"></div>
                     </div>
                 </div>
-                <div class="sets-group modal-row">
-                    <div class="sets-choice text-input-container">
+                <div class="set-type-information modal-row">
+                    <div class="set-type-choice checkbox-input-container">
+                        <div class="set-type-label">
+                            <label for="straight-set-checkbox">Straight sets</label>
+                            <button type="button" class="straight-set-info" tooltip-text="Lifting the same weight (excluding warm ups) for every set of a lift">
+                                <i class="material-icons straight-set-info-icon">info_outline</i>
+                            </button>
+                        </div>
+                        <checkbox checkbox-id="straight-set-checkbox" name="straightSets" ng-model="addLiftCtrl.addLift.straightSets" checked="true"></checkbox>
+                    </div>
+                </div>
+                <div class="set-information modal-row">
+                    <div class="set-choice text-input-container">
                         <input type="text" name="sets" ng-model="addLiftCtrl.addLift.sets" id="sets-input" class="sets-input" />
                         <label for="sets-input">Number of sets</label>
                     </div>
-                    <div class="set-type-choice checkbox-input-container modal-hint">
-                        <checkbox checkbox-id="straight-set-checkbox" name="straightSets" ng-model="addLiftCtrl.addLift.straightSets" checked="true"></checkbox>
-                        <label for="straight-set-checkbox">Straight sets</label>
-                        <button type="button" class="straight-set-info" tooltip-text="Lifting the same weight (excluding warm ups) for every set of a lift">
-                            <i class="material-icons straight-set-info-icon">info_outline</i>
-                        </button>
-                    </div>
                 </div>
-                <div class="reps-choice modal-row">
-                    <div class="reps-choice-simple" ng-class="{'has-error': addLiftCtrl.addLiftForm.$error.minRepsLessThan}" ng-show="addLiftCtrl.addLift.straightSets">
+                <div class="reps-choice">
+                    <div class="reps-choice-simple modal-row" ng-class="{'has-error': addLiftCtrl.addLiftForm.$error.minRepsLessThan}" ng-show="addLiftCtrl.addLift.straightSets">
                         <div class="min-max-reps">
                             <div class="text-input-container">
                                 <input type="text" name="minReps" ng-model="addLiftCtrl.addLift.minReps" id="min-reps-input" class="reps-input" less-than="{{addLiftCtrl.addLift.maxReps}}" />
@@ -53,7 +58,8 @@
                         </div>
                     </div>
                     <div class="reps-choice-complex" ng-show="!addLiftCtrl.addLift.straightSets">
-                        <div style="height: 1000px"></div>
+                        <div class="modal-sub-title">Custom Set Builder</div>
+
                     </div>
                 </div>
             </div>

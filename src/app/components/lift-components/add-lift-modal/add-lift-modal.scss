@@ -1,13 +1,14 @@
 .add-lift-modal {
     .set-type-choice {
+        display: flex;
+        justify-content: space-between;
+
         .straight-set-choice {
             display: flex;
             align-items:center;
         }
 
         .straight-set-info {
-            display: flex;
-            align-items: center;
             margin-left: .5em;
             border: none;
             padding: 0;
