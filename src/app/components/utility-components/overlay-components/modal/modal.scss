@@ -66,6 +66,7 @@
                 }
 
                 .modal-information {
+                    padding-top: 1em;
                     overflow: auto;
                     color: $light-font-color;
                 }
@@ -84,6 +85,13 @@
 
                     &:last-child {
                         margin-bottom: 0.25em;
+                    }
+                }
+
+                .modal-hideable-section {
+                    &.ng-hide {
+                        // transition: 10s linear all;
+                        // opacity: 0;
                     }
                 }
 

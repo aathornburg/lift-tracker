@@ -1,3 +1,4 @@
+/** Packages */
 require('angular');
 
 /** Configuration */
