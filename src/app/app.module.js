@@ -14,6 +14,6 @@ import { workoutModule } from './components/workout-components/workout.module';
 import { utilityModule } from './components/utility-components/utility.module';
 
 export default angular
-    .module('angularJSSandbox',
+    .module('liftTracker',
         ['configModule', 'servicesModule', 'navigationModule', 'liftModule', 'workoutModule', 'utilityModule']
     );

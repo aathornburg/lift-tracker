@@ -10,7 +10,7 @@
                         <label for="lift-input">Lift name</label>
                     </div>
                     <div class="form-error" ng-messages="addLiftCtrl.addLiftForm.lift.$error">
-                        <div ng-messages-include="add-lift-modal-errors"></div>
+                        <div ng-messages-include="add-lift-modal-default-errors"></div>
                     </div>
                 </div>
                 <div class="set-type-information modal-row modal-other-input">
@@ -32,7 +32,7 @@
                                 <label for="weight-input">Lift weight</label>
                             </div>
                             <div class="form-error" ng-messages="addLiftCtrl.addLiftForm.weight.$error">
-                                <div ng-messages-include="add-lift-modal-errors"></div>
+                                <div ng-messages-include="add-lift-modal-default-errors"></div>
                             </div>
                         </div>
                         <div class="set-information modal-row modal-text-input">
@@ -54,9 +54,8 @@
                                         <label for="max-reps-input">Max reps</label>
                                     </div>
                                 </div>
-                                <!-- TODO:  Make this error be handled by ng-messages? -->
-                                <div class="form-error">
-                                    Min reps must be less than max reps
+                                <div class="form-error" ng-messages="addLiftCtrl.addLiftForm.$error">
+                                    <div ng-messages-include="add-lift-modal-custom-errors"></div>
                                 </div>
                             </div>
                         </div>

@@ -4,7 +4,7 @@ import { Checkbox } from './Checkbox';
 
 export default angular
     .module('checkboxModule', [])
-        .directive('checkbox', ($parse) => (
+        .directive('checkbox', () => (
             {
                 restrict: 'E',
                 controller: Checkbox,
