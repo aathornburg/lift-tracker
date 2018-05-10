@@ -1,24 +1,33 @@
-// require('angular');
+require('angular');
 
-// import { Checkbox } from './Checkbox';
+import { Swappable } from './Swappable';
+import { SwappableSectionService } from './SwappableSectionService';
 
-// export default angular
-//     .module('swappableModule', [])
-//         .directive('swappableSectionGroup', () => (
-//             {
-//                 restrict: 'A',
-//                 controller: Checkbox,
-//                 controllerAs: 'checkboxCtrl',
-//                 require: ['checkbox', '?ngModel'],
-//                 templateUrl: 'components/utility-components/form-components/checkbox/checkbox.html',
-//                 scope: {},
-//                 bindToController: {
-//                     checkboxId: '@',
-//                     name: '@',
-//                     checked: '<?'
-//                 },
-//                 link: (scope, elem, attrs, ctrls) => {
-//                 }
-//             }
-//         ))
-//     .name;
+export default angular
+    .module('swappableModule', [])
+        .service('swappableSectionService', SwappableSectionService)
+        .directive('swappableSectionGroup', (swappableSectionService) => (
+            {
+                restrict: 'E',
+                controller: Swappable,
+                controllerAs: 'swapCtrl',
+                transclude: true,
+                template: '<div class="swappable-section-container" ng-transclude></div>',
+                link: {
+                    pre: (scope, elem, attrs, swapCtrl) => {
+                        swappableSectionService.public.initSectionGroup(elem, swapCtrl);
+                    }
+                }
+            }
+        ))
+        .directive('swappableShowWhen', (swappableSectionService) => (
+            {
+                restrict: 'A',
+                scope: {},
+                require: '^swappableSectionGroup',
+                link: (scope, elem, attrs, swapCtrl) => {
+                    swappableSectionService.public.initSection(elem, attrs, swapCtrl);
+                }
+            }
+        ))
+    .name;
