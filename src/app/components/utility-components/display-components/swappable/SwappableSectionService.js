@@ -31,86 +31,116 @@ export class SwappableSectionService {
                         }
                     }
                 },
-                methods: {
-                    getSwappableSectionGroup: (swappableId) => {
-                        return this.swappableSectionGroups.find(
-                            swappableSectionGroup => swappableSectionGroup.swappableId === swappableId
-                        );
-                    },
-                    addSwappableSectionToGroup: (swappableSectionGroup, sectionElem) => {
-                        swappableSectionGroup.swappableSections.push(
-                            sectionElem
-                        );
-                    },
-                    hideSwappableSection: (elem) => {
-                        elem.addClass('hide-swappable-section');
-                    },
-                    showSwappableSection: (elem) => {
-                        elem.removeClass('hide-swappable-section');
-                    },
-                    indexInRange: (index, firstRangeVal, secondRangeVal) => {
-                        // TODO: Clean this up
-                        if (firstRangeVal < secondRangeVal) {
-                            return (index >= firstRangeVal) && (index <= secondRangeVal);
-                        } else if (secondRangeVal < firstRangeVal) {
-                            return (index >= secondRangeVal) && (index <= firstRangeVal);
+                methods: (() => {
+                    const swappableSectionGroup = {
+                        get: (swappableId) => {
+                            return this.swappableSectionGroups.find(
+                                swappableSectionGroup => swappableSectionGroup.swappableId === swappableId
+                            );
+                        },
+                        addSwappableSection: (swappableSectionGroup, sectionElem) => {
+                            swappableSectionGroup.swappableSections.push(
+                                sectionElem
+                            );
                         }
                     },
-                    getInBetweenSwappableSections: (swappableSectionGroup, oldActiveIndex, newActiveIndex) => {
-                        let inBetweenSwappableSections = [];
-
-                        swappableSectionGroup.swappableSections.forEach(
-                            (elem, forEachIndex) => {
-                                if (service.methods.indexInRange(forEachIndex, oldActiveIndex, newActiveIndex)) {
-                                    inBetweenSwappableSections.push(elem);
-                                }
+                        swappableSection = {
+                            hide: (elem) => {
+                                elem.addClass('hide-swappable-section');
+                            },
+                            show: (elem) => {
+                                elem.removeClass('hide-swappable-section');
+                            },
+                            scrollTo: (swappableSectionContainer, newActiveIndex) => {
+                                swappableSectionContainer.css(
+                                    'transform',
+                                    'translateX(-' + newActiveIndex + '00%)'
+                                );
                             }
-                        );
+                        },
+                        inBetweenSections = (() => {
+                            const get = (() => {
+                                const indexInRange = (index, firstRangeVal, secondRangeVal) => {
+                                    // TODO: Clean this up
+                                    if (firstRangeVal < secondRangeVal) {
+                                        return (index >= firstRangeVal) && (index <= secondRangeVal);
+                                    } else if (secondRangeVal < firstRangeVal) {
+                                        return (index >= secondRangeVal) && (index <= firstRangeVal);
+                                    }
+                                },
+                                    getInBetweenSections =  (swappableSectionGroup, oldActiveIndex, newActiveIndex) => {
+                                        let inBetweenSwappableSections = [];
+                
+                                        swappableSectionGroup.swappableSections.forEach(
+                                            (elem, forEachIndex) => {
+                                                if (indexInRange(forEachIndex, oldActiveIndex, newActiveIndex)) {
+                                                    inBetweenSwappableSections.push(elem);
+                                                }
+                                            }
+                                        );
+                
+                                        return inBetweenSwappableSections;
+                                    };
 
-                        return inBetweenSwappableSections;
-                    },
-                    showInBetweenSwappableSections: (inBetweenSwappableSections) => {
-                        inBetweenSwappableSections.forEach(
-                            elem => service.methods.showSwappableSection(elem)
-                        );
-                    },
-                    hideAllInBetweenSwappableSections: (inBetweenSwappableSections, newActiveSection) => {
-                        inBetweenSwappableSections.forEach(
-                            elem => {
-                                if (elem !== newActiveSection) { service.methods.hideSwappableSection(elem) };
+                                return getInBetweenSections;
+                            })(),
+                                show = (inBetweenSwappableSections) => {
+                                    inBetweenSwappableSections.forEach(
+                                        elem => swappableSection.show(elem)
+                                    );
+                                },
+                                hide = (() => {
+                                    const hideInactiveSections = (inBetweenSwappableSections, newActiveSection) => {
+                                        inBetweenSwappableSections.forEach(
+                                            elem => {
+                                                if (elem !== newActiveSection) { swappableSection.hide(elem) };
+                                            }
+                                        );
+                                    },
+                                        hideInactiveSectionsOnTransitionEnd = (swappableSectionContainer, inBetweenSwappableSections, newActiveSection) => {
+                                            /* transitionend only gets triggered when the element is visible.
+                                            If the element isn't visible, we immediately hide the non-active sections */
+                                            if (swappableSectionContainer.is(':visible')) {
+                                                /* transitionend needs to be removed before adding a new listener in order
+                                                to handle the case of a user interrupting the animation.  This
+                                                ensures that the newest animation will always have precedence */
+                                                swappableSectionContainer.off('transitionend');
+                                                swappableSectionContainer.on('transitionend', (e) => {
+                                                    // Other things (like 'visibility') can trigger the transitionend event
+                                                    if (e.originalEvent.propertyName === service.constants.transitionTransform) {
+                                                        hideInactiveSections(inBetweenSwappableSections, newActiveSection);
+                                                    }
+                                                });
+                                            } else {
+                                                hideInactiveSections(inBetweenSwappableSections, newActiveSection);
+                                            }
+                                        };
+
+                                    return hideInactiveSectionsOnTransitionEnd;
+                                })()
+
+                            return {
+                                get: get,
+                                show: show,
+                                hide: hide
                             }
-                        );
-                    },
-                    hideInBetweenSwappableSections: (swappableSectionContainer, inBetweenSwappableSections, newActiveSection) => {
-                        if (swappableSectionContainer.is(':visible')) {
-                            swappableSectionContainer.off('transitionend');
-                            swappableSectionContainer.on('transitionend', (e) => {
-                                if (e.originalEvent.propertyName === service.constants.transitionTransform) {
-                                    service.methods.hideAllInBetweenSwappableSections(inBetweenSwappableSections, newActiveSection);
-                                    swappableSectionContainer.off('transitionend');
-                                }
-                            });
-                        } else {
-                            service.methods.hideAllInBetweenSwappableSections(inBetweenSwappableSections, newActiveSection);
+                        })(),
+                        swapTo = (swappableSectionGroup, elem) => {
+                            let newActiveIndex = swappableSectionGroup.swappableSections.indexOf(elem);
+                            let inBetweenSwappableSections = inBetweenSections.get(
+                                swappableSectionGroup, swappableSectionGroup.status.activeIndex, newActiveIndex);
+                            
+                            inBetweenSections.show(inBetweenSwappableSections);
+                            swappableSection.scrollTo(swappableSectionGroup.swappableSectionContainer, newActiveIndex);
+                            inBetweenSections.hide(swappableSectionGroup.swappableSectionContainer, inBetweenSwappableSections, elem);
+                            swappableSectionGroup.status.activeIndex = newActiveIndex;
                         }
-                    },
-                    scrollToSwappableSection: (swappableSectionContainer, newActiveIndex) => {
-                        swappableSectionContainer.css(
-                            'transform',
-                            'translateX(-' + newActiveIndex + '00%)'
-                        );
-                    },
-                    swapTo: (swappableSectionGroup, elem) => {
-                        let newActiveIndex = swappableSectionGroup.swappableSections.indexOf(elem);
-                        let inBetweenSwappableSections = service.methods.getInBetweenSwappableSections(
-                            swappableSectionGroup, swappableSectionGroup.status.activeIndex, newActiveIndex);
-                        
-                        service.methods.showInBetweenSwappableSections(inBetweenSwappableSections);
-                        service.methods.scrollToSwappableSection(swappableSectionGroup.swappableSectionContainer, newActiveIndex);
-                        service.methods.hideInBetweenSwappableSections(swappableSectionGroup.swappableSectionContainer, inBetweenSwappableSections, elem);
-                        swappableSectionGroup.status.activeIndex = newActiveIndex;
-                    }
-                }
+
+                    return {
+                        swapTo: swapTo,
+                        swappableSectionGroup: swappableSectionGroup
+                    };
+                })(),
             },
                 directive = {
                     swappableSectionGroup: {
@@ -127,8 +157,8 @@ export class SwappableSectionService {
                             })
                         },
                         init: (elem, attrs, swapCtrl) => {
-                            let swappableSectionGroup = service.methods.getSwappableSectionGroup(swapCtrl.swappableId);
-                            service.methods.addSwappableSectionToGroup(swappableSectionGroup, elem);
+                            let swappableSectionGroup = service.methods.swappableSectionGroup.get(swapCtrl.swappableId);
+                            service.methods.swappableSectionGroup.addSwappableSection(swappableSectionGroup, elem);
                             directive.swappableSection.createWatcher(swappableSectionGroup, attrs, elem);
                         }
                     }
