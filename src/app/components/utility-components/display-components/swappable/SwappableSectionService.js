@@ -83,6 +83,7 @@ export class SwappableSectionService {
                     },
                     hideInBetweenSwappableSections: (swappableSectionContainer, inBetweenSwappableSections, newActiveSection) => {
                         if (swappableSectionContainer.is(':visible')) {
+                            swappableSectionContainer.off('transitionend');
                             swappableSectionContainer.on('transitionend', (e) => {
                                 if (e.originalEvent.propertyName === service.constants.transitionTransform) {
                                     service.methods.hideAllInBetweenSwappableSections(inBetweenSwappableSections, newActiveSection);
