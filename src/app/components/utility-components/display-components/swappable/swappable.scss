@@ -2,11 +2,11 @@ swappable-section-group {
     overflow: hidden;
     display: block;
 
-    .swappable-section-container {
+    .swappable-section-wrapper {
         overflow-x: hidden;
         display: inline;
 
-        .swappable-sections {
+        .swappable-section-container {
             display: flex;
             align-items: flex-start;
             transform: translateX(0px);

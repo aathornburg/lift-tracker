@@ -14,7 +14,8 @@ export class SwappableSectionService {
         return (() => {
             const service = {
                 constants: {
-                    swappableContainer: '.swappable-sections'
+                    swappableContainer: '.swappable-section-container',
+                    transitionTransform: 'transform'
                 },
                 props: {
                     swappableSectionGroups: {
@@ -82,8 +83,11 @@ export class SwappableSectionService {
                     },
                     hideInBetweenSwappableSections: (swappableSectionContainer, inBetweenSwappableSections, newActiveSection) => {
                         if (swappableSectionContainer.is(':visible')) {
-                            swappableSectionContainer.one('transitionend', (e) => {
-                                service.methods.hideAllInBetweenSwappableSections(inBetweenSwappableSections, newActiveSection);
+                            swappableSectionContainer.on('transitionend', (e) => {
+                                if (e.originalEvent.propertyName === service.constants.transitionTransform) {
+                                    service.methods.hideAllInBetweenSwappableSections(inBetweenSwappableSections, newActiveSection);
+                                    swappableSectionContainer.off('transitionend');
+                                }
                             });
                         } else {
                             service.methods.hideAllInBetweenSwappableSections(inBetweenSwappableSections, newActiveSection);

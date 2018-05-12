@@ -12,7 +12,7 @@ export default angular
                 controller: Swappable,
                 controllerAs: 'swapCtrl',
                 transclude: true,
-                template: '<div class="swappable-section-container"><div class="swappable-sections" ng-transclude></div></div>',
+                template: '<div class="swappable-section-wrapper"><div class="swappable-section-container" ng-transclude></div></div>',
                 link: {
                     pre: (scope, elem, attrs, swapCtrl) => {
                         swappableSectionService.public.initSectionGroup(elem, swapCtrl);
