@@ -1,18 +1,25 @@
 swappable-section-group {
-    display: inline-block;
-    overflow-x: hidden;
+    overflow: hidden;
+    display: block;
 
     .swappable-section-container {
-        display: flex;
-        transform: translateX(0px);
-        transition: transform 0.5s ease-in-out;
+        overflow-x: hidden;
+        display: inline;
 
-        & [swappable-show-when] {
-            width: 100%;
-            flex-shrink: 0;
+        .swappable-sections {
+            display: flex;
+            align-items: flex-start;
+            transform: translateX(0px);
+            transition: transform 0.5s ease-in-out;
 
-            &.hide-swappable-section {
-                height: 0;
+            & [swappable-show-when] {
+                width: 100%;
+                flex-shrink: 0;
+
+                &.hide-swappable-section {
+                    height: 1px;
+                    visibility: hidden;
+                }
             }
         }
     }

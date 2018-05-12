@@ -14,7 +14,7 @@ export class SwappableSectionService {
         return (() => {
             const service = {
                 constants: {
-                    swappableContainer: '.swappable-section-container'
+                    swappableContainer: '.swappable-sections'
                 },
                 props: {
                     swappableSectionGroups: {
@@ -24,7 +24,7 @@ export class SwappableSectionService {
                                     activeIndex: 0
                                 },
                                 swappableId: swapCtrl.swappableId,
-                                swappableSectionContainer: swappableSectionGroupElem.children(service.constants.swappableContainer),
+                                swappableSectionContainer: swappableSectionGroupElem.find(service.constants.swappableContainer),
                                 swappableSections: []
                             });
                         }
@@ -42,10 +42,10 @@ export class SwappableSectionService {
                         );
                     },
                     hideSwappableSection: (elem) => {
-                        elem.addClass('ng-hide');
+                        elem.addClass('hide-swappable-section');
                     },
                     showSwappableSection: (elem) => {
-                        elem.removeClass('ng-hide');
+                        elem.removeClass('hide-swappable-section');
                     },
                     indexInRange: (index, firstRangeVal, secondRangeVal) => {
                         // TODO: Clean this up
@@ -69,23 +69,25 @@ export class SwappableSectionService {
                         return inBetweenSwappableSections;
                     },
                     showInBetweenSwappableSections: (inBetweenSwappableSections) => {
-                        console.log("Showing swappable sections");
                         inBetweenSwappableSections.forEach(
                             elem => service.methods.showSwappableSection(elem)
                         );
                     },
+                    hideAllInBetweenSwappableSections: (inBetweenSwappableSections, newActiveSection) => {
+                        inBetweenSwappableSections.forEach(
+                            elem => {
+                                if (elem !== newActiveSection) { service.methods.hideSwappableSection(elem) };
+                            }
+                        );
+                    },
                     hideInBetweenSwappableSections: (swappableSectionContainer, inBetweenSwappableSections, newActiveSection) => {
-                        console.log("hiding swappable sections");
-                        console.log("swappableSectionContainer: " + util.inspect(swappableSectionContainer));
-                        swappableSectionContainer.one('transitionend', (e) => {
-                            console.log("transition ended: " + e.propertyName);
-                            inBetweenSwappableSections.forEach(
-                                elem => {
-                                    console.log("elem: " + util.inspect(elem) + "\nnewActiveSection: " + util.inspect(newActiveSection) + "\nelem !== newActiveSection: " + (elem !== newActiveSection));
-                                    if (elem !== newActiveSection) { service.methods.hideSwappableSection(elem) };
-                                }
-                            );
-                        });
+                        if (swappableSectionContainer.is(':visible')) {
+                            swappableSectionContainer.one('transitionend', (e) => {
+                                service.methods.hideAllInBetweenSwappableSections(inBetweenSwappableSections, newActiveSection);
+                            });
+                        } else {
+                            service.methods.hideAllInBetweenSwappableSections(inBetweenSwappableSections, newActiveSection);
+                        }
                     },
                     scrollToSwappableSection: (swappableSectionContainer, newActiveIndex) => {
                         swappableSectionContainer.css(
@@ -100,7 +102,7 @@ export class SwappableSectionService {
                         
                         service.methods.showInBetweenSwappableSections(inBetweenSwappableSections);
                         service.methods.scrollToSwappableSection(swappableSectionGroup.swappableSectionContainer, newActiveIndex);
-                        // service.methods.hideInBetweenSwappableSections(swappableSectionGroup.swappableSectionContainer, inBetweenSwappableSections, elem);
+                        service.methods.hideInBetweenSwappableSections(swappableSectionGroup.swappableSectionContainer, inBetweenSwappableSections, elem);
                         swappableSectionGroup.status.activeIndex = newActiveIndex;
                     }
                 }
@@ -115,7 +117,6 @@ export class SwappableSectionService {
                         createWatcher: (swappableSectionGroup, attrs, elem) => {
                             attrs.$observe('swappableShowWhen', (showWhenVal) => {
                                 if (showWhenVal === 'true') {
-                                    console.log("swappableShowWhen changed to true for " + util.inspect(elem[0]));
                                     service.methods.swapTo(swappableSectionGroup, elem);
                                 }
                             })
