@@ -28,7 +28,7 @@
                     <div class="set-builder-simple" swappable-show-when="{{addLiftCtrl.addLift.straightSets}}" >
                         <div class="weight-information modal-row modal-text-input" ng-class="{'has-error': addLiftCtrl.addLiftForm.weight.$invalid && (addLiftCtrl.addLiftForm.weight.$touched || addLiftCtrl.addLiftForm.$submitted)}">
                             <div class="weight-choice text-input-container">
-                                <input type="text" name="weight" ng-model="addLiftCtrl.addLift.weight" id="weight-input" class="weight-input" required />
+                                <input type="text" name="weight" ng-model="addLiftCtrl.addLift.weight" id="weight-input" class="weight-input" ng-required="addLiftCtrl.addLift.straightSets" />
                                 <label for="weight-input">Lift weight</label>
                             </div>
                             <div class="form-error" ng-messages="addLiftCtrl.addLiftForm.weight.$error">
