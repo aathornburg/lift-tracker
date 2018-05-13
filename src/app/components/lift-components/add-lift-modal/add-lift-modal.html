@@ -40,6 +40,9 @@
                                 <input type="text" name="sets" ng-model="addLiftCtrl.addLift.sets" id="sets-input" class="sets-input" />
                                 <label for="sets-input">Number of sets</label>
                             </div>
+                            <div class="form-error" ng-messages="addLiftCtrl.addLiftForm.sets.$error">
+                                <div ng-messages-include="add-lift-modal-default-errors"></div>
+                            </div>
                         </div>
                         <div class="reps-choice">
                             <div class="reps-choice-simple modal-row modal-text-input" ng-class="{'has-error': addLiftCtrl.addLiftForm.$error.minRepsLessThan}">

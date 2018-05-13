@@ -69,6 +69,7 @@ html {
             $input-padding-bottom: .3em;
             position: relative;
             box-sizing: border-box;
+            padding-top: $input-top-padding;
 
             & > label {
                 position: absolute;
@@ -94,7 +95,7 @@ html {
                     border-color: $main-color-hover;
 
                     & ~ label {
-                        bottom: 90%;
+                        bottom: calc(100% - 1em - 2px);
                         font-size: 1em;
                         color: $main-color-hover;
                     }
@@ -154,9 +155,10 @@ html {
 
         /* Form errors */
         .form-error {
-            display: none;
+            visibility: hidden;
             font-size: 13px;
             margin-top: 2px;
+            min-height: $input-error-hint-height;
             color: $accent-color;
             font-family: 'Open Sans', sans-serif;
         }
@@ -171,7 +173,7 @@ html {
             }
 
             & > .form-error {
-                display: block;
+                visibility: visible;
             }
         }
     }
