@@ -1,5 +1,3 @@
-import util from 'util';
-
 export class SwappableSectionService {
     constructor() {
         this.swappableSectionGroups = [];
@@ -117,7 +115,7 @@ export class SwappableSectionService {
                                         };
 
                                     return hideInactiveSectionsOnTransitionEnd;
-                                })()
+                                })();
 
                             return {
                                 get: get,

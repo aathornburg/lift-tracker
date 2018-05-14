@@ -16,7 +16,7 @@
         background-color: white;
         border-radius: 20px;
         transition: all .2s linear;
-        color: $accent-color;
+        color: $red-accent-color;
         padding: 10px 20px;
         overflow: hidden;
         border: 2px solid transparent;
@@ -29,7 +29,7 @@
         }
 
         &:hover, &:focus {
-            background-color: $accent-color;
+            background-color: $red-accent-color;
             color: white;
             border: 1.5px solid white;
         }

@@ -45,11 +45,11 @@
                 padding-right: .75em;
 
                 &.delete-lift {
-                    color: $accent-color;
+                    color: $red-accent-color;
                 }
 
                 &.data {
-                    color: $positive-color;
+                    color: $green-accent-color;
                 }
             }
 
@@ -97,22 +97,22 @@
 
             &.weight-down-button {
                 background-color: white;
-                color: $negative-color;
-                border: 1.5px solid $negative-color;
+                color: $blue-accent-color;
+                border: 1.5px solid $blue-accent-color;
 
                 &:hover, &:focus {
-                    background-color: $negative-color;
+                    background-color: $blue-accent-color;
                     color: white;
                 }
             }
 
             &.weight-up-button {
                 background-color: white;
-                color: $positive-color;
-                border: 1.5px solid $positive-color;
+                color: $green-accent-color;
+                border: 1.5px solid $green-accent-color;
 
                 &:hover, &:focus {
-                    background-color: $positive-color;
+                    background-color: $green-accent-color;
                     color: white;
                 }
             }

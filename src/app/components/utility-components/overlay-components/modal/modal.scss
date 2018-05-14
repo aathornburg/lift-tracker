@@ -58,10 +58,11 @@
                 .modal-sub-title {
                     display: flex;
                     align-items: center;
+                    justify-content: space-between;
                     color: $main-color;
                     font-size: 1.35em;
                     padding: 0 $modal-padding;
-                    height: 40px;
+                    min-height: 40px;
                     margin-top: 1em;
                 }
 
