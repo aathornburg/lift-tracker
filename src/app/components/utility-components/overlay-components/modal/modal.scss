@@ -55,15 +55,19 @@
                     color: white;
                 }
 
-                .modal-sub-title {
+                .modal-sub-title-group {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                     color: $main-color;
-                    font-size: 1.35em;
                     padding: 0 $modal-padding;
                     min-height: 40px;
                     margin-top: 1em;
+
+                    &.modal-sub-title, .modal-sub-title {
+                        font-size: 1.35em;
+                        font-weight: normal;
+                    }
                 }
 
                 .modal-information {

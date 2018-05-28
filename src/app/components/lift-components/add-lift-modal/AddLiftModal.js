@@ -13,7 +13,7 @@ export class AddLiftModal {
                 this.addLiftForm.sets,
                 this.addLiftForm.minReps,
                 this.addLiftForm.maxReps
-            )
+            );
         }
     }
 }

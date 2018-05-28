@@ -4,6 +4,7 @@
     border: 1.5px solid $red-accent-color;
     transition: background-color .2s linear;
     color: $red-accent-color;
+    height: 50px;
 
     &:hover, &:focus {
         background-color: $red-accent-color;

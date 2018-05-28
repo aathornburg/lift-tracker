@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-title">Add Lift</div>
             <div class="modal-information">
-                <div class="modal-sub-title">Lift Information</div>
+                <h3 class="modal-sub-title-group modal-sub-title">Lift Information</h3>
                 <div class="lift-information modal-row modal-text-input" ng-class="{'has-error': addLiftCtrl.addLiftForm.lift.$invalid && (addLiftCtrl.addLiftForm.lift.$touched || addLiftCtrl.addLiftForm.$submitted)}">
                     <div class="lift-choice text-input-container">
                         <input type="text" name="lift" ng-model="addLiftCtrl.addLift.lift" id="lift-input" class="lift-input" required />
@@ -64,10 +64,16 @@
                         </div>
                     </div>
                     <div class="set-builder-complex" swappable-show-when="{{!addLiftCtrl.addLift.straightSets}}">
-                        <div class="modal-sub-title">
-                            <span>Sets</span>
-                            <button type="button" class="add-button new-set-button">New Set</button>
+                        <div class="modal-sub-title-group">
+                            <h3 class="modal-sub-title">Sets</h3>
+                            <button type="button" class="add-button new-set-button" ng-click="addLiftCtrl.addNewSetForm()">
+                                <div class="add-button-text">New Set</div>
+                                <div class="add-button-icon">
+                                    <i class="material-icons">add</i>
+                                </div>
+                            </button>
                         </div>
+                        <div class="set-input-group"></div>
                     </div>
                 </swappable-section-group>
             </div>

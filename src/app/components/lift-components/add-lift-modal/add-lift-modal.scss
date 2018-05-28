@@ -45,10 +45,19 @@
     .set-builder-complex {
         .new-set-button {
             background-color: transparent;
-            border-radius: 20px;
+            border-radius: 15px;
             border: 1.5px solid $red-accent-color;
             transition: background-color .2s linear;
             color: $red-accent-color;
+
+            .add-button-icon {
+                $add-button-icon-size: 20px;
+                height: $add-button-icon-size;
+
+                .material-icons {
+                    font-size: $add-button-icon-size;
+                }
+            }
 
             &:hover, &:focus {
                 background-color: $red-accent-color;

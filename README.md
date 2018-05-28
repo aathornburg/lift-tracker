@@ -66,6 +66,7 @@ To Do:
 - ~~Determine why I need to pass dropdownCtrl into a scope.$watch when init'ing a dropdownMenu directive, vs. just using the already-set this.ctrl~~ This is explained by the scope.$watch having to match up with the controllerAs syntax for the directive!!!
 - Allow dropdowns to be configured on if we want to close them on click/tab out or not
 - Allow tooltips to contain links
+- Turn Add buttons into three part things, where on the left/right there's a plus (with a border?) and on the other side there's a title and a subtitle
 
 Personal notes:
 - Importing an item using the import { name } from '...' syntax requires you to match the name with the name of what was exported!

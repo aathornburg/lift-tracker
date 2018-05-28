@@ -1,11 +1,11 @@
 require('angular');
 
 import { AllLifts } from './all-lifts/AllLifts';
-import { AddLiftModal } from './add-lift-modal/AddLiftModal';
 import { Lift } from './lift/Lift';
+import { addLiftModalModule } from './add-lift-modal/addLiftModal.module';
 
 export default angular
-    .module('liftModule', []) 
+    .module('liftModule', ['addLiftModalModule']) 
         .directive('allLifts', () => (
             {
                 restrict: 'E',
@@ -20,16 +20,6 @@ export default angular
             {
                 restrict: 'E',
                 templateUrl: 'components/lift-components/add-lift/add-lift.html'
-            }
-        ))
-        .directive('addLiftModal', () => (
-            {
-                restrict: 'E',
-                templateUrl: 'components/lift-components/add-lift-modal/add-lift-modal.html',
-                controller: AddLiftModal,
-                controllerAs: 'addLiftCtrl',
-                scope: {},
-                bindToController: true
             }
         ))
         .directive('lift', () => (
