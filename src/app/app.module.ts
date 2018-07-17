@@ -7,13 +7,17 @@ import { NavigationItemComponent } from './components/navigation/navigation-item
 
 import { RoutingModule } from './app.routing';
 import { LiftsComponent } from './components/pages/lifts/lifts.component';
+import { AddLiftComponent } from './components/lift/add-lift/add-lift.component';
+import { LiftComponent } from './components/lift/lift/lift.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationBarComponent,
     NavigationItemComponent,
-    LiftsComponent
+    LiftsComponent,
+    AddLiftComponent,
+    LiftComponent
   ],
   imports: [
     BrowserModule,
