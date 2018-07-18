@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { LiftsService } from 'src/app/services/lifts.service';
 
 @Component({
   selector: 'lt-lifts',
   templateUrl: './lifts.component.html',
   styleUrls: ['./lifts.component.scss']
 })
-export class LiftsComponent implements OnInit {
+export class LiftsComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor(public liftsService: LiftsService) { }
 
 }

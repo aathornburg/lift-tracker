@@ -4,8 +4,8 @@
   </div>
   <h2>All lifts</h2>
   <div class="all-lifts-container">
-      <div ng-repeat="lift in allLiftsCtrl.getLifts()">
-          <lt-lift lift-model="lift"></lt-lift>
+      <div *ngFor="let lift of liftsService.getLifts()">
+          <lt-lift [lift]="lift"></lt-lift>
       </div>
   </div>
 </div>
