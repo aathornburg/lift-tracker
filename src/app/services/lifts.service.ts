@@ -28,11 +28,11 @@ export class LiftsService {
     //     });
 
     this.lifts = [
-      new Lift('Bench press', 135),
-      new Lift('Squat', 135),
-      new Lift('Deadlift', 135),
-      new Lift('Barbell Row', 135),
-      new Lift('Curl', 135)
+      new Lift(0, 'Bench press', 135),
+      new Lift(1, 'Squat', 135),
+      new Lift(2, 'Deadlift', 135),
+      new Lift(3, 'Barbell Row', 135),
+      new Lift(4, 'Curl', 135)
     ];
   }
 }

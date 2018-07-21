@@ -13,6 +13,8 @@ import { LiftComponent } from './components/lift/lift/lift.component';
 
 import { LiftsService } from './services/lifts.service';
 
+import { DropdownModule } from './helper_modules/dropdown/dropdown.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,8 @@ import { LiftsService } from './services/lifts.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    RoutingModule
+    RoutingModule,
+    DropdownModule.forRoot()
   ],
   providers: [
     LiftsService

@@ -1,17 +1,19 @@
-<div class="lift" has-dropdown>
-    <button class="lift-options-button" dropdown-button>
+<div class="lift">
+    <button class="lift-options-button" [ltOpenDropdown]="getDropdownIdentifier()">
         <i class="lift-options material-icons">more_vert</i>
     </button>
-    <div class="lift-options-menu" dropdown-menu>
-        <button class="lift-options-row">
-            <i class="lift-options-icon data material-icons">timeline</i>
-            <span class="lift-options-text">Data</span>
-        </button>
-        <button class="lift-options-row" (click)="remove()">
-            <i class="lift-options-icon delete-lift material-icons">delete</i>
-            <span class="lift-options-text">Delete</span>
-        </button>
-    </div>
+    <lt-dropdown [dropdownName]="getDropdownIdentifier()">
+        <div class="lift-options-menu">
+            <button class="lift-options-row">
+                <i class="lift-options-icon data material-icons">timeline</i>
+                <span class="lift-options-text">Data</span>
+            </button>
+            <button class="lift-options-row" (click)="remove()">
+                <i class="lift-options-icon delete-lift material-icons">delete</i>
+                <span class="lift-options-text">Delete</span>
+            </button>
+        </div>
+    </lt-dropdown>
     <div class="lift-detail-row">
         <span class="lift-name">{{lift.liftName}}</span>
     </div>

@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NavigationItemComponent implements OnInit {
 
-  @Input() routerLink: string;
+  @Input() routerLinkLocation: string;
 
   constructor() { }
 

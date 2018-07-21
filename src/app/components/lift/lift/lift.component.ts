@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Lift } from 'src/app/model/Lift';
+import { Lift } from '../../../model/Lift';
+import { DropdownService } from '../../../helper_modules/dropdown/dropdown.service';
 
 @Component({
   selector: 'lt-lift',
@@ -10,7 +11,7 @@ export class LiftComponent {
 
   @Input() lift: Lift;
 
-  constructor() { }
+  constructor(private dropdownService: DropdownService) { }
 
   weightDown(): void {
 
@@ -22,6 +23,15 @@ export class LiftComponent {
 
   remove(): void {
 
+  }
+
+  openDropdown(event: any): void {
+    event.stopPropagation();
+    this.dropdownService.triggerDropdownOpen(this.getDropdownIdentifier());
+  }
+
+  getDropdownIdentifier(): string {
+    return 'lift-settings-' + this.lift.id;
   }
 
 }

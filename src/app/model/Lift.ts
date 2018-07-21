@@ -1,3 +1,3 @@
 export class Lift {
-    constructor(public liftName: string, public weight: number) { }
+    constructor(public id: number, public liftName: string, public weight: number) { }
 }
