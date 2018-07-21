@@ -13,7 +13,7 @@ import { LiftComponent } from './components/lift/lift/lift.component';
 
 import { LiftsService } from './services/lifts.service';
 
-import { DropdownModule } from './helper_modules/dropdown/dropdown.module';
+import { OverlayModule } from './helper-modules/overlay/overlay.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { DropdownModule } from './helper_modules/dropdown/dropdown.module';
     BrowserModule,
     HttpClientModule,
     RoutingModule,
-    DropdownModule.forRoot()
+    OverlayModule.forRoot()
   ],
   providers: [
     LiftsService

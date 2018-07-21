@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter, ElementRef } from '@angular/core';
 import { Dropdown } from './Dropdown';
+import { OverlayService } from '../overlay.service';
 
 @Injectable()
 export class DropdownService {
@@ -9,7 +10,7 @@ export class DropdownService {
   closeDropdown: EventEmitter<string> = new EventEmitter<string>();
   toggleDropdown: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private overlayService: OverlayService) { }
 
   registerDropdown(dropdownName: string, dropdownMenu: ElementRef) {
     const dropdown = this.getOrRegisterDropdown(dropdownName);
@@ -48,10 +49,23 @@ export class DropdownService {
 
   registerDocumentClick(event: any, dropdownName: string): void {
     const dropdown = this.getOrRegisterDropdown(dropdownName);
-    if (!dropdown.dropdownMenu.nativeElement.contains(event.target)
-        && !dropdown.dropdownButton.nativeElement.contains(event.target)) {
+    if (!this.overlayService.clickIsInsideElements(event, [dropdown.dropdownButton, dropdown.dropdownMenu])) {
       this.triggerDropdownClose(dropdownName);
     }
   }
+
+  registerDropdownFocusOut(event: any, dropdownName: string): void {
+    const dropdown = this.getOrRegisterDropdown(dropdownName);
+    if (this.overlayService.focusIsLeavingElements(event, [dropdown.dropdownButton, dropdown.dropdownMenu])) {
+      this.triggerDropdownClose(dropdownName);
+    }
+  }
+
+  // registerDocumentTab(event: any, dropdownName: string): void {
+  //   const dropdown = this.getOrRegisterDropdown(dropdownName);
+  //   if (this.overlayService.focusIsLeavingElements(event, [dropdown.dropdownButton, dropdown.dropdownMenu])) {
+
+  //   }
+  // }
 
 }
