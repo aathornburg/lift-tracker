@@ -1,2 +1,2 @@
 ## TODO (Using this until I have internet at which point I should use GitHub issues)
-- Figure out how to determine if a navigation item is active.  Do I have access to the angular router to check?  In AngularJS I did this by checking the $state service.
+- Make modules for each part of the app.  I'm thinking one for the lifts page, one for the goals page, etc
