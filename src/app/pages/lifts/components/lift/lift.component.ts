@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Lift } from '../../../model/Lift';
+import { Lift } from '../../model/Lift';
 
 @Component({
   selector: 'lt-lift',

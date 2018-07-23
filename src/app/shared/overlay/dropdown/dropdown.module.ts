@@ -18,7 +18,7 @@ import { OpenDropdownDirective } from './open-dropdown.directive';
   ]
 })
 export class DropdownModule {
-  static forRoot(): ModuleWithProviders {
+  static forParent(): ModuleWithProviders {
     return {
       ngModule: DropdownModule,
       providers: [DropdownService]

@@ -1,7 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { LiftsComponent } from './components/pages/lifts/lifts.component';
+import { LiftsComponent } from '../pages/lifts/components/lifts/lifts.component';
 
 const routes = [
     { path: '', component: LiftsComponent },

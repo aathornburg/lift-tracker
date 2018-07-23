@@ -9,8 +9,8 @@ import { ModalComponent } from './modal/modal.component';
 @NgModule({
   imports: [
     CommonModule,
-    DropdownModule.forRoot(),
-    ModalModule.forRoot()
+    DropdownModule.forParent(),
+    ModalModule.forParent()
   ],
   exports: [
     DropdownModule,
@@ -18,7 +18,7 @@ import { ModalComponent } from './modal/modal.component';
   ]
 })
 export class OverlayModule {
-  static forRoot(): ModuleWithProviders {
+  static forParent(): ModuleWithProviders {
     return {
       ngModule: OverlayModule,
       providers: [OverlayService]

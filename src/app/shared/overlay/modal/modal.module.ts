@@ -15,7 +15,7 @@ import { ModalComponent } from './modal.component';
   ]
 })
 export class ModalModule {
-  static forRoot(): ModuleWithProviders {
+  static forParent(): ModuleWithProviders {
     return {
       ngModule: ModalModule,
       providers: [ModalService]
