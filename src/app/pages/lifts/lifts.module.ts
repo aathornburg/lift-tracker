@@ -6,9 +6,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { LiftsComponent } from './components/lifts/lifts.component';
 import { AddLiftComponent } from './components/add-lift/add-lift.component';
 import { LiftComponent } from './components/lift/lift.component';
-import { AddLiftModalComponent } from './components/add-lift-modal/add-lift-modal.component';
 
 import { LiftsService } from './services/lifts.service';
+import { AddLiftModalComponent } from './components/add-lift-modal/add-lift-modal.component';
 
 @NgModule({
   imports: [
@@ -24,8 +24,7 @@ import { LiftsService } from './services/lifts.service';
   exports: [
     LiftsComponent,
     AddLiftComponent,
-    LiftComponent,
-    AddLiftModalComponent
+    LiftComponent
   ]
 })
 export class LiftsModule {

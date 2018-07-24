@@ -1,12 +1,14 @@
-<div class="all-lifts">
-  <div class="all-lifts-buttons">
-      <lt-add-lift modal-open="add-lift"></lt-add-lift>
-  </div>
-  <h2>All lifts</h2>
-  <div class="all-lifts-container">
-      <div *ngFor="let lift of liftsService.getLifts()">
-          <lt-lift [lift]="lift"></lt-lift>
-      </div>
-  </div>
+<h2>All lifts</h2>
+<div class="lifts-contents">
+    <div class="lifts-options">
+        <lt-add-lift></lt-add-lift>
+    </div>
+    <div class="lifts-container">
+        <div class="lifts">
+            <div *ngFor="let lift of liftsService.getLifts()">
+                <lt-lift [lift]="lift"></lt-lift>
+            </div>
+        </div>
+    </div>
 </div>
 <lt-add-lift-modal></lt-add-lift-modal>
