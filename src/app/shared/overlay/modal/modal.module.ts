@@ -1,8 +1,8 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModalService } from './modal.service';
-import { ModalComponent } from './modal.component';
-import { OpenModalDirective } from './open-modal.directive';
+import { ModalService } from './services/modal.service';
+import { ModalComponent } from './components/modal/modal.component';
+import { OpenModalDirective } from './directives/open-modal/open-modal.directive';
 
 @NgModule({
   declarations: [

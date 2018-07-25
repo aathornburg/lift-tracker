@@ -1,3 +1,13 @@
 <lt-modal modalName="add-lift">
-  <span>test test test</span>
+  <form [formGroup]="addLiftForm" (ngSubmit)="addLiftFormSubmit()">
+    <lt-step-group groupName="add-lift-steps">
+      <lt-step step-number="1">
+        <label>test:</label>
+        <input type="text" formControlName="testFormControl">
+      </lt-step>
+      <lt-step step-number="2">
+
+      </lt-step>
+    </lt-step-group>
+  </form>
 </lt-modal>

@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter, ElementRef } from '@angular/core';
-import { Dropdown } from './Dropdown';
-import { OverlayService } from '../overlay.service';
+import { Dropdown } from '../Dropdown';
+import { OverlayService } from '../../services/overlay.service';
 
 @Injectable()
 export class DropdownService {

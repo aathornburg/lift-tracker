@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ElementRef, HostListener} from '@angular/core';
-import { DropdownService } from './dropdown.service';
+import { DropdownService } from '../../services/dropdown.service';
 
 @Component({
   selector: 'lt-dropdown',

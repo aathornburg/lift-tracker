@@ -1,5 +1,5 @@
 import { Directive, OnInit, Input, ElementRef, HostListener } from '@angular/core';
-import { DropdownService } from './dropdown.service';
+import { DropdownService } from '../../services/dropdown.service';
 
 @Directive({
   selector: '[ltOpenDropdown]'

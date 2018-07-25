@@ -1,8 +1,8 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DropdownService } from './dropdown.service';
-import { DropdownComponent } from './dropdown.component';
-import { OpenDropdownDirective } from './open-dropdown.directive';
+import { DropdownService } from './services/dropdown.service';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { OpenDropdownDirective } from './directives/open-dropdown/open-dropdown.directive';
 
 @NgModule({
   declarations: [

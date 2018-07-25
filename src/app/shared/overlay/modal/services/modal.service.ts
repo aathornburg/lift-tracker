@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { OverlayService } from '../overlay.service';
+import { OverlayService } from '../../services/overlay.service';
 
 @Injectable()
 export class ModalService {

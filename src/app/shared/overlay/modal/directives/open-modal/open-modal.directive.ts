@@ -1,5 +1,5 @@
 import { Directive, Input, HostListener } from '@angular/core';
-import { ModalService } from './modal.service';
+import { ModalService } from '../../services/modal.service';
 
 @Directive({
   selector: '[ltOpenModal]'
