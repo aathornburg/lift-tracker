@@ -62,14 +62,21 @@ export class DropdownComponent implements OnInit {
   }
 
   @HostListener('document:click', ['$event'])
-  documentClick(event: any): void {
+  onDocumentClick(event: any): void {
     if (this.show) {
       this.dropdownService.registerDocumentClick(event, this.dropdownName);
     }
   }
 
   @HostListener('focusout', ['$event'])
-  elementFocusOut(event: any): void {
+  onElementFocusOut(event: any): void {
     this.dropdownService.registerDropdownFocusOut(event, this.dropdownName);
+  }
+
+  @HostListener('document:keydown.escape')
+  onDocumentEscape(): void {
+    if (this.show) {
+      this.dropdownService.triggerDropdownClose(this.dropdownName);
+    }
   }
 }
