@@ -1,5 +1,5 @@
-import { Injectable, EventEmitter, ElementRef } from '@angular/core';
-import { Dropdown } from '../Dropdown';
+import { Injectable, EventEmitter } from '@angular/core';
+import { Dropdown } from '../dropdown';
 import { OverlayService } from '../../services/overlay.service';
 
 @Injectable()
@@ -12,13 +12,13 @@ export class DropdownService {
 
   constructor(private overlayService: OverlayService) { }
 
-  registerDropdown(dropdownName: string, dropdownMenu: ElementRef) {
-    const dropdown = this.getOrRegisterDropdown(dropdownName);
+  registerDropdown(dropdownName: string, dropdownMenu: any) {
+    const dropdown = this.getOrCreateDropdown(dropdownName);
     dropdown.dropdownMenu = dropdownMenu;
   }
 
-  registerDropdownButton(dropdownName: string, dropdownButton: ElementRef) {
-    const dropdown = this.getOrRegisterDropdown(dropdownName);
+  registerDropdownButton(dropdownName: string, dropdownButton: any) {
+    const dropdown = this.getOrCreateDropdown(dropdownName);
     dropdown.dropdownButton = dropdownButton;
   }
 
@@ -34,7 +34,7 @@ export class DropdownService {
     this.toggleDropdown.emit(dropdownName);
   }
 
-  getOrRegisterDropdown(dropdownName: string): Dropdown {
+  getOrCreateDropdown(dropdownName: string): Dropdown {
     const foundDropdown = this.dropdowns.find(
       dropdown => dropdown.dropdownName === dropdownName
     );
@@ -48,24 +48,17 @@ export class DropdownService {
   }
 
   registerDocumentClick(event: any, dropdownName: string): void {
-    const dropdown = this.getOrRegisterDropdown(dropdownName);
+    const dropdown = this.getOrCreateDropdown(dropdownName);
     if (!this.overlayService.clickIsInsideElements(event, [dropdown.dropdownButton, dropdown.dropdownMenu])) {
       this.triggerDropdownClose(dropdownName);
     }
   }
 
   registerDropdownFocusOut(event: any, dropdownName: string): void {
-    const dropdown = this.getOrRegisterDropdown(dropdownName);
+    const dropdown = this.getOrCreateDropdown(dropdownName);
     if (this.overlayService.focusIsLeavingElements(event, [dropdown.dropdownButton, dropdown.dropdownMenu])) {
       this.triggerDropdownClose(dropdownName);
     }
   }
-
-  // registerDocumentTab(event: any, dropdownName: string): void {
-  //   const dropdown = this.getOrRegisterDropdown(dropdownName);
-  //   if (this.overlayService.focusIsLeavingElements(event, [dropdown.dropdownButton, dropdown.dropdownMenu])) {
-
-  //   }
-  // }
 
 }

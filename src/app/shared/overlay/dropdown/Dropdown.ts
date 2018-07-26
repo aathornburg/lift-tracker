@@ -1,9 +1,7 @@
-import { ElementRef } from '@angular/core';
-
 export class Dropdown {
 
-    public dropdownMenu: ElementRef;
-    public dropdownButton: ElementRef;
+    public dropdownMenu: any;
+    public dropdownButton: any;
 
     constructor(public dropdownName?: string) { }
 }

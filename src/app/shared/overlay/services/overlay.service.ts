@@ -1,27 +1,27 @@
-import { Injectable, ElementRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class OverlayService {
 
   constructor() { }
 
-  clickIsInsideElement(event: any, elementRef: ElementRef): boolean {
-    return elementRef.nativeElement.contains(event.target);
+  clickIsInsideElement(event: any, element: any): boolean {
+    return element.contains(event.target);
   }
 
-  clickIsInsideElements(event: any, elementRefs: ElementRef[]): boolean {
-    return elementRefs.some(
-      elementRef => this.clickIsInsideElement(event, elementRef)
+  clickIsInsideElements(event: any, elements: any[]): boolean {
+    return elements.some(
+      element => this.clickIsInsideElement(event, element)
     );
   }
 
-  focusIsLeavingElement(event: any, elementRef: ElementRef): boolean {
-    return !elementRef.nativeElement.contains(event.relatedTarget);
+  focusIsLeavingElement(event: any, element: any): boolean {
+    return !element.contains(event.relatedTarget);
   }
 
-  focusIsLeavingElements(event: any, elementRefs: ElementRef[]): boolean {
-    return elementRefs.every(
-      elementRef => this.focusIsLeavingElement(event, elementRef)
+  focusIsLeavingElements(event: any, elements: any[]): boolean {
+    return elements.every(
+      element => this.focusIsLeavingElement(event, element)
     );
   }
 }

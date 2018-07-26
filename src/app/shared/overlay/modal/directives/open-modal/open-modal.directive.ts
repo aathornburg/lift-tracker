@@ -1,18 +1,21 @@
-import { Directive, Input, HostListener } from '@angular/core';
+import { Directive, Input, OnInit, ElementRef, HostListener } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
 
 @Directive({
   selector: '[ltOpenModal]'
 })
-export class OpenModalDirective {
+export class OpenModalDirective implements OnInit {
 
-  // tslint:disable-next-line:no-input-rename
-  @Input('ltOpenModal') modalToOpen: string;
+  @Input() modalName: string;
 
-  constructor(private modalService: ModalService) { }
+  constructor(private modalService: ModalService, private elementRef: ElementRef) { }
+
+  ngOnInit(): void {
+    this.modalService.registerModalButton(this.modalName, this.elementRef.nativeElement);
+  }
 
   @HostListener('click', ['$event'])
-  elementClick(event: any): void {
-    this.modalService.triggerModalOpen(this.modalToOpen);
+  onElementClick(event: any): void {
+    this.modalService.triggerModalOpen(this.modalName);
   }
 }

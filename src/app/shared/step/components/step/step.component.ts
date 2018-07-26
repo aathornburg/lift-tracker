@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { StepService } from '../../services/step.service';
 
 @Component({
@@ -6,11 +6,18 @@ import { StepService } from '../../services/step.service';
   templateUrl: './step.component.html',
   styleUrls: ['./step.component.scss']
 })
-export class StepComponent implements OnInit {
+export class StepComponent {
+
+  active = false;
 
   constructor(private stepService: StepService) { }
 
-  ngOnInit() {
+  setAsActive(): void {
+    this.active = true;
+  }
+
+  setAsInactive(): void {
+    this.active = false;
   }
 
 }

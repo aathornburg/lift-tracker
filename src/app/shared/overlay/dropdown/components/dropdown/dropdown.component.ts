@@ -14,7 +14,7 @@ export class DropdownComponent implements OnInit {
   constructor(private dropdownService: DropdownService, public elementRef: ElementRef) { }
 
   ngOnInit(): void {
-    this.dropdownService.registerDropdown(this.dropdownName, this.elementRef);
+    this.dropdownService.registerDropdown(this.dropdownName, this.elementRef.nativeElement);
 
     this.dropdownService.openDropdown.subscribe(
       dropdownName => this.openDropdownIfNameMatches(dropdownName)

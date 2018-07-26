@@ -12,7 +12,7 @@ export class OpenDropdownDirective implements OnInit {
   constructor(private dropdownService: DropdownService, private elementRef: ElementRef) { }
 
   ngOnInit(): void {
-    this.dropdownService.registerDropdownButton(this.dropdownToToggle, this.elementRef);
+    this.dropdownService.registerDropdownButton(this.dropdownToToggle, this.elementRef.nativeElement);
   }
 
   @HostListener('click', ['$event'])

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, HostListener } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
 
 @Component({
@@ -11,11 +11,17 @@ export class ModalComponent implements OnInit {
   @Input() modalName: string;
   show = false;
 
-  constructor(private modalService: ModalService) { }
+  constructor(private modalService: ModalService, private elementRef: ElementRef) { }
 
   ngOnInit() {
+    this.modalService.registerModal(this.modalName, this.elementRef.nativeElement);
+
     this.modalService.openModal.subscribe(
       modalName => this.openModalIfNameMatches(modalName)
+    );
+
+    this.modalService.closeModal.subscribe(
+      modalName => this.closeModalIfNameMatches(modalName)
     );
   }
 
@@ -37,6 +43,13 @@ export class ModalComponent implements OnInit {
 
   close(): void {
     this.show = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: any): void {
+    if (this.show) {
+      this.modalService.registerDocumentClick(event, this.modalName);
+    }
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'lt-add-lift-modal',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddLiftModalComponent implements OnInit {
 
+  addLiftForm: FormGroup;
+
   constructor() { }
 
   ngOnInit() {
+    this.createForm();
+  }
+
+  createForm(): void {
+    this.addLiftForm = new FormGroup({
+      testFormControl: new FormControl()
+    });
   }
 
 }
