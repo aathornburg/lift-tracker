@@ -39,6 +39,7 @@ export class ModalComponent implements OnInit {
 
   open(): void {
     this.show = true;
+    this.modalService.forceFocusIntoElement(this.elementRef.nativeElement);
   }
 
   close(): void {
@@ -50,6 +51,11 @@ export class ModalComponent implements OnInit {
     if (this.show) {
       this.modalService.registerDocumentClick(event, this.modalName);
     }
+  }
+
+  @HostListener('focusout', ['$event'])
+  onElementFocusOut(event: any): void {
+    this.modalService.trapFocus(event, this.elementRef.nativeElement);
   }
 
   @HostListener('document:keydown.escape')

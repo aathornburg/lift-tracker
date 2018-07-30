@@ -29,6 +29,15 @@ export class ModalService {
     }
   }
 
+  trapFocus(event: any, element: any): void {
+    this.overlayService.trapFocus(event, element);
+  }
+
+  forceFocusIntoElement(element: any): void {
+    // https://stackoverflow.com/questions/779379/why-is-settimeoutfn-0-sometimes-useful
+    setTimeout(() => { this.overlayService.forceFocusIntoElement(element); }, 0);
+  }
+
   triggerModalOpen(modalName: string): void {
     this.openModal.emit(modalName);
   }
