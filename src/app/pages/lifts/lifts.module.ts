@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 import { LiftsComponent } from './components/lifts/lifts.component';
 import { AddLiftComponent } from './components/add-lift/add-lift.component';

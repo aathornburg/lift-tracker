@@ -1,8 +1,9 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { DropdownService } from './services/dropdown.service';
-import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { OpenDropdownDirective } from './directives/open-dropdown/open-dropdown.directive';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { OpenDropdownDirective } from './directives/open-dropdown/open-dropdown.
     OpenDropdownDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule
   ],
   exports: [
     DropdownComponent,

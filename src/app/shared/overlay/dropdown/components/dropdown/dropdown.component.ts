@@ -1,15 +1,21 @@
-import { Component, OnInit, Input, ElementRef, HostListener} from '@angular/core';
+import { Component, OnInit, Input, ElementRef, HostListener, HostBinding} from '@angular/core';
 import { DropdownService } from '../../services/dropdown.service';
+import { FadeSlideInOut } from '../../animations';
 
 @Component({
-  selector: 'lt-dropdown',
-  templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss']
+  // tslint:disable-next-line:component-selector
+  selector: '[ltDropdown]',
+  template: '<ng-content></ng-content>',
+  animations: [ FadeSlideInOut ]
 })
 export class DropdownComponent implements OnInit {
 
+  animationState = 'closed';
   @Input() dropdownName: string;
-  show = false;
+  @HostBinding('hidden') hidden = true;
+  @HostBinding('@fadeSlideInOut') get fadeSlideInOut() {
+    return { value: this.animationState };
+  }
 
   constructor(private dropdownService: DropdownService, public elementRef: ElementRef) { }
 
@@ -43,10 +49,10 @@ export class DropdownComponent implements OnInit {
 
   toggleDropdownIfNameMatches(dropdownName: string): void {
     if (this.dropdownName === dropdownName) {
-      if (this.show) {
-        this.close();
-      } else {
+      if (this.hidden) {
         this.open();
+      } else {
+        this.close();
       }
     } else {
       this.close();
@@ -54,16 +60,24 @@ export class DropdownComponent implements OnInit {
   }
 
   open(): void {
-    this.show = true;
+    this.hidden = false;
+    this.animationState = 'visible';
   }
 
   close(): void {
-    this.show = false;
+    this.animationState = 'closing';
+  }
+
+  @HostListener('@fadeSlideInOut.done', ['$event'])
+  onAnimationDone(event: any): void {
+    if (this.animationState === 'closing') {
+      this.hidden = true;
+    }
   }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: any): void {
-    if (this.show) {
+    if (!this.hidden) {
       this.dropdownService.registerDocumentClick(event, this.dropdownName);
     }
   }
@@ -75,7 +89,7 @@ export class DropdownComponent implements OnInit {
 
   @HostListener('document:keydown.escape')
   onDocumentEscape(): void {
-    if (this.show) {
+    if (!this.hidden) {
       this.dropdownService.triggerDropdownClose(this.dropdownName);
     }
   }

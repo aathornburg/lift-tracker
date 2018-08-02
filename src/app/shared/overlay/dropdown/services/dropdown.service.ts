@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Dropdown } from '../dropdown';
+import { Dropdown } from '../model/dropdown';
 import { OverlayService } from '../../services/overlay.service';
 
 @Injectable()
