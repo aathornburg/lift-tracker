@@ -5,6 +5,8 @@ import { StepComponent } from './components/step/step.component';
 import { StepGroupComponent } from './components/step-group/step-group.component';
 
 import { StepService } from './services/step.service';
+import { NextStepDirective } from './directives/next-step.directive';
+import { PreviousStepDirective } from './directives/previous-step.directive';
 
 @NgModule({
   imports: [
@@ -12,11 +14,15 @@ import { StepService } from './services/step.service';
   ],
   declarations: [
     StepComponent,
-    StepGroupComponent
+    StepGroupComponent,
+    NextStepDirective,
+    PreviousStepDirective
   ],
   exports: [
     StepComponent,
-    StepGroupComponent
+    StepGroupComponent,
+    NextStepDirective,
+    PreviousStepDirective
   ]
 })
 export class StepModule {

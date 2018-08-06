@@ -14,7 +14,11 @@ export class StepGroupComponent implements AfterContentInit {
   constructor(private stepService: StepService) { }
 
   ngAfterContentInit(): void {
-    this.stepService.initSteps(this.stepComponents);
+    this.stepService.initSteps(this.stepComponents.toArray());
+  }
+
+  nextStep(): void {
+    this.stepService.goToNextStep();
   }
 
 }

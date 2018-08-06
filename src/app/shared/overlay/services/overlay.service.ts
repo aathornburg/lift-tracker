@@ -59,7 +59,6 @@ export class OverlayService {
 
   forceFocusIntoElement(element: any): void {
     const focusableElements = this.getFocusableElements(element);
-    console.log(focusableElements);
     if (focusableElements.length) {
       focusableElements[0].focus();
     }

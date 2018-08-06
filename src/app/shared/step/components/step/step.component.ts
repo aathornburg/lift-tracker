@@ -1,23 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { StepService } from '../../services/step.service';
 
 @Component({
   selector: 'lt-step',
-  templateUrl: './step.component.html',
-  styleUrls: ['./step.component.scss']
+  template: '<ng-content></ng-content>'
 })
 export class StepComponent {
 
-  active = false;
+  @HostBinding('hidden') hidden = true;
 
   constructor(private stepService: StepService) { }
 
   setAsActive(): void {
-    this.active = true;
+    this.hidden = false;
   }
 
   setAsInactive(): void {
-    this.active = false;
+    this.hidden = true;
   }
 
 }
