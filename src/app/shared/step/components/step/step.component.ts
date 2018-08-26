@@ -9,30 +9,16 @@ import { StepService } from '../../services/step.service';
 })
 export class StepComponent {
 
-  // animationState = 'closed';
-  @HostBinding('hidden') hidden = true;
-  // @HostBinding('@slideLeftRight') get slideLeftRight() {
-  //   return { value: this.animationState };
-  // }
+  @HostBinding('style.visibility') visibility = 'hidden';
 
   constructor(private stepService: StepService) { }
 
   show(): void {
-    this.hidden = false;
-    // this.animationState = 'visible';
+    this.visibility = 'visible';
   }
 
   hide(): void {
-    this.hidden = true;
-    // this.animationState = 'closing';
+    this.visibility = 'hidden';
   }
-
-  // @HostListener('@slideLeftRight.done')
-  // onAnimationDone(): void {
-  //   if (this.animationState === 'closing') {
-  //     this.hidden = true;
-  //     this.animationState = 'closed';
-  //   }
-  // }
 
 }
