@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { OverlayModule } from './overlay/overlay.module';
 import { StepModule } from './step/step.module';
+import { FocusModule } from './focus/focus.module';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { StepModule } from './step/step.module';
     ReactiveFormsModule,
     RouterModule,
     OverlayModule.forParent(),
-    StepModule.forParent()
+    StepModule.forParent(),
+    FocusModule.forParent()
   ],
   exports: [
     ReactiveFormsModule,

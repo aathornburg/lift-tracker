@@ -42,9 +42,9 @@ export class DropdownComponent implements OnInit {
   }
 
   closeDropdownIfNameMatches(dropdownName: string): void {
-    // if (this.dropdownName === dropdownName) {
-    //   this.close();
-    // }
+    if (this.dropdownName === dropdownName) {
+      this.close();
+    }
   }
 
   toggleDropdownIfNameMatches(dropdownName: string): void {

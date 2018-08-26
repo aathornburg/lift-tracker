@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { OverlayService } from '../../services/overlay.service';
 import { Modal } from '../modal';
+import { FocusService } from '../../../focus/services/focus.service';
 
 @Injectable()
 export class ModalService {
@@ -9,7 +10,7 @@ export class ModalService {
   openModal: EventEmitter<string> = new EventEmitter<string>();
   closeModal: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private overlayService: OverlayService) { }
+  constructor(private overlayService: OverlayService, private focusService : FocusService) { }
 
   registerModal(modalName: string, modalElement: any): void {
     const modal = this.getOrCreateModal(modalName);
@@ -32,12 +33,12 @@ export class ModalService {
   }
 
   trapFocus(event: any, element: any): void {
-    this.overlayService.trapFocus(event, element);
+    this.focusService.trapFocus(event, element);
   }
 
   forceFocusIntoElement(element: any): void {
     // https://stackoverflow.com/questions/779379/why-is-settimeoutfn-0-sometimes-useful
-    setTimeout(() => { this.overlayService.forceFocusIntoElement(element); }, 0);
+    setTimeout(() => { this.focusService.forceFocusIntoElement(element); }, 0);
   }
 
   triggerModalOpen(modalName: string): void {

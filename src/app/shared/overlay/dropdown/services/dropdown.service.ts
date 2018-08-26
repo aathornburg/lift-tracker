@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Dropdown } from '../model/dropdown';
 import { OverlayService } from '../../services/overlay.service';
+import { FocusService } from '../../../focus/services/focus.service';
 
 @Injectable()
 export class DropdownService {
@@ -10,7 +11,7 @@ export class DropdownService {
   closeDropdown: EventEmitter<string> = new EventEmitter<string>();
   toggleDropdown: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private overlayService: OverlayService) { }
+  constructor(private overlayService: OverlayService, private focusService: FocusService) { }
 
   registerDropdown(dropdownName: string, dropdownMenu: any) {
     const dropdown = this.getOrCreateDropdown(dropdownName);
@@ -56,7 +57,7 @@ export class DropdownService {
 
   registerDropdownFocusOut(event: any, dropdownName: string): void {
     const dropdown = this.getOrCreateDropdown(dropdownName);
-    if (this.overlayService.focusIsLeavingElements(event, [dropdown.dropdownButton, dropdown.dropdownMenu])) {
+    if (this.focusService.focusIsLeavingElements(event, [dropdown.dropdownButton, dropdown.dropdownMenu])) {
       this.triggerDropdownClose(dropdownName);
     }
   }
