@@ -18,8 +18,12 @@ export class AddLiftModalComponent implements OnInit {
 
   createForm(): void {
     this.addLiftForm = new FormGroup({
-      testFormControl: new FormControl()
+      setType: new FormControl()
     });
+  }
+
+  showForm(): void {
+    console.log(this.addLiftForm);
   }
 
 }

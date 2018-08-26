@@ -1,1 +1,3 @@
-<ng-content></ng-content>
+<div class="step-container" [@slideLeftRight]="{value: indexOffset, params: { indexOffset: indexOffset }}" (@slideLeftRight.done)="postAnimationHandler()">
+    <ng-content></ng-content>
+</div>

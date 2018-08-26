@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ElementRef, HostListener, HostBinding} from '@angular/core';
 import { DropdownService } from '../../services/dropdown.service';
-import { FadeSlideInOut } from '../../animations';
+import { FadeSlideInOut } from '../../dropdown.animations';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -42,9 +42,9 @@ export class DropdownComponent implements OnInit {
   }
 
   closeDropdownIfNameMatches(dropdownName: string): void {
-    if (this.dropdownName === dropdownName) {
-      this.close();
-    }
+    // if (this.dropdownName === dropdownName) {
+    //   this.close();
+    // }
   }
 
   toggleDropdownIfNameMatches(dropdownName: string): void {
@@ -68,8 +68,8 @@ export class DropdownComponent implements OnInit {
     this.animationState = 'closing';
   }
 
-  @HostListener('@fadeSlideInOut.done', ['$event'])
-  onAnimationDone(event: any): void {
+  @HostListener('@fadeSlideInOut.done')
+  onAnimationDone(): void {
     if (this.animationState === 'closing') {
       this.hidden = true;
     }
