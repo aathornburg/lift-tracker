@@ -22,7 +22,7 @@ export class FocusService {
   ** Despite this caveat, I'm keeping the focusout-centric version of this
   ** function (again, instead of tab-centric) due to its more general nature.
   */
-  trapFocus(event: any, element: any): void {
+  public trapFocus(event: any, element: any): void {
     if (this.focusIsLeavingElement(event, element)) {
       const focusableElements = this.getFocusableElements(element);
       if (focusableElements[0] === event.target) {
@@ -33,25 +33,37 @@ export class FocusService {
     }
   }
 
-  focusIsLeavingElement(event: any, element: any): boolean {
+  public focusIsLeavingElement(event: any, element: any): boolean {
     return !element.contains(event.relatedTarget);
   }
 
-  focusIsLeavingElements(event: any, elements: any[]): boolean {
+  public focusIsLeavingElements(event: any, elements: any[]): boolean {
     return elements.every(
       element => this.focusIsLeavingElement(event, element)
     );
   }
 
-  getFocusableElements(element: any): any[] {
+  public getFocusableElements(element: any): any[] {
     return Array.from(element.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'));
   }
 
-  forceFocusIntoElement(element: any): void {
+  public forceFocusIntoElement(element: any): void {
     const focusableElements = this.getFocusableElements(element);
     if (focusableElements.length) {
       focusableElements[0].focus();
     }
+  }
+
+  public preventFocusForFocusableElements(element: any): void {
+    this.getFocusableElements(element).forEach(
+      focusableElement => focusableElement.tabIndex = -1
+    );
+  }
+
+  public allowFocusForFocusableElements(element: any): void {
+    this.getFocusableElements(element).forEach(
+      focusableElement => focusableElement.removeAttribute('tabIndex')
+    );
   }
 
 }
