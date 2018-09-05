@@ -26,8 +26,6 @@ export class ModalService {
     const modal = this.getOrCreateModal(modalName);
     if (!this.overlayService.clickIsInsideElements(event,
         [modal.modalElement.querySelector('.modal-content'), modal.modalButton])) {
-      console.log(modal.modalElement.querySelector('.modal-content'));
-      console.log('closing modal');
       this.triggerModalClose(modalName);
     }
   }

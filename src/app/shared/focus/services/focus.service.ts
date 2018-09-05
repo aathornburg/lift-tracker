@@ -24,11 +24,11 @@ export class FocusService {
   */
   public trapFocus(event: any, element: any): void {
     if (this.focusIsLeavingElement(event, element)) {
-      const focusableElements = this.getFocusableElements(element);
-      if (focusableElements[0] === event.target) {
-        focusableElements[focusableElements.length - 1].focus();
-      } else if (focusableElements[focusableElements.length - 1] === event.target) {
-        focusableElements[0].focus();
+      const tabbableElements = this.getTabbableElements(element);
+      if (tabbableElements[0] === event.target) {
+        tabbableElements[tabbableElements.length - 1].focus();
+      } else if (tabbableElements[tabbableElements.length - 1] === event.target) {
+        tabbableElements[0].focus();
       }
     }
   }
@@ -41,6 +41,17 @@ export class FocusService {
     return elements.every(
       element => this.focusIsLeavingElement(event, element)
     );
+  }
+
+  public getTabbableElements(element: any): any[] {
+    return this.getFocusableElements(element)
+      .filter(focusableElement => {
+        const computedStyles = window.getComputedStyle(focusableElement);
+        return focusableElement.tabIndex !== '-1'
+            && computedStyles.display !== 'none'
+            && computedStyles.visibility !== 'hidden'
+            && computedStyles.opacity !== '0';
+      });
   }
 
   public getFocusableElements(element: any): any[] {
@@ -56,13 +67,17 @@ export class FocusService {
 
   public preventFocusForFocusableElements(element: any): void {
     this.getFocusableElements(element).forEach(
-      focusableElement => focusableElement.tabIndex = -1
+      focusableElement => {
+        focusableElement.tabIndex = -1;
+      }
     );
   }
 
   public allowFocusForFocusableElements(element: any): void {
     this.getFocusableElements(element).forEach(
-      focusableElement => focusableElement.removeAttribute('tabIndex')
+      focusableElement => {
+        focusableElement.removeAttribute('tabIndex');
+      }
     );
   }
 
