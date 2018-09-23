@@ -2,9 +2,14 @@
   <form [formGroup]="addLiftForm" (ngSubmit)="addLiftFormSubmit()">
     <lt-step-group stepIdentifier="add-lift-steps">
       <lt-step>
-        <input type="radio" value="straight" class="add-lift-set-type" formControlName="setType" ltNextStep forStepGroup="add-lift-steps">
-        <input type="radio" value="custom" class="add-lift-set-type" formControlName="setType" ltNextStep forStepGroup="add-lift-steps">
-        <div style="height: 300px">doing this to add height</div>
+        <div class="add-lift-modal__step-number">1</div>
+        <h2 class="add-lift-modal__title">Pick your exercise</h2>
+        <div class="add-lift-modal__description">This will be quick! Get started by selecting the exercise you'd like to add.</div>
+        <div class="add-lift-modal__exercises">
+          <input type="radio" value="straight" class="add-lift-set-type" formControlName="setType" ltNextStep forStepGroup="add-lift-steps">
+          <input type="radio" value="custom" class="add-lift-set-type" formControlName="setType" ltNextStep forStepGroup="add-lift-steps">
+          <div style="height: 300px">doing this to add height</div>
+        </div>
       </lt-step>
       <lt-step>
         <span>test</span>

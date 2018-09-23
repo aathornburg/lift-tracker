@@ -1,0 +1,27 @@
+@import 'src/variables.scss';
+
+.add-lift-modal__step-number {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75em;
+    background: $main-color;
+    border-radius: 100px;
+    color: white;
+    width: 40px;
+    height: 40px;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.add-lift-modal__title {
+    display: inline-block;
+    color: $main-color-hover;
+    font-weight: bold;
+    font-size: 1.25em;
+    margin-left: 1em;
+}
+
+.add-lift-modal__description {
+    color: $light-font-color;
+}
