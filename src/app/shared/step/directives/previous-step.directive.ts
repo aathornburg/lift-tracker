@@ -6,11 +6,13 @@ import { StepService } from '../services/step.service';
 })
 export class PreviousStepDirective {
 
+  @Input() forStepGroup: string;
+
   constructor(private stepService: StepService) { }
 
   @HostListener('click')
   onElementClick(): void {
-    this.stepService.goToPreviousStep();
+    this.stepService.goToPreviousStep(this.forStepGroup);
   }
 
 }

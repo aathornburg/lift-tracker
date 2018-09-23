@@ -1,15 +1,15 @@
 <lt-modal modalName="add-lift">
   <form [formGroup]="addLiftForm" (ngSubmit)="addLiftFormSubmit()">
-    <lt-step-group groupName="add-lift-steps">
+    <lt-step-group stepIdentifier="add-lift-steps">
       <lt-step>
-        <input type="radio" value="straight" class="add-lift-set-type" formControlName="setType" ltNextStep>
-        <input type="radio" value="custom" class="add-lift-set-type" formControlName="setType" ltNextStep>
+        <input type="radio" value="straight" class="add-lift-set-type" formControlName="setType" ltNextStep forStepGroup="add-lift-steps">
+        <input type="radio" value="custom" class="add-lift-set-type" formControlName="setType" ltNextStep forStepGroup="add-lift-steps">
         <div style="height: 300px">doing this to add height</div>
       </lt-step>
       <lt-step>
         <span>test</span>
         <button type="button" (click)="showForm()">show form</button>
-        <button type="button" ltPreviousStep>previous</button>
+        <button type="button" ltPreviousStep forStepGroup="add-lift-steps">previous</button>
       </lt-step>
     </lt-step-group>
   </form>
