@@ -14,4 +14,8 @@
     background-color: white;
     padding: 15px;
     border-radius: 3px;
+
+    &:focus {
+        outline: none;
+    }
 }
