@@ -1,7 +1,7 @@
 import { Component, AfterContentInit, ContentChildren, QueryList, Input } from '@angular/core';
 import { StepService } from '../../services/step.service';
 import { StepComponent } from '../step/step.component';
-import { SlideLeftRight } from '../step.animations';
+import { SlideLeftRight } from '../../step.animations';
 
 @Component({
   selector: 'lt-step-group',

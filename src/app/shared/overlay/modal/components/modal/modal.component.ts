@@ -1,10 +1,12 @@
 import { Component, OnInit, Input, ElementRef, HostListener } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
+import { fadeInOut, nestedAnimation, scaleInOut } from '../../modal.animations';
 
 @Component({
   selector: 'lt-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  styleUrls: ['./modal.component.scss'],
+  animations: [ fadeInOut, nestedAnimation, scaleInOut ]
 })
 export class ModalComponent implements OnInit {
 

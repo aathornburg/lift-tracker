@@ -1,5 +1,5 @@
-<div class="modal-wrapper" *ngIf="show">
-    <div class="modal-content" tabindex="1">
+<div class="modal-wrapper" *ngIf="show" [@fadeInOut] [@nestedAnimation]>
+    <div class="modal-content" tabindex="1" [@scaleInOut]>
         <ng-content></ng-content>
     </div>
 </div>
