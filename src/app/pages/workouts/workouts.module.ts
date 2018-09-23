@@ -6,6 +6,11 @@ import { WorkoutsComponent } from './components/workouts/workouts.component';
   imports: [
     CommonModule
   ],
-  declarations: [WorkoutsComponent]
+  declarations: [
+    WorkoutsComponent
+  ],
+  exports: [
+    WorkoutsComponent
+  ]
 })
 export class WorkoutsModule { }

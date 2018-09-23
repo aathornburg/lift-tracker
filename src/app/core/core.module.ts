@@ -7,13 +7,15 @@ import { NavigationBarComponent } from './navigation/navigation-bar/navigation-b
 import { NavigationItemComponent } from './navigation/navigation-item/navigation-item.component';
 
 import { LiftsModule } from '../pages/lifts/lifts.module';
+import { WorkoutsModule } from '../pages/workouts/workouts.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RoutingModule,
     BrowserAnimationsModule,
-    LiftsModule.forRoot()
+    LiftsModule.forRoot(),
+    WorkoutsModule
   ],
   declarations: [
     NavigationBarComponent,

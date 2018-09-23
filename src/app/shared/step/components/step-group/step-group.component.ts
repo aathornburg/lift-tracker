@@ -26,10 +26,7 @@ export class StepGroupComponent implements AfterContentInit {
 
     this.stepService.showNextStep.subscribe(
       stepIdentifier => {
-        console.log(stepIdentifier);
-        console.log(this.stepIdentifier);
         if (stepIdentifier === this.stepIdentifier) {
-          console.log('it matches');
           this.goToNextStep();
         }
       }
@@ -57,7 +54,6 @@ export class StepGroupComponent implements AfterContentInit {
   }
 
   public goToStep(stepIndex: number): void {
-    console.log('going to next step');
     this.nextIndex = stepIndex;
     this.stepComponents
       .filter((step, index) => this.indexContainedInBoundary(index, this.nextIndex, this.activeIndex))
@@ -71,7 +67,6 @@ export class StepGroupComponent implements AfterContentInit {
   }
 
   public goToNextStep(): void {
-    console.log(this.indexIsValid(this.activeIndex + 1));
     if (this.indexIsValid(this.activeIndex + 1)) {
       this.goToStep(this.activeIndex + 1);
     }

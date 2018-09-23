@@ -12,13 +12,15 @@ html {
         font-family: 'Montserrat', sans-serif;
         position: relative;
 
-        h2 {
+        h1 {
             color: $font-color;
             font-family: 'Open Sans', sans-serif;
             font-size: 2em;
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: normal;
+            margin: 0;
+            margin-bottom: 1em;
         }
 
         input[type=text]:focus, input[type=textarea]:focus, input[type=number]:focus, select:focus {
