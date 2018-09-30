@@ -1,10 +1,17 @@
 @import '~src/variables.scss';
 
+:host {
+    display: block;
+    height: $nav-bar-height;
+}
+
 .navigation-bar {
     width: 100%;
+    height: $nav-bar-height;
     display: flex;
     justify-content: space-between;
     border-bottom: solid 1px $main-color;
+    box-sizing: border-box;
 
     .navigation-group {
         display: inline-block;
