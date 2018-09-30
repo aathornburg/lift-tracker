@@ -17,19 +17,19 @@
 }
 
 .workouts-page-content__no-workouts-button {
-    background: transparent;
+    background: $main-color;
     border: 1.5px solid $main-color;
     padding: 10px 20px;
     border-radius: 3px;
     font-family: inherit;
     font-weight: bold;
-    color: $main-color;
+    color: white;
     cursor: pointer;
     margin-top: 1em;
     transition: all .1s ease-in-out;
 
     &:hover, &:focus {
-        background: $main-color;
-        color: white;
+        background: white;
+        color: $main-color;
     }
 }
