@@ -157,13 +157,10 @@ html {
 
         /* The section on the left of a page */
         .page-title-content__wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             width: 30%;
-            height: 100%;;
             background: $main-color;
             color: white;
+            flex-shrink: 0;
 
             .page-title-content__info-section {
                 margin-bottom: 10px;
@@ -186,6 +183,22 @@ html {
                     }
                 }
             }
+        }
+
+        .page-section__wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        /* The section on the right of a page */
+        .page-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
         }
 
         /* Form errors */
