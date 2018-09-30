@@ -7,17 +7,16 @@
 }
 
 .workouts-page-content--no-workouts {
+    text-align: center;
     flex-direction: column;
 }
 
-.page-content__no-workouts-text {
+.workouts-page-content__no-workouts-text {
     color: $font-color;
     font-size: 1.25em;
 }
 
-.page-content__no-workouts-button {
-    display: block;
-    display: block;
+.workouts-page-content__no-workouts-button {
     background: transparent;
     border: 1.5px solid $main-color;
     padding: 10px 20px;
