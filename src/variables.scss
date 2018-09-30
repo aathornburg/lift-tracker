@@ -1,18 +1,43 @@
+/* Colors */
 $main-color: #33B7B7;
-$main-color-hover: #4CD1D1;
-$main-color-accent: #a7e0e0;
-$red-accent-color: #E17055;
-$red-accent-color-hover: #CA644C;
+$main-color-lighter-shade: #87E1E1;
+$main-color-light-shade: #56CCCC;
+$main-color-dark-tint: #15A5A5;
+$main-color-darker-tint: #008585;
+
+$secondary-color-1: #FFC247;
+$secondary-color-1-lighter-shade: #FFDD99;
+$secondary-color-1-light-shade: #FFCE6C;
+$secondary-color-1-dark-tint: #FFB521;
+$secondary-color-1-darker-tint: #DE9400;
+
+$secondary-color-2: #FF4747;
+$secondary-color-2-lighter-shade: #FF9999;
+$secondary-color-2-light-shade: #FF6C6C;
+$secondary-color-2-dark-tint: #FF2121;
+$secondary-color-2-darker-tint: #DE0000;
+
+$secondary-color-3: #55E16D;
+$secondary-color-3-lighter-shade: #B0F7BD;
+$secondary-color-3-light-shade: #7DED90;
+$secondary-color-3-dark-tint: #34D450;
+$secondary-color-3-darker-tint: #11C631;
+
+$complement-color: #FF9A47;
+$complement-color-lighter-shade: #FFC799;
+$complement-color-light-shade: #FFAE6C;
+$complement-color-dark-tint: #FF8521;
+$complement-color-darker-tint: #DE6500;
+
 $font-color: #727c80;
-$light-font-color: #AAB0B2;
-$lighter-font-color: #C6CACC;
+$font-color-light: #AAB0B2;
+$font-color-lighter: #C6CACC;
+
 $input-color: #4F5659;
-$green-accent-color: #55E170;
-$green-accent-color-hover: #4CCA64;
-$blue-accent-color: #55C6E1;
-$blue-accent-color-hover: #4CB2CA;
+
 $white-hover: #EFEFEF;
 
+/* Sizes */
 $nav-bar-height: 60px;
 $input-top-padding: 14px;
 $input-error-hint-height: 18px;

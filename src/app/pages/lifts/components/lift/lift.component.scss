@@ -47,11 +47,11 @@
                 padding-right: .75em;
 
                 &.delete-lift {
-                    color: $red-accent-color;
+                    color: $secondary-color-2;
                 }
 
                 &.data {
-                    color: $green-accent-color;
+                    color: $secondary-color-3;
                 }
             }
 
@@ -99,22 +99,22 @@
 
             &.weight-down-button {
                 background-color: white;
-                color: $blue-accent-color;
-                border: 1.5px solid $blue-accent-color;
+                color: $complement-color;
+                border: 1.5px solid $complement-color;
 
                 &:hover, &:focus {
-                    background-color: $blue-accent-color;
+                    background-color: $complement-color;
                     color: white;
                 }
             }
 
             &.weight-up-button {
                 background-color: white;
-                color: $green-accent-color;
-                border: 1.5px solid $green-accent-color;
+                color: $secondary-color-3;
+                border: 1.5px solid $secondary-color-3;
 
                 &:hover, &:focus {
-                    background-color: $green-accent-color;
+                    background-color: $secondary-color-3;
                     color: white;
                 }
             }

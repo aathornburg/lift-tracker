@@ -60,10 +60,10 @@ html {
             border: none;
             font-size: 1em;
             color: $font-color;
-            border-bottom: 1px solid $light-font-color;
+            border-bottom: 1px solid $font-color-light;
 
             &:hover, &:focus {
-                border-color: $main-color-hover;
+                border-color: $main-color-lighter-shade;
             }
         }
 
@@ -80,27 +80,27 @@ html {
                 left: 0;
                 transition: all .2s ease;
                 cursor: text;
-                color: $lighter-font-color;
+                color: $font-color-lighter;
             }
 
             & > input[type=text] {
                 position: relative;
                 padding-bottom: $input-padding-bottom;
                 border: none;
-                border-bottom: 1px solid $light-font-color;
+                border-bottom: 1px solid $font-color-light;
                 margin-top: .2em;
 
                 &:hover {
-                    border-color: $main-color-hover;
+                    border-color: $main-color-lighter-shade;
                 }
 
                 &:focus, &.ng-not-empty {
-                    border-color: $main-color-hover;
+                    border-color: $main-color-lighter-shade;
 
                     & ~ label {
                         bottom: calc(100% - 1em - 2px);
                         font-size: 1em;
-                        color: $main-color-hover;
+                        color: $main-color-lighter-shade;
                     }
                 }
             }
@@ -207,7 +207,7 @@ html {
             font-size: 13px;
             margin-top: 2px;
             min-height: $input-error-hint-height;
-            color: $red-accent-color;
+            color: $secondary-color-2;
             font-family: 'Open Sans', sans-serif;
         }
 

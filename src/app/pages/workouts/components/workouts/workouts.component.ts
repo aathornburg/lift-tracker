@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkoutsComponent implements OnInit {
 
+  trackWorkoutStepsIdentifier: string = "track-workout-steps";
+
   constructor() { }
 
   ngOnInit() {

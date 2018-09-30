@@ -3,13 +3,13 @@
 .add-button.add-lift-button {
     background-color: transparent;
     border-radius: 20px;
-    border: 1.5px solid $red-accent-color;
+    border: 1.5px solid $secondary-color-2;
     transition: background-color .2s linear;
-    color: $red-accent-color;
+    color: $secondary-color-2;
     height: 50px;
 
     &:hover, &:focus {
-        background-color: $red-accent-color;
+        background-color: $secondary-color-2;
         color: white;
     }
 }

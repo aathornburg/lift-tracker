@@ -12,7 +12,6 @@ export class NextStepDirective {
 
   @HostListener('click')
   onElementClick(): void {
-    console.log(this.forStepGroup);
     this.stepService.goToNextStep(this.forStepGroup);
   }
 

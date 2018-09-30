@@ -23,12 +23,12 @@
         &.active {
             $bottom-border-offset: 2px;
 
-            border-bottom: $bottom-border-offset solid $main-color-hover;
+            border-bottom: $bottom-border-offset solid $main-color-light-shade;
             padding-top: $bottom-border-offset;  // Offset the border added when a nav item is active
         }
     }
 
     &:active, &:hover {
-        color: $main-color-hover;
+        color: $main-color-light-shade;
     }
 }
