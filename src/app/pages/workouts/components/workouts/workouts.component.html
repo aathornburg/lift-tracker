@@ -13,23 +13,33 @@
         </div>
     </div>
 </div>
-<lt-step-group [stepIdentifier]="trackWorkoutStepsIdentifier" class="workouts-page-content__track-workout-steps">
-    <lt-step>
-        <div class="page-section__wrapper page-content workouts-page-content--no-workouts">
-            <div class="workouts-page-content__no-workouts-text">You haven't added any workouts to track yet.</div>
-            <button type="button" class="workouts-page-content__no-workouts-button" ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Track a workout</button>
-        </div>
-    </lt-step>
-    <lt-step>
-        <div class="workouts-page-content__track-workouts-step-wrapper">
-            <div class="workouts-page-content__track-workout-step-number">1</div>
-            <h2 class="workouts-page-content__track-workout-step-title">Let's find your workout</h2>
-            <div class="workouts-page-content__track-workout-step-description">This will be quick! You can add and modify a workout from our database or create your own custom workout from scratch.</div>
-            <div class="workouts-page-content__track-workout-main-input-wrapper">
-                <label for="workouts-page-content__track-workout-main-input" *ngIf="!workoutMainInput.value">starting strength</label>
-                <input type="text" #workoutMainInput class="workouts-page-content__track-workout-main-input" id="workouts-page-content__track-workout-main-input" />
+<form [formGroup]="trackWorkoutForm">
+    <lt-step-group [stepIdentifier]="trackWorkoutStepsIdentifier" class="workouts-page-content__track-workout-steps">
+        <lt-step>
+            <div class="page-section__wrapper page-content workouts-page-content--no-workouts">
+                <div class="workouts-page-content__no-workouts-text">You haven't added any workouts to track yet.</div>
+                <button type="button" class="workouts-page-content__no-workouts-button" ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Track a workout</button>
             </div>
-        </div>
-    </lt-step>
-</lt-step-group>
+        </lt-step>
+        <lt-step>
+            <div class="workouts-page-content__track-workouts-step-wrapper">
+                <div class="workouts-page-content__track-workout-step-number">1</div>
+                <h2 class="workouts-page-content__track-workout-step-title">Let's find your workout</h2>
+                <div class="workouts-page-content__track-workout-step-description">This will be quick! You can add and modify a workout from our database or create your own custom workout from scratch.</div>
+                <div class="workouts-page-content__track-workout-main-input-wrapper">
+                    <label for="workouts-page-content__track-workout-main-input" *ngIf="!trackWorkoutForm.controls.workoutName.value">starting strength</label>
+                    <input type="text" formControlName="workoutName" class="workouts-page-content__track-workout-main-input" id="workouts-page-content__track-workout-main-input" />
+                </div>
+            </div>
+        </lt-step>
+    </lt-step-group>
+</form>
 
+<!-- <div class="bind-login-content__info-component">
+    <input type="text" [(ngModel)]="username" #usernameInput="ngModel" id="bind-login-content__info-component--username-input" class="bind-login-content__info-component-input" />
+    <label for="bind-login-content__info-component--username-input" class="bind-login-content__info-component-label" [ngClass]="{'bind-login-content__info-component-label--nonempty-input': usernameInput.value}">Username</label>
+</div>
+<div class="bind-login-content__info-component">
+    <input type="password" [(ngModel)]="password" #passwordInput="ngModel" id="bind-login-content__info-component--password-input" class="bind-login-content__info-component-input" />
+    <label for="bind-login-content__info-component--password-input" class="bind-login-content__info-component-label" [ngClass]="{'bind-login-content__info-component-label--nonempty-input': passwordInput.value}">Password</label>
+</div> -->

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'lt-workouts',
@@ -7,11 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkoutsComponent implements OnInit {
 
-  trackWorkoutStepsIdentifier: string = "track-workout-steps";
+  trackWorkoutStepsIdentifier = 'track-workout-steps';
+  trackWorkoutForm: FormGroup;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.createForm();
+  }
+
+  createForm(): void {
+    this.trackWorkoutForm = this.formBuilder.group({
+      workoutName: ''
+    });
   }
 
 }
