@@ -23,12 +23,18 @@
         </lt-step>
         <lt-step>
             <div class="workouts-page-content__track-workouts-step-wrapper">
-                <div class="workouts-page-content__track-workout-step-number">1</div>
-                <h2 class="workouts-page-content__track-workout-step-title">Let's find your workout</h2>
-                <div class="workouts-page-content__track-workout-step-description">This will be quick! You can add and modify a workout from our database or create your own custom workout from scratch.</div>
-                <div class="workouts-page-content__track-workout-main-input-wrapper">
-                    <label for="workouts-page-content__track-workout-main-input" *ngIf="!trackWorkoutForm.controls.workoutName.value">starting strength</label>
-                    <input type="text" formControlName="workoutName" class="workouts-page-content__track-workout-main-input" id="workouts-page-content__track-workout-main-input" />
+                <div class="workouts-page-content__track-workouts-content-wrapper">
+                    <div class="workouts-page-content__track-workout-step-number">1</div>
+                    <h2 class="workouts-page-content__track-workout-step-title">Let's find your workout</h2>
+                    <div class="workouts-page-content__track-workout-step-description">This will be quick! You can add and modify a workout from our database or create your own custom workout from scratch.</div>
+                    <div class="workouts-page-content__track-workout-main-input-wrapper">
+                        <label for="workouts-page-content__track-workout-main-input" *ngIf="!trackWorkoutForm.controls.workoutName.value">starting strength</label>
+                        <input type="text" formControlName="workoutName" class="workouts-page-content__track-workout-main-input" id="workouts-page-content__track-workout-main-input" />
+                    </div>
+                </div>
+                <div class="workouts-page-content__track-workout-buttons">
+                    <button type="button" class="workouts-page-content__track-workout-button workouts-page-content__track-workout-button--back" ltPreviousStep [forStepGroup]="trackWorkoutStepsIdentifier">Back</button>
+                    <button type="button" class="workouts-page-content__track-workout-button workouts-page-content__track-workout-button--forward" ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Add exercises</button>
                 </div>
             </div>
         </lt-step>

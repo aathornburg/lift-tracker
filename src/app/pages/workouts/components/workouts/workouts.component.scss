@@ -1,5 +1,7 @@
 @import "~src/variables.scss";
 
+$workout-content-padding: 2em;
+
 :host {
     display: flex;
     width: 100%;
@@ -13,7 +15,15 @@
 }
 
 .workouts-page-content__track-workouts-step-wrapper {
-    padding: 2em;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.workouts-page-content__track-workouts-content-wrapper {
+    padding: $workout-content-padding;
 }
 
 .workouts-page-content__track-workout-step-number {
@@ -97,5 +107,44 @@
         padding: $input-padding;
         box-sizing: border-box;
         color: $font-color;
+    }
+}
+
+.workouts-page-content__track-workout-buttons {
+    .workouts-page-content__track-workout-button {
+        position: absolute;
+        bottom: $workout-content-padding;
+        background: transparent;
+        border: none;
+        font-family: inherit;
+        font-weight: bold;
+        padding: 10px 20px;
+        background: $complement-color;
+        border: 1.5px solid $complement-color;
+        border-radius: 3px;
+        color: white;
+        cursor: pointer;
+        transition: all .1s ease-in-out;
+
+        &:hover, &:focus {
+            background: white;
+            color: $complement-color;
+        }
+
+        &.workouts-page-content__track-workout-button--back {
+            background: white;
+            border-color: $complement-color;
+            color: $complement-color;
+            left: $workout-content-padding;
+
+            &:hover, &:focus {
+                color: white;
+                background: $complement-color
+            }
+        }
+
+        &.workouts-page-content__track-workout-button--forward {
+            right: $workout-content-padding;
+        }
     }
 }
