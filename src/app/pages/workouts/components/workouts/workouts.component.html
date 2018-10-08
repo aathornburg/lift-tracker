@@ -34,7 +34,7 @@
                 </div>
                 <div class="workouts-page-content__track-workout-buttons">
                     <button type="button" class="workouts-page-content__track-workout-button workouts-page-content__track-workout-button--back" ltPreviousStep [forStepGroup]="trackWorkoutStepsIdentifier">Back</button>
-                    <button type="button" class="workouts-page-content__track-workout-button workouts-page-content__track-workout-button--forward" ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Add exercises</button>
+                    <button type="button" class="workouts-page-content__track-workout-button workouts-page-content__track-workout-button--forward" *ngIf="trackWorkoutForm.controls.workoutName.value" [@slideUpDown] ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Add exercises</button>
                 </div>
             </div>
         </lt-step>

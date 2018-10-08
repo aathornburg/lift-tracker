@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { slideUpDown } from '../../workouts.animations';
 
 @Component({
   selector: 'lt-workouts',
   templateUrl: './workouts.component.html',
-  styleUrls: ['./workouts.component.scss']
+  styleUrls: ['./workouts.component.scss'],
+  animations: [ slideUpDown ]
 })
 export class WorkoutsComponent implements OnInit {
 
