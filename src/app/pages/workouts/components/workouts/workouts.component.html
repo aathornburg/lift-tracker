@@ -44,6 +44,10 @@
                     <div class="workouts-page-content__track-workout-step-number">2</div>
                     <h2 class="workouts-page-content__track-workout-step-title">Let's add your exercises</h2>
                     <div class="workouts-page-content__track-workout-step-description">You can customize your workout using our exercise database. Add your sets and reps and get tracking.</div>
+                    <div class="workouts-page-content__exercise-container">
+                        <label for="workouts-page-content__track-workout-main-input" *ngIf="!trackWorkoutForm.controls.workoutName.value">starting strength</label>
+                        <input type="text" formControlName="workoutName" class="workouts-page-content__track-workout-main-input" id="workouts-page-content__track-workout-main-input" />
+                    </div>
                 </div>
                 <div class="workouts-page-content__track-workout-buttons">
                     <button type="button" class="workouts-page-content__track-workout-button workouts-page-content__track-workout-button--back" ltPreviousStep [forStepGroup]="trackWorkoutStepsIdentifier">Back</button>
