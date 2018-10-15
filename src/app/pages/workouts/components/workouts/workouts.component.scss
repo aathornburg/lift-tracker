@@ -48,8 +48,16 @@ $workout-content-padding: 2em;
     margin-left: 1em;
 }
 
+.workouts-page-content__track-workout-step-subtitle {
+    display: inline-block;
+    color: #FF9A47;
+    font-size: 1.25em;
+    margin-left: 0.5em;
+}
+
 .workouts-page-content__track-workout-step-description {
     color: $font-color;
+    line-height: 1.5;
 }
 
 .workouts-page-content--no-workouts {
@@ -108,6 +116,10 @@ $workout-content-padding: 2em;
         box-sizing: border-box;
         color: $font-color;
     }
+}
+
+.workouts-page-content__track-workout-cadence {
+    margin-top: 4em;
 }
 
 .workouts-page-content__track-workout-buttons {

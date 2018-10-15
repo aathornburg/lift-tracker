@@ -21,7 +21,8 @@ export class WorkoutsComponent implements OnInit {
 
   createForm(): void {
     this.trackWorkoutForm = this.formBuilder.group({
-      workoutName: ''
+      workoutName: '',
+      workoutCadenceWeekly: true
     });
   }
 
