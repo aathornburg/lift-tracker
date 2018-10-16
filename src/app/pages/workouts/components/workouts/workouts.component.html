@@ -31,6 +31,10 @@
                         <label for="workouts-page-content__track-workout-main-input" *ngIf="!trackWorkoutForm.controls.workoutName.value">starting strength</label>
                         <input type="text" formControlName="workoutName" class="workouts-page-content__track-workout-main-input" id="workouts-page-content__track-workout-main-input" />
                     </div>
+                    <div class="workouts-page-content__track-workout-cadence-wrapper">
+                        <label for="workouts-page-content__track-workout-cadence" class="workouts-page-content__track-workout-cadence-text">The workout repeats weekly</label>
+                        <lt-checkbox formControlName="workoutCadenceWeekly" class="workouts-page-content__track-workout-cadence" checkboxId="workouts-page-content__track-workout-cadence"></lt-checkbox>
+                    </div>
                 </div>
                 <div class="workouts-page-content__track-workout-buttons">
                     <button type="button" class="workouts-page-content__track-workout-button workouts-page-content__track-workout-button--back" ltPreviousStep [forStepGroup]="trackWorkoutStepsIdentifier">Back</button>
@@ -44,10 +48,6 @@
                     <div class="workouts-page-content__track-workout-step-number">2</div>
                     <h2 class="workouts-page-content__track-workout-step-title">Configure your exercise days</h2>
                     <div class="workouts-page-content__track-workout-step-description">Add your exercises on the days that you want them and get tracking today.</div>
-                    <div class="workouts-page-content__track-workout-cadence-wrapper">
-                        <label for="workouts-page-content__track-workout-cadence" class="workouts-page-content__track-workout-cadence-text">The workout repeats weekly</label>
-                        <lt-checkbox formControlName="workoutCadenceWeekly" class="workouts-page-content__track-workout-cadence" checkboxId="workouts-page-content__track-workout-cadence" backgroundColor=""></lt-checkbox>
-                    </div>
                 </div>
                 <div class="workouts-page-content__track-workout-buttons">
                     <button type="button" class="workouts-page-content__track-workout-button workouts-page-content__track-workout-button--back" ltPreviousStep [forStepGroup]="trackWorkoutStepsIdentifier">Back</button>
