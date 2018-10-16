@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { OverlayModule } from './overlay/overlay.module';
 import { StepModule } from './step/step.module';
 import { FocusModule } from './focus/focus.module';
+import { CheckboxModule } from './checkbox/checkbox.module';
 
 @NgModule({
   imports: [
@@ -13,13 +14,15 @@ import { FocusModule } from './focus/focus.module';
     RouterModule,
     OverlayModule.forParent(),
     StepModule.forParent(),
-    FocusModule.forParent()
+    FocusModule.forParent(),
+    CheckboxModule
   ],
   exports: [
     ReactiveFormsModule,
     OverlayModule,
     StepModule,
-    RouterModule
+    RouterModule,
+    CheckboxModule
   ]
 })
 export class SharedModule { }

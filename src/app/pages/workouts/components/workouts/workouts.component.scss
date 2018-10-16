@@ -118,8 +118,13 @@ $workout-content-padding: 2em;
     }
 }
 
-.workouts-page-content__track-workout-cadence {
+.workouts-page-content__track-workout-cadence-wrapper {
     margin-top: 4em;
+
+    .workouts-page-content__track-workout-cadence {
+        display: inline-block;
+        margin-left: 1em;
+    }
 }
 
 .workouts-page-content__track-workout-buttons {
