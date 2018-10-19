@@ -1,70 +1,93 @@
 @import '~src/variables.scss';
 
+// .workout-day-wrapper {
+//     display: flex;
+//     flex-direction: column;
+//     min-height: 150px;
+//     border-radius: 3px;
+//     border-top: 1px solid $complement-color;
+
+//     .workout-day__title {
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
+//         margin-top: 5px;
+
+//         h3 {
+//             padding: 0;
+//             margin: 0;
+//             color: $complement-color;
+//             font-weight: normal;
+//             text-transform: uppercase;
+//             letter-spacing: 2px;
+//             font-size: 1.25em;
+//             display: inline-block;
+//         }
+
+//         button {
+//             $border-width: 1px;
+//             $icon-size: 20px;
+//             display: flex;
+//             justify-content: center;
+//             align-content: center;
+//             background: transparent;
+//             border: none;
+//             border-radius: 3px;
+//             padding: 0.25em;
+//             outline: none;
+//             cursor: pointer;
+//             transition: box-shadow 150ms ease-in-out;
+
+//             .material-icons {
+//                 font-size: $icon-size;
+//                 color: $font-color;
+//                 transition: color 150ms ease-in-out;
+//             }
+
+//             &:focus {
+//                 box-shadow: 0px 0px 7px $main-color;
+
+//                 .material-icons {
+//                     color: $main-color;
+//                 }
+//             }
+//         }
+//     }
+
+
+//     .workout-day__content {
+//         margin-top: 1em;
+//         flex: 1;
+
+//         button {
+//             background: #55E16D;
+//             font-family: inherit;
+//             font-weight: bold;
+//             border: 1.5px solid #55E16D;
+//             border-radius: 3px;
+//             color: white;
+//             cursor: pointer;
+//         }
+//     }
+// }
+
 .workout-day-wrapper {
-    min-height: 100px;
-    border-radius: 3px;
-    margin-top: 2em;
-    border-top: 1px solid $complement-color;
+    display: flex;
+    min-height: 150px;
+    align-items: center;
+    border-bottom: 1px dashed $complement-color-lighter-shade; // TODO:  Make the dashes/dots more separated?  SVG?
+}
 
-    .workout-day__title {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 5px;
+h3 {
+    padding: 0;
+    margin: 0;
+    color: $complement-color;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.25em;
+}
 
-        h3 {
-            padding: 0;
-            margin: 0;
-            color: $complement-color;
-            font-weight: normal;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 1.25em;
-            display: inline-block;
-        }
-
-        button {
-            $border-width: 1px;
-            $icon-size: 20px;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            background: transparent;
-            border: none;
-            border-radius: 3px;
-            padding: 0.25em;
-            outline: none;
-            cursor: pointer;
-            transition: box-shadow 150ms ease-in-out;
-
-            .material-icons {
-                font-size: $icon-size;
-                color: $font-color;
-                transition: color 150ms ease-in-out;
-            }
-
-            &:focus {
-                box-shadow: 0px 0px 7px $main-color;
-
-                .material-icons {
-                    color: $main-color;
-                }
-            }
-        }
-    }
-
-
-    .workout-day__content {
-        margin-top: 1em;
-
-        button {
-            background: #55E16D;
-            font-family: inherit;
-            font-weight: bold;
-            border: 1.5px solid #55E16D;
-            border-radius: 3px;
-            color: white;
-            cursor: pointer;
-        }
-    }
+.workout-day__content {
+    text-align: center;
 }
