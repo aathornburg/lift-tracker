@@ -132,57 +132,6 @@ $workout-content-padding: 2em;
     display: grid;
     grid-gap: 1em;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-
-    .track-workout-day-wrapper {
-        min-height: 100px;
-        border-radius: 3px;
-        margin-top: 2em;
-        padding-top: 0.5em;
-        border-top: 1px solid $complement-color;
-
-        .track-workout-day-title {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            h3 {
-                padding: 0;
-                margin: 0;
-                color: $complement-color;
-                font-weight: normal;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                font-size: 1.25em;
-                display: inline-block;
-            }
-
-            button {
-                background: transparent;
-                border: none;
-            }
-    
-            .material-icons {
-                font-size: 16px;
-                color: $font-color;
-                margin-left: 0.25em;
-            }
-        }
-
-
-        .track-workout-day-content {
-            margin-top: 1em;
-
-            button {
-                background: #55E16D;
-                font-family: inherit;
-                font-weight: bold;
-                border: 1.5px solid #55E16D;
-                border-radius: 3px;
-                color: white;
-                cursor: pointer;
-            }
-        }
-    }
 }
 
 .track-workout-buttons {

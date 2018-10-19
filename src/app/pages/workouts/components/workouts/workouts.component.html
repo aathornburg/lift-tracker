@@ -49,61 +49,13 @@
                     <h2 class="track-workout-step__title">Configure your exercise days</h2>
                     <div class="track-workout-step__description">Add your exercises on the days that you want them and get tracking today.</div>
                     <div class="track-workout-weekly-wrapper" *ngIf="trackWorkoutForm.value.workoutCadenceWeekly">
-                        <div class="track-workout-day-wrapper">
-                            <div class="track-workout-day-title">
-                                <div>
-                                    <h3>Monday</h3>
-                                    <button type="button">
-                                        <i class="material-icons">edit</i>
-                                    </button>
-                                </div>
-                                <div>
-                                    <button type="button">
-                                        <i class="material-icons">add_box</i>
-                                    </button>
-                                    <button type="button">
-                                        <i class="material-icons">more_vert</i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="track-workout-day-content"></div>
-                        </div>
-                        <div class="track-workout-day-wrapper">
-                            <h3>Tuesday</h3>
-                            <div class="track-workout-day-content">
-                                <button type="button">Add exercise</button>
-                            </div>
-                        </div>
-                        <div class="track-workout-day-wrapper">
-                            <h3>Wednesday</h3>
-                            <div class="track-workout-day-content">
-                                <button type="button">Add exercise</button>
-                            </div>
-                        </div>
-                        <div class="track-workout-day-wrapper">
-                            <h3>Thursday</h3>
-                            <div class="track-workout-day-content">
-                                <button type="button">Add exercise</button>
-                            </div>
-                        </div>
-                        <div class="track-workout-day-wrapper">
-                            <h3>Friday</h3>
-                            <div class="track-workout-day-content">
-                                <button type="button">Add exercise</button>
-                            </div>
-                        </div>
-                        <div class="track-workout-day-wrapper">
-                            <h3>Saturday</h3>
-                            <div class="track-workout-day-content">
-                                <button type="button">Add exercise</button>
-                            </div>
-                        </div>
-                        <div class="track-workout-day-wrapper">
-                            <h3>Sunday</h3>
-                            <div class="track-workout-day-content">
-                                <button type="button">Add exercise</button>
-                            </div>
-                        </div>
+                        <lt-workout-day></lt-workout-day>
+                        <lt-workout-day></lt-workout-day>
+                        <lt-workout-day></lt-workout-day>
+                        <lt-workout-day></lt-workout-day>
+                        <lt-workout-day></lt-workout-day>
+                        <lt-workout-day></lt-workout-day>
+                        <lt-workout-day></lt-workout-day>
                     </div>
                     <div class="track-workout-non-weekly-wrapper" *ngIf="!trackWorkoutForm.value.workoutCadenceWeekly">
                         also test

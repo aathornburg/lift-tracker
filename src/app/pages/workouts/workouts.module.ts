@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 
 import { WorkoutsComponent } from './components/workouts/workouts.component';
+import { WorkoutDayComponent } from './components/workout-day/workout-day.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { WorkoutsComponent } from './components/workouts/workouts.component';
     SharedModule
   ],
   declarations: [
-    WorkoutsComponent
+    WorkoutsComponent,
+    WorkoutDayComponent
   ],
   exports: [
     WorkoutsComponent
