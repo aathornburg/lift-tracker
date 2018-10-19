@@ -14,44 +14,104 @@
     </div>
 </div>
 <form [formGroup]="trackWorkoutForm">
-    <lt-step-group [stepIdentifier]="trackWorkoutStepsIdentifier" class="workouts-page-content__track-workout-steps">
+    <lt-step-group [stepIdentifier]="trackWorkoutStepsIdentifier" class="track-workout-steps">
         <lt-step>
             <div class="page-section__wrapper page-content workouts-page-content--no-workouts">
-                <div class="workouts-page-content__no-workouts-text">You haven't added any workouts to track yet.</div>
-                <button type="button" class="workouts-page-content__no-workouts-button" ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Track a workout</button>
+                <div class="no-workouts-text">You haven't added any workouts to track yet.</div>
+                <button type="button" class="no-workouts-button" ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Track a workout</button>
             </div>
         </lt-step>
         <lt-step>
-            <div class="workouts-page-content__track-workouts-step-wrapper">
-                <div class="workouts-page-content__track-workouts-content-wrapper">
-                    <div class="workouts-page-content__track-workout-step-number">1</div>
-                    <h2 class="workouts-page-content__track-workout-step-title">Let's find your workout</h2>
-                    <div class="workouts-page-content__track-workout-step-description">This will be quick! You can add and modify a workout from our database or create your own custom workout from scratch.</div>
-                    <div class="workouts-page-content__track-workout-main-input-wrapper">
-                        <label for="workouts-page-content__track-workout-main-input" *ngIf="!trackWorkoutForm.controls.workoutName.value">starting strength</label>
-                        <input type="text" formControlName="workoutName" class="workouts-page-content__track-workout-main-input" id="workouts-page-content__track-workout-main-input" />
+            <div class="track-workouts-step-wrapper">
+                <div class="track-workouts-content-wrapper">
+                    <div class="track-workout-step__number">1</div>
+                    <h2 class="track-workout-step__title">Let's find your workout</h2>
+                    <div class="track-workout-step__description">This will be quick! You can add and modify a workout from our database or create your own custom workout from scratch.</div>
+                    <div class="track-workout-main-input-wrapper">
+                        <label for="track-workout-main-input" *ngIf="!trackWorkoutForm.value.workoutName">starting strength</label>
+                        <input type="text" formControlName="workoutName" class="track-workout-main-input" id="track-workout-main-input" />
                     </div>
-                    <div class="workouts-page-content__track-workout-cadence-wrapper">
-                        <label for="workouts-page-content__track-workout-cadence" class="workouts-page-content__track-workout-cadence-text">The workout repeats weekly</label>
-                        <lt-checkbox formControlName="workoutCadenceWeekly" class="workouts-page-content__track-workout-cadence" checkboxId="workouts-page-content__track-workout-cadence"></lt-checkbox>
+                    <div class="track-workout-cadence-wrapper">
+                        <label for="track-workout-cadence" class="track-workout-cadence-text">The workout repeats weekly</label>
+                        <lt-checkbox formControlName="workoutCadenceWeekly" class="track-workout-cadence" checkboxId="track-workout-cadence"></lt-checkbox>
                     </div>
                 </div>
-                <div class="workouts-page-content__track-workout-buttons">
-                    <button type="button" class="workouts-page-content__track-workout-button workouts-page-content__track-workout-button--back" ltPreviousStep [forStepGroup]="trackWorkoutStepsIdentifier">Back</button>
-                    <button type="button" class="workouts-page-content__track-workout-button workouts-page-content__track-workout-button--forward" *ngIf="trackWorkoutForm.controls.workoutName.value" [@slideUpDown] ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Add exercises</button>
+                <div class="track-workout-buttons">
+                    <button type="button" class="track-workout-button track-workout-button--back" ltPreviousStep [forStepGroup]="trackWorkoutStepsIdentifier">Back</button>
+                    <button type="button" class="track-workout-button track-workout-button--forward" *ngIf="trackWorkoutForm.controls.workoutName.value" [@slideUpDown] ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Add exercises</button>
                 </div>
             </div>
         </lt-step>
         <lt-step>
-            <div class="workouts-page-content__track-workouts-step-wrapper">
-                <div class="workouts-page-content__track-workouts-content-wrapper">
-                    <div class="workouts-page-content__track-workout-step-number">2</div>
-                    <h2 class="workouts-page-content__track-workout-step-title">Configure your exercise days</h2>
-                    <div class="workouts-page-content__track-workout-step-description">Add your exercises on the days that you want them and get tracking today.</div>
+            <div class="track-workouts-step-wrapper">
+                <div class="track-workouts-content-wrapper">
+                    <div class="track-workout-step__number">2</div>
+                    <h2 class="track-workout-step__title">Configure your exercise days</h2>
+                    <div class="track-workout-step__description">Add your exercises on the days that you want them and get tracking today.</div>
+                    <div class="track-workout-weekly-wrapper" *ngIf="trackWorkoutForm.value.workoutCadenceWeekly">
+                        <div class="track-workout-day-wrapper">
+                            <div class="track-workout-day-title">
+                                <div>
+                                    <h3>Monday</h3>
+                                    <button type="button">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                </div>
+                                <div>
+                                    <button type="button">
+                                        <i class="material-icons">add_box</i>
+                                    </button>
+                                    <button type="button">
+                                        <i class="material-icons">more_vert</i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="track-workout-day-content"></div>
+                        </div>
+                        <div class="track-workout-day-wrapper">
+                            <h3>Tuesday</h3>
+                            <div class="track-workout-day-content">
+                                <button type="button">Add exercise</button>
+                            </div>
+                        </div>
+                        <div class="track-workout-day-wrapper">
+                            <h3>Wednesday</h3>
+                            <div class="track-workout-day-content">
+                                <button type="button">Add exercise</button>
+                            </div>
+                        </div>
+                        <div class="track-workout-day-wrapper">
+                            <h3>Thursday</h3>
+                            <div class="track-workout-day-content">
+                                <button type="button">Add exercise</button>
+                            </div>
+                        </div>
+                        <div class="track-workout-day-wrapper">
+                            <h3>Friday</h3>
+                            <div class="track-workout-day-content">
+                                <button type="button">Add exercise</button>
+                            </div>
+                        </div>
+                        <div class="track-workout-day-wrapper">
+                            <h3>Saturday</h3>
+                            <div class="track-workout-day-content">
+                                <button type="button">Add exercise</button>
+                            </div>
+                        </div>
+                        <div class="track-workout-day-wrapper">
+                            <h3>Sunday</h3>
+                            <div class="track-workout-day-content">
+                                <button type="button">Add exercise</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="track-workout-non-weekly-wrapper" *ngIf="!trackWorkoutForm.value.workoutCadenceWeekly">
+                        also test
+                    </div>
                 </div>
-                <div class="workouts-page-content__track-workout-buttons">
-                    <button type="button" class="workouts-page-content__track-workout-button workouts-page-content__track-workout-button--back" ltPreviousStep [forStepGroup]="trackWorkoutStepsIdentifier">Back</button>
-                    <button type="button" class="workouts-page-content__track-workout-button workouts-page-content__track-workout-button--forward" [@slideUpDown] ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Add exercises</button>
+                <div class="track-workout-buttons">
+                    <button type="button" class="track-workout-button track-workout-button--back" ltPreviousStep [forStepGroup]="trackWorkoutStepsIdentifier">Back</button>
+                    <button type="button" class="track-workout-button track-workout-button--forward" [@slideUpDown] ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Add exercises</button>
                 </div>
             </div>
         </lt-step>
