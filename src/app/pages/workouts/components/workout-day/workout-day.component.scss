@@ -33,7 +33,7 @@ h3 {
 }
 
 .workout-day__separator {
-    margin: 0 1em;
+    margin-left: 1em;
     flex: 1;
     border-bottom: 1px solid $main-color;
 }
@@ -59,27 +59,29 @@ h3 {
 
 .workout-day-content__wrapper {
     flex: 1;
+    text-align: center;
+    border-left: 1.5px solid $main-color;
+    border-right: 1.5px solid $main-color;
 }
 
 .workout-day__content {
     display: inline-block;
-    text-align: center;
 
     button {
         background: transparent;
-        border: 1.5px solid $main-color;
+        border: 1.5px solid $complement-color;
         border-radius: 3px;
         padding: 5px 10px;
         font-family: inherit;
         font-weight: bold;
-        color: $main-color;
+        color: $complement-color;
         margin-top: 5px;
         cursor: pointer;
         transition: all .1s ease-in-out;
 
         &:hover, &:focus {
             color: white;
-            background: $main-color;
+            background: $complement-color;
         }
     }
 }
