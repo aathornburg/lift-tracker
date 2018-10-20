@@ -26,4 +26,8 @@ export class WorkoutsComponent implements OnInit {
     });
   }
 
+  childFormInitialized(name: string, form: FormGroup): void {
+    this.trackWorkoutForm.setControl(name, form);
+  }
+
 }

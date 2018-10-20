@@ -1,10 +1,10 @@
-<div class="workout-day__wrapper">
+<div class="workout-day__wrapper" [formGroup]="workoutDayForm">
   <div class="workout-day-left__wrapper">
     <h3 class="workout-day__title">{{day}}</h3>
     <div class="workout-day__separator"></div>
     <div class="workout-day-rest-day-wrapper">
         <label for="workout-{{day}}-rest__day" class="workout-rest-day__text">Rest day</label>
-        <lt-checkbox class="workout-rest-day__checkbox" checkboxId="workout-{{day}}-rest__day"></lt-checkbox>
+        <lt-checkbox formControlName="restDay" class="workout-rest-day__checkbox" checkboxId="workout-{{day}}-rest__day"></lt-checkbox>
     </div>
   </div>
   <div class="workout-day-content__wrapper">
