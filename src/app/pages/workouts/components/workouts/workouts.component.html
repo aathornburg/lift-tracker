@@ -37,8 +37,8 @@
                     </div>
                 </div>
                 <div class="track-workout-buttons">
-                    <span><button type="button" class="track-workout-button track-workout-button--back" ltPreviousStep [forStepGroup]="trackWorkoutStepsIdentifier">Back</button></span>
-                    <span><button type="button" class="track-workout-button track-workout-button--forward" *ngIf="trackWorkoutForm.controls.workoutName.value" [@slideUpDown] ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Add exercises</button></span>
+                    <button type="button" class="track-workout-button track-workout-button--back" ltPreviousStep [forStepGroup]="trackWorkoutStepsIdentifier">Back</button>
+                    <button type="button" class="track-workout-button track-workout-button--forward" *ngIf="trackWorkoutForm.controls.workoutName.value" [@slideUpDown] ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Add exercises</button>
                 </div>
             </div>
         </lt-step>
