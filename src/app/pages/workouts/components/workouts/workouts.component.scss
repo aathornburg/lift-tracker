@@ -136,6 +136,7 @@ $workout-content-padding: 2em;
     border-top: 1px solid $complement-color-lighter-shade;
     background: $complement-color-lightest-shade;
     overflow: hidden; // Fixes a visual bug where the scrollbar appears briefly on animation-in and -out of the buttons
+    flex-shrink: 0;   // Fixes a visual bug where the scrollbar appears briefly on animation-in and -out of the buttons
 
     .track-workout-button {
         background: transparent;
