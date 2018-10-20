@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'lt-workout-day',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./workout-day.component.scss']
 })
 export class WorkoutDayComponent implements OnInit {
+
+  @Input() day: string;
 
   constructor() { }
 

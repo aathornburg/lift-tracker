@@ -15,7 +15,6 @@ $workout-content-padding: 2em;
 }
 
 .track-workouts-step-wrapper {
-    position: relative;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -24,6 +23,8 @@ $workout-content-padding: 2em;
 
 .track-workouts-content-wrapper {
     padding: $workout-content-padding;
+    height: 100%;
+    overflow: auto;
 }
 
 .track-workout-step__number {
@@ -132,9 +133,9 @@ $workout-content-padding: 2em;
 }
 
 .track-workout-buttons {
+    padding: 1.5em;
+
     .track-workout-button {
-        position: absolute;
-        bottom: $workout-content-padding;
         background: transparent;
         border: none;
         font-family: inherit;
@@ -156,7 +157,6 @@ $workout-content-padding: 2em;
             background: white;
             border-color: $complement-color;
             color: $complement-color;
-            left: $workout-content-padding;
 
             &:hover, &:focus {
                 color: white;
@@ -165,7 +165,7 @@ $workout-content-padding: 2em;
         }
 
         &.track-workout-button--forward {
-            right: $workout-content-padding;
+            float: right; // Because buttons apparently can't be the height of their content when they're flex-items :(
         }
     }
 }

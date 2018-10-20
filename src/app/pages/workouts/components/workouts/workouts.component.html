@@ -37,8 +37,8 @@
                     </div>
                 </div>
                 <div class="track-workout-buttons">
-                    <button type="button" class="track-workout-button track-workout-button--back" ltPreviousStep [forStepGroup]="trackWorkoutStepsIdentifier">Back</button>
-                    <button type="button" class="track-workout-button track-workout-button--forward" *ngIf="trackWorkoutForm.controls.workoutName.value" [@slideUpDown] ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Add exercises</button>
+                    <span><button type="button" class="track-workout-button track-workout-button--back" ltPreviousStep [forStepGroup]="trackWorkoutStepsIdentifier">Back</button></span>
+                    <span><button type="button" class="track-workout-button track-workout-button--forward" *ngIf="trackWorkoutForm.controls.workoutName.value" [@slideUpDown] ltNextStep [forStepGroup]="trackWorkoutStepsIdentifier">Add exercises</button></span>
                 </div>
             </div>
         </lt-step>
@@ -49,13 +49,13 @@
                     <h2 class="track-workout-step__title">Configure your exercise days</h2>
                     <div class="track-workout-step__description">Add your exercises on the days that you want them and get tracking today.</div>
                     <div class="track-workout-weekly-wrapper" *ngIf="trackWorkoutForm.value.workoutCadenceWeekly">
-                        <lt-workout-day></lt-workout-day>
-                        <lt-workout-day></lt-workout-day>
-                        <lt-workout-day></lt-workout-day>
-                        <lt-workout-day></lt-workout-day>
-                        <lt-workout-day></lt-workout-day>
-                        <lt-workout-day></lt-workout-day>
-                        <lt-workout-day></lt-workout-day>
+                        <lt-workout-day day="Monday"></lt-workout-day>
+                        <lt-workout-day day="Tuesday"></lt-workout-day>
+                        <lt-workout-day day="Wednesday"></lt-workout-day>
+                        <lt-workout-day day="Thursday"></lt-workout-day>
+                        <lt-workout-day day="Friday"></lt-workout-day>
+                        <lt-workout-day day="Saturday"></lt-workout-day>
+                        <lt-workout-day day="Sunday"></lt-workout-day>
                     </div>
                     <div class="track-workout-non-weekly-wrapper" *ngIf="!trackWorkoutForm.value.workoutCadenceWeekly">
                         also test

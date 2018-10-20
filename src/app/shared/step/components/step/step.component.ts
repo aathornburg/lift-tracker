@@ -5,7 +5,7 @@ import { FocusService } from '../../../focus/services/focus.service';
 @Component({
   selector: 'lt-step',
   template: '<ng-content></ng-content>',
-  styles: [ ':host { flex-shrink: 0; width: 100% }']
+  styles: [ ':host { flex-shrink: 0; width: 100%; height: 100% }']
 })
 export class StepComponent implements OnInit {
 
