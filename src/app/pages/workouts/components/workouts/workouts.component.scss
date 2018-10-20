@@ -19,12 +19,11 @@ $workout-content-padding: 2em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: auto;
 }
 
 .track-workouts-content-wrapper {
     padding: $workout-content-padding;
-    height: 100%;
-    overflow: auto;
 }
 
 .track-workout-step__number {
@@ -133,7 +132,9 @@ $workout-content-padding: 2em;
 }
 
 .track-workout-buttons {
-    padding: 1.5em;
+    padding: 0.75em 1.5em;
+    border-top: 1px solid $complement-color-lighter-shade;
+    background: $complement-color-lightest-shade;
 
     .track-workout-button {
         background: transparent;
