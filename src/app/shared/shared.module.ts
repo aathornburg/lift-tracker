@@ -14,10 +14,10 @@ import { TooltipModule } from './tooltip/tooltip.module';
     ReactiveFormsModule,
     RouterModule,
     CheckboxModule,
-    TooltipModule,
     OverlayModule.forParent(),
     StepModule.forParent(),
     FocusModule.forParent(),
+    TooltipModule.forParent(),
   ],
   exports: [
     ReactiveFormsModule,
