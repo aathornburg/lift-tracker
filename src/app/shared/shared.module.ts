@@ -6,23 +6,26 @@ import { OverlayModule } from './overlay/overlay.module';
 import { StepModule } from './step/step.module';
 import { FocusModule } from './focus/focus.module';
 import { CheckboxModule } from './checkbox/checkbox.module';
+import { TooltipModule } from './tooltip/tooltip.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    CheckboxModule,
+    TooltipModule,
     OverlayModule.forParent(),
     StepModule.forParent(),
     FocusModule.forParent(),
-    CheckboxModule
   ],
   exports: [
     ReactiveFormsModule,
     OverlayModule,
     StepModule,
     RouterModule,
-    CheckboxModule
+    CheckboxModule,
+    TooltipModule
   ]
 })
 export class SharedModule { }
