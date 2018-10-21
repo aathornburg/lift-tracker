@@ -8,9 +8,30 @@
     </div>
   </div>
   <div class="workout-day-content__wrapper">
-    <div class="workout-day__content">
-      <div>You haven't added any exercises to this day yet.</div>
-      <button type="button">Add exercise</button>
+    <div class="workout-day__buttons">
+      <button type="button" (click)="addExercise()" class="workout-day__button--edit">
+        <i class="material-icons">input</i>
+      </button>
+      <button type="button" (click)="addExercise()" class="workout-day__button--quick-options">
+        <i class="material-icons">settings</i>
+      </button>
+      <button type="button" (click)="addExercise()" class="workout-day__button--set-to-rest">
+        <i class="material-icons">hotel</i>
+      </button>
     </div>
+    <div class="workout-day__content">
+      <div *ngIf="!workoutDayForm.controls.exercises.length">You haven't added any exercises to this day yet.</div>
+      <!-- <ng-container *ngIf="workoutDayForm.controls.exercises.length" formArrayName="exercises">
+        <div *ngFor="let exercise of workoutDayForm.controls.exercises.controls; let i = index" class="workout-day__input-row" [formGroupName]="i">
+          <input type="text" formControlName="name" />
+          <input type="number" formControlName="sets" />
+          <button type="button">Options ></button>
+          <button type="button">Add</button>
+        </div>
+      </ng-container> -->
+    </div>
+    <!-- <div class="workout-day__buttons">
+      <button type="button" (click)="addExercise()">Edit day</button>
+    </div> -->
   </div>
 </div>

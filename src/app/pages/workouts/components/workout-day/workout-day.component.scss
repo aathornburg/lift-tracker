@@ -51,13 +51,15 @@ h3 {
 }
 
 .workout-rest-day__checkbox {
-    display: inline-block;
     margin-left: .5em;
     width: 12px;
     height: 12px;
 }
 
 .workout-day-content__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex: 1;
     text-align: center;
     border-left: 1.5px solid $main-color;
@@ -65,23 +67,43 @@ h3 {
 }
 
 .workout-day__content {
-    display: inline-block;
+    flex: 1;
+}
+
+.workout-day__buttons {
+    padding: 0 1em;
+    border-right: 1px dotted $main-color;
 
     button {
+        display: block;
         background: transparent;
-        border: 1.5px solid $complement-color;
-        border-radius: 3px;
-        padding: 5px 10px;
-        font-family: inherit;
-        font-weight: bold;
-        color: $complement-color;
-        margin-top: 5px;
+        border: none;
+        padding: 5px;
+        color: #FF9A47;
         cursor: pointer;
-        transition: all .1s ease-in-out;
+        line-height: 0;  // Make button be only the height of its icon
+        outline: none;
 
-        &:hover, &:focus {
-            color: white;
-            background: $complement-color;
+        &.workout-day__button--edit {
+            color: $secondary-color-3-dark-tint;
         }
+    
+        &.workout-day__button--quick-options {
+            color: $font-color-light;
+        }
+    
+        &.workout-day__button--set-to-rest {
+            color: $font-color-light;
+        }
+    }
+}
+
+.workout-day__input-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    input[type=number] {
+        width: 50px;
     }
 }

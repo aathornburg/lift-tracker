@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'lt-workout-day',
@@ -14,12 +14,26 @@ export class WorkoutDayComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.workoutDayForm = this.formBuilder.group({
-      restDay: false
+      restDay: false,
+      exercises: this.formBuilder.array([])
     });
 
     this.formReady.emit(this.workoutDayForm);
+  }
+
+  private addExercise(): void {
+    // (this.workoutDayForm.controls.exercises as FormArray).push(this.createExercise());
+    const exercises = this.workoutDayForm.controls.exercises as FormArray;
+    exercises.push(this.createExercise());
+  }
+
+  private createExercise(name?: string, sets?: number): FormGroup {
+    return this.formBuilder.group({
+      name: name ? name : '',
+      sets: sets ? sets : 0
+    });
   }
 
 }

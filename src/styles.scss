@@ -43,7 +43,7 @@ html {
         }
 
         /* The CSS that handles text inputs */
-        input[type=text] {
+        input[type=text], input[type=number] {
             font-family: 'Open Sans', sans-serif;
             font-size: 1.2em;
             color: $input-color;
@@ -158,7 +158,7 @@ html {
 
         /* The section on the left of a page */
         .page-title-content__wrapper {
-            width: 30%;
+            width: $page-title-content-width;
             background: $main-color;
             color: white;
             flex-shrink: 0;
@@ -184,6 +184,10 @@ html {
                     }
                 }
             }
+        }
+
+        .page-content__wrapper {
+            width: calc(100% - #{$page-title-content-width});
         }
 
         .page-section__wrapper {
