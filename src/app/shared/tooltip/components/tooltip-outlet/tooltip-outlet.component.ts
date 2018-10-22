@@ -12,7 +12,7 @@ export class TooltipOutletComponent implements OnInit {
   @Input() forTooltip: string;
   @Input() tooltipDirection: TooltipDirection = TooltipDirection.Up;
   @Input() tooltipText: string;
-  @HostBinding('hidden') hidden: boolean = true;
+  @HostBinding('hidden') hidden = true;
 
   constructor(private tooltipService: TooltipService) { }
 

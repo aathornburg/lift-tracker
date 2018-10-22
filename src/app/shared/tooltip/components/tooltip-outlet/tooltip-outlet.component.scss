@@ -1,8 +1,27 @@
+@import "~src/variables.scss";
+
+$tooltip-arrow-size: 5px;
+
 :host {
-    display: block;
+    display: flex;
+    align-items: center;
     position: absolute;
-    left: 100%;
+    left: calc(100% + #{$tooltip-arrow-size});
     top: 0;
+    bottom: 0;
+    background: $main-color;
+    color: white;
+    border-radius: 3px;
+    padding: 5px;
     line-height: normal;
     white-space: nowrap;
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: -$tooltip-arrow-size;
+        border-top: $tooltip-arrow-size solid transparent;
+        border-bottom: $tooltip-arrow-size solid transparent;
+        border-right: $tooltip-arrow-size solid $main-color;
+    }
 }
