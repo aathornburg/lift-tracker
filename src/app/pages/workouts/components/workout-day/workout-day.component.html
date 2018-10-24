@@ -11,15 +11,15 @@
     <div class="workout-day__buttons">
       <button type="button" (click)="addExercise()" class="workout-day__button--edit" ltTooltipAnchor tooltipName="{{day}}-edit">
         <i class="material-icons">input</i>
-        <lt-tooltip-outlet forTooltip="{{day}}-edit" tooltipDirection="TooltipDirection.Right" tooltipText="Edit {{day}}'s exercises"></lt-tooltip-outlet>
+        <lt-tooltip-outlet forTooltip="{{day}}-edit" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Edit {{day}}'s exercises"></lt-tooltip-outlet>
       </button>
       <button type="button" (click)="addExercise()" class="workout-day__button--quick-options" ltTooltipAnchor tooltipName="{{day}}-options">
         <i class="material-icons">settings</i>
-        <lt-tooltip-outlet forTooltip="{{day}}-options" tooltipDirection="TooltipDirection.Right" tooltipText="Quick options"></lt-tooltip-outlet>
+        <lt-tooltip-outlet forTooltip="{{day}}-options" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Quick options"></lt-tooltip-outlet>
       </button>
       <button type="button" (click)="addExercise()" class="workout-day__button--set-to-rest" ltTooltipAnchor tooltipName="{{day}}-rest-day">
         <i class="material-icons">hotel</i>
-        <lt-tooltip-outlet forTooltip="{{day}}-rest-day" tooltipDirection="TooltipDirection.Right" tooltipText="Set as rest day"></lt-tooltip-outlet>
+        <lt-tooltip-outlet forTooltip="{{day}}-rest-day" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Set as rest day"></lt-tooltip-outlet>
       </button>
     </div>
     <div class="workout-day__content">

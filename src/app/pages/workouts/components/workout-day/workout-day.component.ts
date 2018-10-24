@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { TooltipDirection } from 'src/app/shared/tooltip/model/tooltip-direction';
 
 @Component({
   selector: 'lt-workout-day',
@@ -11,6 +12,7 @@ export class WorkoutDayComponent implements OnInit {
   @Input() day: string;
   @Output() formReady: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   workoutDayForm: FormGroup;
+  TooltipDirection = TooltipDirection;
 
   constructor(private formBuilder: FormBuilder) { }
 

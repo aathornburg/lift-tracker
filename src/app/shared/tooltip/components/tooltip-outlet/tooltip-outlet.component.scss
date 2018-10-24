@@ -3,25 +3,76 @@
 $tooltip-arrow-size: 5px;
 
 :host {
+    display: block;
+}
+
+.tooltip-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     position: absolute;
-    left: calc(100% + #{$tooltip-arrow-size});
-    top: 0;
-    bottom: 0;
     background: $main-color;
     color: white;
     border-radius: 3px;
     padding: 5px;
     line-height: normal;
     white-space: nowrap;
-
+    
     &:after {
         content: '';
         position: absolute;
-        left: -$tooltip-arrow-size;
-        border-top: $tooltip-arrow-size solid transparent;
-        border-bottom: $tooltip-arrow-size solid transparent;
-        border-right: $tooltip-arrow-size solid $main-color;
     }
+
+    &.up {
+        bottom: calc(100% + #{$tooltip-arrow-size});
+        left: 50%;
+        transform: translateX(-50%);
+
+        &:after {
+            bottom: -$tooltip-arrow-size;
+            border-left: $tooltip-arrow-size solid transparent;
+            border-right: $tooltip-arrow-size solid transparent;
+            border-top: $tooltip-arrow-size solid $main-color;
+        }
+    }
+
+    &.right {
+        left: calc(100% + #{$tooltip-arrow-size});
+        top: 0;
+        bottom: 0;
+
+        &:after {
+            left: -$tooltip-arrow-size;
+            border-top: $tooltip-arrow-size solid transparent;
+            border-bottom: $tooltip-arrow-size solid transparent;
+            border-right: $tooltip-arrow-size solid $main-color;
+        }
+    }
+
+    &.down {
+        top: calc(100% + #{$tooltip-arrow-size});
+        left: 50%;
+        transform: translateX(-50%);
+
+        &:after {
+            top: -$tooltip-arrow-size;
+            border-left: $tooltip-arrow-size solid transparent;
+            border-right: $tooltip-arrow-size solid transparent;
+            border-bottom: $tooltip-arrow-size solid $main-color;
+        }
+    }
+
+    &.left {
+        right: calc(100% + #{$tooltip-arrow-size});
+        top: 0;
+        bottom: 0;
+
+        &:after {
+            right: -$tooltip-arrow-size;
+            border-top: $tooltip-arrow-size solid transparent;
+            border-bottom: $tooltip-arrow-size solid transparent;
+            border-left: $tooltip-arrow-size solid $main-color;
+        }
+    }
+
 }
