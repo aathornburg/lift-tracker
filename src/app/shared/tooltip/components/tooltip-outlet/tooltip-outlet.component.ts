@@ -44,7 +44,7 @@ export class TooltipOutletComponent implements OnInit {
 
   private onAnimationDone(): void {
     if (this.animationState.startsWith('closedFrom')) {
-      this.hidden = true;
+      setTimeout(() => {this.hidden = true; });
     }
   }
 
