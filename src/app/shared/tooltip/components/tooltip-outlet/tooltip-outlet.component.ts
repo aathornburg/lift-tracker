@@ -13,7 +13,7 @@ import { fadeSlideInOut } from '../../tooltip.animations';
 })
 export class TooltipOutletComponent implements OnInit {
 
-  private animationState: string;
+  private bubbleAnimationState: string;
   private hidden = true;
   @Input() forTooltip: string;
   @Input() tooltipDirection: TooltipDirection = TooltipDirection.Up;
@@ -30,21 +30,21 @@ export class TooltipOutletComponent implements OnInit {
       tooltipName => tooltipName === this.forTooltip ? this.hideTooltip() : ''
     );
 
-    this.animationState = this.determineAnimationState();
+    this.bubbleAnimationState = this.determineBubbleAnimationState();
   }
 
   private showTooltip(): void {
     this.hidden = false;
-    this.animationState = 'open';
+    this.bubbleAnimationState = 'open';
   }
 
   private hideTooltip(): void {
-    this.animationState = this.determineAnimationState();
+    this.bubbleAnimationState = this.determineBubbleAnimationState();
   }
 
-  private onAnimationDone(): void {
-    if (this.animationState.startsWith('closedFrom')) {
-      setTimeout(() => {this.hidden = true; });
+  private onBubbleAnimationDone(): void {
+    if (this.bubbleAnimationState.startsWith('closedFrom')) {
+      setTimeout(() => { this.hidden = true; });
     }
   }
 
@@ -52,7 +52,7 @@ export class TooltipOutletComponent implements OnInit {
     return TooltipDirection[this.tooltipDirection].toLowerCase();
   }
 
-  private determineAnimationState(): string {
+  private determineBubbleAnimationState(): string {
     return 'closedFrom' + TooltipDirection[this.tooltipDirection];
   }
 

@@ -7,6 +7,8 @@ import { TooltipService } from '../../services/tooltip.service';
 export class TooltipAnchorDirective implements OnInit {
 
   @Input() tooltipName: string = '';
+  @Input() showDelay: number = 500; // in milliseconds
+  private delayTimeoutHandle: NodeJS.Timer;
 
   constructor(private tooltipService: TooltipService, private renderer: Renderer2, private elementRef: ElementRef) { }
 
@@ -23,11 +25,12 @@ export class TooltipAnchorDirective implements OnInit {
 
   @HostListener('mouseenter')
   private onMouseEnter(): void {
-    this.tooltipService.openTooltip(this.tooltipName);
+    this.delayTimeoutHandle = setTimeout(() => { this.tooltipService.openTooltip(this.tooltipName); }, this.showDelay);
   }
 
   @HostListener('mouseleave')
   private onMouseLeave(): void {
+    clearTimeout(this.delayTimeoutHandle);
     this.tooltipService.closeTooltip(this.tooltipName);
   }
 

@@ -11,8 +11,9 @@
 
 .workout-day__wrapper {
     display: flex;
-    min-height: 150px;
     align-items: center;
+    padding: 1.25em 0;
+    box-sizing: border-box;
 }
 
 .workout-day-left__wrapper {

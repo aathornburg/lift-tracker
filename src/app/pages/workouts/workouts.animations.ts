@@ -10,3 +10,11 @@ export const slideUpDown = trigger('slideUpDown', [
         animate('150ms ease-in-out', style({opacity: 0, transform: 'translateY(100%)'}))
     ])
 ]);
+
+export const shrinkHeight = trigger('shrinkHeight', [
+    state('true', style({'min-height': 'initial', height: '45px', overflow: 'hidden', padding: '0.25em 0'})),
+    state('false', style({height: '*'})),
+    transition('* <=> *', [
+        animate('150ms ease-in-out')
+    ])
+]);

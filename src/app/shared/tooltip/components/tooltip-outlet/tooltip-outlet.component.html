@@ -1,2 +1,4 @@
 <div class="tooltip-container {{determineDirectionClass()}}" [hidden]="hidden"
-    [@fadeSlideInOut]="animationState" (@fadeSlideInOut.done)="onAnimationDone()">{{tooltipText}}</div>
+    [@fadeSlideInOut]="bubbleAnimationState" (@fadeSlideInOut.done)="onBubbleAnimationDone()">
+    <div class="tooltip-text">{{tooltipText}}</div>
+</div>
