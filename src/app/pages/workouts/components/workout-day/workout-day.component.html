@@ -1,4 +1,4 @@
-<div class="workout-day__wrapper" [formGroup]="workoutDayForm" [@shrinkHeight]="workoutDayForm.controls.restDay.value">
+<div class="workout-day__wrapper" [formGroup]="workoutDayForm" [@heightTest]="workoutDayForm.controls.restDay.value">
   <div class="workout-day-left__wrapper">
     <h3 class="workout-day__title">{{day}}</h3>
     <div class="workout-day__separator"></div>
@@ -9,7 +9,7 @@
   </div>
   <div class="workout-day-content__wrapper">
     <div class="workout-day__buttons">
-      <button type="button" (click)="addExercise()" class="workout-day__button--edit" ltTooltipAnchor tooltipName="{{day}}-edit">
+      <button type="button" (click)="addExercise()" class="workout-day__button--edit" ltTooltipAnchor tooltipName="{{day}}-edit" @fadeInOut *ngIf="!workoutDayForm.controls.restDay.value">
         <i class="material-icons">input</i>
         <lt-tooltip-outlet forTooltip="{{day}}-edit" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Edit {{day}}'s exercises"></lt-tooltip-outlet>
       </button>

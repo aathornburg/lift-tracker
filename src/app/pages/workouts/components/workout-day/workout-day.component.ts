@@ -1,14 +1,15 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { TooltipDirection } from 'src/app/shared/tooltip/model/tooltip-direction';
-import { shrinkHeight } from '../../workouts.animations';
+import { fadeInOut, heightTest } from '../../workouts.animations';
 
 @Component({
   selector: 'lt-workout-day',
   templateUrl: './workout-day.component.html',
   styleUrls: ['./workout-day.component.scss'],
   animations: [
-    shrinkHeight
+    fadeInOut,
+    heightTest
   ]
 })
 export class WorkoutDayComponent implements OnInit {

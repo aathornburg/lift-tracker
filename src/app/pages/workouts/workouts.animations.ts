@@ -1,4 +1,4 @@
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { trigger, state, style, animate, transition, query, animateChild } from '@angular/animations';
 
 export const slideUpDown = trigger('slideUpDown', [
     transition(':enter', [
@@ -11,10 +11,28 @@ export const slideUpDown = trigger('slideUpDown', [
     ])
 ]);
 
-export const shrinkHeight = trigger('shrinkHeight', [
-    state('true', style({'min-height': 'initial', height: '45px', overflow: 'hidden', padding: '0.25em 0'})),
-    state('false', style({height: '*'})),
+export const fadeInOut = trigger('fadeInOut', [
+    transition(':enter', [
+        style({opacity: 0}),
+        animate('1500ms ease-in-out', style({opacity: 1}))
+    ]),
+    transition(':leave', [
+        style({opacity: 1}),
+        animate('1500ms ease-in-out', style({opacity: 0}))
+    ])
+    // state('true', style({'min-height': 'initial', height: '45px', overflow: 'hidden', padding: '0.25em'})),
+    // state('false', style({height: '*'})),
+    // transition('* <=> *', [
+    //     animate('150ms ease-in-out')
+    // ])
+]);
+
+export const heightTest = trigger('heightTest', [
     transition('* <=> *', [
-        animate('150ms ease-in-out')
+        style({height: '*'}),
+        animate('1500ms ease-in-out', style({height: '*'})),
+        query('@fadeInOut', [
+            animateChild()
+        ])
     ])
 ]);
