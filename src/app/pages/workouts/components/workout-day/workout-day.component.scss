@@ -58,8 +58,7 @@ h3 {
 }
 
 .workout-day-content__wrapper {
-    display: grid;
-    grid-template-columns: min-content 1fr;
+    display: flex;
     flex: 1;
     text-align: center;
     border-left: 1.5px solid $main-color;
@@ -68,15 +67,15 @@ h3 {
 
 .workout-day__content {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     flex: 1;
-    border-left: 1px dotted $main-color;
+    overflow: hidden;
 }
 
 .workout-day__buttons {
     padding: 0 1em;
+    border-right: 1px dotted $main-color;
 
     .workout-day__button-wrapper {
         display: flex;

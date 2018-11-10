@@ -1,4 +1,4 @@
-import { trigger, state, style, animate, transition, query, animateChild } from '@angular/animations';
+import { trigger, state, style, animate, transition, query, animateChild, group } from '@angular/animations';
 
 const buttonLeaveLength = '250ms';
 
@@ -25,5 +25,18 @@ export const expand = trigger('expand', [
     state('false', style({height: '33%'})),
     transition('* <=> *', [
         animate(`${buttonLeaveLength} ease-in-out`)
+    ])
+]);
+
+export const shrink = trigger('shrink', [
+    state('true', style({height: '75px'})),
+    state('false', style({height: '*'})),
+    transition('* <=> *', [
+        group([
+            query('@*', [
+                animateChild()
+            ]),
+            animate(`${buttonLeaveLength} ease-in-out`),
+        ])
     ])
 ]);
