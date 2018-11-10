@@ -1,4 +1,4 @@
-<div class="workout-day__wrapper" [formGroup]="workoutDayForm" [@heightTest]="workoutDayForm.controls.restDay.value">
+<div class="workout-day__wrapper" [formGroup]="workoutDayForm">
   <div class="workout-day-left__wrapper">
     <h3 class="workout-day__title">{{day}}</h3>
     <div class="workout-day__separator"></div>
@@ -9,18 +9,24 @@
   </div>
   <div class="workout-day-content__wrapper">
     <div class="workout-day__buttons">
-      <button type="button" (click)="addExercise()" class="workout-day__button--edit" ltTooltipAnchor tooltipName="{{day}}-edit" @fadeInOut *ngIf="!workoutDayForm.controls.restDay.value">
-        <i class="material-icons">input</i>
-        <lt-tooltip-outlet forTooltip="{{day}}-edit" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Edit {{day}}'s exercises"></lt-tooltip-outlet>
-      </button>
-      <button type="button" (click)="addExercise()" class="workout-day__button--quick-options" ltTooltipAnchor tooltipName="{{day}}-options">
-        <i class="material-icons">settings</i>
-        <lt-tooltip-outlet forTooltip="{{day}}-options" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Quick options"></lt-tooltip-outlet>
-      </button>
-      <button type="button" (click)="setToRestDay()" class="workout-day__button--set-to-rest" ltTooltipAnchor tooltipName="{{day}}-rest-day">
-        <i class="material-icons">hotel</i>
-        <lt-tooltip-outlet forTooltip="{{day}}-rest-day" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Set as rest day"></lt-tooltip-outlet>
-      </button>
+      <div class="workout-day__button-wrapper" @fadeShrinkInOut *ngIf="!workoutDayForm.controls.restDay.value">
+        <button type="button" (click)="addExercise()" class="workout-day__button--edit" ltTooltipAnchor tooltipName="{{day}}-edit">
+          <i class="material-icons">input</i>
+          <lt-tooltip-outlet forTooltip="{{day}}-edit" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Edit {{day}}'s exercises"></lt-tooltip-outlet>
+        </button>
+      </div>
+      <div class="workout-day__button-wrapper" [@expand]="workoutDayForm.controls.restDay.value">
+        <button type="button" (click)="addExercise()" class="workout-day__button--quick-options" ltTooltipAnchor tooltipName="{{day}}-options">
+          <i class="material-icons">settings</i>
+          <lt-tooltip-outlet forTooltip="{{day}}-options" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Quick options"></lt-tooltip-outlet>
+        </button>
+      </div>
+      <div class="workout-day__button-wrapper" [@expand]="workoutDayForm.controls.restDay.value">
+        <button type="button" (click)="setToRestDay()" class="workout-day__button--set-to-rest" ltTooltipAnchor tooltipName="{{day}}-rest-day">
+          <i class="material-icons">hotel</i>
+          <lt-tooltip-outlet forTooltip="{{day}}-rest-day" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Set as rest day"></lt-tooltip-outlet>
+        </button>
+      </div>
     </div>
     <div class="workout-day__content">
       <div *ngIf="!workoutDayForm.controls.exercises.length">You haven't added any exercises to this day yet.</div>

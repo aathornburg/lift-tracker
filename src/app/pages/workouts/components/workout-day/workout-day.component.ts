@@ -1,15 +1,15 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, HostBinding } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { TooltipDirection } from 'src/app/shared/tooltip/model/tooltip-direction';
-import { fadeInOut, heightTest } from '../../workouts.animations';
+import { fadeShrinkInOut, expand } from '../../workouts.animations';
 
 @Component({
   selector: 'lt-workout-day',
   templateUrl: './workout-day.component.html',
   styleUrls: ['./workout-day.component.scss'],
   animations: [
-    fadeInOut,
-    heightTest
+    fadeShrinkInOut,
+    expand
   ]
 })
 export class WorkoutDayComponent implements OnInit {

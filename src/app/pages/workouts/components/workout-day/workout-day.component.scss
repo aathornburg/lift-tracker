@@ -76,10 +76,13 @@ h3 {
 }
 
 .workout-day__buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
     padding: 0 1em;
+
+    .workout-day__button-wrapper {
+        display: flex;
+        align-items: center;
+        height: 33%;
+    }
 
     button {
         display: block;
