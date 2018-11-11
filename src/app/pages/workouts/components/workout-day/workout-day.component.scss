@@ -4,7 +4,7 @@ $restDayOpenStartWidth: 10px;
 
 :host {
     display: block;
-    border-bottom: 1px dashed $complement-color-lighter-shade;// TODO:  Make the dashes/dots more separated?  SVG?
+    border-bottom: 1px dashed colors(complement, lighter);// TODO:  Make the dashes/dots more separated?  SVG?
 
     &:last-of-type {
         border: none;
@@ -28,7 +28,7 @@ $restDayOpenStartWidth: 10px;
 h3 {
     padding: 0;
     margin: 0;
-    color: $complement-color;
+    color: colors(complement, standard);
     font-weight: normal;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -38,7 +38,7 @@ h3 {
 .workout-day__separator {
     margin-left: 1em;
     flex: 1;
-    border-bottom: 1px solid $main-color;
+    border-bottom: 1px solid colors(primary, standard);
 }
 
 .workout-day-rest-day-wrapper {
@@ -63,19 +63,19 @@ h3 {
     display: flex;
     flex: 1;
     text-align: center;
-    border-left: 2px solid $main-color;
-    border-right: 2px solid $main-color;
+    border-left: 2px solid colors(primary, standard);
+    border-right: 2px solid colors(primary, standard);
 }
 
 
 .workout-day__buttons {
     padding: 0 1em;
-    border-right: 1px dotted $main-color;
+    border-right: 1px dotted colors(primary, standard);
     
     .workout-day__button-wrapper {
         display: flex;
         align-items: center;
-        height: calc(100% / #{$workoutDayButtonNumber});
+        height: calc(100% / #{miscellaneous(workout-day-button-number)});
     }
     
     button {
@@ -88,15 +88,15 @@ h3 {
         outline: none;
         
         &.workout-day__button--edit {
-            color: $secondary-color-3-dark-tint;
+            color: colors(green-secondary, dark);
         }
         
         &.workout-day__button--quick-options {
-            color: $font-color-light;
+            color: colors(font, light);
         }
     
         &.workout-day__button--set-to-rest {
-            color: $font-color-light;
+            color: colors(font, light);
         }
     }
 }
@@ -113,8 +113,8 @@ h3 {
 .workout-day__rest-day-content {
     position: absolute;
     left: 0;
-    top: calc(100% - (100% / (#{$workoutDayButtonNumber} * 2)));
-    bottom: calc(100% / (#{$workoutDayButtonNumber} * 2));
+    top: calc(100% - (100% / (#{miscellaneous(workout-day-button-number)} * 2)));
+    bottom: calc(100% / (#{miscellaneous(workout-day-button-number)} * 2));
     right: 0;
     display: flex;
     align-items: center;

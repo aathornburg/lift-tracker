@@ -11,7 +11,7 @@ $tooltip-arrow-size: 5px;
     align-items: center;
     justify-content: center;
     position: absolute;
-    background: $complement-color-light-shade;
+    background: colors(complement, light);
     color: white;
     border-radius: 3px;
     padding: 5px 10px;
@@ -34,7 +34,7 @@ $tooltip-arrow-size: 5px;
             bottom: -$tooltip-arrow-size;
             border-left: $tooltip-arrow-size solid transparent;
             border-right: $tooltip-arrow-size solid transparent;
-            border-top: $tooltip-arrow-size solid $complement-color-light-shade;
+            border-top: $tooltip-arrow-size solid colors(complement, light);
         }
     }
 
@@ -47,7 +47,7 @@ $tooltip-arrow-size: 5px;
             left: -$tooltip-arrow-size;
             border-top: $tooltip-arrow-size solid transparent;
             border-bottom: $tooltip-arrow-size solid transparent;
-            border-right: $tooltip-arrow-size solid $complement-color-light-shade;
+            border-right: $tooltip-arrow-size solid colors(complement, light);
         }
     }
 
@@ -60,7 +60,7 @@ $tooltip-arrow-size: 5px;
             top: -$tooltip-arrow-size;
             border-left: $tooltip-arrow-size solid transparent;
             border-right: $tooltip-arrow-size solid transparent;
-            border-bottom: $tooltip-arrow-size solid $complement-color-light-shade;
+            border-bottom: $tooltip-arrow-size solid colors(complement, light);
         }
     }
 
@@ -73,7 +73,7 @@ $tooltip-arrow-size: 5px;
             right: -$tooltip-arrow-size;
             border-top: $tooltip-arrow-size solid transparent;
             border-bottom: $tooltip-arrow-size solid transparent;
-            border-left: $tooltip-arrow-size solid $complement-color-light-shade;
+            border-left: $tooltip-arrow-size solid colors(complement, light);
         }
     }
 

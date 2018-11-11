@@ -15,20 +15,20 @@
     cursor: pointer;
     font-weight: bold;
     text-transform: uppercase;
-    color: $font-color;
+    color: colors(font, standard);
 
     &, &:visited {
-        color: $main-color;
+        color: colors(primary, standard);
 
         &.active {
             $bottom-border-offset: 2px;
 
-            border-bottom: $bottom-border-offset solid $main-color-light-shade;
+            border-bottom: $bottom-border-offset solid colors(primary, light);
             padding-top: $bottom-border-offset;  // Offset the border added when a nav item is active
         }
     }
 
     &:active, &:hover {
-        color: $main-color-light-shade;
+        color: colors(primary, light);
     }
 }

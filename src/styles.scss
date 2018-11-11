@@ -28,7 +28,7 @@ html {
 
         .content-area {
             width: 100%;
-            height: calc(100% - #{$nav-bar-height});
+            height: calc(100% - #{sizes(nav-bar-height)});
         }
 
         .main-content {
@@ -39,32 +39,32 @@ html {
         /* The CSS that handles the required box for forms */
         .required-indicator {
             font-family: 'Open Sans', sans-serif;
-            color: $font-color;
+            color: colors(font, standard);
         }
 
         /* The CSS that handles text inputs */
         input[type=text], input[type=number] {
             font-family: 'Open Sans', sans-serif;
             font-size: 1.2em;
-            color: $input-color;
+            color: colors(font, input);
         }
 
         /* The CSS that handles label styling */
         label, .input-group-label {
             font-family: 'Open Sans', sans-serif;
             font-size: 1.2em;
-            color: $font-color;
+            color: colors(font, standard);
         }
 
         /* The CSS that handles select styling for select boxes */
         select {
             border: none;
             font-size: 1em;
-            color: $font-color;
-            border-bottom: 1px solid $font-color-light;
+            color: colors(font, standard);
+            border-bottom: 1px solid colors(font, light);
 
             &:hover, &:focus {
-                border-color: $main-color-lighter-shade;
+                border-color: colors(primary, lighter);
             }
         }
 
@@ -73,7 +73,7 @@ html {
             $input-padding-bottom: .3em;
             position: relative;
             box-sizing: border-box;
-            padding-top: $input-top-padding;
+            padding-top: sizes(input-top-padding);
 
             & > label {
                 position: absolute;
@@ -81,27 +81,27 @@ html {
                 left: 0;
                 transition: all .2s ease;
                 cursor: text;
-                color: $font-color-lighter;
+                color: colors(font, lighter);
             }
 
             & > input[type=text] {
                 position: relative;
                 padding-bottom: $input-padding-bottom;
                 border: none;
-                border-bottom: 1px solid $font-color-light;
+                border-bottom: 1px solid colors(font, light);
                 margin-top: .2em;
 
                 &:hover {
-                    border-color: $main-color-lighter-shade;
+                    border-color: colors(primary, lighter);
                 }
 
                 &:focus, &.ng-not-empty {
-                    border-color: $main-color-lighter-shade;
+                    border-color: colors(primary, lighter);
 
                     & ~ label {
                         bottom: calc(100% - 1em - 2px);
                         font-size: 1em;
-                        color: $main-color-lighter-shade;
+                        color: colors(primary, lighter);
                     }
                 }
             }
@@ -158,8 +158,8 @@ html {
 
         /* The section on the left of a page */
         .page-title-content__wrapper {
-            width: $page-title-content-width;
-            background: $main-color;
+            width: sizes(page-title-content-width);
+            background: colors(primary, standard);
             color: white;
             flex-shrink: 0;
 
@@ -180,14 +180,14 @@ html {
 
                     &:hover, &:focus {
                         background: white;
-                        color: $main-color;
+                        color: colors(primary, standard);
                     }
                 }
             }
         }
 
         .page-content__wrapper {
-            width: calc(100% - #{$page-title-content-width});
+            width: calc(100% - #{sizes(page-title-content-width)});
         }
 
         .page-section__wrapper {
@@ -211,8 +211,8 @@ html {
             visibility: hidden;
             font-size: 13px;
             margin-top: 2px;
-            min-height: $input-error-hint-height;
-            color: $secondary-color-2;
+            min-height: sizes(input-error-hint-height);
+            color: colors(red-secondary, standard);
             font-family: 'Open Sans', sans-serif;
         }
 

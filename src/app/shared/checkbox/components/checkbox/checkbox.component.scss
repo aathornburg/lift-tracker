@@ -10,7 +10,7 @@
         position: relative;
         width: 100%;
         height: 100%;
-        border: 1.5px solid $font-color;
+        border: 1.5px solid colors(complement, standard);
         border-radius: 1.5px;
         margin-right: .5em;
         cursor: pointer;
@@ -45,7 +45,7 @@
 
     input[type=checkbox]:hover ~ .checkbox-label, input[type=checkbox]:focus ~ .checkbox-label {
         & > .checkbox-circle-radiate {
-            background-color: $font-color;
+            background-color: colors(complement, standard);
             height: calc((100% + 3px) * 2.5);
             width: calc((100% + 3px) * 2.5);
             left: calc(-1.5px - ((100% + 3px) * 0.75));
@@ -54,8 +54,8 @@
     }
 
     input[type=checkbox]:checked ~ .checkbox-label {
-        background-color: $complement-color;
-        border-color: $complement-color;
+        background-color: colors(complement, standard);
+        border-color: colors(complement, standard);
 
         & .check-icon {
             stroke-dashoffset: 0;
@@ -64,7 +64,7 @@
 
     input[type=checkbox]:checked:hover ~ .checkbox-label, input[type=checkbox]:checked:focus ~ .checkbox-label {
         & > .checkbox-circle-radiate {
-            background-color: $complement-color;
+            background-color: colors(complement, standard);
         }
     }
 

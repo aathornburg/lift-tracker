@@ -31,7 +31,7 @@ $workout-content-padding: 2em;
     justify-content: center;
     align-items: center;
     padding: 0.75em;
-    background: $complement-color;
+    background: colors(complement, standard);
     border-radius: 100px;
     color: white;
     width: 40px;
@@ -42,7 +42,7 @@ $workout-content-padding: 2em;
 
 .track-workout-step__title {
     display: inline-block;
-    color: $complement-color;
+    color: colors(complement, standard);
     font-weight: bold;
     font-size: 1.25em;
     margin-left: 1em;
@@ -56,7 +56,7 @@ $workout-content-padding: 2em;
 }
 
 .track-workout-step__description {
-    color: $font-color;
+    color: colors(font, standard);
     line-height: 1.5;
 }
 
@@ -66,13 +66,13 @@ $workout-content-padding: 2em;
 }
 
 .no-workouts-text {
-    color: $font-color;
+    color: colors(font, standard);
     font-size: 1.25em;
 }
 
 .no-workouts-button {
-    background: $main-color;
-    border: 1.5px solid $main-color;
+    background: colors(primary, standard);
+    border: 1.5px solid colors(primary, standard);
     padding: 10px 20px;
     border-radius: 3px;
     font-family: inherit;
@@ -84,7 +84,7 @@ $workout-content-padding: 2em;
 
     &:hover, &:focus {
         background: white;
-        color: $main-color;
+        color: colors(primary, standard);
     }
 }
 
@@ -103,18 +103,18 @@ $workout-content-padding: 2em;
         height: 100%;
         padding: calc(#{$input-padding + $input-border-width});
         box-sizing: border-box;
-        color: $font-color-lighter;
+        color: colors(font, lighter);
         cursor: text;
     }
 
     input {
         width: 100%;
         height: 100%;
-        border: $input-border-width solid $complement-color;
+        border: $input-border-width solid colors(complement, standard);
         border-radius: 5px;
         padding: $input-padding;
         box-sizing: border-box;
-        color: $font-color;
+        color: colors(font, standard);
     }
 }
 
@@ -135,8 +135,8 @@ $workout-content-padding: 2em;
 
 .track-workout-buttons {
     padding: 0.75em 1.5em;
-    border-top: 1px solid $complement-color-lighter-shade;
-    background: $complement-color-lightest-shade;
+    border-top: 1px solid colors(complement, lighter);
+    background: colors(complement, lightest);
     overflow: hidden; // Fixes a visual bug where the scrollbar appears briefly on animation-in and -out of the buttons
     flex-shrink: 0;   // Fixes a visual bug where the scrollbar appears briefly on animation-in and -out of the buttons
 
@@ -146,8 +146,8 @@ $workout-content-padding: 2em;
         font-family: inherit;
         font-weight: bold;
         padding: 10px 20px;
-        background: $complement-color;
-        border: 1.5px solid $complement-color;
+        background: colors(complement, standard);
+        border: 1.5px solid colors(complement, standard);
         border-radius: 3px;
         color: white;
         cursor: pointer;
@@ -155,17 +155,17 @@ $workout-content-padding: 2em;
 
         &:hover, &:focus {
             background: white;
-            color: $complement-color;
+            color: colors(complement, standard);
         }
 
         &.track-workout-button--back {
             background: white;
-            border-color: $complement-color;
-            color: $complement-color;
+            border-color: colors(complement, standard);
+            color: colors(complement, standard);
 
             &:hover, &:focus {
                 color: white;
-                background: $complement-color
+                background: colors(complement, standard)
             }
         }
 

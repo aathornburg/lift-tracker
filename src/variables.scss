@@ -1,48 +1,70 @@
-/* Colors */
-$main-color: #33B7B7;
-$main-color-lighter-shade: #87E1E1;
-$main-color-light-shade: #56CCCC;
-$main-color-dark-tint: #15A5A5;
-$main-color-darker-tint: #008585;
+$colors: (
+    primary: (
+        standard: #33b7b7,
+        lighter: #87E1E1,
+        light: #56CCCC,
+        dark: #15A5A5,
+        darker: #008585
+    ),
+    complement: (
+        standard: #FF9A47,
+        lightest: #FFEADA,
+        lighter: #FFC799,
+        light: #FFAE6C,
+        dark: #FF8521,
+        darker: #DE6500
+    ),
+    yellow-secondary: (
+        standard: #FFC247,
+        lighter: #FFDD99,
+        light: #FFCE6C,
+        dark: #FFB521,
+        darker: #DE9400
+    ),
+    red-secondary: (
+        standard: #FF4747,
+        lighter: #FF9999,
+        light: #FF6C6C,
+        dark: #FF2121,
+        darker: #DE0000
+    ),
+    green-secondary: (
+        standard: #55E16D,
+        lighter: #B0F7BD,
+        light: #7DED90,
+        dark: #34D450,
+        darker: #11C631
+    ),
+    font: (
+        standard: #727c80,
+        light: #AAB0B2,
+        lighter: #C6CACC,
+        input: #4F5659
+    ),
+    misc: (
+        white-hover: #EFEFEF
+    )
+);
 
-$secondary-color-1: #FFC247;
-$secondary-color-1-lighter-shade: #FFDD99;
-$secondary-color-1-light-shade: #FFCE6C;
-$secondary-color-1-dark-tint: #FFB521;
-$secondary-color-1-darker-tint: #DE9400;
+$sizes: (
+    nav-bar-height: 60px,
+    input-top-padding: 14px,
+    input-error-hint-height: 18px,
+    page-title-content-width: 30%
+);
 
-$secondary-color-2: #FF4747;
-$secondary-color-2-lighter-shade: #FF9999;
-$secondary-color-2-light-shade: #FF6C6C;
-$secondary-color-2-dark-tint: #FF2121;
-$secondary-color-2-darker-tint: #DE0000;
+$miscellaneous: (
+    workout-day-button-number: 3
+);
 
-$secondary-color-3: #55E16D;
-$secondary-color-3-lighter-shade: #B0F7BD;
-$secondary-color-3-light-shade: #7DED90;
-$secondary-color-3-dark-tint: #34D450;
-$secondary-color-3-darker-tint: #11C631;
+@function sizes($size) {
+    @return map-get($sizes, $size);
+}
 
-$complement-color: #FF9A47;
-$complement-color-lightest-shade: #FFEADA;
-$complement-color-lighter-shade: #FFC799;
-$complement-color-light-shade: #FFAE6C;
-$complement-color-dark-tint: #FF8521;
-$complement-color-darker-tint: #DE6500;
+@function colors($color-name, $color-variant) {
+    @return map-get(map-get($colors, $color-name), $color-variant);
+}
 
-$font-color: #727c80;
-$font-color-light: #AAB0B2;
-$font-color-lighter: #C6CACC;
-
-$input-color: #4F5659;
-
-$white-hover: #EFEFEF;
-
-/* Sizes */
-$nav-bar-height: 60px;
-$input-top-padding: 14px;
-$input-error-hint-height: 18px;
-$page-title-content-width: 30%;
-
-/* Miscellaneous */
-$workoutDayButtonNumber: 3;
+@function miscellaneous($item) {
+    @return map-get($miscellaneous, $item);
+}

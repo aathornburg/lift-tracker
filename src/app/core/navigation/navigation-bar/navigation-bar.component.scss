@@ -2,15 +2,15 @@
 
 :host {
     display: block;
-    height: $nav-bar-height;
+    height: sizes(nav-bar-height);
 }
 
 .navigation-bar {
     width: 100%;
-    height: $nav-bar-height;
+    height: sizes(nav-bar-height);
     display: flex;
     justify-content: space-between;
-    border-bottom: solid 1px $main-color;
+    border-bottom: solid 1px colors(primary, standard);
     box-sizing: border-box;
 
     .navigation-group {
