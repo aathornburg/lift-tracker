@@ -17,10 +17,12 @@ $tooltip-arrow-size: 5px;
     padding: 5px 10px;
     line-height: normal;
     white-space: nowrap;
+    z-index: 5;
     
     &:after {
         content: '';
         position: absolute;
+        z-index: 5;
     }
 
     &.up {

@@ -1,4 +1,4 @@
-import { trigger, state, style, animate, transition, query, animateChild, group } from '@angular/animations';
+import { trigger, state, style, animate, transition, query, animateChild, group, keyframes } from '@angular/animations';
 
 const buttonLeaveLength = '250ms';
 
@@ -38,5 +38,21 @@ export const shrink = trigger('shrink', [
             ]),
             animate(`${buttonLeaveLength} ease-in-out`),
         ])
+    ])
+]);
+
+export const positionCircle = trigger('positionCircle', [
+    state('false', style({top: 'calc(100% - (100% / (3 * 2)))', bottom: 'calc(100% / (3 * 2))'})),
+    state('true', style({top: 'calc(100% - (100% / (2 * 2)))', bottom: 'calc(100% / (2 * 2))'})),
+    transition('* <=> *', [
+        animate(`500ms ease-in-out`)
+    ])
+]);
+
+export const circleExpand = trigger('circleExpand', [
+    state('false', style({opacity: 0, padding: 0, background: '#33b7b7'})),
+    state('true', style({opacity: 1, padding: '102%', background: 'white'})),
+    transition('* <=> *', [
+        animate(`500ms ease-in-out`)
     ])
 ]);
