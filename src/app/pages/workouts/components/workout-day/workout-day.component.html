@@ -22,7 +22,7 @@
         </button>
       </div>
       <div class="workout-day__button-wrapper" [@expand]="workoutDayForm.controls.restDay.value">
-        <button type="button" (click)="setToRestDay()" class="workout-day__button--set-to-rest" ltTooltipAnchor tooltipName="{{day}}-rest-day">
+        <button type="button" (click)="toggleRestDay()" class="workout-day__button--set-to-rest" ltTooltipAnchor tooltipName="{{day}}-rest-day">
           <i class="material-icons">hotel</i>
           <lt-tooltip-outlet forTooltip="{{day}}-rest-day" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Set as rest day"></lt-tooltip-outlet>
         </button>
@@ -42,7 +42,12 @@
       <div class="workout-day__rest-day-circle-wrapper" [@positionCircle]="workoutDayForm.controls.restDay.value">
         <div class="workout-day__rest-day-circle" [@circleExpand]="workoutDayForm.controls.restDay.value"></div>
       </div>
-      <div class="workout-day__rest-day-content" [@fadeInOut] *ngIf="workoutDayForm.controls.restDay.value">test test test test test test test test test test test test test test</div>
+      <div class="workout-day__rest-day-content" [@fadeInOut] *ngIf="workoutDayForm.controls.restDay.value">
+        <button type="button" (click)="toggleRestDay()" class="workout-day__rest-day-set-active-button">
+          <i class="material-icons">directions_run</i>
+          <span>Set as active</span>
+        </button>
+      </div>
     </div>
   </div>
 </div>

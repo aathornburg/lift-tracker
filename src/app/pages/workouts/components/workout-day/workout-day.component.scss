@@ -128,6 +128,7 @@ h3 {
 
 .workout-day__rest-day-content {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: absolute;
@@ -135,6 +136,27 @@ h3 {
     right: 0;
     top: 0;
     bottom: 0;
+}
+
+.workout-day__rest-day-set-active-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    color: colors(primary, standard);
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+
+    &:hover, &:focus {
+        background: colors(primary, standard);
+        color: white;
+    }
 }
 
 .workout-day__input-row {

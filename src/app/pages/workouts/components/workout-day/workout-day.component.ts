@@ -47,7 +47,7 @@ export class WorkoutDayComponent implements OnInit {
     });
   }
 
-  private setToRestDay(): void {
+  private toggleRestDay(): void {
     this.workoutDayForm.controls.restDay.setValue(!this.workoutDayForm.controls.restDay.value);
   }
 
