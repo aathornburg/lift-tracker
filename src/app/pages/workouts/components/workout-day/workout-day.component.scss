@@ -110,7 +110,7 @@ h3 {
     overflow: hidden;
 }
 
-.workout-day__rest-day-content {
+.workout-day__rest-day-circle-wrapper {
     position: absolute;
     left: 0;
     top: calc(100% - (100% / (#{miscellaneous(workout-day-button-number)} * 2)));
@@ -123,9 +123,18 @@ h3 {
 .workout-day__rest-day-circle {
     padding: 1%;
     border-radius: 50%;
-    // border: 5px solid #33b7b7;
-    // background: white;
     transform: translateX(-50%);
+}
+
+.workout-day__rest-day-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
 
 .workout-day__input-row {

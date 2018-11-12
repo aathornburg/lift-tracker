@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, HostBinding } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { TooltipDirection } from 'src/app/shared/tooltip/model/tooltip-direction';
-import { fadeShrinkInOut, expand, shrink, circleExpand, positionCircle } from '../../workouts.animations';
+import { fadeShrinkInOut, expand, shrink, circleExpand, positionCircle, fadeInOut } from '../../workouts.animations';
 
 @Component({
   selector: 'lt-workout-day',
@@ -12,7 +12,8 @@ import { fadeShrinkInOut, expand, shrink, circleExpand, positionCircle } from '.
     expand,
     shrink,
     circleExpand,
-    positionCircle
+    positionCircle,
+    fadeInOut
   ]
 })
 export class WorkoutDayComponent implements OnInit {

@@ -1,6 +1,7 @@
-import { trigger, state, style, animate, transition, query, animateChild, group, keyframes } from '@angular/animations';
+import { trigger, state, style, animate, transition, query, animateChild, group } from '@angular/animations';
 
 const buttonLeaveLength = '250ms';
+const circleAnimateOutLength = '500ms';
 
 export const slideUpDown = trigger('slideUpDown', [
     transition(':enter', [
@@ -17,6 +18,16 @@ export const fadeShrinkInOut = trigger('fadeShrinkInOut', [
     state('void', style({opacity: 0, height: '0px'})),
     transition('* <=> *', [
         animate(`${buttonLeaveLength} ease-in-out`)
+    ])
+]);
+
+export const fadeInOut = trigger('fadeInOut', [
+    state('void', style({opacity: 0})),
+    transition(':enter', [
+        animate(`350ms 150ms ease-in-out`)
+    ]),
+    transition(':leave', [
+        animate(`250ms ease-in-out`)
     ])
 ]);
 
@@ -42,17 +53,18 @@ export const shrink = trigger('shrink', [
 ]);
 
 export const positionCircle = trigger('positionCircle', [
+    // In these calculations, the value (100% / (x * 2)) appears often.  The "x" is the number of visible buttons on the left of the workout day.
     state('false', style({top: 'calc(100% - (100% / (3 * 2)))', bottom: 'calc(100% / (3 * 2))'})),
     state('true', style({top: 'calc(100% - (100% / (2 * 2)))', bottom: 'calc(100% / (2 * 2))'})),
     transition('* <=> *', [
-        animate(`500ms ease-in-out`)
+        animate(`${circleAnimateOutLength} ease-in-out`)
     ])
 ]);
 
 export const circleExpand = trigger('circleExpand', [
-    state('false', style({opacity: 0, padding: 0, background: '#33b7b7'})),
+    state('false', style({opacity: 0, padding: 0, background: '#33b7b7'})), // The background is the $main-color scss variable value
     state('true', style({opacity: 1, padding: '102%', background: 'white'})),
     transition('* <=> *', [
-        animate(`500ms ease-in-out`)
+        animate(`${circleAnimateOutLength} ease-in-out`)
     ])
 ]);
