@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, HostBinding } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { TooltipDirection } from 'src/app/shared/tooltip/model/tooltip-direction';
-import { fadeShrinkInOut, expand, shrink, circleExpand, positionCircle, fadeInOut } from '../../workouts.animations';
+import { fadeShrinkInOut, expand, shrink, circleExpand, positionCircle, fadeInOut, expandButton } from '../../workouts.animations';
 
 @Component({
   selector: 'lt-workout-day',
@@ -11,6 +11,7 @@ import { fadeShrinkInOut, expand, shrink, circleExpand, positionCircle, fadeInOu
     fadeShrinkInOut,
     expand,
     shrink,
+    expandButton,
     circleExpand,
     positionCircle,
     fadeInOut
@@ -22,6 +23,7 @@ export class WorkoutDayComponent implements OnInit {
   @Output() formReady: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   private workoutDayForm: FormGroup;
   private TooltipDirection = TooltipDirection; // For the template
+  private exerciseInputDisplay: boolean = false;
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -49,6 +51,10 @@ export class WorkoutDayComponent implements OnInit {
 
   private toggleRestDay(): void {
     this.workoutDayForm.controls.restDay.setValue(!this.workoutDayForm.controls.restDay.value);
+  }
+
+  private toggleExerciseInputDisplay(): void {
+    this.exerciseInputDisplay = !this.exerciseInputDisplay;
   }
 
 }

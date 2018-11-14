@@ -31,10 +31,19 @@ export const fadeInOut = trigger('fadeInOut', [
     ])
 ]);
 
-export const expand = trigger('expand', [
+export const expandButton = trigger('expandButton', [
     state('true', style({height: '50%'})),
     state('false', style({height: '33%'})),
     transition('* <=> *', [
+        animate(`${buttonLeaveLength} ease-in-out`)
+    ])
+]);
+
+export const expand = trigger('expand', [
+    transition('* <=> *', [
+        query('@*', [
+            animateChild()
+        ]),
         animate(`${buttonLeaveLength} ease-in-out`)
     ])
 ]);

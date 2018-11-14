@@ -110,6 +110,10 @@ h3 {
     overflow: hidden;
 }
 
+.workout-day__no-exercises {
+    position: absolute;
+}
+
 .workout-day__rest-day-circle-wrapper {
     position: absolute;
     left: 0;
@@ -131,25 +135,19 @@ h3 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    position: relative;
 }
 
 .workout-day__rest-day-set-active-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
     background: transparent;
     border: none;
     color: colors(primary, standard);
     border-radius: 3px;
     font-weight: bold;
-    padding: 5px;
+    padding: 8px;
     cursor: pointer;
     transition: all 150ms ease-in-out;
 
