@@ -40,11 +40,13 @@ export const expandButton = trigger('expandButton', [
 ]);
 
 export const expand = trigger('expand', [
+    state('true', style({height: '300px'})),
+    state('false', style({height: '*'})),
     transition('* <=> *', [
         query('@*', [
             animateChild()
-        ]),
-        animate(`${buttonLeaveLength} ease-in-out`)
+        ], { optional: true }),
+        animate(`5000ms ease-in-out`)
     ])
 ]);
 
