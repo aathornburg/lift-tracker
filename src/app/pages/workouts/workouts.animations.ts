@@ -40,13 +40,15 @@ export const expandButton = trigger('expandButton', [
 ]);
 
 export const expand = trigger('expand', [
-    state('true', style({height: '300px'})),
-    state('false', style({height: '*'})),
+    state('*', style({height: '*'})),
+    state('void', style({height: '102px'})), // TODO:  Set this using a variable to be the current height of the workout day
     transition('* <=> *', [
-        query('@*', [
-            animateChild()
-        ], { optional: true }),
-        animate(`5000ms ease-in-out`)
+        group([
+            query('@*', [
+                animateChild()
+            ], { optional: true }),
+            animate(`${buttonLeaveLength} ease-in-out`)
+        ])
     ])
 ]);
 
@@ -65,9 +67,11 @@ export const shrink = trigger('shrink', [
 
 export const positionCircle = trigger('positionCircle', [
     // In these calculations, the value (100% / (x * 2)) appears often.  The "x" is the number of visible buttons on the left of the workout day.
-    state('false', style({top: 'calc(100% - (100% / (3 * 2)))', bottom: 'calc(100% / (3 * 2))'})),
-    state('true', style({top: 'calc(100% - (100% / (2 * 2)))', bottom: 'calc(100% / (2 * 2))'})),
-    transition('* <=> *', [
+    state('topClosed', style({top: 'calc(100% / (3 * 2))', bottom: 'calc(100% - (100% / (3 * 2)))'})),
+    state('topOpen', style({top: 'calc(100% / (3 * 2))', bottom: 'calc(100% - (100% / (3 * 2)))'})),
+    state('bottomClosed', style({top: 'calc(100% - (100% / (3 * 2)))', bottom: 'calc(100% / (3 * 2))'})),
+    state('bottomOpen', style({top: 'calc(100% - (100% / (2 * 2)))', bottom: 'calc(100% / (2 * 2))'})),
+    transition('bottomOpen <=> bottomClosed', [
         animate(`${circleAnimateOutLength} ease-in-out`)
     ])
 ]);

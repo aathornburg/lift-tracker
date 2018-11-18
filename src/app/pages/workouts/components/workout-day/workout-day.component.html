@@ -7,7 +7,7 @@
         <lt-checkbox formControlName="restDay" class="workout-rest-day__checkbox" checkboxId="workout-{{day}}-rest__day"></lt-checkbox>
     </div> -->
   </div>
-  <div class="workout-day-content__wrapper" [@shrink]="workoutDayForm.controls.restDay.value" [@expand]="exerciseInputDisplay">
+  <div class="workout-day-content__wrapper" [@shrink]="workoutDayForm.controls.restDay.value">
     <div class="workout-day__buttons">
       <div class="workout-day__button-wrapper" @fadeShrinkInOut *ngIf="!workoutDayForm.controls.restDay.value">
         <button type="button" (click)="toggleExerciseInputDisplay()" class="workout-day__button--edit" ltTooltipAnchor tooltipName="{{day}}-edit">
@@ -39,8 +39,8 @@
         </div>
       </ng-container> -->
       <!-- [@circleExpand] *ngIf="workoutDayForm.controls.restDay.value" -->
-      <div class="workout-day__rest-day-circle-wrapper" [@positionCircle]="workoutDayForm.controls.restDay.value || exerciseInputDisplay">
-        <div class="workout-day__rest-day-circle" [@circleExpand]="workoutDayForm.controls.restDay.value || exerciseInputDisplay"></div>
+      <div class="workout-day__circle-wrapper" [@positionCircle]="circlePositionAnimationState" (@positionCircle.done)="updateOpenCirclePosition()">
+        <div class="workout-day__circle" [@circleExpand]="workoutDayForm.controls.restDay.value || exerciseInputDisplay"></div>
       </div>
       <div class="workout-day__rest-day-content" [@fadeInOut] *ngIf="workoutDayForm.controls.restDay.value">
         <div>{{day}} is a rest day - feel free to use this day to recover!</div>
@@ -49,8 +49,8 @@
           <span>Set as active</span>
         </button>
       </div>
-      <div class="workout-day__rest-day-content" [@fadeInOut] *ngIf="exerciseInputDisplay" style="height: 300px">
-        <div>{{day}} is a rest day - feel free to use this day to recover!</div>
+      <div class="workout-day__input-content" [@fadeInOut] [@expand] *ngIf="exerciseInputDisplay">
+        <div style="height: 300px;">{{day}} is a rest day - feel free to use this day to recover!</div>
         <button type="button" (click)="toggleRestDay()" class="workout-day__rest-day-set-active-button">
           <i class="material-icons">directions_run</i>
           <span>Set as active</span>

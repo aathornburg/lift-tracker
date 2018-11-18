@@ -114,23 +114,21 @@ h3 {
     position: absolute;
 }
 
-.workout-day__rest-day-circle-wrapper {
+.workout-day__circle-wrapper {
     position: absolute;
     left: 0;
-    top: calc(100% - (100% / (#{miscellaneous(workout-day-button-number)} * 2)));
-    bottom: calc(100% / (#{miscellaneous(workout-day-button-number)} * 2));
     right: 0;
     display: flex;
     align-items: center;
 }
 
-.workout-day__rest-day-circle {
+.workout-day__circle {
     padding: 1%;
     border-radius: 50%;
     transform: translateX(-50%);
 }
 
-.workout-day__rest-day-content {
+.workout-day__rest-day-content, .workout-day__input-content {
     display: flex;
     flex-direction: column;
     align-items: center;

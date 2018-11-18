@@ -24,6 +24,7 @@ export class WorkoutDayComponent implements OnInit {
   private workoutDayForm: FormGroup;
   private TooltipDirection = TooltipDirection; // For the template
   private exerciseInputDisplay: boolean = false;
+  private circlePositionAnimationState: string = 'none';
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -51,10 +52,32 @@ export class WorkoutDayComponent implements OnInit {
 
   private toggleRestDay(): void {
     this.workoutDayForm.controls.restDay.setValue(!this.workoutDayForm.controls.restDay.value);
+    this.setCirclePosition();
   }
 
   private toggleExerciseInputDisplay(): void {
     this.exerciseInputDisplay = !this.exerciseInputDisplay;
+    this.setCirclePosition();
+  }
+
+  /* Animation Control */
+  private setCirclePosition(): void {
+    this.circlePositionAnimationState = this.workoutDayForm.controls.restDay.value ? 'bottomClosed' :
+                                                         this.exerciseInputDisplay ? 'topClosed' :
+                                this.circlePositionAnimationState === 'bottomOpen' ? 'bottomClosed' :
+                                   this.circlePositionAnimationState === 'topOpen' ? 'topClosed' :
+                                                                                     'none';
+
+    console.log(this.circlePositionAnimationState);
+  }
+
+  private updateOpenCirclePosition(): void {
+    console.log(this.circlePositionAnimationState);
+    if (this.circlePositionAnimationState === 'bottomClosed') {
+      this.circlePositionAnimationState = 'bottomOpen';
+    } else if (this.circlePositionAnimationState === 'topClosed') {
+      this.circlePositionAnimationState = 'topOpen';
+    }
   }
 
 }
