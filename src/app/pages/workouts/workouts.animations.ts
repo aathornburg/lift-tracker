@@ -22,12 +22,15 @@ export const fadeShrinkInOut = trigger('fadeShrinkInOut', [
 ]);
 
 export const fadeInOut = trigger('fadeInOut', [
-    state('void', style({opacity: 0})),
     transition(':enter', [
-        animate(`350ms 150ms ease-in-out`)
+        style({opacity: 0}),
+        animate(`350ms 150ms ease-in-out`, style({opacity: 1}))
+        // animate(`${buttonLeaveLength} ease-in-out`, style({opacity: 1}))
     ]),
     transition(':leave', [
-        animate(`250ms ease-in-out`)
+        style({opacity: 1}),
+        animate(`250ms ease-in-out`, style({opacity: 0}))
+        // animate(`${buttonLeaveLength} ease-in-out`, style({opacity: 0}))
     ])
 ]);
 
@@ -69,6 +72,10 @@ export const positionCircle = trigger('positionCircle', [
     // In these calculations, the value (100% / (x * 2)) appears often.  The "x" is the number of visible buttons on the left of the workout day.
     state('topOpen', style({top: 'calc(100% / (3 * 2))', bottom: 'calc(100% - (100% / (3 * 2)))'})),
     state('bottomOpen', style({top: 'calc(100% - (100% / (2 * 2)))', bottom: 'calc(100% / (2 * 2))'})),
+    transition('none => bottomOpen', [
+        style({top: 'calc(100% - (100% / (3 * 2)))', bottom: 'calc(100% / (3 * 2))'}),
+        animate(`${circleAnimateOutLength} ease-in-out`)
+    ]),
     transition('bottomOpen => none', [
         animate(`${circleAnimateOutLength} ease-in-out`, style({top: 'calc(100% - (100% / (3 * 2)))', bottom: 'calc(100% / (3 * 2))'}))
     ]),
@@ -79,14 +86,29 @@ export const positionCircle = trigger('positionCircle', [
             ]),
             animate(`${circleAnimateOutLength} ease-in-out`, style({top: 'calc(100% / (3 * 2))', bottom: 'calc(100% - (100% / (3 * 2)))'}))
         ])
+    ]),
+    transition('topOpen => bottomOpen', [
+        group([
+            query('@*', [
+                animateChild()
+            ]),
+            style({top: 'calc(100% - (100% / (3 * 2)))', bottom: 'calc(100% / (3 * 2))'}),
+            animate(`${circleAnimateOutLength} ease-in-out`)
+        ])
     ])
 ]);
 
 export const circleExpand = trigger('circleExpand', [
     state('none',  style({opacity: 0, padding: 0, background: '#33b7b7'})), // The background is the $main-color scss variable value
-    state('topOpen', style({opacity: 1, padding: '102%', background: 'white'})),
-    state('bottomOpen', style({opacity: 1, padding: '102%', background: 'white'})),
-    transition('* <=> *', [
+    transition('none => *', [
+        animate(`${circleAnimateOutLength} ease-in-out`, style({opacity: 1, padding: '102%', background: 'white'}))
+    ]),
+    transition('* => none', [
+        style({opacity: 1, padding: '102%', background: 'white'}),
         animate(`${circleAnimateOutLength} ease-in-out`)
-    ])
+    ]),
+    transition('topOpen => bottomOpen', [
+        style({opacity: 0, padding: 0, background: '#33b7b7'}),
+        animate(`${circleAnimateOutLength} ease-in-out`, style({opacity: 1, padding: '102%', background: 'white'}))
+    ]),
 ]);

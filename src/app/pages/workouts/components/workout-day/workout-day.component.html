@@ -29,7 +29,26 @@
       </div>
     </div>
     <div class="workout-day__content">
-      <div [@fadeInOut] *ngIf="!workoutDayForm.controls.restDay.value && !exerciseInputDisplay" class="workout-day__no-exercises">You haven't added any exercises to this day yet.</div>
+      <div class="workout-day__circle-wrapper" [@positionCircle]="circleAnimationState">
+        <div class="workout-day__circle" [@circleExpand]="circleAnimationState"></div>
+      </div>
+      <div [@fadeInOut] *ngIf="!workoutDayForm.controls.restDay.value && !exerciseInputDisplay" class="workout-day__content-item">
+        <span>You haven't added any exercises to this day yet.</span>
+      </div>
+      <div class="workout-day__rest-day-content workout-day__content-item" [@fadeInOut] *ngIf="workoutDayForm.controls.restDay.value">
+        <div>{{day}} is a rest day - feel free to use this day to recover!</div>
+        <button type="button" (click)="toggleRestDay()" class="workout-day__rest-day-set-active-button">
+          <i class="material-icons">directions_run</i>
+          <span>Set as active</span>
+        </button>
+      </div>
+      <div class="workout-day__input-content workout-day__content-item" [@fadeInOut] [@expand] *ngIf="exerciseInputDisplay">
+        <div style="height: 300px;">{{day}} is a rest day - feel free to use this day to recover!</div>
+        <button type="button" (click)="toggleRestDay()" class="workout-day__rest-day-set-active-button">
+          <i class="material-icons">directions_run</i>
+          <span>Set as active</span>
+        </button>
+      </div>
       <!-- <ng-container *ngIf="workoutDayForm.controls.exercises.length" formArrayName="exercises">
         <div *ngFor="let exercise of workoutDayForm.controls.exercises.controls; let i = index" class="workout-day__input-row" [formGroupName]="i">
           <input type="text" formControlName="name" />
@@ -39,23 +58,6 @@
         </div>
       </ng-container> -->
       <!-- [@circleExpand] *ngIf="workoutDayForm.controls.restDay.value" -->
-      <div class="workout-day__circle-wrapper" [@positionCircle]="circleAnimationState" (@positionCircle.done)="updateOpenCircleAnimationState()">
-        <div class="workout-day__circle" [@circleExpand]="circleAnimationState"></div>
-      </div>
-      <div class="workout-day__rest-day-content" [@fadeInOut] *ngIf="workoutDayForm.controls.restDay.value">
-        <div>{{day}} is a rest day - feel free to use this day to recover!</div>
-        <button type="button" (click)="toggleRestDay()" class="workout-day__rest-day-set-active-button">
-          <i class="material-icons">directions_run</i>
-          <span>Set as active</span>
-        </button>
-      </div>
-      <div class="workout-day__input-content" [@fadeInOut] [@expand] *ngIf="exerciseInputDisplay">
-        <div style="height: 300px;">{{day}} is a rest day - feel free to use this day to recover!</div>
-        <button type="button" (click)="toggleRestDay()" class="workout-day__rest-day-set-active-button">
-          <i class="material-icons">directions_run</i>
-          <span>Set as active</span>
-        </button>
-      </div>
     </div>
   </div>
 </div>

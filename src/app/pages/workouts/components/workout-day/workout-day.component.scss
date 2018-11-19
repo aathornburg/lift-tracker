@@ -102,16 +102,18 @@ h3 {
 }
 
 .workout-day__content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
     flex: 1;
     position: relative;
     overflow: hidden;
 }
 
-.workout-day__no-exercises {
-    position: absolute;
+.workout-day__content-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 1;
+    grid-column: 1;
 }
 
 .workout-day__circle-wrapper {

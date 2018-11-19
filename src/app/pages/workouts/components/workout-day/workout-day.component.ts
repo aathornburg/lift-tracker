@@ -76,23 +76,4 @@ export class WorkoutDayComponent implements OnInit {
     console.log(this.circleAnimationState);
   }
 
-  private updateOpenCircleAnimationState(): void {
-    // console.log(this.circleAnimationState);
-
-    // Only update the value on open of the circle
-    // if (this.workoutDayForm.controls.restDay.value || this.exerciseInputDisplay) {
-    //   if (this.circleAnimationState === 'bottomClosed') {
-    //     this.circleAnimationState = 'bottomOpen';
-    //   } else if (this.circleAnimationState === 'topClosed') {
-    //     this.circleAnimationState = 'topOpen';
-    //   }
-    // } else {
-    //   if (this.circleAnimationState === 'bottomClosed' || this.circleAnimationState === 'topClosed') {
-    //     this.circleAnimationState = 'none';
-    //   }
-    // }
-
-    // console.log(this.circleAnimationState);
-  }
-
 }
