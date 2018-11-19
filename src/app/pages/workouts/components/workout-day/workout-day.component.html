@@ -39,8 +39,8 @@
         </div>
       </ng-container> -->
       <!-- [@circleExpand] *ngIf="workoutDayForm.controls.restDay.value" -->
-      <div class="workout-day__circle-wrapper" [@positionCircle]="circlePositionAnimationState" (@positionCircle.done)="updateOpenCirclePosition()">
-        <div class="workout-day__circle" [@circleExpand]="workoutDayForm.controls.restDay.value || exerciseInputDisplay"></div>
+      <div class="workout-day__circle-wrapper" [@positionCircle]="circleAnimationState" (@positionCircle.done)="updateOpenCircleAnimationState()">
+        <div class="workout-day__circle" [@circleExpand]="circleAnimationState"></div>
       </div>
       <div class="workout-day__rest-day-content" [@fadeInOut] *ngIf="workoutDayForm.controls.restDay.value">
         <div>{{day}} is a rest day - feel free to use this day to recover!</div>

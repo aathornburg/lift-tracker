@@ -24,7 +24,7 @@ export class WorkoutDayComponent implements OnInit {
   private workoutDayForm: FormGroup;
   private TooltipDirection = TooltipDirection; // For the template
   private exerciseInputDisplay: boolean = false;
-  private circlePositionAnimationState: string = 'none';
+  private circleAnimationState: string = 'none';
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -52,32 +52,47 @@ export class WorkoutDayComponent implements OnInit {
 
   private toggleRestDay(): void {
     this.workoutDayForm.controls.restDay.setValue(!this.workoutDayForm.controls.restDay.value);
-    this.setCirclePosition();
+
+    if (this.workoutDayForm.controls.restDay.value) {
+      this.exerciseInputDisplay = false;
+    }
+
+    this.setCircleAnimationState();
   }
 
   private toggleExerciseInputDisplay(): void {
     this.exerciseInputDisplay = !this.exerciseInputDisplay;
-    this.setCirclePosition();
+    this.setCircleAnimationState();
   }
 
   /* Animation Control */
-  private setCirclePosition(): void {
-    this.circlePositionAnimationState = this.workoutDayForm.controls.restDay.value ? 'bottomClosed' :
-                                                         this.exerciseInputDisplay ? 'topClosed' :
-                                this.circlePositionAnimationState === 'bottomOpen' ? 'bottomClosed' :
-                                   this.circlePositionAnimationState === 'topOpen' ? 'topClosed' :
-                                                                                     'none';
+  private setCircleAnimationState(): void {
+    console.log(this.circleAnimationState);
+    
+    this.circleAnimationState = this.workoutDayForm.controls.restDay.value ? 'bottomOpen' :
+                                                 this.exerciseInputDisplay ? 'topOpen' :
+                                                                             'none';
 
-    console.log(this.circlePositionAnimationState);
+    console.log(this.circleAnimationState);
   }
 
-  private updateOpenCirclePosition(): void {
-    console.log(this.circlePositionAnimationState);
-    if (this.circlePositionAnimationState === 'bottomClosed') {
-      this.circlePositionAnimationState = 'bottomOpen';
-    } else if (this.circlePositionAnimationState === 'topClosed') {
-      this.circlePositionAnimationState = 'topOpen';
-    }
+  private updateOpenCircleAnimationState(): void {
+    // console.log(this.circleAnimationState);
+
+    // Only update the value on open of the circle
+    // if (this.workoutDayForm.controls.restDay.value || this.exerciseInputDisplay) {
+    //   if (this.circleAnimationState === 'bottomClosed') {
+    //     this.circleAnimationState = 'bottomOpen';
+    //   } else if (this.circleAnimationState === 'topClosed') {
+    //     this.circleAnimationState = 'topOpen';
+    //   }
+    // } else {
+    //   if (this.circleAnimationState === 'bottomClosed' || this.circleAnimationState === 'topClosed') {
+    //     this.circleAnimationState = 'none';
+    //   }
+    // }
+
+    // console.log(this.circleAnimationState);
   }
 
 }

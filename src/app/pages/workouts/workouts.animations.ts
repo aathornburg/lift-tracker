@@ -67,18 +67,25 @@ export const shrink = trigger('shrink', [
 
 export const positionCircle = trigger('positionCircle', [
     // In these calculations, the value (100% / (x * 2)) appears often.  The "x" is the number of visible buttons on the left of the workout day.
-    state('topClosed', style({top: 'calc(100% / (3 * 2))', bottom: 'calc(100% - (100% / (3 * 2)))'})),
     state('topOpen', style({top: 'calc(100% / (3 * 2))', bottom: 'calc(100% - (100% / (3 * 2)))'})),
-    state('bottomClosed', style({top: 'calc(100% - (100% / (3 * 2)))', bottom: 'calc(100% / (3 * 2))'})),
     state('bottomOpen', style({top: 'calc(100% - (100% / (2 * 2)))', bottom: 'calc(100% / (2 * 2))'})),
-    transition('bottomOpen <=> bottomClosed', [
-        animate(`${circleAnimateOutLength} ease-in-out`)
+    transition('bottomOpen => none', [
+        animate(`${circleAnimateOutLength} ease-in-out`, style({top: 'calc(100% - (100% / (3 * 2)))', bottom: 'calc(100% / (3 * 2))'}))
+    ]),
+    transition('topOpen => none', [
+        group([
+            query('@*', [
+                animateChild()
+            ]),
+            animate(`${circleAnimateOutLength} ease-in-out`, style({top: 'calc(100% / (3 * 2))', bottom: 'calc(100% - (100% / (3 * 2)))'}))
+        ])
     ])
 ]);
 
 export const circleExpand = trigger('circleExpand', [
-    state('false', style({opacity: 0, padding: 0, background: '#33b7b7'})), // The background is the $main-color scss variable value
-    state('true', style({opacity: 1, padding: '102%', background: 'white'})),
+    state('none',  style({opacity: 0, padding: 0, background: '#33b7b7'})), // The background is the $main-color scss variable value
+    state('topOpen', style({opacity: 1, padding: '102%', background: 'white'})),
+    state('bottomOpen', style({opacity: 1, padding: '102%', background: 'white'})),
     transition('* <=> *', [
         animate(`${circleAnimateOutLength} ease-in-out`)
     ])
