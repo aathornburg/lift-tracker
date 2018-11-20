@@ -7,7 +7,7 @@
         <lt-checkbox formControlName="restDay" class="workout-rest-day__checkbox" checkboxId="workout-{{day}}-rest__day"></lt-checkbox>
     </div> -->
   </div>
-  <div class="workout-day-content__wrapper" [@shrink]="workoutDayForm.controls.restDay.value">
+  <div class="workout-day-content__wrapper">
     <div class="workout-day__buttons">
       <div class="workout-day__button-wrapper" @fadeShrinkInOut *ngIf="!workoutDayForm.controls.restDay.value">
         <button type="button" (click)="toggleExerciseInputDisplay()" class="workout-day__button--edit" ltTooltipAnchor tooltipName="{{day}}-edit">

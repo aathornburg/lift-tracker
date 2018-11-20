@@ -25,12 +25,10 @@ export const fadeInOut = trigger('fadeInOut', [
     transition(':enter', [
         style({opacity: 0}),
         animate(`350ms 150ms ease-in-out`, style({opacity: 1}))
-        // animate(`${buttonLeaveLength} ease-in-out`, style({opacity: 1}))
     ]),
     transition(':leave', [
         style({opacity: 1}),
         animate(`250ms ease-in-out`, style({opacity: 0}))
-        // animate(`${buttonLeaveLength} ease-in-out`, style({opacity: 0}))
     ])
 ]);
 
@@ -44,7 +42,7 @@ export const expandButton = trigger('expandButton', [
 
 export const expand = trigger('expand', [
     state('*', style({height: '*'})),
-    state('void', style({height: '102px'})), // TODO:  Set this using a variable to be the current height of the workout day
+    state('void', style({height: '0px'})),
     transition('* <=> *', [
         group([
             query('@*', [
@@ -74,10 +72,20 @@ export const positionCircle = trigger('positionCircle', [
     state('bottomOpen', style({top: 'calc(100% - (100% / (2 * 2)))', bottom: 'calc(100% / (2 * 2))'})),
     transition('none => bottomOpen', [
         style({top: 'calc(100% - (100% / (3 * 2)))', bottom: 'calc(100% / (3 * 2))'}),
-        animate(`${circleAnimateOutLength} ease-in-out`)
+        group([
+            query('@*', [
+                animateChild()
+            ]),
+            animate(`${circleAnimateOutLength} ease-in-out`)
+        ])
     ]),
     transition('bottomOpen => none', [
-        animate(`${circleAnimateOutLength} ease-in-out`, style({top: 'calc(100% - (100% / (3 * 2)))', bottom: 'calc(100% / (3 * 2))'}))
+        group([
+            query('@*', [
+                animateChild()
+            ]),
+            animate(`${circleAnimateOutLength} ease-in-out`, style({top: 'calc(100% - (100% / (3 * 2)))', bottom: 'calc(100% / (3 * 2))'}))
+        ])
     ]),
     transition('topOpen => none', [
         group([
