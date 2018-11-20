@@ -15,6 +15,7 @@ export class TooltipOutletComponent implements OnInit {
 
   private bubbleAnimationState: string;
   private hidden = true;
+  private blocked = false;
   @Input() forTooltip: string;
   @Input() tooltipDirection: TooltipDirection = TooltipDirection.Up;
   @Input() tooltipText: string;
@@ -22,24 +23,43 @@ export class TooltipOutletComponent implements OnInit {
   constructor(private tooltipService: TooltipService) { }
 
   ngOnInit() {
-    this.tooltipService.showTooltip.subscribe(
+    this.tooltipService.openTooltip.subscribe(
       tooltipName => tooltipName === this.forTooltip ? this.showTooltip() : ''
     );
 
-    this.tooltipService.hideTooltip.subscribe(
+    this.tooltipService.closeTooltip.subscribe(
       tooltipName => tooltipName === this.forTooltip ? this.hideTooltip() : ''
+    );
+
+    this.tooltipService.blockTooltip.subscribe(
+      tooltipName => tooltipName === this.forTooltip ? this.blockTooltip() : ''
+    );
+
+    this.tooltipService.freeTooltip.subscribe(
+      tooltipName => tooltipName === this.forTooltip ? this.freeTooltip() : ''
     );
 
     this.bubbleAnimationState = this.determineBubbleAnimationState();
   }
 
   private showTooltip(): void {
-    this.hidden = false;
-    this.bubbleAnimationState = 'open';
+    if (!this.blocked) {
+      this.hidden = false;
+      this.bubbleAnimationState = 'open';
+    }
   }
 
   private hideTooltip(): void {
     this.bubbleAnimationState = this.determineBubbleAnimationState();
+  }
+
+  private blockTooltip(): void {
+    this.hidden = true;
+    this.blocked = true;
+  }
+
+  private freeTooltip(): void {
+    this.blocked = false;
   }
 
   private onBubbleAnimationDone(): void {

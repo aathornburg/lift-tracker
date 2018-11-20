@@ -69,13 +69,60 @@ h3 {
 
 
 .workout-day__buttons {
+    position: relative;
     padding: 0 1em;
     border-right: 1px dotted colors(primary, standard);
     
     .workout-day__button-wrapper {
+        position: relative;
         display: flex;
         align-items: center;
         height: calc(100% / #{miscellaneous(workout-day-button-number)});
+    }
+
+    .workout-day__quick-options-dropdown {
+        min-width: 125px;
+        position: absolute;
+        left: 100%;
+        z-index: 10;
+        border-radius: 2px;
+        background: white;
+        white-space: nowrap;
+        font-size: 1.25em;
+        padding: .25em 0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+        & > .workout-day__quick-options-dropdown-row {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            background: none;
+            padding: .25em 1em;
+            border: none;
+            width: 100%;
+            font-size: .5em;
+            color: colors(font, standard);
+
+            & > .workout-day__quick-options-dropdown-icon {
+                padding-right: .75em;
+
+                &.workout-day__quick-options-dropdown-rename-icon {
+                    color: colors(font, light);
+                }
+
+                &.workout-day__quick-options-dropdown-copy-icon {
+                    color: colors(green-secondary, standard);
+                }
+            }
+
+            & > .workout-day__quick-options-dropdown-text {
+                font-size: 1.3em;
+            }
+
+            &:hover {
+                background-color: colors(misc, white-hover);
+            }
+        }
     }
     
     button {

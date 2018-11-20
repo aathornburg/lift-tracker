@@ -16,6 +16,6 @@ export class OpenModalDirective implements OnInit {
 
   @HostListener('click', ['$event'])
   onElementClick(event: any): void {
-    this.modalService.triggerModalOpen(this.modalName);
+    this.modalService.openModal.next(this.modalName);
   }
 }

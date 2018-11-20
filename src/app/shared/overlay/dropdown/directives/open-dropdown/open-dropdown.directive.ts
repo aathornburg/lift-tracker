@@ -17,7 +17,7 @@ export class OpenDropdownDirective implements OnInit {
 
   @HostListener('click', ['$event'])
   elementClick(event: any): void {
-    this.dropdownService.triggerDropdownToggle(this.dropdownToToggle);
+    this.dropdownService.toggleDropdown.next(this.dropdownToToggle);
   }
 
   @HostListener('focusout', ['$event'])

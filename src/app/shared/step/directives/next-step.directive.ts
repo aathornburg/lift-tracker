@@ -12,7 +12,7 @@ export class NextStepDirective {
 
   @HostListener('click')
   onElementClick(): void {
-    this.stepService.goToNextStep(this.forStepGroup);
+    this.stepService.showNextStep.next(this.forStepGroup);
   }
 
 }

@@ -1,14 +1,15 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { OverlayService } from '../../services/overlay.service';
 import { Modal } from '../modal';
 import { FocusService } from '../../../focus/services/focus.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class ModalService {
 
   modals: Modal[] = [];
-  openModal: EventEmitter<string> = new EventEmitter<string>();
-  closeModal: EventEmitter<string> = new EventEmitter<string>();
+  openModal: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  closeModal: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   constructor(private overlayService: OverlayService, private focusService : FocusService) { }
 
@@ -26,7 +27,7 @@ export class ModalService {
     const modal = this.getOrCreateModal(modalName);
     if (!this.overlayService.clickIsInsideElements(event,
         [modal.modalElement.querySelector('.modal-content'), modal.modalButton])) {
-      this.triggerModalClose(modalName);
+      this.closeModal.next(modalName);
     }
   }
 
@@ -37,14 +38,6 @@ export class ModalService {
   forceFocusIntoElement(element: any): void {
     // https://stackoverflow.com/questions/779379/why-is-settimeoutfn-0-sometimes-useful
     setTimeout(() => { this.focusService.forceFocusIntoElement(element); }, 0);
-  }
-
-  triggerModalOpen(modalName: string): void {
-    this.openModal.emit(modalName);
-  }
-
-  triggerModalClose(modalName: string): void {
-    this.closeModal.emit(modalName);
   }
 
   getOrCreateModal(modalName: string): Modal {

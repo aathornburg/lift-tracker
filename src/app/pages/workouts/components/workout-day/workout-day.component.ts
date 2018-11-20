@@ -2,6 +2,8 @@ import { Component, OnInit, Input, EventEmitter, Output, HostBinding } from '@an
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { TooltipDirection } from 'src/app/shared/tooltip/model/tooltip-direction';
 import { fadeShrinkInOut, expand, shrink, circleExpand, positionCircle, fadeInOut, expandButton } from '../../workouts.animations';
+import { DropdownService } from 'src/app/shared/overlay/dropdown/services/dropdown.service';
+import { DropdownStatus } from 'src/app/shared/overlay/dropdown/model/dropdown-status';
 
 @Component({
   selector: 'lt-workout-day',
@@ -25,8 +27,9 @@ export class WorkoutDayComponent implements OnInit {
   private TooltipDirection = TooltipDirection; // For the template
   private exerciseInputDisplay: boolean = false;
   private circleAnimationState: string = 'none';
+  private blockQuickOptionsTooltip: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private dropdownService: DropdownService) { }
 
   ngOnInit(): void {
     this.workoutDayForm = this.formBuilder.group({
@@ -65,15 +68,19 @@ export class WorkoutDayComponent implements OnInit {
     this.setCircleAnimationState();
   }
 
+  private getDropdownIdentifier(): string {
+    return this.day.toLowerCase() + 'QuickOptionsDropdown';
+  }
+
+  private handleQuickOptionsDropdownStatusChange(event: DropdownStatus) {
+    this.blockQuickOptionsTooltip = (event === DropdownStatus.Open);
+  }
+
   /* Animation Control */
   private setCircleAnimationState(): void {
-    console.log(this.circleAnimationState);
-    
     this.circleAnimationState = this.workoutDayForm.controls.restDay.value ? 'bottomOpen' :
                                                  this.exerciseInputDisplay ? 'topOpen' :
                                                                              'none';
-
-    console.log(this.circleAnimationState);
   }
 
 }

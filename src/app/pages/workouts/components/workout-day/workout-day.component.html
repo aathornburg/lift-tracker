@@ -16,10 +16,20 @@
         </button>
       </div>
       <div class="workout-day__button-wrapper" [@expandButton]="workoutDayForm.controls.restDay.value">
-        <button type="button" (click)="addExercise()" class="workout-day__button--quick-options" ltTooltipAnchor tooltipName="{{day}}-options">
+        <button type="button" class="workout-day__button--quick-options" ltTooltipAnchor tooltipName="{{day}}-options" [tooltipBlock]="blockQuickOptionsTooltip" [ltOpenDropdown]="getDropdownIdentifier()">
           <i class="material-icons">settings</i>
           <lt-tooltip-outlet forTooltip="{{day}}-options" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Quick options"></lt-tooltip-outlet>
         </button>
+        <div class="workout-day__quick-options-dropdown" ltDropdown [dropdownName]="getDropdownIdentifier()" (dropdownStatusChange)="handleQuickOptionsDropdownStatusChange($event)">
+          <button class="workout-day__quick-options-dropdown-row">
+              <i class="workout-day__quick-options-dropdown-icon workout-day__quick-options-dropdown-copy-icon material-icons">playlist_add</i>
+              <span class="workout-day__quick-options-dropdown-text">Copy exercises from another day</span>
+          </button>
+          <button class="workout-day__quick-options-dropdown-row">
+            <i class="workout-day__quick-options-dropdown-icon workout-day__quick-options-dropdown-rename-icon material-icons">edit</i>
+            <span class="workout-day__quick-options-dropdown-text">Rename day</span>
+          </button>
+        </div>
       </div>
       <div class="workout-day__button-wrapper" [@expandButton]="workoutDayForm.controls.restDay.value">
         <button type="button" (click)="toggleRestDay()" class="workout-day__button--set-to-rest" ltTooltipAnchor tooltipName="{{day}}-rest-day">

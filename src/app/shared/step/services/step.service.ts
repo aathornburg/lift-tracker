@@ -1,23 +1,16 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class StepService {
 
-  showNextStep: EventEmitter<string> = new EventEmitter<string>();
-  showPreviousStep: EventEmitter<string> = new EventEmitter<string>();
-  showStep: EventEmitter<object> = new EventEmitter<object>();
+  showNextStep: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  showPreviousStep: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  showStep: BehaviorSubject<any> = new BehaviorSubject<object>({});
 
   constructor() { }
 
-  goToNextStep(stepIdentifier: string): void {
-    this.showNextStep.emit(stepIdentifier);
-  }
-
-  goToPreviousStep(stepIdentifier: string): void {
-    this.showPreviousStep.emit(stepIdentifier);
-  }
-
-  goToStep(stepIdentifier: string, stepIndex: number): void {
-    this.showStep.emit({stepIdentifier, stepIndex});
-  }
+  // goToStep(stepIdentifier: string, stepIndex: number): void {
+  //   this.showStep.emit({stepIdentifier, stepIndex});
+  // }
 }

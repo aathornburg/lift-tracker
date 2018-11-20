@@ -63,7 +63,7 @@ export class ModalComponent implements OnInit {
   @HostListener('document:keydown.escape')
   onDocumentKeypress(): void {
     if (this.show) {
-      this.modalService.triggerModalClose(this.modalName);
+      this.modalService.closeModal.next(this.modalName);
     }
   }
 

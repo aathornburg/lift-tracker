@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, ElementRef, HostListener, HostBinding} from '@angular/core';
+import { Component, OnInit, Input, ElementRef, HostListener, HostBinding, Output, EventEmitter} from '@angular/core';
 import { DropdownService } from '../../services/dropdown.service';
 import { FadeSlideInOut } from '../../dropdown.animations';
+import { DropdownStatus } from '../../model/dropdown-status';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -12,6 +13,7 @@ export class DropdownComponent implements OnInit {
 
   animationState = 'closed';
   @Input() dropdownName: string;
+  @Output() dropdownStatusChange: EventEmitter<DropdownStatus> = new EventEmitter<DropdownStatus>();
   @HostBinding('hidden') hidden = true;
   @HostBinding('@fadeSlideInOut') get fadeSlideInOut() {
     return { value: this.animationState };
@@ -62,6 +64,7 @@ export class DropdownComponent implements OnInit {
   open(): void {
     this.hidden = false;
     this.animationState = 'visible';
+    this.dropdownStatusChange.emit(DropdownStatus.Open);
   }
 
   close(): void {
@@ -72,6 +75,7 @@ export class DropdownComponent implements OnInit {
   onAnimationDone(): void {
     if (this.animationState === 'closing') {
       this.hidden = true;
+      this.dropdownStatusChange.emit(DropdownStatus.Closed);
     }
   }
 
@@ -90,7 +94,7 @@ export class DropdownComponent implements OnInit {
   @HostListener('document:keydown.escape')
   onDocumentEscape(): void {
     if (!this.hidden) {
-      this.dropdownService.triggerDropdownClose(this.dropdownName);
+      this.dropdownService.closeDropdown.next(this.dropdownName);
     }
   }
 }

@@ -1,15 +1,16 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Dropdown } from '../model/dropdown';
 import { OverlayService } from '../../services/overlay.service';
 import { FocusService } from '../../../focus/services/focus.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class DropdownService {
 
   dropdowns: Dropdown[] = [];
-  openDropdown: EventEmitter<string> = new EventEmitter<string>();
-  closeDropdown: EventEmitter<string> = new EventEmitter<string>();
-  toggleDropdown: EventEmitter<string> = new EventEmitter<string>();
+  openDropdown: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  closeDropdown: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  toggleDropdown: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   constructor(private overlayService: OverlayService, private focusService: FocusService) { }
 
@@ -21,18 +22,6 @@ export class DropdownService {
   registerDropdownButton(dropdownName: string, dropdownButton: any) {
     const dropdown = this.getOrCreateDropdown(dropdownName);
     dropdown.dropdownButton = dropdownButton;
-  }
-
-  triggerDropdownOpen(dropdownName: string): void {
-    this.openDropdown.emit(dropdownName);
-  }
-
-  triggerDropdownClose(dropdownName: string): void {
-    this.closeDropdown.emit(dropdownName);
-  }
-
-  triggerDropdownToggle(dropdownName: string): void {
-    this.toggleDropdown.emit(dropdownName);
   }
 
   getOrCreateDropdown(dropdownName: string): Dropdown {
@@ -51,14 +40,14 @@ export class DropdownService {
   registerDocumentClick(event: any, dropdownName: string): void {
     const dropdown = this.getOrCreateDropdown(dropdownName);
     if (!this.overlayService.clickIsInsideElements(event, [dropdown.dropdownButton, dropdown.dropdownMenu])) {
-      this.triggerDropdownClose(dropdownName);
+      this.closeDropdown.next(dropdownName);
     }
   }
 
   registerDropdownFocusOut(event: any, dropdownName: string): void {
     const dropdown = this.getOrCreateDropdown(dropdownName);
     if (this.focusService.focusIsLeavingElements(event, [dropdown.dropdownButton, dropdown.dropdownMenu])) {
-      this.triggerDropdownClose(dropdownName);
+      this.closeDropdown.next(dropdownName);
     }
   }
 

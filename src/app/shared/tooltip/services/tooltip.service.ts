@@ -1,21 +1,14 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TooltipService {
 
-  // TODO:  Fix this naming.  Subject/BehaviorSubject?
-  public showTooltip: EventEmitter<string> = new EventEmitter<string>();
-  public hideTooltip: EventEmitter<string> = new EventEmitter<string>();
+  public openTooltip: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public closeTooltip: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public blockTooltip: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public freeTooltip: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   constructor() { }
 
-  public openTooltip(tooltipName: string): void {
-    this.showTooltip.emit(tooltipName);
-  }
-
-  public closeTooltip(tooltipName: string): void {
-    this.hideTooltip.emit(tooltipName);
-  }
 }
