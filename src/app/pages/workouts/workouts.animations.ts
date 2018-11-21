@@ -1,7 +1,7 @@
 import { trigger, state, style, animate, transition, query, animateChild, group } from '@angular/animations';
 
-const buttonLeaveLength = '250ms';
-const circleAnimateOutLength = '500ms';
+const buttonLeaveLength = '5000ms';
+const circleAnimateOutLength = '5000ms';
 
 export const slideUpDown = trigger('slideUpDown', [
     transition(':enter', [
@@ -22,13 +22,15 @@ export const fadeShrinkInOut = trigger('fadeShrinkInOut', [
 ]);
 
 export const fadeInOut = trigger('fadeInOut', [
-    transition(':enter', [
+    transition('false => true', [
         style({opacity: 0}),
-        animate(`350ms 150ms ease-in-out`, style({opacity: 1}))
+        // animate(`350ms 150ms ease-in-out`, style({opacity: 1}))
+        animate(`${buttonLeaveLength} ease-in-out`, style({opacity: 1}))
     ]),
-    transition(':leave', [
+    transition('true => false', [
         style({opacity: 1}),
-        animate(`250ms ease-in-out`, style({opacity: 0}))
+        // animate(`250ms ease-in-out`, style({opacity: 0}))
+        animate(`${buttonLeaveLength} ease-in-out`, style({opacity: 0}))
     ])
 ]);
 
@@ -40,30 +42,15 @@ export const expandButton = trigger('expandButton', [
     ])
 ]);
 
-export const expand = trigger('expand', [
-    state('*', style({height: '*'})),
-    state('void', style({height: '0px'})),
-    transition('* <=> *', [
-        group([
-            query('@*', [
-                animateChild()
-            ], { optional: true }),
-            animate(`${buttonLeaveLength} ease-in-out`)
-        ])
-    ])
-]);
-
-export const shrink = trigger('shrink', [
-    state('true', style({height: '75px'})),
-    state('false', style({height: '*'})),
+export const smoothHeight = trigger('smoothHeight', [
     transition('* <=> *', [
         group([
             query('@*', [
                 animateChild()
             ]),
-            animate(`${buttonLeaveLength} ease-in-out`),
+            animate(`${buttonLeaveLength} ease-in-out`, style({height: '{{newHeight}}px'}))
         ])
-    ])
+    ], { params: { newHeight: 0 }})
 ]);
 
 export const positionCircle = trigger('positionCircle', [
