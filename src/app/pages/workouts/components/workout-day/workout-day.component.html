@@ -34,7 +34,7 @@
       <div class="workout-day__button-wrapper" [@expandButton]="workoutDayForm.controls.restDay.value">
         <button type="button" (click)="toggleRestDay()" class="workout-day__button--set-to-rest" ltTooltipAnchor tooltipName="{{day}}-rest-day">
           <i class="material-icons">hotel</i>
-          <lt-tooltip-outlet forTooltip="{{day}}-rest-day" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Set as rest day"></lt-tooltip-outlet>
+          <lt-tooltip-outlet forTooltip="{{day}}-rest-day" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Toggle rest day"></lt-tooltip-outlet>
         </button>
       </div>
     </div>
@@ -54,7 +54,10 @@
       </div>
       <div class="workout-day__input-content workout-day__content-item" [@fadeInOut] [@expand] *ngIf="exerciseInputDisplay">
         <div>Add exercise to {{day}}</div>
-        <input type="text" class="workout-day__input-exercise-name" />
+        <div class="workout-day__exercise-input-wrapper">
+          <label for="workout-day__{{day}}-exercise-input">Exercise name</label>
+          <input type="text" class="workout-day__input-exercise-name" id="workout-day__{{day}}-exercise-input" />
+        </div>
       </div>
       <!-- <ng-container *ngIf="workoutDayForm.controls.exercises.length" formArrayName="exercises">
         <div *ngFor="let exercise of workoutDayForm.controls.exercises.controls; let i = index" class="workout-day__input-row" [formGroupName]="i">
