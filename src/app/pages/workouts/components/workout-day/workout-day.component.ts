@@ -28,6 +28,7 @@ export class WorkoutDayComponent implements OnInit {
   private exerciseInputDisplay: boolean = false;
   private circleAnimationState: string = 'none';
   private blockQuickOptionsTooltip: boolean = false;
+  private currentExerciseIndex: number = 0;
 
   constructor(private formBuilder: FormBuilder, private dropdownService: DropdownService) { }
 
@@ -36,6 +37,8 @@ export class WorkoutDayComponent implements OnInit {
       restDay: false,
       exercises: this.formBuilder.array([])
     });
+
+    this.addExercise();
 
     this.formReady.emit(this.workoutDayForm);
   }

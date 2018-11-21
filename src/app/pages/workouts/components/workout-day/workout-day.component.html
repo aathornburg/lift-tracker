@@ -52,13 +52,22 @@
           <span>Set as active</span>
         </button>
       </div>
-      <div class="workout-day__input-content workout-day__content-item" [@fadeInOut] [@expand] *ngIf="exerciseInputDisplay">
+      <div class="workout-day__input-content workout-day__content-item" [@fadeInOut] [@expand] *ngIf="exerciseInputDisplay" formArrayName="exercises">
+        <ng-container [formGroupName]="currentExerciseIndex">
+          <div>Add exercise to {{day}}</div>
+          <div class="workout-day__exercise-input-wrapper">
+            <label for="workout-day__{{day}}-exercise-input" *ngIf="!workoutDayForm.controls.exercises.value[currentExerciseIndex].name">Exercise name</label>
+            <input type="text" class="workout-day__input-exercise-name" id="workout-day__{{day}}-exercise-input" formControlName="name" />
+          </div>
+        </ng-container>
+      </div>
+      <!-- <div class="workout-day__input-content workout-day__content-item" [@fadeInOut] [@expand] *ngIf="exerciseInputDisplay" [formGroupName]="workoutDayForm.controls.exercises[currentExerciseIndex]">
         <div>Add exercise to {{day}}</div>
         <div class="workout-day__exercise-input-wrapper">
-          <label for="workout-day__{{day}}-exercise-input">Exercise name</label>
-          <input type="text" class="workout-day__input-exercise-name" id="workout-day__{{day}}-exercise-input" />
+          <label for="workout-day__{{day}}-exercise-input" *ngIf="workoutDayForm.controls.name">Exercise name</label>
+          <input type="text" class="workout-day__input-exercise-name" id="workout-day__{{day}}-exercise-input" formControlName="name" />
         </div>
-      </div>
+      </div> -->
       <!-- <ng-container *ngIf="workoutDayForm.controls.exercises.length" formArrayName="exercises">
         <div *ngFor="let exercise of workoutDayForm.controls.exercises.controls; let i = index" class="workout-day__input-row" [formGroupName]="i">
           <input type="text" formControlName="name" />
