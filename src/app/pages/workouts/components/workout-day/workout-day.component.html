@@ -11,8 +11,8 @@
     <div class="workout-day__buttons">
       <div class="workout-day__button-wrapper" @fadeShrinkInOut *ngIf="!workoutDayForm.controls.restDay.value">
         <button type="button" (click)="toggleExerciseInputDisplay()" class="workout-day__button--edit" ltTooltipAnchor tooltipName="{{day}}-edit">
-          <i class="material-icons">input</i>
-          <lt-tooltip-outlet forTooltip="{{day}}-edit" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Edit {{day}}'s exercises"></lt-tooltip-outlet>
+          <i class="material-icons">library_add</i>
+          <lt-tooltip-outlet forTooltip="{{day}}-edit" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Add exercises to {{day}}"></lt-tooltip-outlet>
         </button>
       </div>
       <div class="workout-day__button-wrapper" [@expandButton]="workoutDayForm.controls.restDay.value">
@@ -53,11 +53,8 @@
         </button>
       </div>
       <div class="workout-day__input-content workout-day__content-item" [@fadeInOut] [@expand] *ngIf="exerciseInputDisplay">
-        <div style="height: 300px;">{{day}} is a rest day - feel free to use this day to recover!</div>
-        <button type="button" (click)="toggleRestDay()" class="workout-day__rest-day-set-active-button">
-          <i class="material-icons">directions_run</i>
-          <span>Set as active</span>
-        </button>
+        <div>Add exercise to {{day}}</div>
+        <input type="text" class="workout-day__input-exercise-name" />
       </div>
       <!-- <ng-container *ngIf="workoutDayForm.controls.exercises.length" formArrayName="exercises">
         <div *ngFor="let exercise of workoutDayForm.controls.exercises.controls; let i = index" class="workout-day__input-row" [formGroupName]="i">
