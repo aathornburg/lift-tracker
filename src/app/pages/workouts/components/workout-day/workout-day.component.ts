@@ -31,7 +31,9 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
   private circleAnimationState: string = 'none';
   private blockQuickOptionsTooltip: boolean = false;
   private currentExerciseIndex: number = 0;
+  private oldWorkoutDayContentHeight: number = 0;
   private workoutDayContentHeight: number = 0;
+  private workoutDayHeightChangeTrigger: boolean = false;
   private workoutDayContentStandardHeight: number = 0;
   private workoutDayContentShrunkenHeight: number = 0;
   private oldWorkoutDayState: WorkoutDayState = WorkoutDayState.Standard;
@@ -50,10 +52,14 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
 
     this.formReady.emit(this.workoutDayForm);
   }
-  
+
   ngAfterViewInit(): void {
     this.workoutDayContentStandardHeight = this.workoutDayButtons.nativeElement.clientHeight;
     this.workoutDayContentShrunkenHeight = this.workoutDayContentStandardHeight * ( 2 / 3 );
+    setTimeout(() => { // Fix ExpressionChangedAfterItHasBeenCheckedError
+      this.workoutDayContentHeight = this.workoutDayContentStandardHeight;
+      this.oldWorkoutDayContentHeight = this.workoutDayContentStandardHeight;
+    }, 0);
   }
 
   private addExercise(): void {
@@ -74,11 +80,11 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
 
     if (this.workoutDayState !== WorkoutDayState.RestDay) {
       this.workoutDayState = WorkoutDayState.RestDay;
-      this.workoutDayContentHeight = this.workoutDayContentShrunkenHeight;
+      this.setWorkoutDayContentHeight(this.workoutDayContentShrunkenHeight);
       this.workoutDayForm.controls.restDay.setValue(true);
     } else {
       this.workoutDayState = WorkoutDayState.Standard;
-      this.workoutDayContentHeight = this.workoutDayContentStandardHeight;
+      this.setWorkoutDayContentHeight(this.workoutDayContentStandardHeight);
       this.workoutDayForm.controls.restDay.setValue(false);
     }
 
@@ -92,15 +98,21 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
 
     if (this.workoutDayState !== WorkoutDayState.ExerciseInput) {
       this.workoutDayState = WorkoutDayState.ExerciseInput;
-      this.workoutDayContentHeight = this.workoutDayInputContent.nativeElement.clientHeight;
+      this.setWorkoutDayContentHeight(this.workoutDayInputContent.nativeElement.clientHeight);
     } else {
       this.workoutDayState = WorkoutDayState.Standard;
-      this.workoutDayContentHeight = this.workoutDayContentStandardHeight;
+      this.setWorkoutDayContentHeight(this.workoutDayContentStandardHeight);
     }
 
     this.workoutDayHeightAnimating = true;
 
     this.setCircleAnimationState();
+  }
+
+  private setWorkoutDayContentHeight(newHeight: number): void {
+    this.oldWorkoutDayContentHeight = this.workoutDayContentHeight;
+    this.workoutDayContentHeight = newHeight;
+    this.workoutDayHeightChangeTrigger = !this.workoutDayHeightChangeTrigger;
   }
 
   private saveOldWorkoutDayState(): void {
@@ -116,7 +128,6 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
   }
 
   private updateWorkoutDayContentHeightState() {
-    console.log('test');
     this.workoutDayHeightAnimating = false;
   }
 
@@ -124,7 +135,7 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
     return {
       'visibility': this.workoutDayState === workoutDayState || (this.oldWorkoutDayState === workoutDayState && this.workoutDayHeightAnimating) ? 'visible' : 'hidden',
       'position': (this.workoutDayState === workoutDayState && !this.workoutDayHeightAnimating) || (this.oldWorkoutDayState === workoutDayState && this.workoutDayHeightAnimating) ? 'relative' : 'absolute'
-    }
+    };
   }
 
   /* Animation Control */

@@ -1,7 +1,7 @@
 import { trigger, state, style, animate, transition, query, animateChild, group } from '@angular/animations';
 
-const buttonLeaveLength = '5000ms';
-const circleAnimateOutLength = '5000ms';
+const buttonLeaveLength = '250ms';
+const circleAnimateOutLength = '500ms';
 
 export const slideUpDown = trigger('slideUpDown', [
     transition(':enter', [
@@ -22,15 +22,13 @@ export const fadeShrinkInOut = trigger('fadeShrinkInOut', [
 ]);
 
 export const fadeInOut = trigger('fadeInOut', [
+    state('false', style({opacity: 0})),
+    state('true', style({opacity: 1})),
     transition('false => true', [
-        style({opacity: 0}),
-        // animate(`350ms 150ms ease-in-out`, style({opacity: 1}))
-        animate(`${buttonLeaveLength} ease-in-out`, style({opacity: 1}))
+        animate(`350ms 150ms ease-in-out`)
     ]),
     transition('true => false', [
-        style({opacity: 1}),
-        // animate(`250ms ease-in-out`, style({opacity: 0}))
-        animate(`${buttonLeaveLength} ease-in-out`, style({opacity: 0}))
+        animate(`250ms ease-in-out`)
     ])
 ]);
 
@@ -48,9 +46,10 @@ export const smoothHeight = trigger('smoothHeight', [
             query('@*', [
                 animateChild()
             ]),
+            style({height: '{{oldHeight}}px'}),
             animate(`${buttonLeaveLength} ease-in-out`, style({height: '{{newHeight}}px'}))
         ])
-    ], { params: { newHeight: 0 }})
+    ], { params: { newHeight: 0, oldHeight: 0 }})
 ]);
 
 export const positionCircle = trigger('positionCircle', [

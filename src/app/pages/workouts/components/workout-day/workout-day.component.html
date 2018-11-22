@@ -39,12 +39,16 @@
         </button>
       </div>
     </div>
-    <div class="workout-day__content" [@smoothHeight]="{ value: workoutDayContentHeight, params: { newHeight: workoutDayContentHeight }}" (@smoothHeight.done)="updateWorkoutDayContentHeightState()">
+    <div class="workout-day__content" [@smoothHeight]="{ value: workoutDayHeightChangeTrigger, params: { newHeight: workoutDayContentHeight, oldHeight: oldWorkoutDayContentHeight }}" (@smoothHeight.done)="updateWorkoutDayContentHeightState()">
       <div class="workout-day__circle-wrapper" [@positionCircle]="circleAnimationState">
         <div class="workout-day__circle" [@circleExpand]="circleAnimationState"></div>
       </div>
       <div class="workout-day__content-item" [@fadeInOut]="workoutDayState === WorkoutDayState.Standard" [ngStyle]="getSectionStyle(WorkoutDayState.Standard)" >
         <span>You haven't added any exercises to this day yet.</span>
+        <button type="button" (click)="toggleRestDay()" class="workout-day__rest-day-set-active-button">
+          <i class="material-icons">directions_run</i>
+          <span>Set as active</span>
+        </button>
       </div>
       <div class="workout-day__rest-day-content workout-day__content-item" [@fadeInOut]="workoutDayState === WorkoutDayState.RestDay" [ngStyle]="getSectionStyle(WorkoutDayState.RestDay)" >
         <div>{{day}} is a rest day - feel free to use this day to recover!</div>

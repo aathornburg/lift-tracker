@@ -166,6 +166,10 @@ h3 {
     visibility: hidden;
 }
 
+.workout-day__rest-day-content {
+    flex-direction: column;
+}
+
 .workout-day__circle-wrapper {
     position: absolute;
     left: 0;
