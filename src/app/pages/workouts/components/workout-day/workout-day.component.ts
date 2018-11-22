@@ -98,7 +98,11 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
 
     if (this.workoutDayState !== WorkoutDayState.ExerciseInput) {
       this.workoutDayState = WorkoutDayState.ExerciseInput;
-      this.setWorkoutDayContentHeight(this.workoutDayInputContent.nativeElement.clientHeight);
+      if (this.workoutDayInputContent.nativeElement.clientHeight > this.workoutDayContentStandardHeight) {
+        this.setWorkoutDayContentHeight(this.workoutDayInputContent.nativeElement.clientHeight);
+      } else {
+        this.setWorkoutDayContentHeight(this.workoutDayContentStandardHeight);
+      }
     } else {
       this.workoutDayState = WorkoutDayState.Standard;
       this.setWorkoutDayContentHeight(this.workoutDayContentStandardHeight);
@@ -113,6 +117,8 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
     this.oldWorkoutDayContentHeight = this.workoutDayContentHeight;
     this.workoutDayContentHeight = newHeight;
     this.workoutDayHeightChangeTrigger = !this.workoutDayHeightChangeTrigger;
+    console.log(this.oldWorkoutDayContentHeight);
+    console.log(this.workoutDayContentHeight);
   }
 
   private saveOldWorkoutDayState(): void {
