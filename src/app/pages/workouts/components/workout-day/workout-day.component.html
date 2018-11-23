@@ -56,9 +56,15 @@
       <div class="workout-day__input-content workout-day__content-item" #workoutDayInputContent [@fadeInOut]="workoutDayState === WorkoutDayState.ExerciseInput" [ngStyle]="getSectionStyle(WorkoutDayState.ExerciseInput)" formArrayName="exercises">
         <ng-container [formGroupName]="currentExerciseIndex">
           <div>Add exercise to {{day}}</div>
-          <div class="workout-day__exercise-input-wrapper">
-            <label for="workout-day__{{day}}-exercise-input" *ngIf="!workoutDayForm.controls.exercises.value[currentExerciseIndex].name">Exercise name</label>
-            <input type="text" class="workout-day__input-exercise-name" id="workout-day__{{day}}-exercise-input" formControlName="name" />
+          <div class="workout-day__inputs-wrapper">
+            <div class="workout-day__exercise-input-wrapper workout-day__exercise-name-wrapper">
+              <label for="workout-day__{{day}}-exercise-input" *ngIf="!workoutDayForm.controls.exercises.value[currentExerciseIndex].name">Exercise name</label>
+              <input type="text" id="workout-day__{{day}}-exercise-input" formControlName="name" />
+            </div>
+            <div class="workout-day__exercise-input-wrapper workout-day__set-number-wrapper" *ngIf="workoutDayForm.controls.exercises.value[currentExerciseIndex].name" @expandWidthInOut>
+              <label for="workout-day__{{day}}-set-input" *ngIf="!workoutDayForm.controls.exercises.value[currentExerciseIndex].sets > 0">Number of sets</label>
+              <input type="number" id="workout-day__{{day}}-set-input" formControlName="sets" />
+            </div>
           </div>
         </ng-container>
       </div>

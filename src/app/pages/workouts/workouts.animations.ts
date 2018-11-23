@@ -106,3 +106,14 @@ export const circleExpand = trigger('circleExpand', [
         animate(`${circleAnimateOutLength} ease-in-out`, style({opacity: 1, padding: '102%', background: 'white'}))
     ]),
 ]);
+
+export const expandWidthInOut = trigger('expandWidthInOut', [
+    transition(':enter', [
+        style({width: '0px', opacity: 0}),
+        animate(`150ms ease-in-out`, style({width: '*', opacity: 1}))
+    ]),
+    transition(':leave', [
+        style({width: '*', opacity: 1}),
+        animate(`150ms ease-in-out`, style({width: '0px', opacity: 0}))
+    ])
+]);

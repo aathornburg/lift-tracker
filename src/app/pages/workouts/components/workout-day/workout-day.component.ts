@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { TooltipDirection } from 'src/app/shared/tooltip/model/tooltip-direction';
-import { fadeShrinkInOut, circleExpand, positionCircle, fadeInOut, expandButton, smoothHeight } from '../../workouts.animations';
+import { fadeShrinkInOut, circleExpand, positionCircle, fadeInOut, expandButton, smoothHeight, expandWidthInOut } from '../../workouts.animations';
 import { DropdownService } from 'src/app/shared/overlay/dropdown/services/dropdown.service';
 import { DropdownStatus } from 'src/app/shared/overlay/dropdown/model/dropdown-status';
 import { WorkoutDayState } from '../../model/workout-day-state';
@@ -16,7 +16,8 @@ import { WorkoutDayState } from '../../model/workout-day-state';
     circleExpand,
     positionCircle,
     fadeInOut,
-    smoothHeight
+    smoothHeight,
+    expandWidthInOut
   ]
 })
 export class WorkoutDayComponent implements OnInit, AfterViewInit {
@@ -71,7 +72,7 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
   private createExercise(name?: string, sets?: number): FormGroup {
     return this.formBuilder.group({
       name: name ? name : '',
-      sets: sets ? sets : 0
+      sets: sets ? sets : null
     });
   }
 
