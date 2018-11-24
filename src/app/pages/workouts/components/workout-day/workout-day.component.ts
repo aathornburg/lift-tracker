@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { TooltipDirection } from 'src/app/shared/tooltip/model/tooltip-direction';
-import { fadeShrinkInOut, circleExpand, positionCircle, fadeInOut, expandButton, smoothHeight, expandWidthInOut } from '../../workouts.animations';
+import { fadeShrinkInOut, circleExpand, positionCircle, fadeInOut, expandButton, smoothHeight, expandWidthInOut, moveDownShrink } from '../../workouts.animations';
 import { DropdownService } from 'src/app/shared/overlay/dropdown/services/dropdown.service';
 import { DropdownStatus } from 'src/app/shared/overlay/dropdown/model/dropdown-status';
 import { WorkoutDayState } from '../../model/workout-day-state';
@@ -17,7 +17,8 @@ import { WorkoutDayState } from '../../model/workout-day-state';
     positionCircle,
     fadeInOut,
     smoothHeight,
-    expandWidthInOut
+    expandWidthInOut,
+    moveDownShrink
   ]
 })
 export class WorkoutDayComponent implements OnInit, AfterViewInit {
@@ -118,8 +119,6 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
     this.oldWorkoutDayContentHeight = this.workoutDayContentHeight;
     this.workoutDayContentHeight = newHeight;
     this.workoutDayHeightChangeTrigger = !this.workoutDayHeightChangeTrigger;
-    console.log(this.oldWorkoutDayContentHeight);
-    console.log(this.workoutDayContentHeight);
   }
 
   private saveOldWorkoutDayState(): void {

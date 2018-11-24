@@ -117,3 +117,13 @@ export const expandWidthInOut = trigger('expandWidthInOut', [
         animate(`150ms ease-in-out`, style({width: '0px', opacity: 0}))
     ])
 ]);
+
+export const moveDownShrink = trigger('moveDownShrink', [
+    state('true', style({top: '100%', 'padding': '0', 'font-size': '14px', height: '17px'})),
+    transition('false => true', [
+        animate(`150ms ease-in-out`)
+    ]),
+    transition('true => false', [
+        animate(`150ms ease-in-out`)
+    ])
+]);
