@@ -8,6 +8,7 @@ import { NavigationItemComponent } from './navigation/navigation-item/navigation
 
 import { LiftsModule } from '../pages/lifts/lifts.module';
 import { WorkoutsModule } from '../pages/workouts/workouts.module';
+import { ExerciseModule } from '../pages/exercises/exercise.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { WorkoutsModule } from '../pages/workouts/workouts.module';
     RoutingModule,
     BrowserAnimationsModule,
     LiftsModule.forRoot(),
+    ExerciseModule.forParent(),
     WorkoutsModule
   ],
   declarations: [

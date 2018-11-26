@@ -1,10 +1,13 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { TooltipDirection } from 'src/app/shared/tooltip/model/tooltip-direction';
 import { fadeShrinkInOut, circleExpand, positionCircle, fadeInOut, expandButton, smoothHeight, expandWidthInOut, moveDownShrink } from '../../workouts.animations';
 import { DropdownService } from 'src/app/shared/overlay/dropdown/services/dropdown.service';
 import { DropdownStatus } from 'src/app/shared/overlay/dropdown/model/dropdown-status';
 import { WorkoutDayState } from '../../model/workout-day-state';
+import { ExerciseService } from 'src/app/pages/exercises/services/exercise.service';
+import { Exercise } from 'src/app/pages/exercises/model/exercise';
+import { ReplaySubject } from 'rxjs';
+import { Direction } from 'src/app/shared/model/direction';
 
 @Component({
   selector: 'lt-workout-day',
@@ -28,7 +31,7 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
   @ViewChild('workoutDayInputContent') workoutDayInputContent: ElementRef;
   @ViewChild('workoutDayButtons') workoutDayButtons: ElementRef;
   private WorkoutDayState = WorkoutDayState; // For the template
-  private TooltipDirection = TooltipDirection; // For the template
+  private Direction = Direction; // For the template
   private workoutDayForm: FormGroup;
   private circleAnimationState: string = 'none';
   private blockQuickOptionsTooltip: boolean = false;
@@ -41,18 +44,28 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
   private oldWorkoutDayState: WorkoutDayState = WorkoutDayState.Standard;
   private workoutDayState: WorkoutDayState = WorkoutDayState.Standard;
   private workoutDayHeightAnimating = false;
+  private moveActiveSelection: ReplaySubject<Direction> = new ReplaySubject<Direction>();
+  private dropdownExercises: Array<Exercise> = [];
 
-  constructor(private formBuilder: FormBuilder, private dropdownService: DropdownService) { }
+  constructor(private formBuilder: FormBuilder,
+              private exerciseService: ExerciseService,
+              private dropdownService: DropdownService) { }
 
   ngOnInit(): void {
     this.workoutDayForm = this.formBuilder.group({
       restDay: false,
-      exercises: this.formBuilder.array([])
+      exercises: this.formBuilder.array(Array<Exercise>())
     });
 
     this.addExercise();
 
     this.formReady.emit(this.workoutDayForm);
+
+    // this.exerciseService.getExercises('test').then(
+    //   (exercises: Array<Exercise>) => {
+    //     console.log(exercises);
+    //   }
+    // );
   }
 
   ngAfterViewInit(): void {
@@ -65,15 +78,19 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
   }
 
   private addExercise(): void {
-    // (this.workoutDayForm.controls.exercises as FormArray).push(this.createExercise());
     const exercises = this.workoutDayForm.controls.exercises as FormArray;
     exercises.push(this.createExercise());
   }
 
-  private createExercise(name?: string, sets?: number): FormGroup {
-    return this.formBuilder.group({
-      name: name ? name : '',
-      sets: sets ? sets : null
+  private createExercise(): FormGroup {
+    return this.formBuilder.group(new Exercise());
+  }
+
+  private getExercisesFromExerciseInput(): void {
+    this.exerciseService.getExercises(
+      this.workoutDayForm.controls.exercises.value[this.currentExerciseIndex].name
+    ).then((exercises: Array<Exercise>) => {
+      this.dropdownExercises = exercises;
     });
   }
 
@@ -125,15 +142,15 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
     this.oldWorkoutDayState = this.workoutDayState;
   }
 
-  private getDropdownIdentifier(): string {
-    return this.day.toLowerCase() + 'QuickOptionsDropdown';
+  private getDropdownIdentifier(dropdownName: string): string {
+    return this.day.toLowerCase() + dropdownName;
   }
 
   private handleQuickOptionsDropdownStatusChange(event: DropdownStatus) {
     this.blockQuickOptionsTooltip = (event === DropdownStatus.Open);
   }
 
-  private updateWorkoutDayContentHeightState() {
+  private updateWorkoutDayContentHeightState(): void {
     this.workoutDayHeightAnimating = false;
   }
 

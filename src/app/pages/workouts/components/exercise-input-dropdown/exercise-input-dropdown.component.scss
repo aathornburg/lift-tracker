@@ -1,0 +1,30 @@
+@import '~src/variables.scss';
+
+.exercise-input-dropdown {
+    $horizontal-padding: 8px;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background: white;
+    text-align: left;
+    z-index: 10;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+    .exercise-input-dropdown__most-popular-title {
+        font-size: 0.75em;
+        color: colors(font, light);
+        padding: 4px $horizontal-padding;
+    }
+
+    .exercise-input-dropdown__exercise {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        cursor: pointer;
+        padding: 0px $horizontal-padding;
+
+        &:hover {
+            background: colors(misc, white-hover);
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, HostBinding, HostListener } from '@angular/core';
-import { TooltipDirection } from '../../model/tooltip-direction';
 import { TooltipService } from '../../services/tooltip.service';
 import { fadeSlideInOut } from '../../tooltip.animations';
+import { Direction } from 'src/app/shared/model/direction';
 
 @Component({
   selector: 'lt-tooltip-outlet',
@@ -17,7 +17,7 @@ export class TooltipOutletComponent implements OnInit {
   private hidden = true;
   private blocked = false;
   @Input() forTooltip: string;
-  @Input() tooltipDirection: TooltipDirection = TooltipDirection.Up;
+  @Input() tooltipDirection: Direction = Direction.Up;
   @Input() tooltipText: string;
 
   constructor(private tooltipService: TooltipService) { }
@@ -69,11 +69,11 @@ export class TooltipOutletComponent implements OnInit {
   }
 
   private determineDirectionClass(): string {
-    return TooltipDirection[this.tooltipDirection].toLowerCase();
+    return Direction[this.tooltipDirection].toLowerCase();
   }
 
   private determineBubbleAnimationState(): string {
-    return 'closedFrom' + TooltipDirection[this.tooltipDirection];
+    return 'closedFrom' + Direction[this.tooltipDirection];
   }
 
 }

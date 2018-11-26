@@ -13,15 +13,15 @@
       <div class="workout-day__button-wrapper" @fadeShrinkInOut *ngIf="!workoutDayForm.controls.restDay.value">
         <button type="button" (click)="toggleExerciseInputDisplay()" class="workout-day__button--edit" ltTooltipAnchor tooltipName="{{day}}-edit">
           <i class="material-icons">library_add</i>
-          <lt-tooltip-outlet forTooltip="{{day}}-edit" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Add exercises to {{day}}"></lt-tooltip-outlet>
+          <lt-tooltip-outlet forTooltip="{{day}}-edit" tooltipDirection="{{Direction.Right}}" tooltipText="Add exercises to {{day}}"></lt-tooltip-outlet>
         </button>
       </div>
       <div class="workout-day__button-wrapper" [@expandButton]="workoutDayForm.controls.restDay.value">
-        <button type="button" class="workout-day__button--quick-options" ltTooltipAnchor tooltipName="{{day}}-options" [tooltipBlock]="blockQuickOptionsTooltip" [ltOpenDropdown]="getDropdownIdentifier()">
+        <button type="button" class="workout-day__button--quick-options" ltTooltipAnchor tooltipName="{{day}}-options" [tooltipBlock]="blockQuickOptionsTooltip" [ltOpenDropdown]="getDropdownIdentifier('quickOptionsDropdown')">
           <i class="material-icons">settings</i>
-          <lt-tooltip-outlet forTooltip="{{day}}-options" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Quick options"></lt-tooltip-outlet>
+          <lt-tooltip-outlet forTooltip="{{day}}-options" tooltipDirection="{{Direction.Right}}" tooltipText="Quick options"></lt-tooltip-outlet>
         </button>
-        <div class="workout-day__quick-options-dropdown" ltDropdown [dropdownName]="getDropdownIdentifier()" (dropdownStatusChange)="handleQuickOptionsDropdownStatusChange($event)">
+        <div class="workout-day__quick-options-dropdown" ltDropdown [dropdownName]="getDropdownIdentifier('quickOptionsDropdown')" (dropdownStatusChange)="handleQuickOptionsDropdownStatusChange($event)">
           <button class="workout-day__quick-options-dropdown-row">
               <i class="workout-day__quick-options-dropdown-icon workout-day__quick-options-dropdown-copy-icon material-icons">playlist_add</i>
               <span class="workout-day__quick-options-dropdown-text">Copy exercises from another day</span>
@@ -35,13 +35,15 @@
       <div class="workout-day__button-wrapper" [@expandButton]="workoutDayForm.controls.restDay.value">
         <button type="button" (click)="toggleRestDay()" class="workout-day__button--set-to-rest" ltTooltipAnchor tooltipName="{{day}}-rest-day">
           <i class="material-icons">hotel</i>
-          <lt-tooltip-outlet forTooltip="{{day}}-rest-day" tooltipDirection="{{TooltipDirection.Right}}" tooltipText="Toggle rest day"></lt-tooltip-outlet>
+          <lt-tooltip-outlet forTooltip="{{day}}-rest-day" tooltipDirection="{{Direction.Right}}" tooltipText="Toggle rest day"></lt-tooltip-outlet>
         </button>
       </div>
     </div>
     <div class="workout-day__content" [@smoothHeight]="{ value: workoutDayHeightChangeTrigger, params: { newHeight: workoutDayContentHeight, oldHeight: oldWorkoutDayContentHeight }}" (@smoothHeight.done)="updateWorkoutDayContentHeightState()">
-      <div class="workout-day__circle-wrapper" [@positionCircle]="circleAnimationState">
-        <div class="workout-day__circle" [@circleExpand]="circleAnimationState"></div>
+      <div class="workout-day__circle-wrapper">
+        <div class="workout-day__circle-position" [@positionCircle]="circleAnimationState">
+          <div class="workout-day__circle" [@circleExpand]="circleAnimationState"></div>
+        </div>
       </div>
       <div class="workout-day__content-item" [@fadeInOut]="workoutDayState === WorkoutDayState.Standard" [ngStyle]="getSectionStyle(WorkoutDayState.Standard)" >
         <span>You haven't added any exercises to this day yet.</span>
@@ -59,7 +61,8 @@
           <div class="workout-day__inputs-wrapper">
             <div class="workout-day__exercise-input-wrapper workout-day__exercise-name-wrapper">
               <label for="workout-day__{{day}}-exercise-input" [@moveDownShrink]="!!workoutDayForm.controls.exercises.value[currentExerciseIndex].name">Exercise name</label>
-              <input type="text" id="workout-day__{{day}}-exercise-input" formControlName="name" />
+              <input type="text" id="workout-day__{{day}}-exercise-input" formControlName="name"  [ltOpenDropdown]="getDropdownIdentifier('exerciseInputDropdown')" (keydown.arrowdown)="moveActiveSelection.next(Direction.Down)" (keydown.arrowup)="moveActiveSelection.next(Direction.Up)" />
+              <lt-exercise-input-dropdown [dropdownIdentifier]="getDropdownIdentifier('exerciseInputDropdown')" [(moveActiveSelection)]="moveActiveSelection"></lt-exercise-input-dropdown>
             </div>
             <div class="workout-day__exercise-input-wrapper workout-day__set-number-wrapper" *ngIf="workoutDayForm.controls.exercises.value[currentExerciseIndex].name" @expandWidthInOut>
               <label for="workout-day__{{day}}-set-input" [@moveDownShrink]="workoutDayForm.controls.exercises.value[currentExerciseIndex].sets > 0">Number of sets</label>

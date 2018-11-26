@@ -1,4 +1,4 @@
-export enum TooltipDirection {
+export enum Direction {
     Up,
     Right,
     Down,
