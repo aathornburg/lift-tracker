@@ -119,7 +119,7 @@ export const expandWidthInOut = trigger('expandWidthInOut', [
 ]);
 
 export const moveDownShrink = trigger('moveDownShrink', [
-    state('true', style({top: '100%', 'padding': '0', 'font-size': '14px', height: '17px'})),
+    state('true', style({bottom: '3px', 'padding': '0', 'font-size': '14px', height: '17px'})),
     transition('false => true', [
         animate(`150ms ease-in-out`)
     ]),

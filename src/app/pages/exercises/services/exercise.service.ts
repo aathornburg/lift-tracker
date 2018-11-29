@@ -16,13 +16,15 @@ export class ExerciseService {
 
   constructor() { }
 
-  getAllExercises(): Array<Exercise> {
-    return null;
+  getAllExercises(): Promise<Array<Exercise>> {
+    return new Promise((resolve) => {
+      resolve(this.exerciseList);
+    });
   }
 
   getExercises(partialExerciseName: string): Promise<Array<Exercise>> {
     return new Promise((resolve) => {
-      resolve( [ new Exercise('test') ] );
+      resolve(this.exerciseList);
     });
   }
 }
