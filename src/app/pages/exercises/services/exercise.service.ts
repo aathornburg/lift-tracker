@@ -24,7 +24,13 @@ export class ExerciseService {
 
   getExercises(partialExerciseName: string): Promise<Array<Exercise>> {
     return new Promise((resolve) => {
-      resolve(this.exerciseList);
+      if (partialExerciseName) {
+        resolve(this.exerciseList.filter(
+          exercise => exercise.name.toLowerCase().includes(partialExerciseName.toLowerCase())
+        ));
+      } else {
+        resolve(this.exerciseList);
+      }
     });
   }
 }

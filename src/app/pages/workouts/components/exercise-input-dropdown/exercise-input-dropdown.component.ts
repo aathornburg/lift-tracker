@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { Direction } from 'src/app/shared/model/direction';
 import { ExerciseService } from 'src/app/pages/exercises/services/exercise.service';
@@ -13,12 +13,15 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
 
   @Input() moveActiveSelection: ReplaySubject<Direction>;
   @Input() dropdownIdentifier = '';
-  @Input() exerciseInput: string;
+  @Input() exerciseInput: Exercise;
+  @Output() valueSelected: EventEmitter<Exercise> = new EventEmitter<Exercise>();
   private exercises: Array<Exercise>;
 
   constructor(private exerciseService: ExerciseService) { }
 
   ngOnInit() {
+    console.log(this.exerciseInput);
+
     this.moveActiveSelection.subscribe(
       (direction: Direction) => {
         switch (direction) {
@@ -36,12 +39,20 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.exercises);
     if (changes['exerciseInput']) {
-      this.exerciseService.getExercises(changes['exerciseInput'].currentValue).then(
-        (exercises: Array<Exercise>) => this.exercises = exercises
-      );
+      console.log(this.exerciseInput);
+      if (changes['exerciseInput'].currentValue) {
+        this.exerciseService.getExercises(changes['exerciseInput'].currentValue.name).then(
+          (exercises: Array<Exercise>) => this.exercises = exercises
+        );
+      }
     }
+  }
+
+  emitNewValue(exercise: Exercise): void {
+    console.log(exercise);
+    this.exerciseInput = exercise;
+    this.valueSelected.emit(exercise);
   }
 
 }

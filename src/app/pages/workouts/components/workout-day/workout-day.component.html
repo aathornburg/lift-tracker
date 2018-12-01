@@ -62,7 +62,7 @@
             <div class="workout-day__exercise-input-wrapper workout-day__exercise-name-wrapper">
               <label for="workout-day__{{day}}-exercise-input" [@moveDownShrink]="!!workoutDayForm.controls.exercises.value[currentExerciseIndex].name">Exercise name</label>
               <input type="text" id="workout-day__{{day}}-exercise-input" formControlName="name"  [ltOpenDropdown]="getDropdownIdentifier('exerciseInputDropdown')" (keydown.arrowdown)="moveActiveSelection.next(Direction.Down)" (keydown.arrowup)="moveActiveSelection.next(Direction.Up)" />
-              <lt-exercise-input-dropdown [dropdownIdentifier]="getDropdownIdentifier('exerciseInputDropdown')" [(moveActiveSelection)]="moveActiveSelection" [exerciseInput]="workoutDayForm.controls.exercises.value[currentExerciseIndex].name"></lt-exercise-input-dropdown>
+              <lt-exercise-input-dropdown [dropdownIdentifier]="getDropdownIdentifier('exerciseInputDropdown')" [(moveActiveSelection)]="moveActiveSelection" [(exerciseInput)]="workoutDayForm.controls.exercises.value[currentExerciseIndex]" (valueSelected)="setExerciseInput($event)"></lt-exercise-input-dropdown>
             </div>
             <div class="workout-day__exercise-input-wrapper workout-day__set-number-wrapper" *ngIf="workoutDayForm.controls.exercises.value[currentExerciseIndex].name" @expandWidthInOut>
               <label for="workout-day__{{day}}-set-input" [@moveDownShrink]="workoutDayForm.controls.exercises.value[currentExerciseIndex].sets > 0">Number of sets</label>
