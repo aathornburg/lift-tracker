@@ -14,7 +14,7 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
   @Input() moveActiveSelection: ReplaySubject<Direction>;
   @Input() dropdownIdentifier = '';
   @Input() exerciseInput: Exercise;
-  @Output() valueSelected: EventEmitter<Exercise> = new EventEmitter<Exercise>();
+  @Output() valueSelected: EventEmitter<string> = new EventEmitter<string>();
   private exercises: Array<Exercise>;
 
   constructor(private exerciseService: ExerciseService) { }
@@ -40,7 +40,6 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['exerciseInput']) {
-      console.log(this.exerciseInput);
       if (changes['exerciseInput'].currentValue) {
         this.exerciseService.getExercises(changes['exerciseInput'].currentValue.name).then(
           (exercises: Array<Exercise>) => this.exercises = exercises
@@ -51,8 +50,7 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
 
   emitNewValue(exercise: Exercise): void {
     console.log(exercise);
-    this.exerciseInput = exercise;
-    this.valueSelected.emit(exercise);
+    this.valueSelected.emit(exercise.name);
   }
 
 }

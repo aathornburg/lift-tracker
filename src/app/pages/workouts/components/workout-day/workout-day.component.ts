@@ -154,9 +154,9 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
     this.workoutDayHeightAnimating = false;
   }
 
-  private setExerciseInput(exercise: Exercise): void {
-    console.log(exercise);
-    setTimeout(() => { this.workoutDayForm.controls.exercises.value[this.currentExerciseIndex].name = exercise.name; }, 0);
+  private setExerciseInput(exerciseName: string): void {
+    console.log(exerciseName);
+    setTimeout(() => { this.workoutDayForm.controls.exercises.value[this.currentExerciseIndex].name = exerciseName; }, 0);
   }
 
   private getSectionStyle(workoutDayState: WorkoutDayState): object {
