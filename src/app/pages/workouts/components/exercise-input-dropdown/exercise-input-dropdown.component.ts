@@ -3,6 +3,7 @@ import { ReplaySubject } from 'rxjs';
 import { Direction } from 'src/app/shared/model/direction';
 import { ExerciseService } from 'src/app/pages/exercises/services/exercise.service';
 import { Exercise } from 'src/app/pages/exercises/model/exercise';
+import { DropdownService } from 'src/app/shared/overlay/dropdown/services/dropdown.service';
 
 @Component({
   selector: 'lt-exercise-input-dropdown',
@@ -14,10 +15,10 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
   @Input() moveActiveSelection: ReplaySubject<Direction>;
   @Input() dropdownIdentifier = '';
   @Input() exerciseInput: Exercise;
-  @Output() valueSelected: EventEmitter<string> = new EventEmitter<string>();
+  @Output() exerciseNameSelected: EventEmitter<string> = new EventEmitter<string>();
   private exercises: Array<Exercise>;
 
-  constructor(private exerciseService: ExerciseService) { }
+  constructor(private exerciseService: ExerciseService, private dropdownService: DropdownService) { }
 
   ngOnInit() {
     this.moveActiveSelection.subscribe(
@@ -44,8 +45,9 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
     }
   }
 
-  emitNewValue(exercise: Exercise): void {
-    this.valueSelected.emit(exercise.name);
+  handleExerciseInputDropdownSelection(exercise: Exercise): void {
+    this.dropdownService.closeDropdown.next(this.dropdownIdentifier);
+    this.exerciseNameSelected.emit(exercise.name);
   }
 
 }

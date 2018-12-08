@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Exercise } from '../model/exercise';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class ExerciseService {
