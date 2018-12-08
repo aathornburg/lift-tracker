@@ -4,7 +4,7 @@ import { Exercise } from '../model/exercise';
 @Injectable()
 export class ExerciseService {
 
-  exerciseList: Array<Exercise> = [ // Mocked until list is in AWS
+  private exerciseList: Array<Exercise> = [ // Mocked until list is in AWS
     new Exercise('Bench press'),
     new Exercise('Deadlift'),
     new Exercise('Squat'),

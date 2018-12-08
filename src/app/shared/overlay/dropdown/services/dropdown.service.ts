@@ -45,9 +45,11 @@ export class DropdownService {
   }
 
   registerDropdownFocusOut(event: any, dropdownName: string): void {
-    const dropdown = this.getOrCreateDropdown(dropdownName);
-    if (this.focusService.focusIsLeavingElements(event, [dropdown.dropdownButton, dropdown.dropdownMenu])) {
-      this.closeDropdown.next(dropdownName);
+    if (this.focusService.focusOutEventHasRelatedTarget(event)) {
+      const dropdown = this.getOrCreateDropdown(dropdownName);
+      if (this.focusService.focusIsLeavingElements(event, [dropdown.dropdownButton, dropdown.dropdownMenu])) {
+        this.closeDropdown.next(dropdownName);
+      }
     }
   }
 

@@ -43,6 +43,10 @@ export class FocusService {
     );
   }
 
+  public focusOutEventHasRelatedTarget(event: any): boolean {
+    return !!event.relatedTarget;
+  }
+
   public getTabbableElements(element: any): any[] {
     return this.getFocusableElements(element)
       .filter(focusableElement => {
