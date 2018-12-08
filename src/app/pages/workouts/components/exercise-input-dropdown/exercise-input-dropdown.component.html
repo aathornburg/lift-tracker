@@ -1,6 +1,6 @@
 <div class="exercise-input-dropdown" ltDropdown [dropdownName]="dropdownIdentifier">
   <div class="exercise-input-dropdown__most-popular-title">Most popular</div>
-  <div class="exercise-input-dropdown__exercise" *ngFor="let exercise of exercises" (click)="handleExerciseInputDropdownSelection(exercise)">{{exercise.name}}</div>
+  <div class="exercise-input-dropdown__exercise" *ngFor="let exercise of exercises; let i = index" [class.active]="(i == activeExerciseIndex) && !activeExerciseOnInput" (click)="handleExerciseInputDropdownSelection(exercise)">{{exercise.name}}</div>
   <!-- <div class="exercise-input-dropdown-loader"></div>
   <div class="exercise-input-row" *ngFor="let exercise of dropdownExercises"></div> -->
 </div>

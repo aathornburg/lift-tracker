@@ -25,5 +25,9 @@
         &:hover {
             background: colors(misc, white-hover);
         }
+
+        &.active {
+            background: colors(misc, white-hover);
+        }
     }
 }

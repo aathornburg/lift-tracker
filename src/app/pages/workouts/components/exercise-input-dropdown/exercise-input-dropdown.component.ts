@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output, HostListener } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { Direction } from 'src/app/shared/model/direction';
 import { ExerciseService } from 'src/app/pages/exercises/services/exercise.service';
@@ -18,6 +18,8 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
   @Output() exerciseNameSelected: EventEmitter<string> = new EventEmitter<string>();
 
   private exercises: Array<Exercise>;
+  private activeExerciseIndex: number = 0;
+  private activeExerciseOnInput: boolean = true;
 
   constructor(private exerciseService: ExerciseService, private dropdownService: DropdownService) { }
 
@@ -26,9 +28,25 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
       (direction: Direction) => {
         switch (direction) {
           case Direction.Up: {
+            if (this.activeExerciseOnInput) {
+              this.activeExerciseIndex = this.exercises.length - 1;
+              this.activeExerciseOnInput = false;
+            } else if (this.activeExerciseIndex === 0) {
+                this.activeExerciseOnInput = true;
+            } else {
+              this.activeExerciseIndex--;
+            }
             break;
           }
           case Direction.Down: {
+            if (this.activeExerciseOnInput) {
+              this.activeExerciseIndex = 0;
+              this.activeExerciseOnInput = false;
+            } else if (this.activeExerciseIndex === (this.exercises.length - 1)) {
+              this.activeExerciseOnInput = true;
+            } else {
+              this.activeExerciseIndex++;
+            }
             break;
           }
         }
