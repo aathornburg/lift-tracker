@@ -16,6 +16,7 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
   @Input() dropdownIdentifier = '';
   @Input() exerciseInput: Exercise;
   @Output() exerciseNameSelected: EventEmitter<string> = new EventEmitter<string>();
+
   private exercises: Array<Exercise>;
 
   constructor(private exerciseService: ExerciseService, private dropdownService: DropdownService) { }

@@ -80,7 +80,9 @@ export class FocusService {
   public allowFocusForFocusableElements(element: any): void {
     this.getFocusableElements(element).forEach(
       focusableElement => {
-        focusableElement.removeAttribute('tabIndex');
+        if (focusableElement.tabindex === -1) {
+          focusableElement.removeAttribute('tabIndex');
+        }
       }
     );
   }

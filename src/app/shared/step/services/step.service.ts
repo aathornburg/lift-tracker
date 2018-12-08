@@ -10,7 +10,4 @@ export class StepService {
 
   constructor() { }
 
-  // goToStep(stepIdentifier: string, stepIndex: number): void {
-  //   this.showStep.emit({stepIdentifier, stepIndex});
-  // }
 }
