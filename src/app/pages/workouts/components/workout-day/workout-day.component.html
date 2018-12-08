@@ -60,14 +60,22 @@
           <div>Add exercise to {{day}}</div>
           <div class="workout-day__inputs-wrapper">
             <div class="workout-day__exercise-input-wrapper workout-day__exercise-name-wrapper">
-              <label for="workout-day__{{day}}-exercise-input" [@moveDownShrink]="!!workoutDayForm.controls.exercises.value[currentExerciseIndex].name">Exercise name</label>
-              <input type="text" id="workout-day__{{day}}-exercise-input" formControlName="name" [ltOpenDropdown]="getDropdownIdentifier('exerciseInputDropdown')" (keydown.arrowdown)="moveActiveSelection.next(Direction.Down)" (keydown.arrowup)="moveActiveSelection.next(Direction.Up)" />
+              <label for="workout-day__{{day}}-exercise-input" [class.over-text]="!workoutDayForm.controls.exercises.value[currentExerciseIndex].name" [@moveDownShrink]="!!workoutDayForm.controls.exercises.value[currentExerciseIndex].name">Exercise name</label>
+              <input type="text" id="workout-day__{{day}}-exercise-input" formControlName="name" [ltOpenDropdown]="getDropdownIdentifier('exerciseInputDropdown')" [toggleOnClick]="false" (keydown.arrowdown)="moveActiveSelection.next(Direction.Down)" (keydown.arrowup)="moveActiveSelection.next(Direction.Up)" />
               <lt-exercise-input-dropdown [dropdownIdentifier]="getDropdownIdentifier('exerciseInputDropdown')" [(moveActiveSelection)]="moveActiveSelection" [exerciseInput]="workoutDayForm.controls.exercises.value[currentExerciseIndex]" (exerciseNameSelected)="exerciseNameSelected($event)"></lt-exercise-input-dropdown>
             </div>
-            <div class="workout-day__exercise-input-wrapper workout-day__set-number-wrapper" @expandWidthInOut>
-              <label for="workout-day__{{day}}-set-input" [@moveDownShrink]="workoutDayForm.controls.exercises.value[currentExerciseIndex].sets > 0">Number of sets</label>
-              <input type="number" id="workout-day__{{day}}-set-input" formControlName="sets" min="1" />
-            </div>
+            <!-- <div class="workout-day__exercise-input-wrapper workout-day__set-number-wrapper">
+              <div class="workout-day__set-number-input-wrapper">
+                <button type="button" (click)="updateCurrentExerciseSetNumber(false)" [style.visibility]="workoutDayForm.controls.exercises.value[currentExerciseIndex].sets > 1 ? 'visible' : 'hidden'">
+                  <i class="material-icons workout-day__set-number_button-icon">remove</i>
+                </button>
+                <input type="number" id="workout-day__{{day}}-set-input" formControlName="sets" min="1" />
+                <button type="button" (click)="updateCurrentExerciseSetNumber(false)">
+                  <i class="material-icons workout-day__set-number_button-icon">add</i>
+                </button>
+              </div>
+              <label for="workout-day__{{day}}-set-input">Number of sets</label>
+            </div> -->
           </div>
         </ng-container>
       </div>

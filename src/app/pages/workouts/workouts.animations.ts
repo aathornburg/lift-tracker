@@ -107,17 +107,6 @@ export const circleExpand = trigger('circleExpand', [
     ]),
 ]);
 
-export const expandWidthInOut = trigger('expandWidthInOut', [
-    transition(':enter', [
-        style({width: '0px', opacity: 0}),
-        animate(`150ms ease-in-out`, style({width: '*', opacity: 1}))
-    ]),
-    transition(':leave', [
-        style({width: '*', opacity: 1}),
-        animate(`150ms ease-in-out`, style({width: '0px', opacity: 0}))
-    ])
-]);
-
 export const moveDownShrink = trigger('moveDownShrink', [
     state('true', style({bottom: '3px', 'padding': '0', 'font-size': '14px', height: '17px'})),
     transition('false => true', [

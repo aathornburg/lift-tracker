@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { fadeShrinkInOut, circleExpand, positionCircle, fadeInOut, expandButton, smoothHeight, expandWidthInOut, moveDownShrink } from '../../workouts.animations';
+import { FormBuilder, FormGroup, FormArray, AbstractControl } from '@angular/forms';
+import { fadeShrinkInOut, circleExpand, positionCircle, fadeInOut, expandButton, smoothHeight, moveDownShrink } from '../../workouts.animations';
 import { DropdownService } from 'src/app/shared/overlay/dropdown/services/dropdown.service';
 import { DropdownStatus } from 'src/app/shared/overlay/dropdown/model/dropdown-status';
 import { WorkoutDayState } from '../../model/workout-day-state';
@@ -20,7 +20,6 @@ import { Direction } from 'src/app/shared/model/direction';
     positionCircle,
     fadeInOut,
     smoothHeight,
-    expandWidthInOut,
     moveDownShrink
   ]
 })
@@ -167,6 +166,12 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
       exercise.patchValue({name: exerciseName});
     }
   }
+
+  // private updateCurrentExerciseSetNumber(incremented: boolean): void {
+  //   const exercise: AbstractControl = (<FormArray>this.workoutDayForm.controls.exercises).at(this.currentExerciseIndex);
+  //   const setNumber: number = exercise.value.sets;
+  //   exercise.patchValue({name: exerciseName});
+  // }
 
   /* Animation Control */
   private setCircleAnimationState(): void {

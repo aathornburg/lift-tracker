@@ -1,6 +1,10 @@
 @import '~src/variables.scss';
 
 $restDayOpenStartWidth: 10px;
+$exercise-input-height: 40px;
+$exercise-input-height-with-label: 60px;
+$exercise-input-padding: 10px;
+$exercise-input-border-width: 1px;
 
 :host {
     display: block;
@@ -222,45 +226,92 @@ h3 {
 }
 
 .workout-day__exercise-input-wrapper {
-    $input-padding: 10px;
-    $input-border-width: 1px;
-    $input-height: 40px;
-    $input-bottom-padding: 20px;
     position: relative;
     width: 100%;
-    height: $input-height;
-    padding-bottom: $input-bottom-padding;
-
-    &.workout-day__exercise-name-wrapper {
-        flex: 1;
-    }
-
-    &.workout-day__set-number-wrapper {
-        width: 180px;
-        margin-left: 1em;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-
-    label {
-        display: flex;
-        align-items: center;
-        position: absolute;
-        height: #{$input-height};
-        padding: $input-padding;
-        box-sizing: border-box;
-        color: colors(font, lighter);
-        cursor: text;
-    }
+    height: $exercise-input-height;
 
     input {
         width: 100%;
         height: 100%;
         border: none;
-        border-bottom: $input-border-width solid colors(complement, standard);
-        padding: $input-padding;
+        padding: $exercise-input-padding;
         background: transparent;
         box-sizing: border-box;
         color: colors(font, standard);
+    }
+
+    label {
+        color: colors(font, lighter);
+    }
+}
+
+.workout-day__exercise-name-wrapper {
+    flex: 1;
+    padding-bottom: #{$exercise-input-height-with-label - $exercise-input-height};
+
+    label {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        height: $exercise-input-height;
+        padding: $exercise-input-padding;
+        box-sizing: border-box;
+
+        &.over-text {
+            cursor: text;
+            pointer-events: none;
+        }
+    }
+
+    input {
+        border-bottom: $exercise-input-border-width solid colors(complement, standard);
+    }
+}
+
+.workout-day__set-number-wrapper {
+    width: 120px;
+    height: $exercise-input-height-with-label;
+    margin-left: 1em;
+
+    .workout-day__set-number-input-wrapper {
+        width: 100%;
+        height: $exercise-input-height;
+        display: flex;
+        border-bottom: $exercise-input-border-width solid colors(complement, standard);
+        box-sizing: border-box;
+
+        input {
+            flex: 1;
+            text-align: center;
+
+            &::-webkit-inner-spin-button, &::-webkit-outer-spin-button { 
+                -webkit-appearance: none; 
+                margin: 0; 
+            }
+        }
+
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            border: none;
+            width: 30px;
+            color: colors(font, standard);
+            padding: 0;
+            cursor: pointer;
+
+            .workout-day__set-number_button-icon {
+                font-size: 17px;
+            }
+        }
+    }
+
+    label {
+        display: block;
+        width: 100%;
+        height: 17px;
+        text-align: center;
+        font-size: 14px;
     }
 }
