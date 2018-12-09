@@ -15,7 +15,7 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
   @Input() moveActiveSelection: ReplaySubject<Direction>;
   @Input() dropdownIdentifier = '';
   @Input() exerciseInput: Exercise;
-  @Output() exerciseNameSelected: EventEmitter<string> = new EventEmitter<string>();
+  @Output() exerciseNameSelected: EventEmitter<object> = new EventEmitter<object>();
 
   private exercises: Array<Exercise>;
   private activeExerciseIndex: number = 0;
@@ -24,6 +24,10 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
   constructor(private exerciseService: ExerciseService, private dropdownService: DropdownService) { }
 
   ngOnInit() {
+    this.exerciseService.getAllExercises().then(
+      (exercises: Array<Exercise>) => this.exercises = exercises
+    );
+
     this.moveActiveSelection.subscribe(
       (direction: Direction) => {
         switch (direction) {
@@ -42,11 +46,9 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['exerciseInput']) {
-      if (changes['exerciseInput'].currentValue) {
-        this.exerciseService.getExercises(changes['exerciseInput'].currentValue.name).then(
-          (exercises: Array<Exercise>) => this.exercises = exercises
-        );
-      }
+      this.exerciseService.getExercises(changes['exerciseInput'].currentValue).then(
+        (exercises: Array<Exercise>) => this.exercises = exercises
+      );
     }
   }
 
@@ -54,10 +56,13 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
     if (this.activeExerciseOnInput) {
       this.activeExerciseIndex = indexAfterInput;
       this.activeExerciseOnInput = false;
+      this.exerciseNameSelected.emit({name: this.exercises[this.activeExerciseIndex].name});
     } else if (this.activeExerciseIndex === indexBeforeInput) {
         this.activeExerciseOnInput = true;
+        this.exerciseNameSelected.emit({onInput: true});
     } else {
       this.activeExerciseIndex = newIndex;
+      this.exerciseNameSelected.emit({name: this.exercises[this.activeExerciseIndex].name});
     }
   }
 

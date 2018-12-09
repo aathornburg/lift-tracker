@@ -44,7 +44,7 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
   private workoutDayState: WorkoutDayState = WorkoutDayState.Standard;
   private workoutDayHeightAnimating = false;
   private moveActiveSelection: ReplaySubject<Direction> = new ReplaySubject<Direction>();
-  private dropdownExercises: Array<Exercise> = [];
+  private originalExerciseInputValue: string;
 
   constructor(private formBuilder: FormBuilder,
               private exerciseService: ExerciseService,
@@ -160,11 +160,18 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
     };
   }
 
-  private exerciseNameSelected(exerciseName: string) {
-    if (exerciseName) {
+  private exerciseNameSelected(activeSelectionObject: any) {
+    if (activeSelectionObject.onInput) {
       const exercise = (<FormArray>this.workoutDayForm.controls.exercises).at(this.currentExerciseIndex);
-      exercise.patchValue({name: exerciseName});
+      exercise.patchValue({name: this.originalExerciseInputValue});
+    } else if (activeSelectionObject.name) {
+      const exercise = (<FormArray>this.workoutDayForm.controls.exercises).at(this.currentExerciseIndex);
+      exercise.patchValue({name: activeSelectionObject.name});
     }
+  }
+
+  private updateOriginalExerciseInputValue(): void {
+    this.originalExerciseInputValue = this.workoutDayForm.controls.exercises.value[this.currentExerciseIndex].name;
   }
 
   // private updateCurrentExerciseSetNumber(incremented: boolean): void {
