@@ -28,25 +28,11 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
       (direction: Direction) => {
         switch (direction) {
           case Direction.Up: {
-            if (this.activeExerciseOnInput) {
-              this.activeExerciseIndex = this.exercises.length - 1;
-              this.activeExerciseOnInput = false;
-            } else if (this.activeExerciseIndex === 0) {
-                this.activeExerciseOnInput = true;
-            } else {
-              this.activeExerciseIndex--;
-            }
+            this.handleActiveSelectionMove(this.exercises.length - 1, 0, this.activeExerciseIndex - 1);
             break;
           }
           case Direction.Down: {
-            if (this.activeExerciseOnInput) {
-              this.activeExerciseIndex = 0;
-              this.activeExerciseOnInput = false;
-            } else if (this.activeExerciseIndex === (this.exercises.length - 1)) {
-              this.activeExerciseOnInput = true;
-            } else {
-              this.activeExerciseIndex++;
-            }
+            this.handleActiveSelectionMove(0, this.exercises.length - 1, this.activeExerciseIndex + 1);
             break;
           }
         }
@@ -64,7 +50,18 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
     }
   }
 
-  handleExerciseInputDropdownSelection(exercise: Exercise): void {
+  private handleActiveSelectionMove(indexAfterInput: number, indexBeforeInput: number, newIndex: number): void {
+    if (this.activeExerciseOnInput) {
+      this.activeExerciseIndex = indexAfterInput;
+      this.activeExerciseOnInput = false;
+    } else if (this.activeExerciseIndex === indexBeforeInput) {
+        this.activeExerciseOnInput = true;
+    } else {
+      this.activeExerciseIndex = newIndex;
+    }
+  }
+
+  private handleExerciseInputDropdownSelection(exercise: Exercise): void {
     this.dropdownService.closeDropdown.next(this.dropdownIdentifier);
     this.exerciseNameSelected.emit(exercise.name);
   }
