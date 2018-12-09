@@ -42,6 +42,15 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
         }
       }
     );
+
+    this.dropdownService.closeDropdown.subscribe(
+      (dropdownName: string) => {
+        if (this.dropdownIdentifier === dropdownName) {
+          this.activeExerciseIndex = 0;
+          this.activeExerciseOnInput = true;
+        }
+      }
+    );
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -68,7 +77,7 @@ export class ExerciseInputDropdownComponent implements OnInit, OnChanges {
 
   private handleExerciseInputDropdownSelection(exercise: Exercise): void {
     this.dropdownService.closeDropdown.next(this.dropdownIdentifier);
-    this.exerciseNameSelected.emit(exercise.name);
+    this.exerciseNameSelected.emit({name: exercise.name});
   }
 
 }
