@@ -89,7 +89,7 @@ export class WorkoutDayComponent implements OnInit, AfterViewInit {
     this.exerciseService.getExercises(
       this.workoutDayForm.controls.exercises.value[this.currentExerciseIndex].name
     ).then((exercises: Array<Exercise>) => {
-      this.dropdownExercises = exercises;
+      // this.dropdownExercises = exercises;
     });
   }
 

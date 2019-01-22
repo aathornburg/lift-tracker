@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WorkoutsComponent } from './workouts.component';
 
-describe('WorkoutsComponent', () => {
+fdescribe('WorkoutsComponent', () => {
   let component: WorkoutsComponent;
   let fixture: ComponentFixture<WorkoutsComponent>;
 
@@ -21,5 +21,11 @@ describe('WorkoutsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create the workout form on init', () => {
+    expect(component.trackWorkoutForm).toBeNull();
+    component.ngOnInit();
+    expect(component.trackWorkoutForm).not.toBeNull();
   });
 });
